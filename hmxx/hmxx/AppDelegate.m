@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "GuideViewController.h"
+#import "LoginViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +19,27 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] > NSFoundationVersionNumber_iOS_6_1) {
+        [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:116/255.0 green:176/255.0 blue:64/255.0 alpha:1]];
+    }
+    
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"everLaunched"]) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"everLaunched"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
+        NSLog(@"first launch第一次程序启动");
+        GuideViewController *vc = [[GuideViewController alloc] init];
+        self.window.rootViewController = vc;
+    }else {
+        NSLog(@"second launch再次程序启动");
+        LoginViewController *loginvc =  [[LoginViewController alloc] init];
+        loginvc.logintype = @"login";
+        UINavigationController *vc = [[UINavigationController alloc] initWithRootViewController:loginvc];
+        [vc setNavigationBarHidden:YES];
+        self.window.rootViewController = vc;
+    }
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
