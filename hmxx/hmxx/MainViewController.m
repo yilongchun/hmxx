@@ -12,13 +12,14 @@
 #import "UIImageView+AFNetworking.h"
 #import "MBProgressHUD.h"
 #import "ShezhiViewController.h"
+#import "BbspViewController.h"
+#import "JYSlideSegmentController.h"
 
 
 @interface MainViewController ()<MBProgressHUDDelegate,UIAlertViewDelegate>{
     MKNetworkEngine *engine;
-//    NSArray *typearr;//育儿资讯分类
 //    NSArray *kcbarr;//课程表
-//    NSArray *sparr;//食谱
+    NSArray *sparr;//食谱
     MBProgressHUD *HUD;
     
     
@@ -77,9 +78,28 @@
     [self.view addSubview:HUD];
     HUD.delegate = self;
     
-//    [self setButtons];
+    [self setButtons2];
     
     [self initData];
+}
+
+-(void)setButtons2{
+    
+    CGRect btnr = CGRectMake(10, 170+10, 90, 90);
+    
+    UIButton *btn3 = [[UIButton alloc] init];
+    [btn3 setFrame:btnr];
+    [btn3 setBackgroundImage:[UIImage imageNamed:@"ic_index_004.png"] forState:UIControlStateNormal];
+    [btn3 setBackgroundImage:[UIImage imageNamed:@"ic_index_004_high.png"] forState:UIControlStateHighlighted];
+    [btn3 addTarget:self action:@selector(xsspAction:) forControlEvents:UIControlEventTouchUpInside];
+    UILabel *label3 = [[UILabel alloc] init];
+    [label3 setFrame:CGRectMake(btn3.frame.origin.x, btn3.frame.origin.y+95, 90, 20)];
+    label3.text = @"学生食谱";
+    label3.textAlignment = NSTextAlignmentCenter;
+    [label3 setFont:[UIFont systemFontOfSize:16]];
+    [label3 setBackgroundColor:[UIColor clearColor]];
+    [self.view addSubview:btn3];
+    [self.view addSubview:label3];
 }
 
 - (void)setButtons{
@@ -309,7 +329,6 @@
 
 - (void)initData{
     [self loadData];//加载信息
-   
 }
 
 //加载信息
@@ -341,6 +360,7 @@
                 NSString *userid = [info objectForKey:@"userId"];
                 NSString *schoolid = [info objectForKey:@"schoolId"];
                 [self getUserInfo:userid schoolid:schoolid];
+                [self loadsp:schoolid];
             }else{
                 [HUD hide:YES];
             }
@@ -401,6 +421,93 @@
         [HUD hide:YES];
     }];
     [engine enqueueOperation:op];
+}
+
+//加载食谱
+- (void)loadsp:(NSString *)schoolid{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setValue:schoolid forKey:@"schoolId"];
+    
+    MKNetworkOperation *op = [engine operationWithPath:@"/SchoolCook/findScookList.do" params:dic httpMethod:@"GET"];
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
+        NSString *result = [operation responseString];
+        NSError *error;
+        NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+        if (resultDict == nil) {
+            NSLog(@"json parse failed \r\n");
+        }
+        NSNumber *success = [resultDict objectForKey:@"success"];
+        NSString *msg = [resultDict objectForKey:@"msg"];
+        if ([success boolValue]) {
+            NSArray *data = [resultDict objectForKey:@"data"];
+            if (data != nil) {
+                sparr = data;
+            }
+        }else{
+            [self alertMsg:msg];
+        }
+    }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
+        NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
+    }];
+    [engine enqueueOperation:op];
+}
+
+//学生食谱
+- (IBAction)xsspAction:(UIButton *)sender {
+    
+    NSMutableArray *vcs = [NSMutableArray array];
+    
+    for (int i = 0 ; i < [sparr count]; i++) {
+        BbspViewController *vc = [[BbspViewController alloc] init];
+        NSArray *data = [sparr objectAtIndex:i];
+        vc.dataSource = data;
+        NSDictionary *info = [data objectAtIndex:0];
+        NSString *date = [info objectForKey:@"occurDate"];
+        if (date.length > 5) {
+            //            vc.title = [[info objectForKey:@"occurDate"] substringFromIndex:5];
+            
+            switch (i) {
+                case 0:
+                    vc.title = @"周一";
+                    break;
+                case 1:
+                    vc.title = @"周二";
+                    break;
+                case 2:
+                    vc.title = @"周三";
+                    break;
+                case 3:
+                    vc.title = @"周四";
+                    break;
+                case 4:
+                    vc.title = @"周五";
+                    break;
+                default:
+                    break;
+            }
+            
+        }
+        [vcs addObject:vc];
+    }
+    
+    if (vcs.count > 0) {
+        JYSlideSegmentController *slideSegmentController = [[JYSlideSegmentController alloc] initWithViewControllers:vcs];
+        
+        slideSegmentController.title = @"学生食谱";
+        slideSegmentController.indicatorInsets = UIEdgeInsetsMake(0, 8, 8, 8);
+        slideSegmentController.indicator.backgroundColor = [UIColor greenColor];
+        
+        //设置背景图片
+        UIImage *image = [UIImage imageNamed:@"ic_sp_001.png"];
+        slideSegmentController.view.layer.contents = (id)image.CGImage;
+        
+        [self.navigationController setNavigationBarHidden:NO];
+        [self.navigationController pushViewController:slideSegmentController animated:YES];
+    }else{
+        //提示没有信息
+        [self alertMsg:@"暂时没有食谱信息，请稍后再试"];
+    }
 }
 
 

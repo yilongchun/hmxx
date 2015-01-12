@@ -72,6 +72,15 @@
 		E4F369DC1A6415280037A533 /* YjfkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F369D61A6415280037A533 /* YjfkViewController.m */; };
 		E4F369DD1A6415280037A533 /* YjfkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F369D71A6415280037A533 /* YjfkViewController.xib */; };
 		E4F369DF1A6418EF0037A533 /* ic_sz_002.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F369DE1A6418EF0037A533 /* ic_sz_002.png */; };
+		E4F369E21A642A670037A533 /* ic_index_004_high.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F369E01A642A670037A533 /* ic_index_004_high.png */; };
+		E4F369E31A642A670037A533 /* ic_index_004.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F369E11A642A670037A533 /* ic_index_004.png */; };
+		E4F369E71A642ADF0037A533 /* BbspViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F369E51A642ADF0037A533 /* BbspViewController.m */; };
+		E4F369E81A642ADF0037A533 /* BbspViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F369E61A642ADF0037A533 /* BbspViewController.xib */; };
+		E4F369EB1A642B0C0037A533 /* JYSlideSegmentController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F369EA1A642B0C0037A533 /* JYSlideSegmentController.m */; };
+		E4F369EF1A642B4D0037A533 /* SpTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F369ED1A642B4D0037A533 /* SpTableViewCell.m */; };
+		E4F369F01A642B4D0037A533 /* SpTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F369EE1A642B4D0037A533 /* SpTableViewCell.xib */; };
+		E4F369F21A642C010037A533 /* ic_sp_001.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F369F11A642C010037A533 /* ic_sp_001.png */; };
+		E4F369F41A642C4F0037A533 /* nopicture.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F369F31A642C4F0037A533 /* nopicture.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,6 +204,18 @@
 		E4F369D61A6415280037A533 /* YjfkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YjfkViewController.m; sourceTree = "<group>"; };
 		E4F369D71A6415280037A533 /* YjfkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YjfkViewController.xib; sourceTree = "<group>"; };
 		E4F369DE1A6418EF0037A533 /* ic_sz_002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_sz_002.png; sourceTree = "<group>"; };
+		E4F369E01A642A670037A533 /* ic_index_004_high.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_index_004_high.png; sourceTree = "<group>"; };
+		E4F369E11A642A670037A533 /* ic_index_004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_index_004.png; sourceTree = "<group>"; };
+		E4F369E41A642ADF0037A533 /* BbspViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BbspViewController.h; path = view/BbspViewController.h; sourceTree = "<group>"; };
+		E4F369E51A642ADF0037A533 /* BbspViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BbspViewController.m; path = view/BbspViewController.m; sourceTree = "<group>"; };
+		E4F369E61A642ADF0037A533 /* BbspViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BbspViewController.xib; path = view/BbspViewController.xib; sourceTree = "<group>"; };
+		E4F369E91A642B0C0037A533 /* JYSlideSegmentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JYSlideSegmentController.h; path = view/JYSlideSegmentController.h; sourceTree = "<group>"; };
+		E4F369EA1A642B0C0037A533 /* JYSlideSegmentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JYSlideSegmentController.m; path = view/JYSlideSegmentController.m; sourceTree = "<group>"; };
+		E4F369EC1A642B4D0037A533 /* SpTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpTableViewCell.h; path = view/SpTableViewCell.h; sourceTree = "<group>"; };
+		E4F369ED1A642B4D0037A533 /* SpTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpTableViewCell.m; path = view/SpTableViewCell.m; sourceTree = "<group>"; };
+		E4F369EE1A642B4D0037A533 /* SpTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SpTableViewCell.xib; path = view/SpTableViewCell.xib; sourceTree = "<group>"; };
+		E4F369F11A642C010037A533 /* ic_sp_001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_sp_001.png; sourceTree = "<group>"; };
+		E4F369F31A642C4F0037A533 /* nopicture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nopicture.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,14 +275,14 @@
 				E4F369711A6405F10037A533 /* MainViewController.h */,
 				E4F369721A6405F10037A533 /* MainViewController.m */,
 				E4F369731A6405F10037A533 /* MainViewController.xib */,
+				E4F369911A6407F40037A533 /* Utils.h */,
+				E4F369921A6407F40037A533 /* Utils.m */,
 				E4F369CD1A6414BE0037A533 /* view */,
 				E4F369CE1A6415280037A533 /* shezi */,
 				E4F368F91A63CEF30037A533 /* Supporting Files */,
 				E4F3693A1A63E36C0037A533 /* MKNetworkKit */,
 				E4F3695C1A63E3FE0037A533 /* MBProgressHUD */,
 				E4F369941A64088F0037A533 /* AFNetworking */,
-				E4F369911A6407F40037A533 /* Utils.h */,
-				E4F369921A6407F40037A533 /* Utils.m */,
 			);
 			path = hmxx;
 			sourceTree = "<group>";
@@ -297,6 +318,10 @@
 		E4F3692B1A63E1D20037A533 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E4F369F31A642C4F0037A533 /* nopicture.png */,
+				E4F369F11A642C010037A533 /* ic_sp_001.png */,
+				E4F369E01A642A670037A533 /* ic_index_004_high.png */,
+				E4F369E11A642A670037A533 /* ic_index_004.png */,
 				E4F369DE1A6418EF0037A533 /* ic_sz_002.png */,
 				E4F3698D1A6406D60037A533 /* chatListCellHead.png */,
 				E4F3698E1A6406D60037A533 /* chatListCellHead@2x.png */,
@@ -435,6 +460,14 @@
 		E4F369CD1A6414BE0037A533 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				E4F369E91A642B0C0037A533 /* JYSlideSegmentController.h */,
+				E4F369EA1A642B0C0037A533 /* JYSlideSegmentController.m */,
+				E4F369E41A642ADF0037A533 /* BbspViewController.h */,
+				E4F369E51A642ADF0037A533 /* BbspViewController.m */,
+				E4F369E61A642ADF0037A533 /* BbspViewController.xib */,
+				E4F369EC1A642B4D0037A533 /* SpTableViewCell.h */,
+				E4F369ED1A642B4D0037A533 /* SpTableViewCell.m */,
+				E4F369EE1A642B4D0037A533 /* SpTableViewCell.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -539,23 +572,29 @@
 				E4F369901A6406D60037A533 /* chatListCellHead@2x.png in Resources */,
 				E4F369701A63ED080037A533 /* start_open.png in Resources */,
 				E4F369751A6405F10037A533 /* MainViewController.xib in Resources */,
+				E4F369F21A642C010037A533 /* ic_sp_001.png in Resources */,
+				E4F369E21A642A670037A533 /* ic_index_004_high.png in Resources */,
 				E4F369DD1A6415280037A533 /* YjfkViewController.xib in Resources */,
 				E4F369341A63E1D20037A533 /* guide_1.png in Resources */,
 				E4F369DB1A6415280037A533 /* UpdatePasswordViewController.xib in Resources */,
 				E4F3692A1A63E0920037A533 /* LoginViewController.xib in Resources */,
+				E4F369F01A642B4D0037A533 /* SpTableViewCell.xib in Resources */,
 				E4F369D91A6415280037A533 /* ShezhiViewController.xib in Resources */,
 				E4F369891A64066D0037A533 /* ic_index_bg.png in Resources */,
 				E4F369881A64066D0037A533 /* ic_index_012.png in Resources */,
+				E4F369E81A642ADF0037A533 /* BbspViewController.xib in Resources */,
 				E4F369391A63E1D20037A533 /* ic_login_user.png in Resources */,
 				E4F369DF1A6418EF0037A533 /* ic_sz_002.png in Resources */,
 				E4F369051A63CEF40037A533 /* Main.storyboard in Resources */,
 				E4F369371A63E1D20037A533 /* guide_4.png in Resources */,
 				E4F369281A63E0920037A533 /* GuideViewController.xib in Resources */,
 				E4F369351A63E1D20037A533 /* guide_2.png in Resources */,
+				E4F369E31A642A670037A533 /* ic_index_004.png in Resources */,
 				E4F369381A63E1D20037A533 /* ic_login_password.png in Resources */,
 				E4F369071A63CEF40037A533 /* Images.xcassets in Resources */,
 				E4F369771A6406500037A533 /* ic_index_bg.png in Resources */,
 				E4F369361A63E1D20037A533 /* guide_3.png in Resources */,
+				E4F369F41A642C4F0037A533 /* nopicture.png in Resources */,
 				E4F3698F1A6406D60037A533 /* chatListCellHead.png in Resources */,
 				E4F369331A63E1D20037A533 /* default4.png in Resources */,
 			);
@@ -583,6 +622,7 @@
 				E4F369581A63E36C0037A533 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				E4F3695B1A63E36C0037A533 /* Reachability.m in Sources */,
 				E4F369571A63E36C0037A533 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
+				E4F369EB1A642B0C0037A533 /* JYSlideSegmentController.m in Sources */,
 				E4F369DC1A6415280037A533 /* YjfkViewController.m in Sources */,
 				E4F369271A63E0920037A533 /* GuideViewController.m in Sources */,
 				E4F369C61A64088F0037A533 /* UIButton+AFNetworking.m in Sources */,
@@ -593,6 +633,8 @@
 				E4F369C81A64088F0037A533 /* UIProgressView+AFNetworking.m in Sources */,
 				E4F369611A63E3FE0037A533 /* MBProgressHUD+Add.m in Sources */,
 				E4F369C31A64088F0037A533 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				E4F369E71A642ADF0037A533 /* BbspViewController.m in Sources */,
+				E4F369EF1A642B4D0037A533 /* SpTableViewCell.m in Sources */,
 				E4F369931A6407F40037A533 /* Utils.m in Sources */,
 				E4F369CA1A64088F0037A533 /* UIWebView+AFNetworking.m in Sources */,
 				E4F369BC1A64088F0037A533 /* AFHTTPSessionManager.m in Sources */,
