@@ -81,6 +81,12 @@
 		E4F369F01A642B4D0037A533 /* SpTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F369EE1A642B4D0037A533 /* SpTableViewCell.xib */; };
 		E4F369F21A642C010037A533 /* ic_sp_001.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F369F11A642C010037A533 /* ic_sp_001.png */; };
 		E4F369F41A642C4F0037A533 /* nopicture.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F369F31A642C4F0037A533 /* nopicture.png */; };
+		E4F369F81A6443930037A533 /* KcbViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F369F61A6443930037A533 /* KcbViewController.m */; };
+		E4F369F91A6443930037A533 /* KcbViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F369F71A6443930037A533 /* KcbViewController.xib */; };
+		E4F369FC1A6444EA0037A533 /* ic_kcb_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F369FA1A6444EA0037A533 /* ic_kcb_bg.png */; };
+		E4F369FD1A6444EA0037A533 /* ic_kcb_bg2.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F369FB1A6444EA0037A533 /* ic_kcb_bg2.png */; };
+		E4F36A001A6448300037A533 /* ic_index_007_high.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F369FE1A6448300037A533 /* ic_index_007_high.png */; };
+		E4F36A011A6448300037A533 /* ic_index_007.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F369FF1A6448300037A533 /* ic_index_007.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -216,6 +222,13 @@
 		E4F369EE1A642B4D0037A533 /* SpTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SpTableViewCell.xib; path = view/SpTableViewCell.xib; sourceTree = "<group>"; };
 		E4F369F11A642C010037A533 /* ic_sp_001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_sp_001.png; sourceTree = "<group>"; };
 		E4F369F31A642C4F0037A533 /* nopicture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nopicture.png; sourceTree = "<group>"; };
+		E4F369F51A6443930037A533 /* KcbViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KcbViewController.h; path = view/KcbViewController.h; sourceTree = "<group>"; };
+		E4F369F61A6443930037A533 /* KcbViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KcbViewController.m; path = view/KcbViewController.m; sourceTree = "<group>"; };
+		E4F369F71A6443930037A533 /* KcbViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KcbViewController.xib; path = view/KcbViewController.xib; sourceTree = "<group>"; };
+		E4F369FA1A6444EA0037A533 /* ic_kcb_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_kcb_bg.png; sourceTree = "<group>"; };
+		E4F369FB1A6444EA0037A533 /* ic_kcb_bg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_kcb_bg2.png; sourceTree = "<group>"; };
+		E4F369FE1A6448300037A533 /* ic_index_007_high.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_index_007_high.png; sourceTree = "<group>"; };
+		E4F369FF1A6448300037A533 /* ic_index_007.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_index_007.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +331,10 @@
 		E4F3692B1A63E1D20037A533 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E4F369FE1A6448300037A533 /* ic_index_007_high.png */,
+				E4F369FF1A6448300037A533 /* ic_index_007.png */,
+				E4F369FA1A6444EA0037A533 /* ic_kcb_bg.png */,
+				E4F369FB1A6444EA0037A533 /* ic_kcb_bg2.png */,
 				E4F369F31A642C4F0037A533 /* nopicture.png */,
 				E4F369F11A642C010037A533 /* ic_sp_001.png */,
 				E4F369E01A642A670037A533 /* ic_index_004_high.png */,
@@ -468,6 +485,9 @@
 				E4F369EC1A642B4D0037A533 /* SpTableViewCell.h */,
 				E4F369ED1A642B4D0037A533 /* SpTableViewCell.m */,
 				E4F369EE1A642B4D0037A533 /* SpTableViewCell.xib */,
+				E4F369F51A6443930037A533 /* KcbViewController.h */,
+				E4F369F61A6443930037A533 /* KcbViewController.m */,
+				E4F369F71A6443930037A533 /* KcbViewController.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -569,18 +589,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4F36A001A6448300037A533 /* ic_index_007_high.png in Resources */,
 				E4F369901A6406D60037A533 /* chatListCellHead@2x.png in Resources */,
 				E4F369701A63ED080037A533 /* start_open.png in Resources */,
 				E4F369751A6405F10037A533 /* MainViewController.xib in Resources */,
 				E4F369F21A642C010037A533 /* ic_sp_001.png in Resources */,
+				E4F36A011A6448300037A533 /* ic_index_007.png in Resources */,
 				E4F369E21A642A670037A533 /* ic_index_004_high.png in Resources */,
 				E4F369DD1A6415280037A533 /* YjfkViewController.xib in Resources */,
+				E4F369F91A6443930037A533 /* KcbViewController.xib in Resources */,
 				E4F369341A63E1D20037A533 /* guide_1.png in Resources */,
 				E4F369DB1A6415280037A533 /* UpdatePasswordViewController.xib in Resources */,
 				E4F3692A1A63E0920037A533 /* LoginViewController.xib in Resources */,
 				E4F369F01A642B4D0037A533 /* SpTableViewCell.xib in Resources */,
 				E4F369D91A6415280037A533 /* ShezhiViewController.xib in Resources */,
 				E4F369891A64066D0037A533 /* ic_index_bg.png in Resources */,
+				E4F369FC1A6444EA0037A533 /* ic_kcb_bg.png in Resources */,
+				E4F369FD1A6444EA0037A533 /* ic_kcb_bg2.png in Resources */,
 				E4F369881A64066D0037A533 /* ic_index_012.png in Resources */,
 				E4F369E81A642ADF0037A533 /* BbspViewController.xib in Resources */,
 				E4F369391A63E1D20037A533 /* ic_login_user.png in Resources */,
@@ -655,6 +680,7 @@
 				E4F369BD1A64088F0037A533 /* AFNetworkReachabilityManager.m in Sources */,
 				E4F369DA1A6415280037A533 /* UpdatePasswordViewController.m in Sources */,
 				E4F369541A63E36C0037A533 /* NSDate+RFC1123.m in Sources */,
+				E4F369F81A6443930037A533 /* KcbViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

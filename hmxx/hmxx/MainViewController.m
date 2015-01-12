@@ -14,11 +14,12 @@
 #import "ShezhiViewController.h"
 #import "BbspViewController.h"
 #import "JYSlideSegmentController.h"
+#import "KcbViewController.h"
 
 
 @interface MainViewController ()<MBProgressHUDDelegate,UIAlertViewDelegate>{
     MKNetworkEngine *engine;
-//    NSArray *kcbarr;//课程表
+    NSArray *kcbarr;//课程表
     NSArray *sparr;//食谱
     MBProgressHUD *HUD;
     
@@ -71,19 +72,21 @@
 //    [mainScrollView setPagingEnabled:YES];
 //    mainScrollView.showsHorizontalScrollIndicator = NO;
 //    [self.view addSubview:mainScrollView];
-    
+    [self setButtons2];
     //添加加载等待条
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     HUD.labelText = @"加载中";
     [self.view addSubview:HUD];
     HUD.delegate = self;
     
-    [self setButtons2];
+    
     
     [self initData];
 }
 
 -(void)setButtons2{
+    
+    float width = [UIScreen mainScreen].bounds.size.width;
     
     CGRect btnr = CGRectMake(10, 170+10, 90, 90);
     
@@ -100,6 +103,22 @@
     [label3 setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:btn3];
     [self.view addSubview:label3];
+    
+    btnr = CGRectMake(width/2-45, 170+10, 90, 90);
+    
+    UIButton *btn6 = [[UIButton alloc] init];
+    [btn6 setFrame:btnr];
+    [btn6 setBackgroundImage:[UIImage imageNamed:@"ic_index_007.png"] forState:UIControlStateNormal];
+    [btn6 setBackgroundImage:[UIImage imageNamed:@"ic_index_007_high.png"] forState:UIControlStateHighlighted];
+    [btn6 addTarget:self action:@selector(zxsjbAction:) forControlEvents:UIControlEventTouchUpInside];
+    UILabel *label6 = [[UILabel alloc] init];
+    [label6 setFrame:CGRectMake(btn6.frame.origin.x, btn6.frame.origin.y+95, 90, 20)];
+    label6.text = @"作息时间表";
+    label6.textAlignment = NSTextAlignmentCenter;
+    [label6 setFont:[UIFont systemFontOfSize:16]];
+    [label6 setBackgroundColor:[UIColor clearColor]];
+    [self.view addSubview:btn6];
+    [self.view addSubview:label6];
 }
 
 - (void)setButtons{
@@ -360,7 +379,8 @@
                 NSString *userid = [info objectForKey:@"userId"];
                 NSString *schoolid = [info objectForKey:@"schoolId"];
                 [self getUserInfo:userid schoolid:schoolid];
-                [self loadsp:schoolid];
+                [self loadsp:schoolid];//食谱
+                [self loadZxsjb:schoolid];//作息时间表
             }else{
                 [HUD hide:YES];
             }
@@ -508,6 +528,49 @@
         //提示没有信息
         [self alertMsg:@"暂时没有食谱信息，请稍后再试"];
     }
+}
+
+
+//加载作息时间表
+- (void)loadZxsjb:(NSString *)schoolid{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setValue:schoolid forKey:@"schoolId"];
+    
+    MKNetworkOperation *op = [engine operationWithPath:@"/SchoolTimes/findAllList.do" params:dic httpMethod:@"GET"];
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        //        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
+        NSString *result = [operation responseString];
+        NSError *error;
+        NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+        if (resultDict == nil) {
+            NSLog(@"json parse failed \r\n");
+        }
+        NSNumber *success = [resultDict objectForKey:@"success"];
+        //            NSString *msg = [resultDict objectForKey:@"msg"];
+        //        NSString *code = [resultDict objectForKey:@"code"];
+        if ([success boolValue]) {
+            NSArray *data = [resultDict objectForKey:@"data"];
+            if (data != nil) {
+                kcbarr = data;
+            }
+        }else{
+            
+            
+        }
+    }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
+        NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
+    }];
+    [engine enqueueOperation:op];
+}
+
+//作息时间表
+- (IBAction)zxsjbAction:(UIButton *)sender {
+    KcbViewController *vc = [[KcbViewController alloc] init];
+    vc.title = @"作息时间表";
+    vc.dataSource = kcbarr;
+    [self.navigationController setNavigationBarHidden:NO];
+    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 
