@@ -26,9 +26,29 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>HttpImageurl</key>
+	<string>mobile.hmjxt.com</string>
+	<key>HttpImageurl2</key>
+	<string>115.29.103.36</string>
+	<key>HttpImageurl3</key>
+	<string>mobile.hmjxt.com/newsm</string>
+	<key>HttpVideourl</key>
+	<string>mobile.hmjxt.com/file/upload.do</string>
+	<key>HttpVideourl2</key>
+	<string>115.29.103.36/file/upload.do</string>
+	<key>HttpVideourl3</key>
+	<string>mobile.hmjxt.com/newsm/file/upload.do</string>
+	<key>Httpurl</key>
+	<string>mobile.hmjxt.com/sma</string>
+	<key>Httpurl2</key>
+	<string>115.29.103.36/sma</string>
+	<key>Httpurl3</key>
+	<string>mobile.hmjxt.com/newsma</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>CFBundleAllowMixedLocalizations</key>
+	<true/>
 </dict>
 </plist>
