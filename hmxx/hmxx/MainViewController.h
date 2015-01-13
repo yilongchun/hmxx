@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SMPageControl.h"
 
 @interface MainViewController : UIViewController<UINavigationControllerDelegate,UIScrollViewDelegate>{
     BOOL loginSuccess;
