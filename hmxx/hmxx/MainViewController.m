@@ -15,7 +15,7 @@
 #import "BbspViewController.h"
 #import "JYSlideSegmentController.h"
 #import "KcbViewController.h"
-
+#import "GrdaViewController.h"
 
 @interface MainViewController ()<MBProgressHUDDelegate,UIAlertViewDelegate>{
     MKNetworkEngine *engine;
@@ -51,7 +51,7 @@
     self.navigationItem.backBarButtonItem = backItem;
     backItem.title = @"返回";
     
-    UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
+    UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(grdaAction:)];
     [self.userimg addGestureRecognizer:singleTap1];
     self.userimg.layer.cornerRadius = self.userimg.frame.size.height/2;
     self.userimg.layer.masksToBounds = YES;
@@ -395,7 +395,7 @@
     [engine enqueueOperation:op];
 }
 
-//根据用户id和学校id获取管理员信息
+//根据用户id和学校id获取管理员信息包括菜单
 -(void)getUserInfo:(NSString *)userid schoolid:(NSString *)schoolid {
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
@@ -405,29 +405,98 @@
     MKNetworkOperation *op = [engine operationWithPath:@"/schoolUser/findbyid.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         NSString *result = [operation responseString];
-        NSLog(@"%@",result);
+        
         NSError *error;
         NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
         if (resultDict == nil) {
             NSLog(@"json parse failed \r\n");
         }
+        NSLog(@"%@",resultDict);
         NSNumber *success = [resultDict objectForKey:@"success"];
         NSString *msg = [resultDict objectForKey:@"msg"];
         if ([success boolValue]) {
             NSDictionary *data = [resultDict objectForKey:@"data"];
             if (data != nil) {
+                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                [userDefaults setObject:data forKey:@"user"];
+                
                 NSString *schoolName = [data objectForKey:@"schoolName"];
 //                NSString *userName = [data objectForKey:@"userName"];
 //                NSString *uId = [data objectForKey:@"uId"];
-                
+                NSString *fileid = [data objectForKey:@"fileid"];
                 self.username.text = schoolName;
+                //设置头像
+                if ([Utils isBlankString:fileid]) {
+                    [self.userimg setImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+                }else{
+                    [self.userimg setImageWithURL:[NSURL URLWithString:fileid] placeholderImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+                }
                 
-                //                //设置头像
-                //                if ([Utils isBlankString:fileid]) {
-                //                    [self.userimg setImage:[UIImage imageNamed:@"chatListCellHead.png"]];
-                //                }else{
-                //                    [self.userimg setImageWithURL:[NSURL URLWithString:fileid] placeholderImage:[UIImage imageNamed:@"chatListCellHead.png"]];
-                //                }
+                //获取菜单
+//                NSArray *controlList = [data objectForKey:@"controlList"];
+//                self.menus = [[NSMutableArray alloc] init];
+//                for (int i = 0 ; i < [controlList count]; i++) {
+//                    NSDictionary *menu = [controlList objectAtIndex:i];
+//                    NSEnumerator * enumerator = [menu keyEnumerator];
+//                    id object;
+//                    //遍历输出
+//                    while(object = [enumerator nextObject])
+//                    {
+//                        id objectValue = [menu objectForKey:object];
+//                        if(objectValue != nil)
+//                        {
+//                            if ([objectValue boolValue]) {
+//                                [self.menus addObject:object];
+//                            }
+//                        }
+//                    }
+//                }
+//                
+//                float height = [UIScreen mainScreen].bounds.size.height;
+//                float width = [UIScreen mainScreen].bounds.size.width;
+//                
+//                int i = 0;
+//                for (NSString *menuStr in self.menus) {
+//                    
+//                    
+//                    CGRect btnr;
+//                    switch (i) {
+//                        case 0:
+//                            btnr = CGRectMake(10, 10, 90, 90);
+//                            break;
+//                        case 1:
+//                            btnr = CGRectMake(width/2-45, 10, 90, 90);
+//                            break;
+//                        case 2:
+//                            btnr = CGRectMake(width-100, 10, 90, 90);
+//                            break;
+//                        case 3:
+//                            btnr = CGRectMake(10, 135, 90, 90);
+//                            break;
+//                        case 4:
+//                            btnr = CGRectMake(width/2-45, 135, 90, 90);
+//                            break;
+//                        case 5:
+//                            btnr = CGRectMake(width-100, 135, 90, 90);
+//                            break;
+//                        case 6:
+//                            if (height <= 480) {
+//                                btnr = CGRectMake(width+10, 10, 90, 90);
+//                            }else{
+//                                btnr = CGRectMake(10, 260, 90, 90);
+//                            }
+//                            break;
+//                        default:
+//                            btnr = CGRectMake(0, 0, 0, 0);
+//                            break;
+//                    }
+//                }
+                
+                
+                
+                
+                
+                
                 [HUD hide:YES];
             }else{
                 [HUD hide:YES];
@@ -604,6 +673,12 @@
 - (IBAction)setup:(UIButton *)sender {
     ShezhiViewController *sz = [[ShezhiViewController alloc] init];
     [self.navigationController pushViewController:sz animated:YES];
+}
+
+- (void)grdaAction:(UITapGestureRecognizer *)sender{
+    GrdaViewController *vc = [[GrdaViewController alloc] init];
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 //返回到该页面调用
