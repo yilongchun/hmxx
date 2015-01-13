@@ -76,7 +76,7 @@
     self.viewControllers = viewArr_;
     
     self.selectedIndex = 0;
-    [[self tabBar] setSelectedImageTintColor:[UIColor colorWithRed:42/255.0 green:173/255.0 blue:128/255.0 alpha:1]];
+    [[self tabBar] setSelectedImageTintColor:[UIColor colorWithRed:116/255.0 green:176/255.0 blue:64/255.0 alpha:1]];
 }
 
 #pragma mark - UITabBarDelegate
