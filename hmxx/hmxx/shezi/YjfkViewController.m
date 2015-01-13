@@ -27,8 +27,9 @@
     self.title = @"意见反馈";
     
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
-        self.automaticallyAdjustsScrollViewInsets = NO;
+        
         self.mytextview.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
+        self.automaticallyAdjustsScrollViewInsets = NO;
     }else{
         [self.mytextview setFrame:CGRectMake(20, 15, self.mytextview.frame.size.width, self.mytextview.frame.size.height)];
     }

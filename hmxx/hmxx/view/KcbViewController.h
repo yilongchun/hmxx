@@ -14,5 +14,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *leftContent;
 @property (weak, nonatomic) IBOutlet UILabel *rightContent;
+@property (weak, nonatomic) IBOutlet UIImageView *conBackground;
 
 @end

@@ -65,6 +65,9 @@
     [attributedString2 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle2 range:NSMakeRange(0, [self.rightContent.text length])];
     [self.rightContent setAttributedText:attributedString2];
     [self.rightContent sizeToFit];
+    
+    [self.conBackground setFrame:CGRectMake(self.conBackground.frame.origin.x, self.conBackground.frame.origin.y, self.conBackground.frame.size.width, self.leftContent.frame.size.height+80)];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
