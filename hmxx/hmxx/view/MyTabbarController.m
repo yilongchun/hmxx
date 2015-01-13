@@ -26,9 +26,33 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     
-    //    初始化第一个视图控制器
+    
+    UIImage *img1 = [UIImage imageNamed:@"yuanqingjieshao2.png"];
+    UIImage *img1_h = [UIImage imageNamed:@"yuanqingjieshao1.png"];
+    
+    
+    
+    
     YqjsViewController *vc1 = [[YqjsViewController alloc] init];
-    vc1.tabBarItem =[[UITabBarItem alloc] initWithTitle:@"园情介绍" image:[UIImage imageNamed:@"ic_bwrz_002.png"] tag:0];
+    
+    
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+        img1 = [img1 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        img1_h = [img1_h imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        
+        
+        
+        UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:@"园情介绍" image:img1 selectedImage:img1_h];
+        [item1 setTag:0];
+        vc1.tabBarItem = item1;
+        
+        
+    }else{
+        UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:@"园情介绍" image:img1 tag:0];
+        vc1.tabBarItem = item1;
+        
+        
+    }
     
     
     //    初始化第二个视图控制器
@@ -42,7 +66,7 @@
     self.viewControllers = viewArr_;
     
     self.selectedIndex = 0;
-    [[self tabBar] setSelectedImageTintColor:[UIColor colorWithRed:42/255.0 green:173/255.0 blue:128/255.0 alpha:1]];
+    [[self tabBar] setSelectedImageTintColor:[UIColor colorWithRed:116/255.0 green:176/255.0 blue:64/255.0 alpha:1]];
     
     
 }

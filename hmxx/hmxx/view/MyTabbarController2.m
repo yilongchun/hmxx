@@ -24,15 +24,51 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     
+    
+    UIImage *img1 = [UIImage imageNamed:@"huodongguanli2.png"];
+    UIImage *img1_h = [UIImage imageNamed:@"huodongguanli1.png"];
+    
+    UIImage *img2 = [UIImage imageNamed:@"gonggaoguanli2.png"];
+    UIImage *img2_h = [UIImage imageNamed:@"gonggaoguanli1.png"];
+    
+    UIImage *img3 = [UIImage imageNamed:@"yuanwurizhi2.png"];
+    UIImage *img3_h = [UIImage imageNamed:@"yuanwurizhi1.png"];
+    
+    
     BwhdViewController *vc1 = [[BwhdViewController alloc] init];
-    vc1.tabBarItem =[[UITabBarItem alloc] initWithTitle:@"活动管理" image:[UIImage imageNamed:@"ic_bwrz_002.png"] tag:0];
-    
     GgtzViewController *vc2 = [[GgtzViewController alloc] init];
-    vc2.tabBarItem =[[UITabBarItem alloc] initWithTitle:@"公告管理" image:[UIImage imageNamed:@"ic_bwrz_002.png"] tag:1];
-    
     UIViewController *vc3 = [[UIViewController alloc] init];
-    [vc3.view setBackgroundColor:[UIColor whiteColor]];
-    vc3.tabBarItem =[[UITabBarItem alloc] initWithTitle:@"园务日志" image:[UIImage imageNamed:@"ic_bwrz_002.png"] tag:2];
+    
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+        
+        img1 = [img1 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        img1_h = [img1_h imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        img2 = [img2 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        img2_h = [img2_h imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        img3 = [img3 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        img3_h = [img3_h imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        
+        
+        UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:@"活动管理" image:img1 selectedImage:img1_h];
+        [item1 setTag:0];
+        vc1.tabBarItem = item1;
+        
+        UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:@"公告管理" image:img2 selectedImage:img2_h];
+        [item2 setTag:1];
+        vc2.tabBarItem = item2;
+        
+        UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"园务日志" image:img3 selectedImage:img3_h];
+        [item3 setTag:2];
+        vc3.tabBarItem = item3;
+    }else{
+        UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:@"活动管理" image:img1 tag:0];
+        vc1.tabBarItem = item1;
+        UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:@"公告管理" image:img2 tag:1];
+        vc2.tabBarItem = item2;
+        UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"园务日志" image:img3 tag:2];
+        vc3.tabBarItem = item3;
+    }
+    
     //    把导航控制器加入到数组
     NSMutableArray *viewArr_ = [NSMutableArray arrayWithObjects:vc1,vc2,vc3, nil];
     
