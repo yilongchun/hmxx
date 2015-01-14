@@ -19,6 +19,7 @@
 #import "MyTabbarController.h"
 #import "MyTabbarController2.h"
 #import "MyTabbarController3.h"
+#import "XscqtjViewController.h"
 
 @interface MainViewController ()<MBProgressHUDDelegate,UIAlertViewDelegate>{
     MKNetworkEngine *engine;
@@ -345,7 +346,7 @@
             UIButton *btn6 = [[UIButton alloc] init];
             [btn6 setFrame:btnr];
             [btn6 setBackgroundImage:[UIImage imageNamed:@"ic_item_chuqin.png"] forState:UIControlStateNormal];
-            [btn6 addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+            [btn6 addTarget:self action:@selector(xscqtj) forControlEvents:UIControlEventTouchUpInside];
             UILabel *label6 = [[UILabel alloc] init];
             [label6 setFrame:CGRectMake(btn6.frame.origin.x, btn6.frame.origin.y+95, 90, 20)];
             label6.text = @"学生出勤统计";
@@ -561,6 +562,13 @@
 -(void)xxsh{
     MyTabbarController3 *tabBarCtl = [[MyTabbarController3 alloc] init];
     [self.navigationController pushViewController:tabBarCtl animated:YES];
+    [self.navigationController setNavigationBarHidden:NO];
+}
+
+//学生出勤统计
+-(void)xscqtj{
+    XscqtjViewController *vc = [[XscqtjViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
     [self.navigationController setNavigationBarHidden:NO];
 }
 
