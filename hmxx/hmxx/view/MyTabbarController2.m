@@ -11,6 +11,7 @@
 #import "GgtzViewController.h"
 #import "AddActivityViewController.h"
 #import "AddNoticeViewController.h"
+#import "BwrzViewController.h"
 
 @interface MyTabbarController2 (){
     UIBarButtonItem *buttonItem1;
@@ -40,7 +41,7 @@
     
     GgtzViewController *vc1 = [[GgtzViewController alloc] init];
     BwhdViewController *vc2 = [[BwhdViewController alloc] init];
-    UIViewController *vc3 = [[UIViewController alloc] init];
+    BwrzViewController *vc3 = [[BwrzViewController alloc] init];
     
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
         
@@ -130,8 +131,6 @@
     AddActivityViewController *vc = [[AddActivityViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
-
-
 
 - (void)action3{//添加日志
     

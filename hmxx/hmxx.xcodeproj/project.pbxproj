@@ -96,6 +96,10 @@
 		E4F21D951A667BDF005372EA /* DaiShHdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F21D931A667BDF005372EA /* DaiShHdViewController.xib */; };
 		E4F21D991A667D3A005372EA /* DaiShGgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F21D971A667D3A005372EA /* DaiShGgViewController.m */; };
 		E4F21D9A1A667D3A005372EA /* DaiShGgViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F21D981A667D3A005372EA /* DaiShGgViewController.xib */; };
+		E4F21DA11A668F7A005372EA /* BwrzTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F21D9C1A668F7A005372EA /* BwrzTableViewCell.m */; };
+		E4F21DA21A668F7A005372EA /* BwrzTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F21D9D1A668F7A005372EA /* BwrzTableViewCell.xib */; };
+		E4F21DA31A668F7A005372EA /* BwrzViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F21D9F1A668F7A005372EA /* BwrzViewController.m */; };
+		E4F21DA41A668F7A005372EA /* BwrzViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F21DA01A668F7A005372EA /* BwrzViewController.xib */; };
 		E4F368FC1A63CEF40037A533 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F368FB1A63CEF40037A533 /* main.m */; };
 		E4F368FF1A63CEF40037A533 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F368FE1A63CEF40037A533 /* AppDelegate.m */; };
 		E4F369051A63CEF40037A533 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4F369031A63CEF40037A533 /* Main.storyboard */; };
@@ -311,6 +315,12 @@
 		E4F21D961A667D3A005372EA /* DaiShGgViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DaiShGgViewController.h; path = view/DaiShGgViewController.h; sourceTree = "<group>"; };
 		E4F21D971A667D3A005372EA /* DaiShGgViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DaiShGgViewController.m; path = view/DaiShGgViewController.m; sourceTree = "<group>"; };
 		E4F21D981A667D3A005372EA /* DaiShGgViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DaiShGgViewController.xib; path = view/DaiShGgViewController.xib; sourceTree = "<group>"; };
+		E4F21D9B1A668F7A005372EA /* BwrzTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BwrzTableViewCell.h; path = view/BwrzTableViewCell.h; sourceTree = "<group>"; };
+		E4F21D9C1A668F7A005372EA /* BwrzTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BwrzTableViewCell.m; path = view/BwrzTableViewCell.m; sourceTree = "<group>"; };
+		E4F21D9D1A668F7A005372EA /* BwrzTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BwrzTableViewCell.xib; path = view/BwrzTableViewCell.xib; sourceTree = "<group>"; };
+		E4F21D9E1A668F7A005372EA /* BwrzViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BwrzViewController.h; path = view/BwrzViewController.h; sourceTree = "<group>"; };
+		E4F21D9F1A668F7A005372EA /* BwrzViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BwrzViewController.m; path = view/BwrzViewController.m; sourceTree = "<group>"; };
+		E4F21DA01A668F7A005372EA /* BwrzViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BwrzViewController.xib; path = view/BwrzViewController.xib; sourceTree = "<group>"; };
 		E4F368F61A63CEF30037A533 /* hmxx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hmxx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F368FA1A63CEF30037A533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4F368FB1A63CEF40037A533 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -787,6 +797,12 @@
 		E4F369CD1A6414BE0037A533 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				E4F21D9B1A668F7A005372EA /* BwrzTableViewCell.h */,
+				E4F21D9C1A668F7A005372EA /* BwrzTableViewCell.m */,
+				E4F21D9D1A668F7A005372EA /* BwrzTableViewCell.xib */,
+				E4F21D9E1A668F7A005372EA /* BwrzViewController.h */,
+				E4F21D9F1A668F7A005372EA /* BwrzViewController.m */,
+				E4F21DA01A668F7A005372EA /* BwrzViewController.xib */,
 				E4F21D861A667319005372EA /* AddNoticeViewController.h */,
 				E4F21D871A667319005372EA /* AddNoticeViewController.m */,
 				E4F21D881A667319005372EA /* AddNoticeViewController.xib */,
@@ -954,12 +970,14 @@
 			files = (
 				E4F077161A656E35004D7453 /* chat_video_play.png in Resources */,
 				E4F076961A655C4A004D7453 /* YqjsViewController.xib in Resources */,
+				E4F21DA21A668F7A005372EA /* BwrzTableViewCell.xib in Resources */,
 				E4F0774B1A658E70004D7453 /* gonggaoguanli2@2x.png in Resources */,
 				E4F369901A6406D60037A533 /* chatListCellHead@2x.png in Resources */,
 				E4F0770B1A65685C004D7453 /* MyViewControllerCellDetail.xib in Resources */,
 				E4F21D811A666BF0005372EA /* Overlay@2x.png in Resources */,
 				E4F077431A658E70004D7453 /* daishenhegg2@2x.png in Resources */,
 				E4F369701A63ED080037A533 /* start_open.png in Resources */,
+				E4F21DA41A668F7A005372EA /* BwrzViewController.xib in Resources */,
 				E4F369751A6405F10037A533 /* MainViewController.xib in Resources */,
 				E4F21D841A666C47005372EA /* smiley_add_btn_nor.png in Resources */,
 				E4F369F21A642C010037A533 /* ic_sp_001.png in Resources */,
@@ -1110,10 +1128,12 @@
 				E4F076DF1A656680004D7453 /* GgtzTableViewCell.m in Sources */,
 				E4F369C11A64088F0037A533 /* AFURLResponseSerialization.m in Sources */,
 				E4F369C91A64088F0037A533 /* UIRefreshControl+AFNetworking.m in Sources */,
+				E4F21DA31A668F7A005372EA /* BwrzViewController.m in Sources */,
 				E4F368FC1A63CEF40037A533 /* main.m in Sources */,
 				E4F21D7B1A666BF0005372EA /* ELCImagePickerController.m in Sources */,
 				E4F369C41A64088F0037A533 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				E4F21D7C1A666BF0005372EA /* ELCOverlayImageView.m in Sources */,
+				E4F21DA11A668F7A005372EA /* BwrzTableViewCell.m in Sources */,
 				E4F077051A65681D004D7453 /* BwhdViewController.m in Sources */,
 				E4F369531A63E36C0037A533 /* NSData+MKBase64.m in Sources */,
 				E4F369C51A64088F0037A533 /* UIAlertView+AFNetworking.m in Sources */,
