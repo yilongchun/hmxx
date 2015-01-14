@@ -23,8 +23,8 @@
     NSNumber *page;
     NSNumber *rows;
     
-    NSString *classId;
-    NSString *userid;
+    
+    NSString *schoolid;
 }
     
 @property (nonatomic, strong) SRRefreshView         *slimeView;
@@ -74,10 +74,7 @@
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    
-    NSDictionary *class = [userDefaults objectForKey:@"class"];
-    classId = [class objectForKey:@"id"];
-    userid = [userDefaults objectForKey:@"userid"];
+    schoolid = [userDefaults objectForKey:@"schoolid"];
     
     self.dataSource = [[NSMutableArray alloc] init];
     
@@ -114,11 +111,11 @@
     rows = [NSNumber numberWithInt:10];
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setValue:userid forKey:@"userid"];
+    [dic setValue:schoolid forKey:@"schoolId"];
     [dic setValue:page forKey:@"page"];
     [dic setValue:rows forKey:@"rows"];
-    [dic setValue:classId forKey:@"classId"];
-    MKNetworkOperation *op = [engine operationWithPath:@"/Notice/findbyidList.do" params:dic httpMethod:@"GET"];
+//    [dic setValue:classId forKey:@"classId"];
+    MKNetworkOperation *op = [engine operationWithPath:@"/schoolNotice/findallList.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         NSString *result = [operation responseString];
         NSError *error;
@@ -160,11 +157,11 @@
         page = [NSNumber numberWithInt:[page intValue] +1];
     }
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setValue:userid forKey:@"userid"];
+    [dic setValue:schoolid forKey:@"schoolId"];
     [dic setValue:page forKey:@"page"];
     [dic setValue:rows forKey:@"rows"];
-    [dic setValue:classId forKey:@"classId"];
-    MKNetworkOperation *op = [engine operationWithPath:@"/Notice/findbyidList.do" params:dic httpMethod:@"GET"];
+    
+    MKNetworkOperation *op = [engine operationWithPath:@"/schoolNotice/findallList.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         NSString *result = [operation responseString];
         NSError *error;

@@ -72,6 +72,30 @@
 		E4F077551A658E70004D7453 /* yuanwurizhi1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F0773D1A658E70004D7453 /* yuanwurizhi1@2x.png */; };
 		E4F077561A658E70004D7453 /* yuanwurizhi2.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F0773E1A658E70004D7453 /* yuanwurizhi2.png */; };
 		E4F077571A658E70004D7453 /* yuanwurizhi2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F0773F1A658E70004D7453 /* yuanwurizhi2@2x.png */; };
+		E4F21D581A666A77005372EA /* ic_bwgg_011.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F21D571A666A77005372EA /* ic_bwgg_011.png */; };
+		E4F21D5C1A666BB4005372EA /* AddActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F21D5A1A666BB4005372EA /* AddActivityViewController.m */; };
+		E4F21D5D1A666BB4005372EA /* AddActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F21D5B1A666BB4005372EA /* AddActivityViewController.xib */; };
+		E4F21D761A666BF0005372EA /* ELCAlbumPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F21D601A666BF0005372EA /* ELCAlbumPickerController.m */; };
+		E4F21D771A666BF0005372EA /* ELCAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F21D621A666BF0005372EA /* ELCAsset.m */; };
+		E4F21D781A666BF0005372EA /* ELCAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F21D641A666BF0005372EA /* ELCAssetCell.m */; };
+		E4F21D791A666BF0005372EA /* ELCAssetTablePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F21D681A666BF0005372EA /* ELCAssetTablePicker.m */; };
+		E4F21D7A1A666BF0005372EA /* ELCConsole.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F21D6A1A666BF0005372EA /* ELCConsole.m */; };
+		E4F21D7B1A666BF0005372EA /* ELCImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F21D6C1A666BF0005372EA /* ELCImagePickerController.m */; };
+		E4F21D7C1A666BF0005372EA /* ELCOverlayImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F21D6F1A666BF0005372EA /* ELCOverlayImageView.m */; };
+		E4F21D7D1A666BF0005372EA /* ELCAlbumPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F21D711A666BF0005372EA /* ELCAlbumPickerController.xib */; };
+		E4F21D7E1A666BF0005372EA /* ELCAssetPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F21D721A666BF0005372EA /* ELCAssetPicker.xib */; };
+		E4F21D7F1A666BF0005372EA /* ELCAssetTablePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F21D731A666BF0005372EA /* ELCAssetTablePicker.xib */; };
+		E4F21D801A666BF0005372EA /* Overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F21D741A666BF0005372EA /* Overlay.png */; };
+		E4F21D811A666BF0005372EA /* Overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F21D751A666BF0005372EA /* Overlay@2x.png */; };
+		E4F21D841A666C47005372EA /* smiley_add_btn_nor.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F21D821A666C47005372EA /* smiley_add_btn_nor.png */; };
+		E4F21D851A666C47005372EA /* smiley_add_btn_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F21D831A666C47005372EA /* smiley_add_btn_pressed.png */; };
+		E4F21D891A667319005372EA /* AddNoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F21D871A667319005372EA /* AddNoticeViewController.m */; };
+		E4F21D8A1A667319005372EA /* AddNoticeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F21D881A667319005372EA /* AddNoticeViewController.xib */; };
+		E4F21D8D1A66768D005372EA /* MyTabbarController3.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F21D8C1A66768D005372EA /* MyTabbarController3.m */; };
+		E4F21D941A667BDF005372EA /* DaiShHdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F21D921A667BDF005372EA /* DaiShHdViewController.m */; };
+		E4F21D951A667BDF005372EA /* DaiShHdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F21D931A667BDF005372EA /* DaiShHdViewController.xib */; };
+		E4F21D991A667D3A005372EA /* DaiShGgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F21D971A667D3A005372EA /* DaiShGgViewController.m */; };
+		E4F21D9A1A667D3A005372EA /* DaiShGgViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F21D981A667D3A005372EA /* DaiShGgViewController.xib */; };
 		E4F368FC1A63CEF40037A533 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F368FB1A63CEF40037A533 /* main.m */; };
 		E4F368FF1A63CEF40037A533 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F368FE1A63CEF40037A533 /* AppDelegate.m */; };
 		E4F369051A63CEF40037A533 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4F369031A63CEF40037A533 /* Main.storyboard */; };
@@ -248,6 +272,45 @@
 		E4F0773D1A658E70004D7453 /* yuanwurizhi1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yuanwurizhi1@2x.png"; sourceTree = "<group>"; };
 		E4F0773E1A658E70004D7453 /* yuanwurizhi2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yuanwurizhi2.png; sourceTree = "<group>"; };
 		E4F0773F1A658E70004D7453 /* yuanwurizhi2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yuanwurizhi2@2x.png"; sourceTree = "<group>"; };
+		E4F21D571A666A77005372EA /* ic_bwgg_011.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_bwgg_011.png; sourceTree = "<group>"; };
+		E4F21D591A666BB4005372EA /* AddActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddActivityViewController.h; path = view/AddActivityViewController.h; sourceTree = "<group>"; };
+		E4F21D5A1A666BB4005372EA /* AddActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddActivityViewController.m; path = view/AddActivityViewController.m; sourceTree = "<group>"; };
+		E4F21D5B1A666BB4005372EA /* AddActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddActivityViewController.xib; path = view/AddActivityViewController.xib; sourceTree = "<group>"; };
+		E4F21D5F1A666BF0005372EA /* ELCAlbumPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAlbumPickerController.h; sourceTree = "<group>"; };
+		E4F21D601A666BF0005372EA /* ELCAlbumPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAlbumPickerController.m; sourceTree = "<group>"; };
+		E4F21D611A666BF0005372EA /* ELCAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAsset.h; sourceTree = "<group>"; };
+		E4F21D621A666BF0005372EA /* ELCAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAsset.m; sourceTree = "<group>"; };
+		E4F21D631A666BF0005372EA /* ELCAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAssetCell.h; sourceTree = "<group>"; };
+		E4F21D641A666BF0005372EA /* ELCAssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAssetCell.m; sourceTree = "<group>"; };
+		E4F21D651A666BF0005372EA /* ELCAssetPickerFilterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAssetPickerFilterDelegate.h; sourceTree = "<group>"; };
+		E4F21D661A666BF0005372EA /* ELCAssetSelectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAssetSelectionDelegate.h; sourceTree = "<group>"; };
+		E4F21D671A666BF0005372EA /* ELCAssetTablePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAssetTablePicker.h; sourceTree = "<group>"; };
+		E4F21D681A666BF0005372EA /* ELCAssetTablePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAssetTablePicker.m; sourceTree = "<group>"; };
+		E4F21D691A666BF0005372EA /* ELCConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCConsole.h; sourceTree = "<group>"; };
+		E4F21D6A1A666BF0005372EA /* ELCConsole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCConsole.m; sourceTree = "<group>"; };
+		E4F21D6B1A666BF0005372EA /* ELCImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCImagePickerController.h; sourceTree = "<group>"; };
+		E4F21D6C1A666BF0005372EA /* ELCImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCImagePickerController.m; sourceTree = "<group>"; };
+		E4F21D6D1A666BF0005372EA /* ELCImagePickerHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCImagePickerHeader.h; sourceTree = "<group>"; };
+		E4F21D6E1A666BF0005372EA /* ELCOverlayImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCOverlayImageView.h; sourceTree = "<group>"; };
+		E4F21D6F1A666BF0005372EA /* ELCOverlayImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCOverlayImageView.m; sourceTree = "<group>"; };
+		E4F21D711A666BF0005372EA /* ELCAlbumPickerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELCAlbumPickerController.xib; sourceTree = "<group>"; };
+		E4F21D721A666BF0005372EA /* ELCAssetPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELCAssetPicker.xib; sourceTree = "<group>"; };
+		E4F21D731A666BF0005372EA /* ELCAssetTablePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELCAssetTablePicker.xib; sourceTree = "<group>"; };
+		E4F21D741A666BF0005372EA /* Overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Overlay.png; sourceTree = "<group>"; };
+		E4F21D751A666BF0005372EA /* Overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Overlay@2x.png"; sourceTree = "<group>"; };
+		E4F21D821A666C47005372EA /* smiley_add_btn_nor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smiley_add_btn_nor.png; sourceTree = "<group>"; };
+		E4F21D831A666C47005372EA /* smiley_add_btn_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smiley_add_btn_pressed.png; sourceTree = "<group>"; };
+		E4F21D861A667319005372EA /* AddNoticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddNoticeViewController.h; path = view/AddNoticeViewController.h; sourceTree = "<group>"; };
+		E4F21D871A667319005372EA /* AddNoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddNoticeViewController.m; path = view/AddNoticeViewController.m; sourceTree = "<group>"; };
+		E4F21D881A667319005372EA /* AddNoticeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddNoticeViewController.xib; path = view/AddNoticeViewController.xib; sourceTree = "<group>"; };
+		E4F21D8B1A66768D005372EA /* MyTabbarController3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyTabbarController3.h; path = view/MyTabbarController3.h; sourceTree = "<group>"; };
+		E4F21D8C1A66768D005372EA /* MyTabbarController3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyTabbarController3.m; path = view/MyTabbarController3.m; sourceTree = "<group>"; };
+		E4F21D911A667BDF005372EA /* DaiShHdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DaiShHdViewController.h; path = view/DaiShHdViewController.h; sourceTree = "<group>"; };
+		E4F21D921A667BDF005372EA /* DaiShHdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DaiShHdViewController.m; path = view/DaiShHdViewController.m; sourceTree = "<group>"; };
+		E4F21D931A667BDF005372EA /* DaiShHdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DaiShHdViewController.xib; path = view/DaiShHdViewController.xib; sourceTree = "<group>"; };
+		E4F21D961A667D3A005372EA /* DaiShGgViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DaiShGgViewController.h; path = view/DaiShGgViewController.h; sourceTree = "<group>"; };
+		E4F21D971A667D3A005372EA /* DaiShGgViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DaiShGgViewController.m; path = view/DaiShGgViewController.m; sourceTree = "<group>"; };
+		E4F21D981A667D3A005372EA /* DaiShGgViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DaiShGgViewController.xib; path = view/DaiShGgViewController.xib; sourceTree = "<group>"; };
 		E4F368F61A63CEF30037A533 /* hmxx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hmxx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F368FA1A63CEF30037A533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4F368FB1A63CEF40037A533 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -424,6 +487,43 @@
 			path = GrowingTextView;
 			sourceTree = "<group>";
 		};
+		E4F21D5E1A666BF0005372EA /* ELCImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				E4F21D5F1A666BF0005372EA /* ELCAlbumPickerController.h */,
+				E4F21D601A666BF0005372EA /* ELCAlbumPickerController.m */,
+				E4F21D611A666BF0005372EA /* ELCAsset.h */,
+				E4F21D621A666BF0005372EA /* ELCAsset.m */,
+				E4F21D631A666BF0005372EA /* ELCAssetCell.h */,
+				E4F21D641A666BF0005372EA /* ELCAssetCell.m */,
+				E4F21D651A666BF0005372EA /* ELCAssetPickerFilterDelegate.h */,
+				E4F21D661A666BF0005372EA /* ELCAssetSelectionDelegate.h */,
+				E4F21D671A666BF0005372EA /* ELCAssetTablePicker.h */,
+				E4F21D681A666BF0005372EA /* ELCAssetTablePicker.m */,
+				E4F21D691A666BF0005372EA /* ELCConsole.h */,
+				E4F21D6A1A666BF0005372EA /* ELCConsole.m */,
+				E4F21D6B1A666BF0005372EA /* ELCImagePickerController.h */,
+				E4F21D6C1A666BF0005372EA /* ELCImagePickerController.m */,
+				E4F21D6D1A666BF0005372EA /* ELCImagePickerHeader.h */,
+				E4F21D6E1A666BF0005372EA /* ELCOverlayImageView.h */,
+				E4F21D6F1A666BF0005372EA /* ELCOverlayImageView.m */,
+				E4F21D701A666BF0005372EA /* Resources */,
+			);
+			path = ELCImagePicker;
+			sourceTree = "<group>";
+		};
+		E4F21D701A666BF0005372EA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E4F21D711A666BF0005372EA /* ELCAlbumPickerController.xib */,
+				E4F21D721A666BF0005372EA /* ELCAssetPicker.xib */,
+				E4F21D731A666BF0005372EA /* ELCAssetTablePicker.xib */,
+				E4F21D741A666BF0005372EA /* Overlay.png */,
+				E4F21D751A666BF0005372EA /* Overlay@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		E4F368ED1A63CEF30037A533 = {
 			isa = PBXGroup;
 			children = (
@@ -469,6 +569,7 @@
 				E4F369941A64088F0037A533 /* AFNetworking */,
 				E4F076F11A656722004D7453 /* GrowingTextView */,
 				E4F076E51A6566EC004D7453 /* SlimeRefresh */,
+				E4F21D5E1A666BF0005372EA /* ELCImagePicker */,
 			);
 			path = hmxx;
 			sourceTree = "<group>";
@@ -504,6 +605,9 @@
 		E4F3692B1A63E1D20037A533 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E4F21D821A666C47005372EA /* smiley_add_btn_nor.png */,
+				E4F21D831A666C47005372EA /* smiley_add_btn_pressed.png */,
+				E4F21D571A666A77005372EA /* ic_bwgg_011.png */,
 				E4F077281A658E6F004D7453 /* daishenhegg1.png */,
 				E4F077291A658E6F004D7453 /* daishenhegg1@2x.png */,
 				E4F0772A1A658E6F004D7453 /* daishenhegg2.png */,
@@ -683,6 +787,12 @@
 		E4F369CD1A6414BE0037A533 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				E4F21D861A667319005372EA /* AddNoticeViewController.h */,
+				E4F21D871A667319005372EA /* AddNoticeViewController.m */,
+				E4F21D881A667319005372EA /* AddNoticeViewController.xib */,
+				E4F21D591A666BB4005372EA /* AddActivityViewController.h */,
+				E4F21D5A1A666BB4005372EA /* AddActivityViewController.m */,
+				E4F21D5B1A666BB4005372EA /* AddActivityViewController.xib */,
 				E4F077171A65722C004D7453 /* SMPageControl.h */,
 				E4F077181A65722C004D7453 /* SMPageControl.m */,
 				E4F077121A6568E1004D7453 /* ImgScrollView.h */,
@@ -733,6 +843,14 @@
 				E4F369F71A6443930037A533 /* KcbViewController.xib */,
 				E4F076D31A656210004D7453 /* MyTabbarController2.h */,
 				E4F076D41A656210004D7453 /* MyTabbarController2.m */,
+				E4F21D8B1A66768D005372EA /* MyTabbarController3.h */,
+				E4F21D8C1A66768D005372EA /* MyTabbarController3.m */,
+				E4F21D911A667BDF005372EA /* DaiShHdViewController.h */,
+				E4F21D921A667BDF005372EA /* DaiShHdViewController.m */,
+				E4F21D931A667BDF005372EA /* DaiShHdViewController.xib */,
+				E4F21D961A667D3A005372EA /* DaiShGgViewController.h */,
+				E4F21D971A667D3A005372EA /* DaiShGgViewController.m */,
+				E4F21D981A667D3A005372EA /* DaiShGgViewController.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -839,13 +957,18 @@
 				E4F0774B1A658E70004D7453 /* gonggaoguanli2@2x.png in Resources */,
 				E4F369901A6406D60037A533 /* chatListCellHead@2x.png in Resources */,
 				E4F0770B1A65685C004D7453 /* MyViewControllerCellDetail.xib in Resources */,
+				E4F21D811A666BF0005372EA /* Overlay@2x.png in Resources */,
 				E4F077431A658E70004D7453 /* daishenhegg2@2x.png in Resources */,
 				E4F369701A63ED080037A533 /* start_open.png in Resources */,
 				E4F369751A6405F10037A533 /* MainViewController.xib in Resources */,
+				E4F21D841A666C47005372EA /* smiley_add_btn_nor.png in Resources */,
 				E4F369F21A642C010037A533 /* ic_sp_001.png in Resources */,
 				E4F36A011A6448300037A533 /* ic_index_007.png in Resources */,
 				E4F077531A658E70004D7453 /* yuanqingjieshao2@2x.png in Resources */,
 				E4F0774F1A658E70004D7453 /* huodongguanli2@2x.png in Resources */,
+				E4F21D951A667BDF005372EA /* DaiShHdViewController.xib in Resources */,
+				E4F21D851A666C47005372EA /* smiley_add_btn_pressed.png in Resources */,
+				E4F21D7F1A666BF0005372EA /* ELCAssetTablePicker.xib in Resources */,
 				E4F0771C1A657263004D7453 /* currentPageDot@2x.png in Resources */,
 				E4F076C11A655F76004D7453 /* ic_bwrz_002@2x.png in Resources */,
 				E4F0768E1A653E47004D7453 /* GrdaViewController.xib in Resources */,
@@ -854,9 +977,11 @@
 				E4F369DD1A6415280037A533 /* YjfkViewController.xib in Resources */,
 				E4F077551A658E70004D7453 /* yuanwurizhi1@2x.png in Resources */,
 				E4F077421A658E70004D7453 /* daishenhegg2.png in Resources */,
+				E4F21D7D1A666BF0005372EA /* ELCAlbumPickerController.xib in Resources */,
 				E4F369F91A6443930037A533 /* KcbViewController.xib in Resources */,
 				E4F369341A63E1D20037A533 /* guide_1.png in Resources */,
 				E4F369DB1A6415280037A533 /* UpdatePasswordViewController.xib in Resources */,
+				E4F21D581A666A77005372EA /* ic_bwgg_011.png in Resources */,
 				E4F077271A657E39004D7453 /* ic_item_chuqin.png in Resources */,
 				E4F077511A658E70004D7453 /* yuanqingjieshao1@2x.png in Resources */,
 				E4F077461A658E70004D7453 /* daishenhehd2.png in Resources */,
@@ -877,12 +1002,15 @@
 				E4F369891A64066D0037A533 /* ic_index_bg.png in Resources */,
 				E4F077411A658E70004D7453 /* daishenhegg1@2x.png in Resources */,
 				E4F369FC1A6444EA0037A533 /* ic_kcb_bg.png in Resources */,
+				E4F21D5D1A666BB4005372EA /* AddActivityViewController.xib in Resources */,
 				E4F369FD1A6444EA0037A533 /* ic_kcb_bg2.png in Resources */,
 				E4F076C01A655F76004D7453 /* ic_bwrz_002.png in Resources */,
+				E4F21D8A1A667319005372EA /* AddNoticeViewController.xib in Resources */,
 				E4F0769F1A655E79004D7453 /* ic_bwrz_002@2x.png in Resources */,
 				E4F369881A64066D0037A533 /* ic_index_012.png in Resources */,
 				E4F077441A658E70004D7453 /* daishenhehd1.png in Resources */,
 				E4F369E81A642ADF0037A533 /* BbspViewController.xib in Resources */,
+				E4F21D9A1A667D3A005372EA /* DaiShGgViewController.xib in Resources */,
 				E4F369391A63E1D20037A533 /* ic_login_user.png in Resources */,
 				E4F369DF1A6418EF0037A533 /* ic_sz_002.png in Resources */,
 				E4F0771D1A657263004D7453 /* pageDot@2x.png in Resources */,
@@ -909,6 +1037,8 @@
 				E4F369361A63E1D20037A533 /* guide_3.png in Resources */,
 				E4F369F41A642C4F0037A533 /* nopicture.png in Resources */,
 				E4F3698F1A6406D60037A533 /* chatListCellHead.png in Resources */,
+				E4F21D7E1A666BF0005372EA /* ELCAssetPicker.xib in Resources */,
+				E4F21D801A666BF0005372EA /* Overlay.png in Resources */,
 				E4F369331A63E1D20037A533 /* default4.png in Resources */,
 				E4F0774E1A658E70004D7453 /* huodongguanli2.png in Resources */,
 			);
@@ -936,7 +1066,9 @@
 				E4F369BA1A64088F0037A533 /* AFHTTPRequestOperation.m in Sources */,
 				E4F369581A63E36C0037A533 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				E4F3695B1A63E36C0037A533 /* Reachability.m in Sources */,
+				E4F21D761A666BF0005372EA /* ELCAlbumPickerController.m in Sources */,
 				E4F369571A63E36C0037A533 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
+				E4F21D791A666BF0005372EA /* ELCAssetTablePicker.m in Sources */,
 				E4F369EB1A642B0C0037A533 /* JYSlideSegmentController.m in Sources */,
 				E4F076E11A656680004D7453 /* GgtzViewController.m in Sources */,
 				E4F369DC1A6415280037A533 /* YjfkViewController.m in Sources */,
@@ -947,14 +1079,19 @@
 				E4F369621A63E3FE0037A533 /* MBProgressHUD.m in Sources */,
 				E4F076951A655C4A004D7453 /* YqjsViewController.m in Sources */,
 				E4F0768D1A653E47004D7453 /* GrdaViewController.m in Sources */,
+				E4F21D8D1A66768D005372EA /* MyTabbarController3.m in Sources */,
 				E4F369D81A6415280037A533 /* ShezhiViewController.m in Sources */,
 				E4F0770A1A65685C004D7453 /* MyViewControllerCellDetail.m in Sources */,
 				E4F369C71A64088F0037A533 /* UIImageView+AFNetworking.m in Sources */,
 				E4F369741A6405F10037A533 /* MainViewController.m in Sources */,
 				E4F369C81A64088F0037A533 /* UIProgressView+AFNetworking.m in Sources */,
+				E4F21D7A1A666BF0005372EA /* ELCConsole.m in Sources */,
 				E4F369611A63E3FE0037A533 /* MBProgressHUD+Add.m in Sources */,
 				E4F369C31A64088F0037A533 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				E4F21D941A667BDF005372EA /* DaiShHdViewController.m in Sources */,
 				E4F076E31A656680004D7453 /* GgxqViewController.m in Sources */,
+				E4F21D891A667319005372EA /* AddNoticeViewController.m in Sources */,
+				E4F21D5C1A666BB4005372EA /* AddActivityViewController.m in Sources */,
 				E4F369E71A642ADF0037A533 /* BbspViewController.m in Sources */,
 				E4F369EF1A642B4D0037A533 /* SpTableViewCell.m in Sources */,
 				E4F369931A6407F40037A533 /* Utils.m in Sources */,
@@ -974,17 +1111,22 @@
 				E4F369C11A64088F0037A533 /* AFURLResponseSerialization.m in Sources */,
 				E4F369C91A64088F0037A533 /* UIRefreshControl+AFNetworking.m in Sources */,
 				E4F368FC1A63CEF40037A533 /* main.m in Sources */,
+				E4F21D7B1A666BF0005372EA /* ELCImagePickerController.m in Sources */,
 				E4F369C41A64088F0037A533 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				E4F21D7C1A666BF0005372EA /* ELCOverlayImageView.m in Sources */,
 				E4F077051A65681D004D7453 /* BwhdViewController.m in Sources */,
 				E4F369531A63E36C0037A533 /* NSData+MKBase64.m in Sources */,
 				E4F369C51A64088F0037A533 /* UIAlertView+AFNetworking.m in Sources */,
 				E4F3695A1A63E36C0037A533 /* MKNetworkOperation.m in Sources */,
 				E4F369291A63E0920037A533 /* LoginViewController.m in Sources */,
+				E4F21D991A667D3A005372EA /* DaiShGgViewController.m in Sources */,
 				E4F369561A63E36C0037A533 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				E4F369BD1A64088F0037A533 /* AFNetworkReachabilityManager.m in Sources */,
 				E4F077001A6567A6004D7453 /* PinglunTableViewCell.m in Sources */,
+				E4F21D771A666BF0005372EA /* ELCAsset.m in Sources */,
 				E4F369DA1A6415280037A533 /* UpdatePasswordViewController.m in Sources */,
 				E4F077101A6568BC004D7453 /* CustomMoviePlayerViewController.m in Sources */,
+				E4F21D781A666BF0005372EA /* ELCAssetCell.m in Sources */,
 				E4F369541A63E36C0037A533 /* NSDate+RFC1123.m in Sources */,
 				E4F369F81A6443930037A533 /* KcbViewController.m in Sources */,
 				E4F076F01A6566EC004D7453 /* SRSlimeView.m in Sources */,

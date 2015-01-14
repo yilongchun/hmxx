@@ -18,6 +18,6 @@
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property(nonatomic,copy) NSString *tnid;//公告id
 
--(void)resignTextView;
+//-(void)resignTextView;
 
 @end

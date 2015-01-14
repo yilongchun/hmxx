@@ -18,6 +18,7 @@
 #import "GrdaViewController.h"
 #import "MyTabbarController.h"
 #import "MyTabbarController2.h"
+#import "MyTabbarController3.h"
 
 @interface MainViewController ()<MBProgressHUDDelegate,UIAlertViewDelegate>{
     MKNetworkEngine *engine;
@@ -318,7 +319,7 @@
             UIButton *btn3 = [[UIButton alloc] init];
             [btn3 setFrame:btnr];
             [btn3 setBackgroundImage:[UIImage imageNamed:@"ic_index_006.png"] forState:UIControlStateNormal];
-            [btn3 addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+            [btn3 addTarget:self action:@selector(xxsh) forControlEvents:UIControlEventTouchUpInside];
             UILabel *label3 = [[UILabel alloc] init];
             [label3 setFrame:CGRectMake(btn3.frame.origin.x, btn3.frame.origin.y+95, 90, 20)];
             label3.text = @"学校审核";
@@ -552,6 +553,13 @@
 //园务管理
 -(void)ywgl{
     MyTabbarController2 *tabBarCtl = [[MyTabbarController2 alloc] init];
+    [self.navigationController pushViewController:tabBarCtl animated:YES];
+    [self.navigationController setNavigationBarHidden:NO];
+}
+
+//学校审核
+-(void)xxsh{
+    MyTabbarController3 *tabBarCtl = [[MyTabbarController3 alloc] init];
     [self.navigationController pushViewController:tabBarCtl animated:YES];
     [self.navigationController setNavigationBarHidden:NO];
 }
