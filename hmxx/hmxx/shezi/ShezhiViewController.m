@@ -10,8 +10,12 @@
 #import "LoginViewController.h"
 #import "YjfkViewController.h"
 #import "UpdatePasswordViewController.h"
+#import "MKNetworkKit.h"
 
-@interface ShezhiViewController ()
+@interface ShezhiViewController (){
+    MKNetworkEngine *engine;
+    NSString *trackViewUrl;
+}
 
 @end
 
@@ -22,23 +26,17 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"设置";
     [self.navigationController setNavigationBarHidden:NO];
-    
+    //初始化引擎
+    engine = [[MKNetworkEngine alloc] initWithHostName:@"itunes.apple.com"];
     [self drawTableView];
 }
 
 -(void)drawTableView{
-    
     UITableView *tview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
     [tview setBackgroundColor:[UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1]];
     [tview setDelegate:self];
     [tview setDataSource:self];
     [tview setScrollEnabled:YES];
-//    if ([tview respondsToSelector:@selector(setSeparatorInset:)]) {
-//        [tview setSeparatorInset:UIEdgeInsetsZero];
-//    }
-//    if ([tview respondsToSelector:@selector(setLayoutMargins:)]) {
-//        [tview setLayoutMargins:UIEdgeInsetsZero];
-//    }
     [self.view addSubview:tview];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -46,7 +44,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
-        return 2;
+        return 3;
     }
     return 1;
 }
@@ -70,9 +68,9 @@
                 }else if(row == 1){
                     cell.textLabel.text =  @"修改密码";
                 }
-//                else if(row == 2){
-//                    cell.textLabel.text =  @"版本更新";
-//                }
+                else if(row == 2){
+                    cell.textLabel.text =  @"版本更新";
+                }
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 break;
             case 1:
@@ -95,16 +93,6 @@
 }
 
 #pragma mark - UITableViewDatasource Methods
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-//        [cell setSeparatorInset:UIEdgeInsetsZero];
-//    }
-//    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-//        [cell setLayoutMargins:UIEdgeInsetsZero];
-//    }
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
@@ -113,37 +101,61 @@
         }else if (indexPath.row == 1){
             UpdatePasswordViewController *vc = [[UpdatePasswordViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
+        }else if (indexPath.row == 2){
+            [self checkUpdateWithAPPID:@"957244616"];
         }
-        
-        
     }else{
         UIActionSheet *actionsheet = [[UIActionSheet alloc] initWithTitle:@"确定要退出吗?" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"退出登录" otherButtonTitles:nil];
         actionsheet.tag = 100;
         [actionsheet showInView:self.view];
-        
-        
-//        for (UIViewController *temp in self.navigationController.viewControllers) {
-//            if ([temp isKindOfClass:[LoginViewController class]]) {
-//                [self.navigationController setNavigationBarHidden:YES];
-//                [self.navigationController popToViewController:temp animated:YES];
-//                
-//                break;
-//            }
-//        }
-        
-        
-        
-        
-//        LoginViewController *loginCtrl = [[LoginViewController alloc] init];
-//        UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:loginCtrl];
-//        [navCtrl setNavigationBarHidden:YES];
-//        self.view.window.rootViewController = navCtrl;
     }
 }
 
+#pragma mark - 检查更新
+- (void)checkUpdateWithAPPID:(NSString *)APPID{
+    //获取当前应用版本号
+    NSDictionary *appInfo = [[NSBundle mainBundle] infoDictionary];
+    NSString *currentVersion = [appInfo objectForKey:@"CFBundleShortVersionString"];
+    NSLog(@"%@",currentVersion);
+    
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setValue:APPID forKey:@"id"];
+    
+    MKNetworkOperation *op = [engine operationWithPath:@"/lookup" params:dic httpMethod:@"POST"];
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        NSString *result = [operation responseString];
+        NSError *error;
+        NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+        if (resultDict == nil) {
+            NSLog(@"json parse failed \r\n");
+        }
+        NSLog(@"%@",resultDict);
+        NSArray *infoArray = [resultDict objectForKey:@"results"];
+        if ([infoArray count]) {
+            NSDictionary *releaseInfo = [infoArray objectAtIndex:0];
+            NSString *lastVersion = [releaseInfo objectForKey:@"version"];
+            
+            if (![lastVersion isEqualToString:currentVersion]) {
+                trackViewUrl = [releaseInfo objectForKey:@"trackViewUrl"];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"有新的版本更新，是否前往更新？" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"更新", nil];
+                alert.tag = 10000;
+                [alert show];
+            }
+            else
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"此版本为最新版本" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                alert.tag = 10001;
+                [alert show];
+            }
+        }
+    }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
+        NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
+    }];
+    [engine enqueueOperation:op];
+}
+
 #pragma mark - UIActionSheet Delegate
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (actionSheet.tag == 100) {
         if (buttonIndex == 0) {
             //退出登陆
@@ -151,10 +163,15 @@
             [self.navigationController popToRootViewControllerAnimated:YES];
         }
     }
-    
 }
 
-
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (alertView.tag==10000) {
+        if (buttonIndex==1) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
+        }
+    }
+}
 
 /*
 #pragma mark - Navigation
