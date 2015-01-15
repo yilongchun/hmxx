@@ -11,6 +11,7 @@
 #import "Utils.h"
 #import "MBProgressHUD.h"
 #import "SRRefreshView.h"
+#import "XscqtjxqViewController.h"
 
 @interface XscqtjViewController ()<MBProgressHUDDelegate,SRRefreshDelegate>{
     MBProgressHUD *HUD;
@@ -284,12 +285,10 @@
         }
         
     }else{
-        //        NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
-        //        NSString *tnid = [info objectForKey:@"tnid"];
-        //        GgxqViewController *ggxq = [[GgxqViewController alloc]init];
-        //        ggxq.title = @"公告详情";
-        //        ggxq.tnid = tnid;
-        //        [self.navigationController pushViewController:ggxq animated:YES];
+        NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
+        XscqtjxqViewController *vc = [[XscqtjxqViewController alloc]init];
+        vc.info = info;
+        [self.navigationController pushViewController:vc animated:YES];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
