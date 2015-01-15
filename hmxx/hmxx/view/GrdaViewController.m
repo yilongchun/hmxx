@@ -266,15 +266,15 @@
 //修改数据
 - (void)updateImgData:(NSString *)fileid{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-//    NSDictionary *student = [userDefaults objectForKey:@"student"];
+    NSString *schoolid = [userDefaults objectForKey:@"schoolid"];
     
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setValue:[userDefaults objectForKey:@"userid"] forKey:@"userid"];
+    [dic setValue:[userDefaults objectForKey:@"userid"] forKey:@"userId"];
     [dic setValue:fileid forKey:@"fileid"];
-//    [dic setValue:[student objectForKey:@"studentid"] forKey:@"studentid"];
+    [dic setValue:schoolid forKey:@"schoolId"];
     
-    MKNetworkOperation *op = [engine operationWithPath:@"/Teacher/updateimage.do" params:dic httpMethod:@"POST"];
+    MKNetworkOperation *op = [engine operationWithPath:@"/schoolUser/updateimage.do" params:dic httpMethod:@"POST"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         
         NSString *result = [operation responseString];

@@ -217,23 +217,7 @@
     float width = [UIScreen mainScreen].bounds.size.width;
     [mainScrollView setFrame:CGRectMake(0, 170, width, height-170)];
     
-    if (self.menus.count > 6) {
-        if (height <= 480) {
-            [mainScrollView setContentSize:CGSizeMake(width*2, height-170)];
-            spacePageControl = [[SMPageControl alloc] initWithFrame:CGRectMake(0.0, height-30, width, 10)];
-            [spacePageControl setPageIndicatorImage:[UIImage imageNamed:@"pageDot"]];
-            [spacePageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot"]];
-            spacePageControl.numberOfPages = 2;
-            spacePageControl.indicatorMargin = 10.0f;
-            spacePageControl.indicatorDiameter = 10.0f;
-            spacePageControl.userInteractionEnabled = NO;
-            [self.view addSubview:spacePageControl];
-        }else{
-            [mainScrollView setContentSize:CGSizeMake(width, height-170)];
-        }
-    }else{
-        [mainScrollView setContentSize:CGSizeMake(width, height-170)];
-    }
+    
     
     int i = 0;
     for (NSString *menuStr in self.menus) {
@@ -373,6 +357,23 @@
             continue;
         }
         i++;
+    }
+    if (i > 6) {
+        if (height <= 480) {
+            [mainScrollView setContentSize:CGSizeMake(width*2, height-170)];
+            spacePageControl = [[SMPageControl alloc] initWithFrame:CGRectMake(0.0, height-30, width, 10)];
+            [spacePageControl setPageIndicatorImage:[UIImage imageNamed:@"pageDot"]];
+            [spacePageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot"]];
+            spacePageControl.numberOfPages = 2;
+            spacePageControl.indicatorMargin = 10.0f;
+            spacePageControl.indicatorDiameter = 10.0f;
+            spacePageControl.userInteractionEnabled = NO;
+            [self.view addSubview:spacePageControl];
+        }else{
+            [mainScrollView setContentSize:CGSizeMake(width, height-170)];
+        }
+    }else{
+        [mainScrollView setContentSize:CGSizeMake(width, height-170)];
     }
 }
 
@@ -574,7 +575,7 @@
 
 //返回到该页面调用
 - (void)viewDidAppear:(BOOL)animated{
-//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 //    NSString *backflag = [userDefaults objectForKey:@"backflag"];
 //    if ([@"1" isEqualToString:backflag]) {//选择完班级和宝宝 返回重新加载
 //        [userDefaults removeObjectForKey:@"backflag"];
@@ -587,11 +588,11 @@
 //    if ([@"1" isEqualToString:loginflag]) {
 //        [userDefaults removeObjectForKey:@"loginflag"];
 //    }
-//    NSString *updateImgFlag = [userDefaults objectForKey:@"updateImgFlag"];//如果是修改头像返回则重新加载学生信息
-//    if ([@"1" isEqualToString:updateImgFlag]) {
-//        [userDefaults removeObjectForKey:@"updateImgFlag"];
-//        [self loadData];
-//    }
+    NSString *updateImgFlag = [userDefaults objectForKey:@"updateImgFlag"];//如果是修改头像返回则重新加载信息
+    if ([@"1" isEqualToString:updateImgFlag]) {
+        [userDefaults removeObjectForKey:@"updateImgFlag"];
+        [self loadData];
+    }
     [super viewDidAppear:animated];
 }
 
