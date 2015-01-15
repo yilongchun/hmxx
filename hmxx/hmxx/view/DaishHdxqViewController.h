@@ -1,18 +1,15 @@
 //
-//  MyViewControllerCellDetail.h
-//  hmjz
-//  班务活动详情
-//  Created by yons on 14-10-30.
-//  Copyright (c) 2014年 yons. All rights reserved.
+//  DaishHdxqViewController.h
+//  hmxx
+//
+//  Created by yons on 15-1-15.
+//  Copyright (c) 2015年 hmzl. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "HPGrowingTextView.h"
 
-
-@interface MyViewControllerCellDetail : UIViewController<HPGrowingTextViewDelegate>{
+@interface DaishHdxqViewController : UIViewController{
     UIView *containerView;
-    HPGrowingTextView *textView;
     
 }
 
@@ -21,8 +18,7 @@
 @property (nonatomic,copy) NSString *detailid;
 @property (nonatomic,copy) NSString *title;
 @property (nonatomic,copy) NSString *creater;
-
-
-//-(void)resignTextView;
+@property (weak, nonatomic) IBOutlet UIButton *passBtn;
+- (IBAction)pass:(id)sender;
 
 @end

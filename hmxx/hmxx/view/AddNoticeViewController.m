@@ -43,9 +43,9 @@
         [self.contentTextview setFrame:CGRectMake(self.contentTextview.frame.origin.x, self.contentTextview.frame.origin.y-64, self.contentTextview.frame.size.width, self.contentTextview.frame.size.height)];
         [self.title1 setFrame:CGRectMake(self.title1.frame.origin.x, self.title1.frame.origin.y-64, self.title1.frame.size.width, self.title1.frame.size.height)];
         [self.title2 setFrame:CGRectMake(self.title2.frame.origin.x, self.title2.frame.origin.y-64, self.title2.frame.size.width, self.title2.frame.size.height)];
-        [self.btn1 setFrame:CGRectMake(self.btn1.frame.origin.x, self.btn1.frame.origin.y-64, self.btn1.frame.size.width, self.btn1.frame.size.height)];
+        
         [self.btn2 setFrame:CGRectMake(self.btn2.frame.origin.x, self.btn2.frame.origin.y-64, self.btn2.frame.size.width, self.btn2.frame.size.height)];
-        [self.btn1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        
         [self.btn2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }
     
@@ -63,7 +63,7 @@
     
     self.view.backgroundColor = [UIColor colorWithRed:238/255.0 green:238/255.0 blue:238/255.0 alpha:1];
     
-    self.btn1.layer.cornerRadius = 5.0f;
+    
     self.btn2.layer.cornerRadius = 5.0f;
     
     self.title = @"发布公告";
@@ -96,15 +96,11 @@
 }
 */
 
-- (IBAction)saveBtn:(id)sender {
-    [self save:@"1"];
-}
-
 - (IBAction)addBtn:(id)sender {
-    [self save:@"2"];
+    [self save];
 }
 
--(void)save:(NSString *)status{
+-(void)save{
     [self viewTapped:nil];
     if (self.titleLabel.text.length == 0) {
         [self alertMsg:@"请填写标题"];
@@ -115,18 +111,17 @@
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSString *userid = [userDefaults objectForKey:@"userid"];
-        NSDictionary *class = [userDefaults objectForKey:@"class"];
-        NSString *classid = [class objectForKey:@"id"];
+        NSString *schoolid = [userDefaults objectForKey:@"schoolid"];
         
         [dic setValue:userid forKey:@"userid"];
-        [dic setValue:classid forKey:@"recordid"];
-        [dic setValue:@"3" forKey:@"noticetype"];
-        [dic setValue:status forKey:@"status"];
+        [dic setValue:schoolid forKey:@"schoolId"];
+//        [dic setValue:@"3" forKey:@"noticetype"];
+//        [dic setValue:status forKey:@"status"];
         [dic setValue:self.titleLabel.text forKey:@"noticetitle"];
         [dic setValue:self.contentTextview.text forKey:@"noticecontent"];
         [dic setValue:@"" forKey:@"fileid"];
         
-        MKNetworkOperation *op = [engine operationWithPath:@"/Notice/savanotice.do" params:dic httpMethod:@"POST"];
+        MKNetworkOperation *op = [engine operationWithPath:@"/schoolNotice/save.do" params:dic httpMethod:@"POST"];
         [op addCompletionHandler:^(MKNetworkOperation *operation) {
             //        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
             NSString *result = [operation responseString];
@@ -142,6 +137,7 @@
                 self.contentTextview.text = @"";
                 [self okMsk:@"保存成功"];
                 [self.navigationController popViewControllerAnimated:YES];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadGggl" object:nil];
             }else{
                 [HUD hide:YES];
                 [self alertMsg:@"保存失败"];
@@ -149,6 +145,7 @@
         }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
             NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
             [HUD hide:YES];
+            [self alertMsg:[err localizedDescription]];
             
         }];
         [engine enqueueOperation:op];

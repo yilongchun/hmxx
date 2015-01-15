@@ -313,9 +313,14 @@
     }else{
         NSDictionary *data = [self.dataSource objectAtIndex:indexPath.row];
         NSString *detailid = [data objectForKey:@"id"];
+        NSString *source = [data objectForKey:@"teachername"];
         MyViewControllerCellDetail *detail = [[MyViewControllerCellDetail alloc] init];
         detail.detailid = detailid;
+        detail.creater = source;
         detail.title = @"活动详情";
+        
+        
+        
         [self.navigationController pushViewController:detail animated:YES];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

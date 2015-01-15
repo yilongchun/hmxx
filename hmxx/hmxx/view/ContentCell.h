@@ -10,6 +10,7 @@
 
 @interface ContentCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *contentTitle;
+@property (weak, nonatomic) IBOutlet UILabel *creater;
 @property (weak, nonatomic) IBOutlet UILabel *contentDate;
 @property (weak, nonatomic) IBOutlet UILabel *content;
 

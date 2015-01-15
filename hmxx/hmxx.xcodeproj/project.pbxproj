@@ -15,6 +15,12 @@
 		E43C21F11A66DEEF00E1DB45 /* UpAccessory@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E43C21ED1A66DEEF00E1DB45 /* UpAccessory@2x.png */; };
 		E4EF57661A67C4DB004B57E6 /* ExpansionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EF57641A67C4DB004B57E6 /* ExpansionTableViewCell.m */; };
 		E4EF57671A67C4DB004B57E6 /* ExpansionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EF57651A67C4DB004B57E6 /* ExpansionTableViewCell.xib */; };
+		E4EF576B1A67E10B004B57E6 /* DaishGgtzViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EF57691A67E10B004B57E6 /* DaishGgtzViewController.m */; };
+		E4EF576C1A67E10B004B57E6 /* DaishGgtzViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EF576A1A67E10B004B57E6 /* DaishGgtzViewController.xib */; };
+		E4EF576F1A67FF29004B57E6 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EF576D1A67FF29004B57E6 /* 37x-Checkmark.png */; };
+		E4EF57701A67FF29004B57E6 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EF576E1A67FF29004B57E6 /* 37x-Checkmark@2x.png */; };
+		E4EF57741A68067B004B57E6 /* DaishHdxqViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EF57721A68067B004B57E6 /* DaishHdxqViewController.m */; };
+		E4EF57751A68067B004B57E6 /* DaishHdxqViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EF57731A68067B004B57E6 /* DaishHdxqViewController.xib */; };
 		E4F0768D1A653E47004D7453 /* GrdaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F0768B1A653E47004D7453 /* GrdaViewController.m */; };
 		E4F0768E1A653E47004D7453 /* GrdaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F0768C1A653E47004D7453 /* GrdaViewController.xib */; };
 		E4F076951A655C4A004D7453 /* YqjsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F076901A655C4A004D7453 /* YqjsViewController.m */; };
@@ -213,6 +219,14 @@
 		E4EF57631A67C4DB004B57E6 /* ExpansionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpansionTableViewCell.h; path = view/ExpansionTableViewCell.h; sourceTree = "<group>"; };
 		E4EF57641A67C4DB004B57E6 /* ExpansionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpansionTableViewCell.m; path = view/ExpansionTableViewCell.m; sourceTree = "<group>"; };
 		E4EF57651A67C4DB004B57E6 /* ExpansionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExpansionTableViewCell.xib; path = view/ExpansionTableViewCell.xib; sourceTree = "<group>"; };
+		E4EF57681A67E10B004B57E6 /* DaishGgtzViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DaishGgtzViewController.h; path = view/DaishGgtzViewController.h; sourceTree = "<group>"; };
+		E4EF57691A67E10B004B57E6 /* DaishGgtzViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DaishGgtzViewController.m; path = view/DaishGgtzViewController.m; sourceTree = "<group>"; };
+		E4EF576A1A67E10B004B57E6 /* DaishGgtzViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DaishGgtzViewController.xib; path = view/DaishGgtzViewController.xib; sourceTree = "<group>"; };
+		E4EF576D1A67FF29004B57E6 /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
+		E4EF576E1A67FF29004B57E6 /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
+		E4EF57711A68067B004B57E6 /* DaishHdxqViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DaishHdxqViewController.h; path = view/DaishHdxqViewController.h; sourceTree = "<group>"; };
+		E4EF57721A68067B004B57E6 /* DaishHdxqViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DaishHdxqViewController.m; path = view/DaishHdxqViewController.m; sourceTree = "<group>"; };
+		E4EF57731A68067B004B57E6 /* DaishHdxqViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DaishHdxqViewController.xib; path = view/DaishHdxqViewController.xib; sourceTree = "<group>"; };
 		E4F0768A1A653E47004D7453 /* GrdaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrdaViewController.h; path = view/GrdaViewController.h; sourceTree = "<group>"; };
 		E4F0768B1A653E47004D7453 /* GrdaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrdaViewController.m; path = view/GrdaViewController.m; sourceTree = "<group>"; };
 		E4F0768C1A653E47004D7453 /* GrdaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GrdaViewController.xib; path = view/GrdaViewController.xib; sourceTree = "<group>"; };
@@ -643,6 +657,8 @@
 		E4F3692B1A63E1D20037A533 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E4EF576D1A67FF29004B57E6 /* 37x-Checkmark.png */,
+				E4EF576E1A67FF29004B57E6 /* 37x-Checkmark@2x.png */,
 				E43C21EA1A66DEEF00E1DB45 /* DownAccessory.png */,
 				E43C21EB1A66DEEF00E1DB45 /* DownAccessory@2x.png */,
 				E43C21EC1A66DEEF00E1DB45 /* UpAccessory.png */,
@@ -870,6 +886,9 @@
 				E4F076DC1A656680004D7453 /* GgxqViewController.h */,
 				E4F076DD1A656680004D7453 /* GgxqViewController.m */,
 				E4F076DE1A656680004D7453 /* GgxqViewController.xib */,
+				E4EF57681A67E10B004B57E6 /* DaishGgtzViewController.h */,
+				E4EF57691A67E10B004B57E6 /* DaishGgtzViewController.m */,
+				E4EF576A1A67E10B004B57E6 /* DaishGgtzViewController.xib */,
 				E4F076991A655CB0004D7453 /* MyTabbarController.h */,
 				E4F0769A1A655CB0004D7453 /* MyTabbarController.m */,
 				E4F0768F1A655C4A004D7453 /* YqjsViewController.h */,
@@ -893,9 +912,6 @@
 				E4F076D41A656210004D7453 /* MyTabbarController2.m */,
 				E4F21D8B1A66768D005372EA /* MyTabbarController3.h */,
 				E4F21D8C1A66768D005372EA /* MyTabbarController3.m */,
-				E4F21D911A667BDF005372EA /* DaiShHdViewController.h */,
-				E4F21D921A667BDF005372EA /* DaiShHdViewController.m */,
-				E4F21D931A667BDF005372EA /* DaiShHdViewController.xib */,
 				E4F21D961A667D3A005372EA /* DaiShGgViewController.h */,
 				E4F21D971A667D3A005372EA /* DaiShGgViewController.m */,
 				E4F21D981A667D3A005372EA /* DaiShGgViewController.xib */,
@@ -911,6 +927,12 @@
 				E4EF57631A67C4DB004B57E6 /* ExpansionTableViewCell.h */,
 				E4EF57641A67C4DB004B57E6 /* ExpansionTableViewCell.m */,
 				E4EF57651A67C4DB004B57E6 /* ExpansionTableViewCell.xib */,
+				E4F21D911A667BDF005372EA /* DaiShHdViewController.h */,
+				E4F21D921A667BDF005372EA /* DaiShHdViewController.m */,
+				E4F21D931A667BDF005372EA /* DaiShHdViewController.xib */,
+				E4EF57711A68067B004B57E6 /* DaishHdxqViewController.h */,
+				E4EF57721A68067B004B57E6 /* DaishHdxqViewController.m */,
+				E4EF57731A68067B004B57E6 /* DaishHdxqViewController.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -1014,6 +1036,7 @@
 			files = (
 				E4EF57671A67C4DB004B57E6 /* ExpansionTableViewCell.xib in Resources */,
 				E43C21EE1A66DEEF00E1DB45 /* DownAccessory.png in Resources */,
+				E4EF576F1A67FF29004B57E6 /* 37x-Checkmark.png in Resources */,
 				E4F077161A656E35004D7453 /* chat_video_play.png in Resources */,
 				E4F076961A655C4A004D7453 /* YqjsViewController.xib in Resources */,
 				E4F21DA21A668F7A005372EA /* BwrzTableViewCell.xib in Resources */,
@@ -1040,6 +1063,7 @@
 				E4F076C11A655F76004D7453 /* ic_bwrz_002@2x.png in Resources */,
 				E4F0768E1A653E47004D7453 /* GrdaViewController.xib in Resources */,
 				E4F077481A658E70004D7453 /* gonggaoguanli1.png in Resources */,
+				E4EF57701A67FF29004B57E6 /* 37x-Checkmark@2x.png in Resources */,
 				E4F077571A658E70004D7453 /* yuanwurizhi2@2x.png in Resources */,
 				E4F369DD1A6415280037A533 /* YjfkViewController.xib in Resources */,
 				E4F077551A658E70004D7453 /* yuanwurizhi1@2x.png in Resources */,
@@ -1058,6 +1082,7 @@
 				E4F076EE1A6566EC004D7453 /* sr_refresh@2X.png in Resources */,
 				E4F076C21A655F76004D7453 /* ic_index_003.png in Resources */,
 				E4F369F01A642B4D0037A533 /* SpTableViewCell.xib in Resources */,
+				E4EF57751A68067B004B57E6 /* DaishHdxqViewController.xib in Resources */,
 				E4F077061A65681D004D7453 /* BwhdViewController.xib in Resources */,
 				E4F0774A1A658E70004D7453 /* gonggaoguanli2.png in Resources */,
 				E4F076FC1A656760004D7453 /* ContentCell.xib in Resources */,
@@ -1072,6 +1097,7 @@
 				E4F369FC1A6444EA0037A533 /* ic_kcb_bg.png in Resources */,
 				E4F21D5D1A666BB4005372EA /* AddActivityViewController.xib in Resources */,
 				E4F369FD1A6444EA0037A533 /* ic_kcb_bg2.png in Resources */,
+				E4EF576C1A67E10B004B57E6 /* DaishGgtzViewController.xib in Resources */,
 				E4F076C01A655F76004D7453 /* ic_bwrz_002.png in Resources */,
 				E4F21D8A1A667319005372EA /* AddNoticeViewController.xib in Resources */,
 				E4F0769F1A655E79004D7453 /* ic_bwrz_002@2x.png in Resources */,
@@ -1132,6 +1158,7 @@
 				E4F369591A63E36C0037A533 /* MKNetworkEngine.m in Sources */,
 				E4F076D51A656210004D7453 /* MyTabbarController2.m in Sources */,
 				E4F369BE1A64088F0037A533 /* AFSecurityPolicy.m in Sources */,
+				E4EF57741A68067B004B57E6 /* DaishHdxqViewController.m in Sources */,
 				E43C21E81A66C1EF00E1DB45 /* TjxqTableViewCell.m in Sources */,
 				E4F369BB1A64088F0037A533 /* AFHTTPRequestOperationManager.m in Sources */,
 				E4F369BA1A64088F0037A533 /* AFHTTPRequestOperation.m in Sources */,
@@ -1200,6 +1227,7 @@
 				E4F077001A6567A6004D7453 /* PinglunTableViewCell.m in Sources */,
 				E4F21D771A666BF0005372EA /* ELCAsset.m in Sources */,
 				E4F369DA1A6415280037A533 /* UpdatePasswordViewController.m in Sources */,
+				E4EF576B1A67E10B004B57E6 /* DaishGgtzViewController.m in Sources */,
 				E4F077101A6568BC004D7453 /* CustomMoviePlayerViewController.m in Sources */,
 				E4F21D781A666BF0005372EA /* ELCAssetCell.m in Sources */,
 				E4F369541A63E36C0037A533 /* NSDate+RFC1123.m in Sources */,

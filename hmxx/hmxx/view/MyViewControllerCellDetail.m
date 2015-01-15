@@ -482,6 +482,7 @@
         NSArray *filelist = [data objectForKey:@"filelist"];
         cell.contentTitle.text = title;
         cell.contentDate.text = date;
+        cell.creater.text = self.creater;
         cell.content.text = content;
 //            cell.content.text = @"测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试";
         cell.content.numberOfLines = 0;
@@ -620,7 +621,7 @@
 //            NSString *content = @"测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试";
         // 計算出顯示完內容需要的最小尺寸
         CGSize size = [content sizeWithFont:font constrainedToSize:CGSizeMake(contentWidth, 1000.0f) lineBreakMode:NSLineBreakByWordWrapping];
-        size.height = size.height + 87;
+        size.height = size.height + 107;
         NSDictionary *data = [self.dataSource objectAtIndex:indexPath.row];
         NSArray *filelist = [data objectForKey:@"filelist"];
         if ([filelist count] > 0) {

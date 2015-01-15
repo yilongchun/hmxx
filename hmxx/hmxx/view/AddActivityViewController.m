@@ -140,12 +140,12 @@
     
     if (flag) {
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        NSDictionary *class = [userDefaults objectForKey:@"class"];
+        NSString *schoolid = [userDefaults objectForKey:@"schoolid"];
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
         [dic setValue:self.titleLabel.text forKey:@"activityTitle"];
         [dic setValue:self.contentTextview.text forKey:@"activityContent"];
         [dic setValue:[userDefaults objectForKey:@"userid"] forKey:@"userid"];
-        [dic setValue:[class objectForKey:@"id"] forKey:@"classId"];
+        [dic setValue:schoolid forKey:@"schoolId"];
         if (type == 1) {
             [dic setValue:@"image" forKey:@"filetype"];
         }else if(type == 2){
@@ -168,7 +168,7 @@
             [dic setValue:@"" forKey:@"fileid"];
         }
         
-        MKNetworkOperation *op = [engine operationWithPath:@"/classActivity/activityimageload.do" params:dic httpMethod:@"POST"];
+        MKNetworkOperation *op = [engine operationWithPath:@"/SchoolActivity/save.do" params:dic httpMethod:@"POST"];
         [op addCompletionHandler:^(MKNetworkOperation *operation) {
             NSLog(@"[operation responseData]-->>%@", [operation responseString]);
             NSString *result = [operation responseString];
@@ -189,6 +189,7 @@
                 [self.chosenImages removeAllObjects];
                 [fileArr removeAllObjects];
                 [self reloadImageToView];
+                
                 
             }else{
                 [HUD hide:YES];

@@ -38,7 +38,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(loadData)
+                                                 name:@"reloadGggl"
+                                               object:nil];
 
     //初始化tableview
     CGRect cg;

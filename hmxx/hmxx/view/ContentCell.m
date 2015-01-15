@@ -9,7 +9,7 @@
 #import "ContentCell.h"
 
 @implementation ContentCell
-@synthesize contentTitle,contentDate,content;
+@synthesize contentTitle,contentDate,content,creater;
 
 - (void)awakeFromNib {
     // Initialization code

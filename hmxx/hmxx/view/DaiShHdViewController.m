@@ -13,6 +13,7 @@
 #import "MBProgressHUD.h"
 #import "SRRefreshView.h"
 #import "UIImageView+AFNetworking.h"
+#import "DaishHdxqViewController.h"
 
 @interface DaiShHdViewController ()<MBProgressHUDDelegate,SRRefreshDelegate>{
     MBProgressHUD *HUD;
@@ -36,7 +37,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(loadData)
+                                                 name:@"reloadDshHdgl"
+                                               object:nil];
     
     //初始化tableview
     CGRect cg;
@@ -303,12 +307,14 @@
         }
         
     }else{
-        //        NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
-        //        NSString *tnid = [info objectForKey:@"tnid"];
-        //        GgxqViewController *ggxq = [[GgxqViewController alloc]init];
-        //        ggxq.title = @"公告详情";
-        //        ggxq.tnid = tnid;
-        //        [self.navigationController pushViewController:ggxq animated:YES];
+        NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
+        NSString *tnid = [info objectForKey:@"id"];
+        NSString *source = [info objectForKey:@"teachername"];
+        DaishHdxqViewController *ggxq = [[DaishHdxqViewController alloc]init];
+        ggxq.title = @"公告详情";
+        ggxq.detailid = tnid;
+        ggxq.creater = source;
+        [self.navigationController pushViewController:ggxq animated:YES];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

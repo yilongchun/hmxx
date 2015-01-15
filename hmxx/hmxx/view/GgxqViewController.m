@@ -444,9 +444,11 @@
         NSString *title = [data objectForKey:@"tntitle"];
         NSString *date = [data objectForKey:@"tnmoddate"];
         NSString *content = [data objectForKey:@"tncontent"];
+        NSString *noticename = [data objectForKey:@"noticename"];
         cell.contentTitle.text = title;
         cell.contentDate.text = date;
         cell.content.text = content;
+        cell.creater.text = noticename;
         //    cell.content.text = @"测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试";
         cell.content.numberOfLines = 0;
         [cell.content sizeToFit];
@@ -547,7 +549,7 @@
         //    NSString *content = @"测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试";
         // 計算出顯示完內容需要的最小尺寸
         CGSize size = [content sizeWithFont:font constrainedToSize:CGSizeMake(contentWidth, 1000.0f) lineBreakMode:NSLineBreakByCharWrapping];
-        return size.height+86;
+        return size.height+106;
     }else{
         if ([self.dataSource count] == indexPath.row) {
             return 44;
