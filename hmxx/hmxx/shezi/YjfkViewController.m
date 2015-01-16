@@ -49,7 +49,7 @@
     //初始化文本域
     
     self.mytextview.layer.backgroundColor = [[UIColor clearColor] CGColor];
-    self.mytextview.layer.borderColor = [UIColor colorWithRed:42/255.0 green:173/255.0 blue:128/255.0 alpha:1].CGColor;
+    self.mytextview.layer.borderColor = [UIColor colorWithRed:117/255.0 green:172/255.0 blue:71/255.0 alpha:1].CGColor;
     self.mytextview.layer.borderWidth = 1.0;
     self.mytextview.layer.cornerRadius = 8.0f;
     self.mytextview.autoresizingMask = UIViewAutoresizingNone;
