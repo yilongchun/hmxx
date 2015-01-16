@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E40929691A690A7E00EBAF82 /* AddBwrzViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E40929671A690A7E00EBAF82 /* AddBwrzViewController.m */; };
+		E409296A1A690A7E00EBAF82 /* AddBwrzViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E40929681A690A7E00EBAF82 /* AddBwrzViewController.xib */; };
+		E409296E1A69197900EBAF82 /* UpdateBwrzViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E409296C1A69197900EBAF82 /* UpdateBwrzViewController.m */; };
+		E409296F1A69197900EBAF82 /* UpdateBwrzViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E409296D1A69197900EBAF82 /* UpdateBwrzViewController.xib */; };
 		E43C21E81A66C1EF00E1DB45 /* TjxqTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E43C21E61A66C1EF00E1DB45 /* TjxqTableViewCell.m */; };
 		E43C21E91A66C1EF00E1DB45 /* TjxqTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E43C21E71A66C1EF00E1DB45 /* TjxqTableViewCell.xib */; };
 		E43C21EE1A66DEEF00E1DB45 /* DownAccessory.png in Resources */ = {isa = PBXBuildFile; fileRef = E43C21EA1A66DEEF00E1DB45 /* DownAccessory.png */; };
@@ -209,6 +213,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E40929661A690A7E00EBAF82 /* AddBwrzViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddBwrzViewController.h; path = view/AddBwrzViewController.h; sourceTree = "<group>"; };
+		E40929671A690A7E00EBAF82 /* AddBwrzViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddBwrzViewController.m; path = view/AddBwrzViewController.m; sourceTree = "<group>"; };
+		E40929681A690A7E00EBAF82 /* AddBwrzViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddBwrzViewController.xib; path = view/AddBwrzViewController.xib; sourceTree = "<group>"; };
+		E409296B1A69197900EBAF82 /* UpdateBwrzViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UpdateBwrzViewController.h; path = view/UpdateBwrzViewController.h; sourceTree = "<group>"; };
+		E409296C1A69197900EBAF82 /* UpdateBwrzViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UpdateBwrzViewController.m; path = view/UpdateBwrzViewController.m; sourceTree = "<group>"; };
+		E409296D1A69197900EBAF82 /* UpdateBwrzViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UpdateBwrzViewController.xib; path = view/UpdateBwrzViewController.xib; sourceTree = "<group>"; };
 		E43C21E51A66C1EF00E1DB45 /* TjxqTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TjxqTableViewCell.h; path = view/TjxqTableViewCell.h; sourceTree = "<group>"; };
 		E43C21E61A66C1EF00E1DB45 /* TjxqTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TjxqTableViewCell.m; path = view/TjxqTableViewCell.m; sourceTree = "<group>"; };
 		E43C21E71A66C1EF00E1DB45 /* TjxqTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TjxqTableViewCell.xib; path = view/TjxqTableViewCell.xib; sourceTree = "<group>"; };
@@ -845,6 +855,12 @@
 		E4F369CD1A6414BE0037A533 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				E409296B1A69197900EBAF82 /* UpdateBwrzViewController.h */,
+				E409296C1A69197900EBAF82 /* UpdateBwrzViewController.m */,
+				E409296D1A69197900EBAF82 /* UpdateBwrzViewController.xib */,
+				E40929661A690A7E00EBAF82 /* AddBwrzViewController.h */,
+				E40929671A690A7E00EBAF82 /* AddBwrzViewController.m */,
+				E40929681A690A7E00EBAF82 /* AddBwrzViewController.xib */,
 				E4F21D9B1A668F7A005372EA /* BwrzTableViewCell.h */,
 				E4F21D9C1A668F7A005372EA /* BwrzTableViewCell.m */,
 				E4F21D9D1A668F7A005372EA /* BwrzTableViewCell.xib */,
@@ -1042,6 +1058,7 @@
 				E4F21DA21A668F7A005372EA /* BwrzTableViewCell.xib in Resources */,
 				E4F0774B1A658E70004D7453 /* gonggaoguanli2@2x.png in Resources */,
 				E4F369901A6406D60037A533 /* chatListCellHead@2x.png in Resources */,
+				E409296F1A69197900EBAF82 /* UpdateBwrzViewController.xib in Resources */,
 				E4F0770B1A65685C004D7453 /* MyViewControllerCellDetail.xib in Resources */,
 				E4F21D811A666BF0005372EA /* Overlay@2x.png in Resources */,
 				E4F077431A658E70004D7453 /* daishenhegg2@2x.png in Resources */,
@@ -1113,6 +1130,7 @@
 				E4F369371A63E1D20037A533 /* guide_4.png in Resources */,
 				E4F369281A63E0920037A533 /* GuideViewController.xib in Resources */,
 				E4F369351A63E1D20037A533 /* guide_2.png in Resources */,
+				E409296A1A690A7E00EBAF82 /* AddBwrzViewController.xib in Resources */,
 				E4F077541A658E70004D7453 /* yuanwurizhi1.png in Resources */,
 				E4F0774D1A658E70004D7453 /* huodongguanli1@2x.png in Resources */,
 				E4F077501A658E70004D7453 /* yuanqingjieshao1.png in Resources */,
@@ -1223,6 +1241,7 @@
 				E4F21DAD1A66B1BB005372EA /* XscqtjxqViewController.m in Sources */,
 				E4F21D991A667D3A005372EA /* DaiShGgViewController.m in Sources */,
 				E4F369561A63E36C0037A533 /* NSString+MKNetworkKitAdditions.m in Sources */,
+				E409296E1A69197900EBAF82 /* UpdateBwrzViewController.m in Sources */,
 				E4F369BD1A64088F0037A533 /* AFNetworkReachabilityManager.m in Sources */,
 				E4F077001A6567A6004D7453 /* PinglunTableViewCell.m in Sources */,
 				E4F21D771A666BF0005372EA /* ELCAsset.m in Sources */,
@@ -1233,6 +1252,7 @@
 				E4F369541A63E36C0037A533 /* NSDate+RFC1123.m in Sources */,
 				E4F369F81A6443930037A533 /* KcbViewController.m in Sources */,
 				E4F21DA81A66A2AE005372EA /* XscqtjViewController.m in Sources */,
+				E40929691A690A7E00EBAF82 /* AddBwrzViewController.m in Sources */,
 				E4F076F01A6566EC004D7453 /* SRSlimeView.m in Sources */,
 				E4F076FB1A656760004D7453 /* ContentCell.m in Sources */,
 			);

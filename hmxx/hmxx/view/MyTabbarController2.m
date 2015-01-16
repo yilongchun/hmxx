@@ -9,9 +9,10 @@
 #import "MyTabbarController2.h"
 #import "BwhdViewController.h"
 #import "GgtzViewController.h"
+#import "BwrzViewController.h"
 #import "AddActivityViewController.h"
 #import "AddNoticeViewController.h"
-#import "BwrzViewController.h"
+#import "AddBwrzViewController.h"
 
 @interface MyTabbarController2 (){
     UIBarButtonItem *buttonItem1;
@@ -133,7 +134,8 @@
 }
 
 - (void)action3{//添加日志
-    
+    AddBwrzViewController *vc = [[AddBwrzViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

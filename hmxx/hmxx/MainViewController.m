@@ -120,7 +120,9 @@
 //                NSString *username = [info objectForKey:@"schoolName"];
                 NSString *userid = [info objectForKey:@"userId"];
                 NSString *schoolid = [info objectForKey:@"schoolId"];
+                NSNumber *schoolnum = [info objectForKey:@"schoolnum"];
                 [userDefaults setObject:schoolid forKey:@"schoolid"];
+                [userDefaults setObject:schoolnum forKey:@"schoolnum"];
                 [self getUserInfo:userid schoolid:schoolid];
                 [self loadsp:schoolid];//食谱
                 [self loadZxsjb:schoolid];//作息时间表

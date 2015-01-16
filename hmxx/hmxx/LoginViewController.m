@@ -227,7 +227,7 @@
         [HUD hide:YES];
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.mode = MBProgressHUDModeText;
-        hud.labelText = @"连接失败";
+        hud.labelText = @"连接服务器失败";
         hud.margin = 10.f;
         hud.removeFromSuperViewOnHide = YES;
         [hud hide:YES afterDelay:1.5];

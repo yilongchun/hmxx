@@ -12,7 +12,7 @@
 #import "Utils.h"
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
-//#import "UpdateBwrzViewController.h"
+#import "UpdateBwrzViewController.h"
 #import "SRRefreshView.h"
 
 @interface BwrzViewController ()<MBProgressHUDDelegate,SRRefreshDelegate>{
@@ -33,6 +33,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(loadData)
+                                                 name:@"reloadYwrz"
+                                               object:nil];
     
     //初始化tableview
     CGRect cg;
@@ -138,7 +143,7 @@
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
         [HUD hide:YES];
-        [self alertMsg:[err localizedDescription]];
+        [self alertMsg:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
 }
@@ -188,7 +193,7 @@
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
         [HUD hide:YES];
-        [self alertMsg:[err localizedDescription]];
+        [self alertMsg:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
 }
@@ -285,11 +290,11 @@
         }
         
     }else{
-//        UpdateBwrzViewController *vc = [[UpdateBwrzViewController alloc] init];
-//        NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
-//        NSString *detailId = [info objectForKey:@"id"];
-//        vc.detailId = detailId;
-//        [self.navigationController pushViewController:vc animated:YES];
+        UpdateBwrzViewController *vc = [[UpdateBwrzViewController alloc] init];
+        NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
+        NSString *detailId = [info objectForKey:@"id"];
+        vc.detailId = detailId;
+        [self.navigationController pushViewController:vc animated:YES];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
