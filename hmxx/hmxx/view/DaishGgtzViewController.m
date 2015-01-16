@@ -273,8 +273,7 @@
         if ([success boolValue]) {
             [HUD hide:YES];
             [self okMsk:msg];
-            [self.navigationController popViewControllerAnimated:YES];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadGgtz" object:nil];
+            [self performSelector:@selector(backAndReload) withObject:nil afterDelay:1.5f];
         }else{
             [HUD hide:YES];
             [self alertMsg:msg];
@@ -285,5 +284,10 @@
         
     }];
     [engine enqueueOperation:op];
+}
+
+-(void)backAndReload{
+    [self.navigationController popViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadGgtz" object:nil];
 }
 @end
