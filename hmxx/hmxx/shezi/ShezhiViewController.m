@@ -10,10 +10,8 @@
 #import "LoginViewController.h"
 #import "YjfkViewController.h"
 #import "UpdatePasswordViewController.h"
-#import "MKNetworkKit.h"
 
 @interface ShezhiViewController (){
-    MKNetworkEngine *engine;
     NSString *trackViewUrl;
 }
 
@@ -26,8 +24,7 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"设置";
     [self.navigationController setNavigationBarHidden:NO];
-    //初始化引擎
-    engine = [[MKNetworkEngine alloc] initWithHostName:@"itunes.apple.com"];
+    
     [self drawTableView];
 }
 
@@ -116,42 +113,31 @@
     //获取当前应用版本号
     NSDictionary *appInfo = [[NSBundle mainBundle] infoDictionary];
     NSString *currentVersion = [appInfo objectForKey:@"CFBundleShortVersionString"];
-    NSLog(@"%@",currentVersion);
-    
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setValue:APPID forKey:@"id"];
-    
-    MKNetworkOperation *op = [engine operationWithPath:@"/lookup" params:dic httpMethod:@"POST"];
-    [op addCompletionHandler:^(MKNetworkOperation *operation) {
-        NSString *result = [operation responseString];
-        NSError *error;
-        NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
-        if (resultDict == nil) {
-            NSLog(@"json parse failed \r\n");
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/cn/lookup?id=%@",APPID]]];
+    [request setHTTPMethod:@"GET"];
+    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:returnData options:0 error:nil];
+    NSArray *infoArray = [jsonData objectForKey:@"results"];
+    if ([infoArray count]) {
+        NSDictionary *releaseInfo = [infoArray objectAtIndex:0];
+        NSString *lastVersion = [releaseInfo objectForKey:@"version"];
+        if (![lastVersion isEqualToString:currentVersion]) {
+            trackViewUrl = [releaseInfo objectForKey:@"trackViewUrl"];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"有新的版本更新，是否前往更新？" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"更新", nil];
+            alert.tag = 10000;
+            [alert show];
         }
-        NSLog(@"%@",resultDict);
-        NSArray *infoArray = [resultDict objectForKey:@"results"];
-        if ([infoArray count]) {
-            NSDictionary *releaseInfo = [infoArray objectAtIndex:0];
-            NSString *lastVersion = [releaseInfo objectForKey:@"version"];
-            
-            if (![lastVersion isEqualToString:currentVersion]) {
-                trackViewUrl = [releaseInfo objectForKey:@"trackViewUrl"];
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"有新的版本更新，是否前往更新？" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"更新", nil];
-                alert.tag = 10000;
-                [alert show];
-            }
-            else
-            {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"此版本为最新版本" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                alert.tag = 10001;
-                [alert show];
-            }
+        else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"此版本为最新版本" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            alert.tag = 10001;
+            [alert show];
         }
-    }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
-        NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-    }];
-    [engine enqueueOperation:op];
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"没有获取到版本信息" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        alert.tag = 10001;
+        [alert show];
+    }
 }
 
 #pragma mark - UIActionSheet Delegate
