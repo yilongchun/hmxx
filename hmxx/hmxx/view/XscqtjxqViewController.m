@@ -40,7 +40,6 @@
     [super viewDidLoad];
     
     
-    
     //初始化tableview
     CGRect cg;
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
@@ -134,6 +133,8 @@
                 NSArray *data = [resultDict objectForKey:@"data"];
                 if (data != nil) {
                     self.dataSource = [NSMutableArray arrayWithArray:data];
+                    isOpen = NO;
+                    selectedIndex = nil;
                     [self.mytableView reloadData];
                 }
             }else{
@@ -163,41 +164,15 @@
 
 #pragma mark - UITableViewDatasource Methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    if (isOpen) {
-//        return [[self dataSource] count]+5;
-//    }else{
-//        return [[self dataSource] count]+5;
-//    }
+    if (isOpen) {
+        return [self.dataSource count]+3+5;
+    }else{
+        return [self.dataSource count]+5;
+    }
     
-    return [self.dataSource count]*4+5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (indexPath.row == selectedIndex.row && selectedIndex != nil) {
-//        //如果是展开
-//        if (isOpen == YES) {
-//            static NSString *cellIdentifier = @"cell";
-//            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-//            if (!cell) {
-//                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-//            }
-//            cell.textLabel.text = @"学校统计2";
-//            [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
-//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//            return cell;
-//        }else{
-//            static NSString *cellIdentifier = @"cell";
-//            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-//            if (!cell) {
-//                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-//            }
-//            cell.textLabel.text = @"学校统计3";
-//            [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
-//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//            return cell;
-//        }
-//    } else {
-    
         if (indexPath.row == 0) {
             static NSString *cellIdentifier = @"cell";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -248,14 +223,88 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }else{
-            
-            if ((indexPath.row - 5) % 4 == 0) {
+            if (isOpen) {
+                if(indexPath.row - selectedIndex.row == 1){
+                    NSDictionary *data = [self.dataSource objectAtIndex:selectedIndex.row - 5];
+                    static NSString *cellIdentifier = @"tjxqcell";
+                    TjxqTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+                    if (!cell) {
+                        cell = [[[NSBundle mainBundle] loadNibNamed:@"TjxqTableViewCell" owner:self options:nil] lastObject];
+                    }
+                    NSNumber *attendance_num = [data objectForKey:@"attendance_num"];
+                    NSNumber *sick_num = [data objectForKey:@"sick_num"];
+                    cell.label1.text = [NSString stringWithFormat:@"出勤人数:%@",attendance_num];
+                    cell.label2.text = [NSString stringWithFormat:@"病假人数:%@",sick_num];
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    cell.userInteractionEnabled = NO;
+                    return cell;
+                }else if(indexPath.row - selectedIndex.row == 2){
+                    NSDictionary *data = [self.dataSource objectAtIndex:selectedIndex.row - 5];
+                    static NSString *cellIdentifier = @"tjxqcell";
+                    TjxqTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+                    if (!cell) {
+                        cell = [[[NSBundle mainBundle] loadNibNamed:@"TjxqTableViewCell" owner:self options:nil] lastObject];
+                    }
+                    NSNumber *casual_num = [data objectForKey:@"casual_num"];
+                    NSNumber *late_num = [data objectForKey:@"late_num"];
+                    cell.label1.text = [NSString stringWithFormat:@"事假人数:%@",casual_num];
+                    cell.label2.text = [NSString stringWithFormat:@"迟到早退人数:%@",late_num];
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    cell.userInteractionEnabled = NO;
+                    return cell;
+                }else if(indexPath.row - selectedIndex.row == 3){
+                    NSDictionary *data = [self.dataSource objectAtIndex:selectedIndex.row - 5];
+                    static NSString *cellIdentifier = @"cell2";
+                    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+                    if (!cell) {
+                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+                    }
+                    NSString *daily_content = [data objectForKey:@"daily_content"];
+                    cell.textLabel.text = daily_content;
+                    [cell.textLabel setFont:[UIFont systemFontOfSize:15]];
+                    [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
+                    cell.textLabel.numberOfLines = 0;
+                    [cell.textLabel sizeToFit];
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    cell.userInteractionEnabled = NO;
+                    return cell;
+                }else{
+                    static NSString *cellIdentifier = @"expancell";
+                    ExpansionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+                    if (!cell) {
+                        cell = [[[NSBundle mainBundle] loadNibNamed:@"ExpansionTableViewCell" owner:self options:nil] lastObject];
+                    }
+                    NSLog(@"%d %d",indexPath.row,selectedIndex.row);
+                    NSDictionary *data;
+                    if (indexPath.row - selectedIndex.row > 0) {
+                       data = [self.dataSource objectAtIndex:indexPath.row-5-3];
+                    }else{
+                       data = [self.dataSource objectAtIndex:indexPath.row-5];
+                    }
+                    
+                    NSString *class_name = [data objectForKey:@"class_name"];
+                    NSNumber *class_num = [data objectForKey:@"class_num"];
+                    NSNumber *attendance_num = [data objectForKey:@"attendance_num"];
+                    
+                    cell.label1.text = class_name;
+                    cell.label2.text = [NSString stringWithFormat:@"应到%d人",[class_num intValue]];
+                    cell.label3.text = [NSString stringWithFormat:@"实到%d人",[attendance_num intValue]];
+                    if (indexPath.row == selectedIndex.row) {
+                        [cell changeArrowWithUp:isOpen];
+                    }else{
+                        [cell changeArrowWithUp:NO];
+                    }
+                    
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    return cell;
+                }
+            }else{
                 static NSString *cellIdentifier = @"expancell";
                 ExpansionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
                 if (!cell) {
                     cell = [[[NSBundle mainBundle] loadNibNamed:@"ExpansionTableViewCell" owner:self options:nil] lastObject];
                 }
-                NSDictionary *data = [self.dataSource objectAtIndex:(indexPath.row-5)/4];
+                NSDictionary *data = [self.dataSource objectAtIndex:indexPath.row-5];
                 NSString *class_name = [data objectForKey:@"class_name"];
                 NSNumber *class_num = [data objectForKey:@"class_num"];
                 NSNumber *attendance_num = [data objectForKey:@"attendance_num"];
@@ -263,72 +312,30 @@
                 cell.label1.text = class_name;
                 cell.label2.text = [NSString stringWithFormat:@"应到%d人",[class_num intValue]];
                 cell.label3.text = [NSString stringWithFormat:@"实到%d人",[attendance_num intValue]];
-                
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                return cell;
-            }else if((indexPath.row - 5) % 4 == 1){
-                int i = (indexPath.row - 5) / 4;
-                NSDictionary *data = [self.dataSource objectAtIndex:i];
-                
-                static NSString *cellIdentifier = @"tjxqcell";
-                TjxqTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-                if (!cell) {
-                    cell = [[[NSBundle mainBundle] loadNibNamed:@"TjxqTableViewCell" owner:self options:nil] lastObject];
-                }
-                NSNumber *attendance_num = [data objectForKey:@"attendance_num"];
-                NSNumber *sick_num = [data objectForKey:@"sick_num"];
-                cell.label1.text = [NSString stringWithFormat:@"出勤人数:%@",attendance_num];
-                cell.label2.text = [NSString stringWithFormat:@"病假人数:%@",sick_num];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                return cell;
-            }else if((indexPath.row - 5) % 4 == 2){
-                int i = (indexPath.row - 5) / 4;
-                NSDictionary *data = [self.dataSource objectAtIndex:i];
-                
-                static NSString *cellIdentifier = @"tjxqcell";
-                TjxqTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-                if (!cell) {
-                    cell = [[[NSBundle mainBundle] loadNibNamed:@"TjxqTableViewCell" owner:self options:nil] lastObject];
-                }
-                NSNumber *casual_num = [data objectForKey:@"casual_num"];
-                NSNumber *late_num = [data objectForKey:@"late_num"];
-                cell.label1.text = [NSString stringWithFormat:@"事假人数:%@",casual_num];
-                cell.label2.text = [NSString stringWithFormat:@"迟到早退人数:%@",late_num];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                return cell;
-            }else{
-                int i = (indexPath.row - 5) / 4;
-                NSDictionary *data = [self.dataSource objectAtIndex:i];
-                
-                static NSString *cellIdentifier = @"cell2";
-                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-                if (!cell) {
-                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-                }
-                NSString *daily_content = [data objectForKey:@"daily_content"];
-                cell.textLabel.text = daily_content;
-                [cell.textLabel setFont:[UIFont systemFontOfSize:15]];
-                [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
-                cell.textLabel.numberOfLines = 0;
-                [cell.textLabel sizeToFit];
+                [cell changeArrowWithUp:isOpen];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 return cell;
             }
+            
         }
-//    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row > 4) {
-        if ((indexPath.row - 5) % 4 == 0){
-            return 50;
+        if (isOpen) {
+            if(indexPath.row == selectedIndex.row+1 || indexPath.row == selectedIndex.row+2 || indexPath.row == selectedIndex.row+3){
+                return 44;
+            }else{
+                return 50;
+            }
         }else{
-            return 44;
+            return 50;
         }
+        
     }else{
         return 44;
     }
-    
+
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -341,104 +348,61 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-//    NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
-//    if (indexPath.row > 4) {
-//        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//        
-//        if(selectedIndex == nil){
-//            isOpen = YES;
-//            selectedIndex = indexPath;
-//            //        [self.dataSource addObject:@"aa"];
-//            //        NSIndexPath *nextindex = [NSIndexPath indexPathForRow:indexPath.row+1 inSection:0];
-//            //        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:selectedIndex,nextindex,nil] withRowAnimation:UITableViewRowAnimationAutomatic];
-//            
-//            [self.dataSource insertObject:@"aaa" atIndex:indexPath.row];
-//            indexPath = [NSIndexPath indexPathForRow:selectedIndex.row+1 inSection:0];
-//            [tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
-//        }
-//        else{
-//            isOpen = !isOpen;
-//            bool hasSelectedOtherRow=![selectedIndex isEqual:indexPath];
-//            NSIndexPath *temp = selectedIndex;
-//            selectedIndex = nil;
-//            [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:temp] withRowAnimation:UITableViewRowAnimationAutomatic];
-//            if(hasSelectedOtherRow){
-//                selectedIndex = indexPath;
-//                [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-//            }
-//        }
-//        
-//        
-//        
-//        
-//        
-//    }
-    
-    
-//    [tableView beginUpdates];
-    
-//    if(selectedIndex == nil){
-//        isOpen = YES;
-//        selectedIndex = indexPath;
-////        [self.dataSource addObject:@"aa"];
-////        NSIndexPath *nextindex = [NSIndexPath indexPathForRow:indexPath.row+1 inSection:0];
-////        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:selectedIndex,nextindex,nil] withRowAnimation:UITableViewRowAnimationAutomatic];
-//        
-//        [self.dataSource insertObject:@"aaa" atIndex:indexPath.row];
-//        indexPath = [NSIndexPath indexPathForRow:selectedIndex.row+1 inSection:0];
-//        [tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
-//    }
-//    else{
-//        isOpen = !isOpen;
-//        bool hasSelectedOtherRow=![selectedIndex isEqual:indexPath];
-//        NSIndexPath *temp = selectedIndex;
-//        selectedIndex = nil;
-//        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:temp] withRowAnimation:UITableViewRowAnimationAutomatic];
-//        if(hasSelectedOtherRow){
-//            selectedIndex = indexPath;
-//            [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-//        }
-//    }
-//    [tableView endUpdates];
-    
-    
-    
-//    //将索引加到数组中
-//    NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
-//    
-//    
-//    if (selectedIndex == nil) {
-//        indexPaths = [NSArray arrayWithObjects:indexPath,selectedIndex, nil];
-//        isOpen = YES;
-//        NSIndexPath *path = [NSIndexPath indexPathForItem:(indexPath.row) inSection:0];
-//        [self.dataSource insertObject:@"aaa" atIndex:path.row-5];
-//        [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationRight];
-//    }
-//    
-//    
-//    //判断选中不同row状态时候
-//    //    if (self.selectedIndex != nil && indexPath.row != selectedIndex.row) {
-//    if (selectedIndex != nil && indexPath.row == selectedIndex.row) {
-//        //将选中的和所有索引都加进数组中
-//        //        indexPaths = [NSArray arrayWithObjects:indexPath,selectedIndex, nil];
-//        isOpen = !isOpen;
-//        
-//    }else if (selectedIndex != nil && indexPath.row != selectedIndex.row) {
-//        indexPaths = [NSArray arrayWithObjects:indexPath,selectedIndex, nil];
-//        isOpen = YES;
-//        NSIndexPath *path = [NSIndexPath indexPathForItem:(indexPath.row+1) inSection:0];
-//        [self.dataSource insertObject:@"aaa" atIndex:path.row];
-//        [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationRight];
-//    }
-//    
-//    //记下选中的索引
-//    selectedIndex = indexPath;
-//    
-//    
-//    //刷新
-////    [tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
-//    NSLog(@"%@",indexPaths);
+    [tableView beginUpdates];
+    if (indexPath.row > 4) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        if(selectedIndex == nil){
+            isOpen = YES;
+            selectedIndex = indexPath;
+            
+            NSIndexPath *nextindex1 = [NSIndexPath indexPathForRow:indexPath.row+1 inSection:0];
+            NSIndexPath *nextindex2 = [NSIndexPath indexPathForRow:indexPath.row+2 inSection:0];
+            NSIndexPath *nextindex3 = [NSIndexPath indexPathForRow:indexPath.row+3 inSection:0];
+            
+            [tableView insertRowsAtIndexPaths:@[nextindex1,nextindex2,nextindex3] withRowAnimation:UITableViewRowAnimationBottom];
+            
+            ExpansionTableViewCell *cell = (ExpansionTableViewCell *)[tableView cellForRowAtIndexPath:selectedIndex];
+            [cell changeArrowWithUp:YES];
+        }
+        else{
+            if (indexPath.row == selectedIndex.row) {
+                isOpen = !isOpen;
+                selectedIndex = nil;
+                ExpansionTableViewCell *cell = (ExpansionTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+                [cell changeArrowWithUp:NO];
+                NSIndexPath *nextindex1 = [NSIndexPath indexPathForRow:indexPath.row+1 inSection:0];
+                NSIndexPath *nextindex2 = [NSIndexPath indexPathForRow:indexPath.row+2 inSection:0];
+                NSIndexPath *nextindex3 = [NSIndexPath indexPathForRow:indexPath.row+3 inSection:0];
+                [tableView deleteRowsAtIndexPaths:@[nextindex1,nextindex2,nextindex3] withRowAnimation:UITableViewRowAnimationAutomatic];
+            }else{
+                isOpen = NO;
+                ExpansionTableViewCell *cell = (ExpansionTableViewCell *)[tableView cellForRowAtIndexPath:selectedIndex];
+                [cell changeArrowWithUp:NO];
+                NSIndexPath *nextindex1 = [NSIndexPath indexPathForRow:selectedIndex.row+1 inSection:0];
+                NSIndexPath *nextindex2 = [NSIndexPath indexPathForRow:selectedIndex.row+2 inSection:0];
+                NSIndexPath *nextindex3 = [NSIndexPath indexPathForRow:selectedIndex.row+3 inSection:0];
+                [tableView deleteRowsAtIndexPaths:@[nextindex1,nextindex2,nextindex3] withRowAnimation:UITableViewRowAnimationAutomatic];
+                isOpen = YES;
+                if (indexPath.row > selectedIndex.row) {
+                    selectedIndex = [NSIndexPath indexPathForRow:indexPath.row-3 inSection:0];
+                    nextindex1 = [NSIndexPath indexPathForRow:indexPath.row+1-3 inSection:0];
+                    nextindex2 = [NSIndexPath indexPathForRow:indexPath.row+2-3 inSection:0];
+                    nextindex3 = [NSIndexPath indexPathForRow:indexPath.row+3-3 inSection:0];
+                    
+                }else{
+                    selectedIndex = indexPath;
+                    nextindex1 = [NSIndexPath indexPathForRow:selectedIndex.row+1 inSection:0];
+                    nextindex2 = [NSIndexPath indexPathForRow:selectedIndex.row+2 inSection:0];
+                    nextindex3 = [NSIndexPath indexPathForRow:selectedIndex.row+3 inSection:0];
+                }
+                [tableView insertRowsAtIndexPaths:@[nextindex1,nextindex2,nextindex3] withRowAnimation:UITableViewRowAnimationBottom];
+            }
+        }
+    }
+    [tableView endUpdates];
+    ExpansionTableViewCell *cell = (ExpansionTableViewCell *)[tableView cellForRowAtIndexPath:selectedIndex];
+    [cell changeArrowWithUp:isOpen];
 }
 
 #pragma mark - scrollView delegate

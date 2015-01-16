@@ -19,13 +19,13 @@
 
     // Configure the view for the selected state
 }
-//- (void)changeArrowWithUp:(BOOL)up
-//{
-//    if (up) {
-//        self.arrowImageView.image = [UIImage imageNamed:@"UpAccessory.png"];
-//    }else
-//    {
-//        self.arrowImageView.image = [UIImage imageNamed:@"DownAccessory.png"];
-//    }
-//}
+- (void)changeArrowWithUp:(BOOL)up
+{
+    if (up) {
+        self.arrowImageView.image = [UIImage imageNamed:@"UpAccessory.png"];
+    }else
+    {
+        self.arrowImageView.image = [UIImage imageNamed:@"DownAccessory.png"];
+    }
+}
 @end
