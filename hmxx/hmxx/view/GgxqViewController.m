@@ -22,6 +22,8 @@
     NSNumber *page;
     NSNumber *rows;
     int tntype;
+    
+    BOOL isLoading;
 }
 
 @property (nonatomic, strong) SRRefreshView         *slimeView;
@@ -242,7 +244,7 @@
     [self.view addSubview:HUD];
     HUD.delegate = self;
     
-    
+    isLoading = NO;
     
     self.mytableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -367,6 +369,7 @@
 }
 
 - (void)loadDataPingLunMore{
+    isLoading = YES;
     if ([page intValue]< [totalpage intValue]) {
         page = [NSNumber numberWithInt:[page intValue] +1];
     }
@@ -402,12 +405,15 @@
                 }
                 [self.mytableview reloadData];
             }
+            isLoading = NO;
             [HUD hide:YES];
         }else{
+            isLoading = NO;
             [HUD hide:YES];
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
+        isLoading = NO;
         [HUD hide:YES];
         
     }];
@@ -461,7 +467,9 @@
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
             if (!cell) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-                cell.textLabel.text = @"点击加载更多";
+                cell.textLabel.text = @"加载中...";
+                [cell.textLabel setFont:[UIFont systemFontOfSize:15]];
+                [cell.textLabel setTextColor:[UIColor grayColor]];
             }
             cell.textLabel.textAlignment = NSTextAlignmentCenter;
             return cell;
@@ -578,20 +586,20 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([self.dataSource count] != 1) {
-        if ([self.dataSource count] == indexPath.row) {
-            if (page == totalpage) {
-                
-            }else{
-                [HUD show:YES];
-                [self loadDataPingLunMore];
-            }
-        }else{
-            
-        }
-    }
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    if ([self.dataSource count] != 1) {
+//        if ([self.dataSource count] == indexPath.row) {
+//            if (page == totalpage) {
+//                
+//            }else{
+//                [HUD show:YES];
+//                [self loadDataPingLunMore];
+//            }
+//        }else{
+//            
+//        }
+//    }
+//    
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 //提示
@@ -612,6 +620,17 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [_slimeView scrollViewDidScroll];
+    CGFloat height = scrollView.frame.size.height;
+    CGFloat contentYOffset = scrollView.contentOffset.y;
+    CGFloat distanceFromBotton = scrollView.contentSize.height-contentYOffset;
+    if (distanceFromBotton < height+44) {
+        if ([page intValue] != [totalpage intValue] && [totalpage intValue] != 0){
+            if (!isLoading) {
+                [HUD show:YES];
+                [self loadDataPingLunMore];
+            }
+        }
+    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
@@ -623,7 +642,6 @@
 //刷新消息列表
 - (void)slimeRefreshStartRefresh:(SRRefreshView *)refreshView
 {
-    
     [self loadData];
     [_slimeView endRefresh];
 }

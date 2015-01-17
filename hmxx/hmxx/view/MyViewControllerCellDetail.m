@@ -32,6 +32,8 @@
     UIView *markView;
     UIView *scrollPanel;
     ContentCell *tapCell;
+    
+    BOOL isLoading;
 }
 
 @property (strong, nonatomic)UIButton *videoPlayButton;
@@ -44,193 +46,11 @@
 - (id)init{
     self = [super init];
     if(self){
-        //添加键盘监听器
-//        [[NSNotificationCenter defaultCenter] addObserver:self
-//                                                 selector:@selector(keyboardWillShow:)
-//                                                     name:UIKeyboardWillShowNotification
-//                                                   object:nil];
-//        
-//        [[NSNotificationCenter defaultCenter] addObserver:self
-//                                                 selector:@selector(keyboardWillHide:)
-//                                                     name:UIKeyboardWillHideNotification 
-//                                                   object:nil];		
     }
     
     return self;
 }
-//提交
-//-(void)resignTextView
-//{
-//    if (textView.text.length == 0) {
-//        return;
-//    }
-//    [HUD show:YES];
-//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-//    NSString *teacherid = [userDefaults objectForKey:@"teacherid"];
-//    
-//    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-//    [dic setValue:self.detailid forKey:@"recordId"];
-//    [dic setValue:[userDefaults objectForKey:@"userid"]  forKey:@"userId"];
-//    [dic setValue:textView.text forKey:@"commentContent"];
-//    [dic setValue:activityType forKey:@"type"];
-//    [dic setValue:teacherid forKey:@"commentAttr1"];
-//    
-//    MKNetworkOperation *op = [engine operationWithPath:@"/Comment/sava.do" params:dic httpMethod:@"POST"];
-//    [op addCompletionHandler:^(MKNetworkOperation *operation) {
-////        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
-//        NSString *result = [operation responseString];
-//        NSError *error;
-//        NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
-//        if (resultDict == nil) {
-//            NSLog(@"json parse failed \r\n");
-//        }
-//        NSNumber *success = [resultDict objectForKey:@"success"];
-//        NSString *msg = [resultDict objectForKey:@"msg"];
-//        
-//        if ([success boolValue]) {
-//            self.dataSource = [NSMutableArray arrayWithObject:[self.dataSource objectAtIndex:0]];
-//            page = [NSNumber numberWithInt:1];
-////            [self.mytableview scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
-//            [self loadDataPingLun];
-//        }else{
-//            [HUD hide:YES];
-//            [self alertMsg:msg];
-//        }
-//    }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
-//        NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-//        [HUD hide:YES];
-//        [self alertMsg:[err localizedDescription]];
-//    }];
-//    [engine enqueueOperation:op];
-//    
-//    
-//    
-//    [textView resignFirstResponder];
-//    textView.text = @"";
-//}
-////点击其他位置 隐藏键盘
-//-(void)hideKeyboard{
-//    [textView resignFirstResponder];
-//}
-//
-////显示键盘
-//-(void) keyboardWillShow:(NSNotification *)note{
-//    // get keyboard size and loctaion
-//    CGRect keyboardBounds;
-//    [[note.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] getValue: &keyboardBounds];
-//    NSNumber *duration = [note.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
-//    NSNumber *curve = [note.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey];
-//    
-//    // Need to translate the bounds to account for rotation.
-//    keyboardBounds = [self.view convertRect:keyboardBounds toView:nil];
-//    
-//    // get a rect for the textView frame
-//    CGRect containerFrame = containerView.frame;
-//    containerFrame.origin.y = self.view.bounds.size.height - (keyboardBounds.size.height + containerFrame.size.height);
-//    // animations settings
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationBeginsFromCurrentState:YES];
-//    [UIView setAnimationDuration:[duration doubleValue]];
-//    [UIView setAnimationCurve:[curve intValue]];
-//    
-//    // set views with new info
-//    containerView.frame = containerFrame;
-//    
-//    
-//    // commit animations
-//    [UIView commitAnimations];
-//}
-////隐藏键盘
-//-(void) keyboardWillHide:(NSNotification *)note{
-//    NSNumber *duration = [note.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
-//    NSNumber *curve = [note.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey];
-//    
-//    // get a rect for the textView frame
-//    CGRect containerFrame = containerView.frame;
-//    containerFrame.origin.y = self.view.bounds.size.height - containerFrame.size.height;
-//    
-//    // animations settings
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationBeginsFromCurrentState:YES];
-//    [UIView setAnimationDuration:[duration doubleValue]];
-//    [UIView setAnimationCurve:[curve intValue]];
-//    
-//    // set views with new info
-//    containerView.frame = containerFrame;
-//    
-//    // commit animations
-//    [UIView commitAnimations];
-//}
-////调整文本域高度
-//- (void)growingTextView:(HPGrowingTextView *)growingTextView willChangeHeight:(float)height
-//{
-//    float diff = (growingTextView.frame.size.height - height);
-//    
-//    CGRect r = containerView.frame;
-//    r.size.height -= diff;
-//    r.origin.y += diff;
-//    containerView.frame = r;
-//}
-////初始化文本输入框
-//-(void)initTextView{
-//    containerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 40, 320, 40)];
-//    
-//    textView = [[HPGrowingTextView alloc] initWithFrame:CGRectMake(6, 3, 240, 40)];
-//    textView.isScrollable = NO;
-//    textView.contentInset = UIEdgeInsetsMake(0, 5, 0, 5);
-//    
-//    textView.minNumberOfLines = 1;
-//    textView.maxNumberOfLines = 6;
-//    // you can also set the maximum height in points with maxHeight
-//    // textView.maxHeight = 200.0f;
-//    textView.returnKeyType = UIReturnKeyDefault; //just as an example
-//    textView.font = [UIFont systemFontOfSize:15.0f];
-//    textView.delegate = self;
-//    textView.internalTextView.scrollIndicatorInsets = UIEdgeInsetsMake(5, 0, 5, 0);
-//    textView.backgroundColor = [UIColor whiteColor];
-//    textView.placeholder = @"我也说点什么吧...";
-//    // textView.animateHeightChange = NO; //turns off animation
-//    [self.view addSubview:containerView];
-//    
-//    UIImage *rawBackground = [UIImage imageNamed:@"MessageEntryBackground.png"];
-//    UIImage *background = [rawBackground stretchableImageWithLeftCapWidth:13 topCapHeight:22];
-//    UIImageView *imageView = [[UIImageView alloc] initWithImage:background];
-//    imageView.frame = CGRectMake(0, 0, containerView.frame.size.width, containerView.frame.size.height);
-//    imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-//    
-//    textView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-//    
-//    textView.layer.borderColor = [UIColor colorWithRed:221/255.0 green:223/255.0 blue:226/255.0 alpha:1].CGColor;
-//    textView.layer.borderWidth = 1.0;
-//    // view hierachy
-//    [containerView addSubview:imageView];
-//    [containerView addSubview:textView];
-//    
-//    UIButton *doneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    doneBtn.frame = CGRectMake(containerView.frame.size.width - 69, 5, 63, 30);
-//    doneBtn.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin;
-//    [doneBtn setTitle:@"提交" forState:UIControlStateNormal];
-//    
-//    [doneBtn setTitleShadowColor:[UIColor colorWithWhite:0 alpha:0.4] forState:UIControlStateNormal];
-//    doneBtn.titleLabel.shadowOffset = CGSizeMake (0.0, -1.0);
-//    doneBtn.titleLabel.font = [UIFont boldSystemFontOfSize:18.0f];
-//    
-//    [doneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    [doneBtn addTarget:self action:@selector(resignTextView) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    [doneBtn setBackgroundColor:[UIColor colorWithRed:42/255.0 green:173/255.0 blue:128/255.0 alpha:1]];
-//    doneBtn.layer.borderColor = [UIColor colorWithRed:42/255.0 green:173/255.0 blue:128/255.0 alpha:1].CGColor;
-//    doneBtn.layer.borderWidth = 1.0;
-//    doneBtn.layer.cornerRadius = 5.0f;
-//    [containerView addSubview:doneBtn];
-//    
-//    containerView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-//    
-//    //添加手势，点击输入框其他区域隐藏键盘
-//    UITapGestureRecognizer *tapGr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
-//    tapGr.cancelsTouchesInView =NO;
-//    [self.mytableview addGestureRecognizer:tapGr];
-//}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -242,8 +62,6 @@
         [self.mytableview setFrame:CGRectMake(0, 0, self.mytableview.frame.size.width, self.mytableview.frame.size.height+64)];
     }
     
-//    [self initTextView];
-    
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     
     //添加加载等待条
@@ -251,19 +69,9 @@
     HUD.labelText = @"加载中...";
     [self.view addSubview:HUD];
     HUD.delegate = self;
-    
+    isLoading = NO;
     self.mytableview.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    [self.mytableview setSeparatorColor:[UIColor colorWithRed:42/255.0 green:173/255.0 blue:128/255.0 alpha:1]];
-//    if ([self.mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
-//        [self.mytableview setSeparatorInset:UIEdgeInsetsZero];
-//    }
-//    if ([self.mytableview respondsToSelector:@selector(setLayoutMargins:)]) {
-//        [self.mytableview setLayoutMargins:UIEdgeInsetsZero];
-//    }
-    
     [self.mytableview addSubview:self.slimeView];
-    
-    
     
     scrollPanel = [[UIView alloc] initWithFrame:self.view.bounds];
     scrollPanel.backgroundColor = [UIColor clearColor];
@@ -408,6 +216,7 @@
 }
 
 - (void)loadDataPingLunMore{
+    isLoading = YES;
     if ([page intValue]< [totalpage intValue]) {
         page = [NSNumber numberWithInt:[page intValue] +1];
     }
@@ -440,13 +249,16 @@
                 }
                 [self.mytableview reloadData];
             }
+            isLoading = NO;
             [HUD hide:YES];
         }else{
+            isLoading = NO;
             [HUD hide:YES];
             [self alertMsg:msg];
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
+        isLoading = NO;
         [HUD hide:YES];
         [self alertMsg:@"连接服务器失败"];
     }];
@@ -484,7 +296,6 @@
         cell.contentDate.text = date;
         cell.creater.text = self.creater;
         cell.content.text = content;
-//            cell.content.text = @"测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试";
         cell.content.numberOfLines = 0;
         [cell.content sizeToFit];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -510,19 +321,6 @@
                     tmpView.identifier = cell;
                 }
                 
-                
-                
-                
-//                for (int i = 0; i < 3; i ++)
-//                {
-//                    TapImageView *tmpView = [[TapImageView alloc] initWithFrame:CGRectMake(5+105*i, 10, 100, 100)];
-//                    tmpView.t_delegate = self;
-//                    tmpView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg",i+1]];
-//                    tmpView.tag = 10 + i;
-//                    [cell.contentView addSubview:tmpView];
-//                }
-                
-                
             }else if ([type isEqualToString:@"t_activity_video"]){//显示视频
                 self.videoPlayButton = [UIButton buttonWithType:UIButtonTypeCustom];
                 UIImage *backgroundImage = [UIImage imageNamed:@"chat_video_play.png"];
@@ -539,7 +337,9 @@
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
             if (!cell) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-                cell.textLabel.text = @"点击加载更多";
+                cell.textLabel.text = @"加载中...";
+                [cell.textLabel setFont:[UIFont systemFontOfSize:15]];
+                [cell.textLabel setTextColor:[UIColor grayColor]];
             }
             cell.textLabel.textAlignment = NSTextAlignmentCenter;
             return cell;
@@ -586,20 +386,13 @@
                                       range:NSMakeRange(0, [cell.commentlabel.text length])];
                 rect = [attributedStr boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin context:nil];
             }
-            
-            
-            
             CGSize labelsize = rect.size;
             labelsize.height = ceil(labelsize.height);
             labelsize.width = ceil(labelsize.width);
-            
             [cell.commentlabel setFrame:CGRectMake(cell.commentlabel.frame.origin.x, cell.commentlabel.frame.origin.y, labelsize.width, labelsize.height)];
-            
-            
             if ([Utils isBlankString:fileid]) {
                 [cell.img setImage:[UIImage imageNamed:@"chatListCellHead.png"]];
             }else{
-                //            [cell.img setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/image/show.do?id=%@",[Utils getImageHostname],fileid]] placeholderImage:[UIImage imageNamed:@"nopicture.png"]];
                 [cell.img setImageWithURL:[NSURL URLWithString:fileid] placeholderImage:[UIImage imageNamed:@"chatListCellHead.png"]];
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -618,7 +411,6 @@
         UIFont *font = [UIFont systemFontOfSize:17];
         // 該行要顯示的內容
         NSString *content = [[self.dataSource objectAtIndex:row] objectForKey:@"activityContent"];
-//            NSString *content = @"测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试";
         // 計算出顯示完內容需要的最小尺寸
         CGSize size = [content sizeWithFont:font constrainedToSize:CGSizeMake(contentWidth, 1000.0f) lineBreakMode:NSLineBreakByWordWrapping];
         size.height = size.height + 107;
@@ -651,7 +443,6 @@
             UIFont *font = [UIFont systemFontOfSize:14];
             // 該行要顯示的內容
             NSString *content = [[self.dataSource objectAtIndex:row] objectForKey:@"commentContent"];
-            //        NSString *content = @"测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测";
             // 計算出顯示完內容需要的最小尺寸
             CGSize size = [content sizeWithFont:font constrainedToSize:CGSizeMake(contentWidth, 1000.0f) lineBreakMode:NSLineBreakByWordWrapping];
             
@@ -663,30 +454,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-//    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-//        [cell setSeparatorInset:UIEdgeInsetsZero];
-//    }
-//    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-//        [cell setLayoutMargins:UIEdgeInsetsZero];
-//    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([self.dataSource count] != 1) {
-        if ([self.dataSource count] == indexPath.row) {
-            if (page == totalpage) {
-                
-            }else{
-                [HUD show:YES];
-                [self loadDataPingLunMore];
-            }
-        }else{
-            
-        }
-    }
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
 }
 
 //提示
@@ -840,6 +611,17 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [_slimeView scrollViewDidScroll];
+    CGFloat height = scrollView.frame.size.height;
+    CGFloat contentYOffset = scrollView.contentOffset.y;
+    CGFloat distanceFromBotton = scrollView.contentSize.height-contentYOffset;
+    if (distanceFromBotton < height+44) {
+        if ([page intValue] != [totalpage intValue] && [totalpage intValue] != 0){
+            if (!isLoading) {
+                [HUD show:YES];
+                [self loadDataPingLunMore];
+            }
+        }
+    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate

@@ -348,10 +348,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [tableView beginUpdates];
     if (indexPath.row > 4) {
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        
         if(selectedIndex == nil){
             isOpen = YES;
             selectedIndex = indexPath;
@@ -360,7 +359,7 @@
             NSIndexPath *nextindex2 = [NSIndexPath indexPathForRow:indexPath.row+2 inSection:0];
             NSIndexPath *nextindex3 = [NSIndexPath indexPathForRow:indexPath.row+3 inSection:0];
             
-            [tableView insertRowsAtIndexPaths:@[nextindex1,nextindex2,nextindex3] withRowAnimation:UITableViewRowAnimationBottom];
+            [tableView insertRowsAtIndexPaths:@[nextindex1,nextindex2,nextindex3] withRowAnimation:UITableViewRowAnimationFade];
             
             ExpansionTableViewCell *cell = (ExpansionTableViewCell *)[tableView cellForRowAtIndexPath:selectedIndex];
             [cell changeArrowWithUp:YES];
@@ -374,7 +373,7 @@
                 NSIndexPath *nextindex1 = [NSIndexPath indexPathForRow:indexPath.row+1 inSection:0];
                 NSIndexPath *nextindex2 = [NSIndexPath indexPathForRow:indexPath.row+2 inSection:0];
                 NSIndexPath *nextindex3 = [NSIndexPath indexPathForRow:indexPath.row+3 inSection:0];
-                [tableView deleteRowsAtIndexPaths:@[nextindex1,nextindex2,nextindex3] withRowAnimation:UITableViewRowAnimationAutomatic];
+                [tableView deleteRowsAtIndexPaths:@[nextindex1,nextindex2,nextindex3] withRowAnimation:UITableViewRowAnimationFade];
             }else{
                 isOpen = NO;
                 ExpansionTableViewCell *cell = (ExpansionTableViewCell *)[tableView cellForRowAtIndexPath:selectedIndex];
@@ -382,7 +381,7 @@
                 NSIndexPath *nextindex1 = [NSIndexPath indexPathForRow:selectedIndex.row+1 inSection:0];
                 NSIndexPath *nextindex2 = [NSIndexPath indexPathForRow:selectedIndex.row+2 inSection:0];
                 NSIndexPath *nextindex3 = [NSIndexPath indexPathForRow:selectedIndex.row+3 inSection:0];
-                [tableView deleteRowsAtIndexPaths:@[nextindex1,nextindex2,nextindex3] withRowAnimation:UITableViewRowAnimationAutomatic];
+                [tableView deleteRowsAtIndexPaths:@[nextindex1,nextindex2,nextindex3] withRowAnimation:UITableViewRowAnimationFade];
                 isOpen = YES;
                 if (indexPath.row > selectedIndex.row) {
                     selectedIndex = [NSIndexPath indexPathForRow:indexPath.row-3 inSection:0];
@@ -396,7 +395,7 @@
                     nextindex2 = [NSIndexPath indexPathForRow:selectedIndex.row+2 inSection:0];
                     nextindex3 = [NSIndexPath indexPathForRow:selectedIndex.row+3 inSection:0];
                 }
-                [tableView insertRowsAtIndexPaths:@[nextindex1,nextindex2,nextindex3] withRowAnimation:UITableViewRowAnimationBottom];
+                [tableView insertRowsAtIndexPaths:@[nextindex1,nextindex2,nextindex3] withRowAnimation:UITableViewRowAnimationFade];
             }
         }
     }

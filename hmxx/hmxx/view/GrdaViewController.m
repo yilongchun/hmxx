@@ -47,7 +47,7 @@
     
     //添加加载等待条
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    HUD.labelText = @"上传中";
+    HUD.labelText = @"上传中...";
     [self.view addSubview:HUD];
     HUD.delegate = self;
 }
@@ -57,13 +57,13 @@
     
     NSDictionary *user = [userDefaults objectForKey:@"user"];
     name = [user objectForKey:@"userName"];
-    //age = [teacher objectForKey:@"tage"];
-    //NSNumber *sexnum = [teacher objectForKey:@"tsex"];
-//    if ([sexnum intValue]== 0) {
-//        sex = @"女";
-//    }else if ([sexnum intValue]== 1){
-//        sex = @"男";
-//    }
+    age = [user objectForKey:@"age"];
+    NSNumber *sexnum = [user objectForKey:@"sex"];
+    if ([sexnum intValue]== 0) {
+        sex = @"女";
+    }else if ([sexnum intValue]== 1){
+        sex = @"男";
+    }
     
 //    NSDictionary *class= [userDefaults objectForKey:@"class"];
 //    classname = [class objectForKey:@"className"];
@@ -99,7 +99,7 @@
 #pragma mark - UITableViewDatasource Methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

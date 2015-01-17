@@ -23,7 +23,7 @@
     NSNumber *page;
     NSNumber *rows;
     
-    
+    BOOL isLoading;
     NSString *schoolid;
 }
     
@@ -65,7 +65,7 @@
     
     [mytableView addSubview:self.slimeView];
     
-
+    isLoading = NO;
     
     //添加加载等待条
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -129,7 +129,6 @@
         NSNumber *success = [resultDict objectForKey:@"success"];
         NSString *msg = [resultDict objectForKey:@"msg"];
         if ([success boolValue]) {
-            [HUD hide:YES];
             NSDictionary *data = [resultDict objectForKey:@"data"];
             if (data != nil) {
                 NSArray *arr = [data objectForKey:@"rows"];
@@ -142,10 +141,10 @@
                 }
                 [self.mytableView reloadData];
             }
+            [HUD hide:YES];
         }else{
             [HUD hide:YES];
             [self alertMsg:msg];
-            
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
@@ -156,6 +155,7 @@
 }
 
 - (void)loadMore{
+    isLoading = YES;
     if ([page intValue] < [totalpage intValue]) {
         page = [NSNumber numberWithInt:[page intValue] +1];
     }
@@ -175,7 +175,6 @@
         NSNumber *success = [resultDict objectForKey:@"success"];
         NSString *msg = [resultDict objectForKey:@"msg"];
         if ([success boolValue]) {
-            [HUD hide:YES];
             NSDictionary *data = [resultDict objectForKey:@"data"];
             if (data != nil) {
                 NSArray *arr = [data objectForKey:@"rows"];
@@ -187,14 +186,19 @@
                     totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue] + 1];
                 }
                 [self.mytableView reloadData];
+                
             }
+            isLoading = NO;
+            [HUD hide:YES];
         }else{
+            isLoading = NO;
             [HUD hide:YES];
             [self alertMsg:msg];
             
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
+        isLoading = NO;
         [HUD hide:YES];
         [self alertMsg:@"连接失败"];
     }];
@@ -242,7 +246,9 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-            cell.textLabel.text = @"点击加载更多";
+            cell.textLabel.text = @"加载中...";
+            [cell.textLabel setFont:[UIFont systemFontOfSize:15]];
+            [cell.textLabel setTextColor:[UIColor grayColor]];
         }
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
         return cell;
@@ -276,7 +282,7 @@
         }
         return cell;
     }
-    
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -298,15 +304,16 @@
 }
  
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([self.dataSource count] == indexPath.row) {
-        if (page == totalpage) {
-            
-        }else{
-            [HUD show:YES];
-            [self loadMore];
-        }
-        
-    }else{
+//    if ([self.dataSource count] == indexPath.row) {
+//        if (page == totalpage) {
+//            
+//        }else{
+//            [HUD show:YES];
+//            [self loadMore];
+//        }
+//        
+//    }else{
+    if (indexPath.row < [self.dataSource count]) {
         NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
         NSString *tnid = [info objectForKey:@"tnid"];
         GgxqViewController *ggxq = [[GgxqViewController alloc]init];
@@ -314,6 +321,7 @@
         ggxq.tnid = tnid;
         [self.navigationController pushViewController:ggxq animated:YES];
     }
+//    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -321,6 +329,17 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [_slimeView scrollViewDidScroll];
+    CGFloat height = scrollView.frame.size.height;
+    CGFloat contentYOffset = scrollView.contentOffset.y;
+    CGFloat distanceFromBotton = scrollView.contentSize.height-contentYOffset;
+    if (distanceFromBotton < height+44) {
+        if (page != totalpage){
+            if (!isLoading) {
+                [HUD show:YES];
+                [self loadMore];
+            }
+        }
+    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
@@ -332,6 +351,7 @@
 //刷新消息列表
 - (void)slimeRefreshStartRefresh:(SRRefreshView *)refreshView
 {
+    [HUD show:YES];
     [self loadData];
     [_slimeView endRefresh];
 }
