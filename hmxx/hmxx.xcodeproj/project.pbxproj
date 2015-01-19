@@ -33,6 +33,10 @@
 		E4ED5D8D1A6D420A00FFB11A /* UIView+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ED5D811A6D420A00FFB11A /* UIView+Hierarchy.m */; };
 		E4ED5D8E1A6D420A00FFB11A /* UIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ED5D831A6D420A00FFB11A /* UIView+IQKeyboardToolbar.m */; };
 		E4ED5D8F1A6D420A00FFB11A /* UIWindow+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ED5D851A6D420A00FFB11A /* UIWindow+Hierarchy.m */; };
+		E4ED5D931A6D5A0B00FFB11A /* PurchaseTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ED5D911A6D5A0B00FFB11A /* PurchaseTypeViewController.m */; };
+		E4ED5D941A6D5A0B00FFB11A /* PurchaseTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4ED5D921A6D5A0B00FFB11A /* PurchaseTypeViewController.xib */; };
+		E4ED5D981A6D654700FFB11A /* PurchaseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ED5D961A6D654700FFB11A /* PurchaseDetailViewController.m */; };
+		E4ED5D991A6D654700FFB11A /* PurchaseDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4ED5D971A6D654700FFB11A /* PurchaseDetailViewController.xib */; };
 		E4EF57661A67C4DB004B57E6 /* ExpansionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EF57641A67C4DB004B57E6 /* ExpansionTableViewCell.m */; };
 		E4EF57671A67C4DB004B57E6 /* ExpansionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EF57651A67C4DB004B57E6 /* ExpansionTableViewCell.xib */; };
 		E4EF576B1A67E10B004B57E6 /* DaishGgtzViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EF57691A67E10B004B57E6 /* DaishGgtzViewController.m */; };
@@ -273,6 +277,12 @@
 		E4ED5D831A6D420A00FFB11A /* UIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
 		E4ED5D841A6D420A00FFB11A /* UIWindow+Hierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+Hierarchy.h"; sourceTree = "<group>"; };
 		E4ED5D851A6D420A00FFB11A /* UIWindow+Hierarchy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+Hierarchy.m"; sourceTree = "<group>"; };
+		E4ED5D901A6D5A0B00FFB11A /* PurchaseTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PurchaseTypeViewController.h; path = view/PurchaseTypeViewController.h; sourceTree = "<group>"; };
+		E4ED5D911A6D5A0B00FFB11A /* PurchaseTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PurchaseTypeViewController.m; path = view/PurchaseTypeViewController.m; sourceTree = "<group>"; };
+		E4ED5D921A6D5A0B00FFB11A /* PurchaseTypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PurchaseTypeViewController.xib; path = view/PurchaseTypeViewController.xib; sourceTree = "<group>"; };
+		E4ED5D951A6D654700FFB11A /* PurchaseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PurchaseDetailViewController.h; path = view/PurchaseDetailViewController.h; sourceTree = "<group>"; };
+		E4ED5D961A6D654700FFB11A /* PurchaseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PurchaseDetailViewController.m; path = view/PurchaseDetailViewController.m; sourceTree = "<group>"; };
+		E4ED5D971A6D654700FFB11A /* PurchaseDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PurchaseDetailViewController.xib; path = view/PurchaseDetailViewController.xib; sourceTree = "<group>"; };
 		E4EF57631A67C4DB004B57E6 /* ExpansionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpansionTableViewCell.h; path = view/ExpansionTableViewCell.h; sourceTree = "<group>"; };
 		E4EF57641A67C4DB004B57E6 /* ExpansionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpansionTableViewCell.m; path = view/ExpansionTableViewCell.m; sourceTree = "<group>"; };
 		E4EF57651A67C4DB004B57E6 /* ExpansionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExpansionTableViewCell.xib; path = view/ExpansionTableViewCell.xib; sourceTree = "<group>"; };
@@ -1035,6 +1045,12 @@
 				E4ED5D6A1A6D0D7600FFB11A /* AddPuchaseViewController.h */,
 				E4ED5D6B1A6D0D7600FFB11A /* AddPuchaseViewController.m */,
 				E4ED5D6C1A6D0D7600FFB11A /* AddPuchaseViewController.xib */,
+				E4ED5D901A6D5A0B00FFB11A /* PurchaseTypeViewController.h */,
+				E4ED5D911A6D5A0B00FFB11A /* PurchaseTypeViewController.m */,
+				E4ED5D921A6D5A0B00FFB11A /* PurchaseTypeViewController.xib */,
+				E4ED5D951A6D654700FFB11A /* PurchaseDetailViewController.h */,
+				E4ED5D961A6D654700FFB11A /* PurchaseDetailViewController.m */,
+				E4ED5D971A6D654700FFB11A /* PurchaseDetailViewController.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -1173,6 +1189,7 @@
 				E4F369DD1A6415280037A533 /* YjfkViewController.xib in Resources */,
 				E4F077551A658E70004D7453 /* yuanwurizhi1@2x.png in Resources */,
 				E4F077421A658E70004D7453 /* daishenhegg2.png in Resources */,
+				E4ED5D941A6D5A0B00FFB11A /* PurchaseTypeViewController.xib in Resources */,
 				E4F21D7D1A666BF0005372EA /* ELCAlbumPickerController.xib in Resources */,
 				E4F369F91A6443930037A533 /* KcbViewController.xib in Resources */,
 				E4F369341A63E1D20037A533 /* guide_1.png in Resources */,
@@ -1241,6 +1258,7 @@
 				E4F369361A63E1D20037A533 /* guide_3.png in Resources */,
 				E4F369F41A642C4F0037A533 /* nopicture.png in Resources */,
 				E4F3698F1A6406D60037A533 /* chatListCellHead.png in Resources */,
+				E4ED5D991A6D654700FFB11A /* PurchaseDetailViewController.xib in Resources */,
 				E4F21D7E1A666BF0005372EA /* ELCAssetPicker.xib in Resources */,
 				E4F21D801A666BF0005372EA /* Overlay.png in Resources */,
 				E4F369331A63E1D20037A533 /* default4.png in Resources */,
@@ -1294,6 +1312,7 @@
 				E4F0768D1A653E47004D7453 /* GrdaViewController.m in Sources */,
 				E4F21D8D1A66768D005372EA /* MyTabbarController3.m in Sources */,
 				E4F369D81A6415280037A533 /* ShezhiViewController.m in Sources */,
+				E4ED5D981A6D654700FFB11A /* PurchaseDetailViewController.m in Sources */,
 				E4F0770A1A65685C004D7453 /* MyViewControllerCellDetail.m in Sources */,
 				E4F369C71A64088F0037A533 /* UIImageView+AFNetworking.m in Sources */,
 				E4F369741A6405F10037A533 /* MainViewController.m in Sources */,
@@ -1345,6 +1364,7 @@
 				E4F369BD1A64088F0037A533 /* AFNetworkReachabilityManager.m in Sources */,
 				E4F077001A6567A6004D7453 /* PinglunTableViewCell.m in Sources */,
 				E4F21D771A666BF0005372EA /* ELCAsset.m in Sources */,
+				E4ED5D931A6D5A0B00FFB11A /* PurchaseTypeViewController.m in Sources */,
 				E4F369DA1A6415280037A533 /* UpdatePasswordViewController.m in Sources */,
 				E4EF576B1A67E10B004B57E6 /* DaishGgtzViewController.m in Sources */,
 				E4F077101A6568BC004D7453 /* CustomMoviePlayerViewController.m in Sources */,

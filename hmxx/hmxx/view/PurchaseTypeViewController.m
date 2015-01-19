@@ -1,45 +1,43 @@
 //
-//  PurchaseViewController.m
+//  PurchaseTypeViewController.m
 //  hmxx
 //
 //  Created by yons on 15-1-19.
 //  Copyright (c) 2015年 hmzl. All rights reserved.
 //
 
-#import "PurchaseViewController.h"
+#import "PurchaseTypeViewController.h"
 #import "MKNetworkKit.h"
 #import "Utils.h"
 #import "MBProgressHUD.h"
 #import "SRRefreshView.h"
-#import "UIImageView+AFNetworking.h"
-#import "PurchaseTableViewCell.h"
-#import "AddPuchaseViewController.h"
-#import "PurchaseTypeViewController.h"
+#import "PurchaseDetailViewController.h"
 
-@interface PurchaseViewController ()<MBProgressHUDDelegate,SRRefreshDelegate>{
+@interface PurchaseTypeViewController ()<MBProgressHUDDelegate,SRRefreshDelegate>{
     MBProgressHUD *HUD;
     MKNetworkEngine *engine;
     NSNumber *totalpage;
     NSNumber *page;
     NSNumber *rows;
-    
-    BOOL isLoading;
+
     NSString *schoolid;
 }
 @property (nonatomic, strong) SRRefreshView *slimeView;
 @end
 
-@implementation PurchaseViewController
+@implementation PurchaseTypeViewController
 @synthesize mytableview;
 @synthesize dataSource;
+@synthesize purchaseDate;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = @"采买报表";
+//    self.title = @"";
 //    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
 //    self.navigationItem.backBarButtonItem = backItem;
 //    backItem.title = @"返回";
+    
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
@@ -63,23 +61,6 @@
     if ([mytableview respondsToSelector:@selector(setLayoutMargins:)]) {
         [mytableview setLayoutMargins:UIEdgeInsetsZero];
     }
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(loadData)
-                                                 name:@"reloadPurchase"
-                                               object:nil];
-    
-    
-    UIImage* image= [UIImage imageNamed:@"ic_bwgg_011.png"];
-    CGRect frame= CGRectMake(0, 0, 30, 30);
-    UIButton* someButton= [[UIButton alloc] initWithFrame:frame];
-    [someButton addTarget:self action:@selector(action1) forControlEvents:UIControlEventTouchUpInside];
-    [someButton setBackgroundImage:image forState:UIControlStateNormal];
-    [someButton setShowsTouchWhenHighlighted:NO];
-    UIBarButtonItem *buttonItem1 = [[UIBarButtonItem alloc] initWithCustomView:someButton];
-    [self.navigationItem setRightBarButtonItem:buttonItem1];
-    
-    isLoading = NO;
     
     //添加加载等待条
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -113,6 +94,7 @@
         _slimeView.slime.shadowBlur = 4;
         _slimeView.slime.shadowColor = [UIColor grayColor];
         _slimeView.backgroundColor = [UIColor whiteColor];
+        
     }
     
     return _slimeView;
@@ -128,8 +110,8 @@
     [dic setValue:schoolid forKey:@"schoolId"];
     [dic setValue:page forKey:@"page"];
     [dic setValue:rows forKey:@"rows"];
-    //    [dic setValue:classId forKey:@"classId"];
-    MKNetworkOperation *op = [engine operationWithPath:@"/purchase/purchaseList.do" params:dic httpMethod:@"GET"];
+    [dic setValue:purchaseDate forKey:@"purchaseDate"];
+    MKNetworkOperation *op = [engine operationWithPath:@"/purchase/purchasedetailList.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         NSString *result = [operation responseString];
         NSError *error;
@@ -144,12 +126,12 @@
             if (data != nil) {
                 NSArray *arr = [data objectForKey:@"rows"];
                 self.dataSource = [NSMutableArray arrayWithArray:arr];
-                NSNumber *total = [data objectForKey:@"total"];
-                if ([total intValue] % [rows intValue] == 0) {
-                    totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue]];
-                }else{
-                    totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue] + 1];
-                }
+//                NSNumber *total = [data objectForKey:@"total"];
+//                if ([total intValue] % [rows intValue] == 0) {
+//                    totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue]];
+//                }else{
+//                    totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue] + 1];
+//                }
                 [mytableview reloadData];
             }
             [HUD hide:YES];
@@ -166,55 +148,7 @@
     [engine enqueueOperation:op];
 }
 
-- (void)loadMore{
-    isLoading = YES;
-    if ([page intValue] < [totalpage intValue]) {
-        page = [NSNumber numberWithInt:[page intValue] +1];
-    }
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setValue:schoolid forKey:@"schoolId"];
-    [dic setValue:page forKey:@"page"];
-    [dic setValue:rows forKey:@"rows"];
-    
-    MKNetworkOperation *op = [engine operationWithPath:@"/purchase/purchaseList.do" params:dic httpMethod:@"GET"];
-    [op addCompletionHandler:^(MKNetworkOperation *operation) {
-        NSString *result = [operation responseString];
-        NSError *error;
-        NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
-        if (resultDict == nil) {
-            NSLog(@"json parse failed \r\n");
-        }
-        NSNumber *success = [resultDict objectForKey:@"success"];
-        NSString *msg = [resultDict objectForKey:@"msg"];
-        if ([success boolValue]) {
-            NSDictionary *data = [resultDict objectForKey:@"data"];
-            if (data != nil) {
-                NSArray *arr = [data objectForKey:@"rows"];
-                [self.dataSource addObjectsFromArray:arr];
-                NSNumber *total = [data objectForKey:@"total"];
-                if ([total intValue] % [rows intValue] == 0) {
-                    totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue]];
-                }else{
-                    totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue] + 1];
-                }
-                [mytableview reloadData];
-            }
-            isLoading = NO;
-            [HUD hide:YES];
-        }else{
-            isLoading = NO;
-            [HUD hide:YES];
-            [self alertMsg:msg];
-            
-        }
-    }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
-        NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        isLoading = NO;
-        [HUD hide:YES];
-        [self alertMsg:@"连接失败"];
-    }];
-    [engine enqueueOperation:op];
-}
+
 
 //成功
 - (void)okMsk:(NSString *)msg{
@@ -243,55 +177,25 @@
 #pragma mark - UITableViewDatasource Methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (page != totalpage && [self.dataSource count] != 0) {
-        return [[self dataSource] count] + 1;
-    }else{
-        return [[self dataSource] count];
-    }
+    return [[self dataSource] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if ([self.dataSource count] == indexPath.row) {
-        static NSString *cellIdentifier = @"morecell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-        if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-            cell.textLabel.text = @"加载中...";
-            [cell.textLabel setFont:[UIFont systemFontOfSize:15]];
-            [cell.textLabel setTextColor:[UIColor grayColor]];
-        }
-        cell.textLabel.textAlignment = NSTextAlignmentCenter;
-        return cell;
-        
-    }else{
-        static NSString *cellIdentifier = @"purchasecell";
-        PurchaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-        if (!cell) {
-            cell = [[[NSBundle mainBundle] loadNibNamed:@"PurchaseTableViewCell" owner:self options:nil] lastObject];
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        }
-        NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
-        NSString *purchaseDate = [info objectForKey:@"purchaseDate"];
-        NSString *creator = [info objectForKey:@"creator"];
-//        NSString *create_date = [info objectForKey:@"createDate"];
-        NSNumber *total_price = [info objectForKey:@"total_price"];
-        
-        cell.dateLabel.text = purchaseDate;
-        cell.createrLabel.text = [NSString stringWithFormat:@"%@",creator];
-        cell.date2Label.text = @"2015-01-18 10:15:40";
-        cell.moneyLabel.text = [NSString stringWithFormat:@"总额:￥%.2f",[total_price doubleValue]];
-        return cell;
+    static NSString *cellIdentifier = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-
+    
+    NSDictionary *info = [dataSource objectAtIndex:indexPath.row];
+    NSString *typeName = [info objectForKey:@"typeName"];
+    cell.textLabel.text = typeName;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([self.dataSource count] == indexPath.row) {
-        return 44;
-    }else{
-        return 64;
-    }
+    return 44;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -314,12 +218,11 @@
     //        }
     //
     //    }else{
-    if (indexPath.row < [self.dataSource count]) {
-        NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
-        NSString *purchaseDate = [info objectForKey:@"purchaseDate"];
-        PurchaseTypeViewController *vc = [[PurchaseTypeViewController alloc] init];
-        vc.purchaseDate = purchaseDate;
-        vc.title = purchaseDate;
+    if (indexPath.row < [dataSource count]) {
+        PurchaseDetailViewController *vc = [[PurchaseDetailViewController alloc] init];
+        NSDictionary *info = [dataSource objectAtIndex:indexPath.row];
+        vc.info = info;
+        vc.title = @"采购详情";
         [self.navigationController pushViewController:vc animated:YES];
     }
     
@@ -331,17 +234,6 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [_slimeView scrollViewDidScroll];
-    CGFloat height = scrollView.frame.size.height;
-    CGFloat contentYOffset = scrollView.contentOffset.y;
-    CGFloat distanceFromBotton = scrollView.contentSize.height-contentYOffset;
-    if (distanceFromBotton < height+44) {
-        if (page != totalpage){
-            if (!isLoading) {
-                [HUD show:YES];
-                [self loadMore];
-            }
-        }
-    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
@@ -356,11 +248,6 @@
     [HUD show:YES];
     [self loadData];
     [_slimeView endRefresh];
-}
-
--(void)action1{
-    AddPuchaseViewController *vc = [[AddPuchaseViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

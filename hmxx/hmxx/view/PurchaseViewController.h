@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PurchaseViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UITableView *mytableview;
+@interface PurchaseViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@property (nonatomic, strong) UITableView *mytableview;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @end

@@ -16,6 +16,7 @@
     MBProgressHUD *HUD;
     MKNetworkEngine *engine;
     UIPickerView *currencyPicker;
+    UIDatePicker *datePicker;
     
     NSString *schoolid;
     NSInteger selectedIndex;
@@ -31,9 +32,17 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"食品采购日报表";
     
-    self.typeBtn.layer.borderColor = [UIColor colorWithRed:194/255.0 green:194/255.0 blue:194/255.0 alpha:1].CGColor;
-    self.typeBtn.layer.borderWidth = 0.4f;
-    self.typeBtn.layer.cornerRadius = 5.0f;
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+        self.typeBtn.layer.borderColor = [UIColor colorWithRed:194/255.0 green:194/255.0 blue:194/255.0 alpha:1].CGColor;
+        self.typeBtn.layer.borderWidth = 0.4f;
+        self.typeBtn.layer.cornerRadius = 5.0f;
+        self.dateBtn.layer.borderColor = [UIColor colorWithRed:194/255.0 green:194/255.0 blue:194/255.0 alpha:1].CGColor;
+        self.dateBtn.layer.borderWidth = 0.4f;
+        self.dateBtn.layer.cornerRadius = 5.0f;
+    }else{
+        
+    }
+    
     
     //添加加载等待条
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -59,6 +68,10 @@
     currencyPicker.delegate = self;
     currencyPicker.dataSource = self;
     currencyPicker.showsSelectionIndicator = YES;
+    
+    datePicker = [ [ UIDatePicker alloc] initWithFrame:CGRectMake(0, 15, 0, 0)];
+    datePicker.datePickerMode = UIDatePickerModeDate;
+    
     [self loadData];
 }
 
@@ -119,16 +132,33 @@
 
 - (IBAction)chooseType:(id)sender {
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1){
-        [self alertWithPicer:currencyPicker];
+        [self alertWithPicer:currencyPicker title:@"请选择采购类型"];
     }else{
         UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"请选择采购类型\n\n\n\n\n\n\n\n\n\n"
                                                                  delegate:self
                                                         cancelButtonTitle:@"取消"
                                                    destructiveButtonTitle:@"确定"
                                                         otherButtonTitles:nil, nil];
+        actionSheet.tag = 1;
         [actionSheet addSubview:currencyPicker];
         [actionSheet showInView:self.view];
     }
+}
+
+- (IBAction)chooseDate:(id)sender {
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1){
+        [self alertWithPicer:datePicker title:@"请选择日期"];
+    }else{
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"请选择日期\n\n\n\n\n\n\n\n\n\n\n\n"
+                                                                 delegate:self
+                                                        cancelButtonTitle:@"取消"
+                                                   destructiveButtonTitle:@"确定"
+                                                        otherButtonTitles:nil, nil];
+        actionSheet.tag = 2;
+        [actionSheet addSubview:datePicker];
+        [actionSheet showInView:self.view];
+    }
+    
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
@@ -153,17 +183,27 @@
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
     if (buttonIndex == 0) {
-        NSDictionary *info = [dataSource objectAtIndex:selectedIndex];
-        NSString *str = [info objectForKey:@"name"];
-        [self.typeBtn setTitle:str forState:UIControlStateNormal];
+        if (actionSheet.tag == 1) {
+            NSDictionary *info = [dataSource objectAtIndex:selectedIndex];
+            NSString *str = [info objectForKey:@"name"];
+            [self.typeBtn setTitle:str forState:UIControlStateNormal];
+        }else if (actionSheet.tag == 2){
+            NSDate *date = datePicker.date;
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+            NSString *destDateString = [dateFormatter stringFromDate:date];
+            [self.dateBtn setTitle:destDateString forState:UIControlStateNormal];
+        }
+        
     }
 }
 
--(void)alertWithPicer:(UIPickerView *)picker
+-(void)alertWithPicer:(UIView *)picker title:(NSString *)title
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
-                                                                   message:@"请选择采购类型\n\n\n\n\n\n\n\n\n\n"// change UIAlertController height
+                                                                   message:[NSString stringWithFormat:@"%@\n\n\n\n\n\n\n\n\n\n",title]// change UIAlertController height
                                                             preferredStyle:UIAlertControllerStyleActionSheet];
     [alert addAction:[UIAlertAction actionWithTitle:@"确定"
                                               style:UIAlertActionStyleDestructive
@@ -188,7 +228,7 @@
 //    [self.typeBtn setTitle:str forState:UIControlStateNormal];
     
     //set the pickers selection indicator to true so that the user will now which one that they are chosing
-    [picker setShowsSelectionIndicator:YES];
+//    [picker setShowsSelectionIndicator:YES];
     
     //Add the picker to the alert controller
     [alert.view addSubview:picker];

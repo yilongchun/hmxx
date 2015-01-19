@@ -10,6 +10,8 @@
 
 @interface AddPuchaseViewController : UIViewController<UIActionSheetDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 @property (strong, nonatomic) IBOutlet UIButton *typeBtn;
+@property (weak, nonatomic) IBOutlet UIButton *dateBtn;
 - (IBAction)chooseType:(id)sender;
+- (IBAction)chooseDate:(id)sender;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @end

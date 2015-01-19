@@ -34,8 +34,8 @@
         self.navigationController.navigationBar.tintColor = [UIColor whiteColor];//设置系统返回按钮的颜色
         [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:116/255.0 green:176/255.0 blue:64/255.0 alpha:1]];//设置导航栏标题的颜色
     }else{
-        [self.loginBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [self.loginBtn setBackgroundColor:[UIColor clearColor]];
+//        [self.loginBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//        [self.loginBtn setBackgroundColor:[UIColor clearColor]];
         
     }
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, nil]];
@@ -58,7 +58,14 @@
     
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     
-    self.loginBtn.layer.cornerRadius = 5.0f;
+//    self.loginBtn.layer.cornerRadius = 5.0f;
+    self.loginImageView.layer.cornerRadius = 5.0f;
+    UITapGestureRecognizer *click;
+    click = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(login)];
+    click.numberOfTapsRequired = 1;
+    [self.loginImageView addGestureRecognizer:click];
+    
+    
     
     _mainController = [[MainViewController alloc] init];
     
@@ -75,7 +82,7 @@
     [super viewDidAppear:animated];
     if ([self.logintype isEqualToString:@"login"] && ![Utils isBlankString:self.username.text] && ![Utils isBlankString:self.password.text]) {
         self.logintype = @"";
-        [self login:nil];
+        [self login];
     }
 }
 
@@ -161,7 +168,7 @@
     [hud hide:YES afterDelay:1.5];
 }
 
-- (IBAction)login:(id)sender {
+- (void)login{
     if (self.username.text.length == 0) {
         [self alertMsg:@"请输入账号"];
         return;
