@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UpdatePasswordViewController : UIViewController<UITextFieldDelegate>
+@interface UpdatePasswordViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *oldPassword;
 @property (weak, nonatomic) IBOutlet UITextField *password1;
 @property (weak, nonatomic) IBOutlet UITextField *password2;

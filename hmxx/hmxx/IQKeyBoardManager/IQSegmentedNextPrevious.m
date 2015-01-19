@@ -44,7 +44,7 @@
 -(id)initWithTarget:(id)target previousAction:(SEL)previousAction nextAction:(SEL)nextAction
 {
     //  Creating it with two items, Previous/Next.
-    self = [super initWithItems:[NSArray arrayWithObjects:@"Previous",@"Next",nil]];
+    self = [super initWithItems:[NSArray arrayWithObjects:@"上一个",@"下一个",nil]];
     
     if (self)
     {

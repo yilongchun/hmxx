@@ -152,16 +152,16 @@
 }
 
 #pragma mark - 键盘回车
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    if (textField.tag ==0 ) {
-        [self.password1 becomeFirstResponder];
-    }else if (textField.tag == 1) {
-        [self.password2 becomeFirstResponder];
-    }else if (textField.tag == 2){
-        [self viewTapped:nil];
-    }
-    return YES;
-}
+//- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+//    if (textField.tag ==0 ) {
+//        [self.password1 becomeFirstResponder];
+//    }else if (textField.tag == 1) {
+//        [self.password2 becomeFirstResponder];
+//    }else if (textField.tag == 2){
+//        [self viewTapped:nil];
+//    }
+//    return YES;
+//}
 
 //隐藏键盘
 -(void)viewTapped:(UITapGestureRecognizer*)tapGr{

@@ -10,7 +10,6 @@
 #import "MKNetworkKit.h"
 #import "Utils.h"
 #import "MBProgressHUD.h"
-#import "IQKeyboardManager.h"
 
 
 @interface AddPuchaseViewController ()<MBProgressHUDDelegate>{
@@ -253,16 +252,4 @@
     hud.removeFromSuperViewOnHide = YES;
     [hud hide:YES afterDelay:1.5];
 }
-
-//-(void)viewWillAppear:(BOOL)animated
-//{
-//    [super viewWillAppear:animated];
-//    [[IQKeyboardManager sharedManager] setShouldToolbarUsesTextFieldTintColor:YES];
-//}
-//
-//-(void)viewWillDisappear:(BOOL)animated
-//{
-//    [super viewWillDisappear:animated];
-//    [[IQKeyboardManager sharedManager] setShouldToolbarUsesTextFieldTintColor:NO];
-//}
 @end
