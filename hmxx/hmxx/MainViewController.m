@@ -20,6 +20,7 @@
 #import "MyTabbarController2.h"
 #import "MyTabbarController3.h"
 #import "XscqtjViewController.h"
+#import "PurchaseViewController.h"
 
 @interface MainViewController ()<MBProgressHUDDelegate,UIAlertViewDelegate>{
     MKNetworkEngine *engine;
@@ -219,8 +220,6 @@
     float width = [UIScreen mainScreen].bounds.size.width;
     [mainScrollView setFrame:CGRectMake(0, 170, width, height-170)];
     
-    
-    
     int i = 0;
     for (NSString *menuStr in self.menus) {
         CGRect btnr;
@@ -264,6 +263,7 @@
         
         
         if ([menuStr isEqualToString:@"myschool"]) {
+            i++;
             UIButton *btn4 = [[UIButton alloc] init];
             [btn4 setFrame:btnr];
             [btn4 setBackgroundImage:[UIImage imageNamed:@"ic_index_003.png"] forState:UIControlStateNormal];
@@ -277,6 +277,7 @@
             [mainScrollView addSubview:btn4];
             [mainScrollView addSubview:label4];
         }else if([menuStr isEqualToString:@"schoolmanage"]){
+            i++;
             UIButton *btn2 = [[UIButton alloc] init];
             [btn2 setFrame:btnr];
             [btn2 setBackgroundImage:[UIImage imageNamed:@"ic_index_002.png"] forState:UIControlStateNormal];
@@ -290,6 +291,7 @@
             [mainScrollView addSubview:btn2];
             [mainScrollView addSubview:label2];
         }else if([menuStr isEqualToString:@"schoolcook"]){
+            i++;
             UIButton *btn1 = [[UIButton alloc] init];
             [btn1 setFrame:btnr];
             [btn1 setBackgroundImage:[UIImage imageNamed:@"ic_index_004.png"] forState:UIControlStateNormal];
@@ -303,6 +305,7 @@
             [mainScrollView addSubview:btn1];
             [mainScrollView addSubview:label1];
         }else if([menuStr isEqualToString:@"schoolaudit"]){
+            i++;
             UIButton *btn3 = [[UIButton alloc] init];
             [btn3 setFrame:btnr];
             [btn3 setBackgroundImage:[UIImage imageNamed:@"ic_index_006.png"] forState:UIControlStateNormal];
@@ -316,6 +319,7 @@
             [mainScrollView addSubview:btn3];
             [mainScrollView addSubview:label3];
         }else if([menuStr isEqualToString:@"schoolatime"]){
+            i++;
             UIButton *btn5 = [[UIButton alloc] init];
             [btn5 setFrame:btnr];
             [btn5 setBackgroundImage:[UIImage imageNamed:@"ic_index_007.png"] forState:UIControlStateNormal];
@@ -329,6 +333,7 @@
             [mainScrollView addSubview:btn5];
             [mainScrollView addSubview:label5];
         }else if([menuStr isEqualToString:@"statistical"]){
+            i++;
             UIButton *btn6 = [[UIButton alloc] init];
             [btn6 setFrame:btnr];
             [btn6 setBackgroundImage:[UIImage imageNamed:@"ic_item_chuqin.png"] forState:UIControlStateNormal];
@@ -343,22 +348,36 @@
             [mainScrollView addSubview:label6];
         }
         else if([menuStr isEqualToString:@"staff_1"]){
+//            UIButton *btn6 = [[UIButton alloc] init];
+//            [btn6 setFrame:btnr];
+//            [btn6 setBackgroundImage:[UIImage imageNamed:@"ic_index_007.png"] forState:UIControlStateNormal];
+//            [btn6 addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+//            UILabel *label6 = [[UILabel alloc] init];
+//            [label6 setFrame:CGRectMake(btn6.frame.origin.x, btn6.frame.origin.y+95, 90, 20)];
+//            label6.text = @"学校健康管理";
+//            label6.textAlignment = NSTextAlignmentCenter;
+//            [label6 setFont:[UIFont systemFontOfSize:15]];
+//            [label6 setBackgroundColor:[UIColor clearColor]];
+//            [mainScrollView addSubview:btn6];
+//            [mainScrollView addSubview:label6];
+        }else if([menuStr isEqualToString:@"schoolpurchase"]){
+            i++;
             UIButton *btn6 = [[UIButton alloc] init];
             [btn6 setFrame:btnr];
             [btn6 setBackgroundImage:[UIImage imageNamed:@"ic_index_007.png"] forState:UIControlStateNormal];
-            [btn6 addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+            [btn6 addTarget:self action:@selector(cmbb) forControlEvents:UIControlEventTouchUpInside];
             UILabel *label6 = [[UILabel alloc] init];
             [label6 setFrame:CGRectMake(btn6.frame.origin.x, btn6.frame.origin.y+95, 90, 20)];
-            label6.text = @"学校健康管理";
+            label6.text = @"采买报表";
             label6.textAlignment = NSTextAlignmentCenter;
             [label6 setFont:[UIFont systemFontOfSize:15]];
             [label6 setBackgroundColor:[UIColor clearColor]];
-            //                        [mainScrollView addSubview:btn6];
-            //                        [mainScrollView addSubview:label6];
+            [mainScrollView addSubview:btn6];
+            [mainScrollView addSubview:label6];
         }else{
             continue;
         }
-        i++;
+        
     }
     if (i > 6) {
         if (height <= 480) {
@@ -571,6 +590,13 @@
 //学生出勤统计
 -(void)xscqtj{
     XscqtjViewController *vc = [[XscqtjViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+    [self.navigationController setNavigationBarHidden:NO];
+}
+
+//采买报表
+-(void)cmbb{
+    PurchaseViewController *vc = [[PurchaseViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
     [self.navigationController setNavigationBarHidden:NO];
 }

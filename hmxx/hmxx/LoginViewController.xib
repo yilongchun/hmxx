@@ -35,19 +35,13 @@
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="4ii-4K-SoX"/>
-                    </connections>
+                    <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" minimumFontSize="17" id="G9Q-Cl-70f">
                     <rect key="frame" x="112" y="359" width="135" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="7IQ-GI-cFW"/>
-                    </connections>
                 </textField>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="LO2-zh-Aaj">
                     <rect key="frame" x="70" y="345" width="180" height="1"/>

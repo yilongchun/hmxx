@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MainViewController.h"
 
-@interface LoginViewController : UIViewController<UITextFieldDelegate,UINavigationControllerDelegate>
+@interface LoginViewController : UIViewController<UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *username;
 @property (weak, nonatomic) IBOutlet UITextField *password;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;

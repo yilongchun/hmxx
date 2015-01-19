@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "GuideViewController.h"
 #import "LoginViewController.h"
+#import "IQKeyboardManager.h"
 
 @interface AppDelegate ()
 

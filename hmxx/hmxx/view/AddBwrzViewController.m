@@ -75,24 +75,24 @@
     }
     
     //增加监听，当键盘出现或改变时收出消息
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
-    
-    //增加监听，当键退出时收出消息
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillHide:)
-                                                 name:UIKeyboardWillHideNotification
-                                               object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(keyboardWillShow:)
+//                                                 name:UIKeyboardWillShowNotification
+//                                               object:nil];
+//    
+//    //增加监听，当键退出时收出消息
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(keyboardWillHide:)
+//                                                 name:UIKeyboardWillHideNotification
+//                                               object:nil];
     
 
     self.title = @"添加校务日志";
     
     //添加手势，点击输入框其他区域隐藏键盘
-    UITapGestureRecognizer *tapGr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
-    tapGr.cancelsTouchesInView =NO;
-    [self.view addGestureRecognizer:tapGr];
+//    UITapGestureRecognizer *tapGr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
+//    tapGr.cancelsTouchesInView =NO;
+//    [self.view addGestureRecognizer:tapGr];
     
     //添加按钮
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]
@@ -117,19 +117,19 @@
 }
 
 //隐藏键盘
--(void)viewTapped:(UITapGestureRecognizer*)tapGr{
-    [self.bjsj resignFirstResponder];
-    [self.cqrs resignFirstResponder];
-    [self.bjrs2 resignFirstResponder];
-    [self.sjrs resignFirstResponder];
-    [self.cdrs resignFirstResponder];
-    if(self.view.frame.origin.y == -80){
-        [self moveView:80];
-    }
-}
+//-(void)viewTapped:(UITapGestureRecognizer*)tapGr{
+//    [self.bjsj resignFirstResponder];
+//    [self.cqrs resignFirstResponder];
+//    [self.bjrs2 resignFirstResponder];
+//    [self.sjrs resignFirstResponder];
+//    [self.cdrs resignFirstResponder];
+////    if(self.view.frame.origin.y == -80){
+////        [self moveView:80];
+////    }
+//}
 
 - (void)save{
-    [self viewTapped:nil];
+//    [self viewTapped:nil];
     
     int num1 = [self.cqrs.text intValue];
     int num2 = [self.bjrs2.text intValue];
@@ -218,57 +218,57 @@
 
 
 
-#pragma mark - 输入框代理
--(void)textFieldDidBeginEditing:(UITextField *)textField{
-    if (textField.tag != 99) {
-        if(self.view.frame.origin.y == -80){
-            [self moveView:80];
-        }
-    }
-}
-
-- (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
-    
-    if(textView.tag == 99){
-        if(self.view.frame.origin.y == 0){
-            [self moveView:-80];
-        }
-    }
-    return true;
-}
-
-//当键盘出现或改变时调用
-- (void)keyboardWillShow:(NSNotification *)aNotification
-{
-    //获取键盘的高度
-    NSDictionary *userInfo = [aNotification userInfo];
-    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
-    CGRect keyboardRect = [aValue CGRectValue];
-    int height = keyboardRect.size.height;
-    NSLog(@"%d",height);
-}
-
-//当键退出时调用
-- (void)keyboardWillHide:(NSNotification *)aNotification
-{
-    
-}
-
-//界面根据键盘的显示和隐藏上下移动
--(void)moveView:(float)move{
-    NSTimeInterval animationDuration = 1.0f;
-    CGRect frame = self.view.frame;
-    if(move == 0){
-        frame.origin.y =0;
-    }else{
-        frame.origin.y +=move;//view的X轴上移
-    }
-    [UIView beginAnimations:@"ResizeView" context:nil];
-    self.view.frame = frame;
-    [UIView setAnimationDuration:animationDuration];
-    self.view.frame = frame;
-    [UIView commitAnimations];//设置调整界面的动画效果
-}
+//#pragma mark - 输入框代理
+//-(void)textFieldDidBeginEditing:(UITextField *)textField{
+//    if (textField.tag != 99) {
+//        if(self.view.frame.origin.y == -80){
+//            [self moveView:80];
+//        }
+//    }
+//}
+//
+//- (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
+//    
+//    if(textView.tag == 99){
+//        if(self.view.frame.origin.y == 0){
+//            [self moveView:-80];
+//        }
+//    }
+//    return true;
+//}
+//
+////当键盘出现或改变时调用
+//- (void)keyboardWillShow:(NSNotification *)aNotification
+//{
+//    //获取键盘的高度
+//    NSDictionary *userInfo = [aNotification userInfo];
+//    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+//    CGRect keyboardRect = [aValue CGRectValue];
+//    int height = keyboardRect.size.height;
+//    NSLog(@"%d",height);
+//}
+//
+////当键退出时调用
+//- (void)keyboardWillHide:(NSNotification *)aNotification
+//{
+//    
+//}
+//
+////界面根据键盘的显示和隐藏上下移动
+//-(void)moveView:(float)move{
+//    NSTimeInterval animationDuration = 1.0f;
+//    CGRect frame = self.view.frame;
+//    if(move == 0){
+//        frame.origin.y =0;
+//    }else{
+//        frame.origin.y +=move;//view的X轴上移
+//    }
+//    [UIView beginAnimations:@"ResizeView" context:nil];
+//    self.view.frame = frame;
+//    [UIView setAnimationDuration:animationDuration];
+//    self.view.frame = frame;
+//    [UIView commitAnimations];//设置调整界面的动画效果
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
