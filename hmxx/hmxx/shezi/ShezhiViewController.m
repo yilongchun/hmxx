@@ -18,7 +18,7 @@
 @end
 
 @implementation ShezhiViewController
-
+@synthesize alert;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -99,12 +99,28 @@
             UpdatePasswordViewController *vc = [[UpdatePasswordViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
         }else if (indexPath.row == 2){
-            [self checkUpdateWithAPPID:@"957244616"];
+            [self checkUpdateWithAPPID:@"957244616"];//学校
         }
     }else{
-        UIActionSheet *actionsheet = [[UIActionSheet alloc] initWithTitle:@"确定要退出吗?" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"退出登录" otherButtonTitles:nil];
-        actionsheet.tag = 100;
-        [actionsheet showInView:self.view];
+        if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1){
+            alert = [UIAlertController alertControllerWithTitle:@"确定要退出吗?" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+            [alert addAction:[UIAlertAction actionWithTitle:@"确定"
+                                                      style:UIAlertActionStyleDestructive
+                                                    handler:^(UIAlertAction *action) {
+                                                        //退出登陆
+                                                        [self.navigationController setNavigationBarHidden:YES];
+                                                        [self.navigationController popToRootViewControllerAnimated:YES];
+                                                        }]];
+            [alert addAction:[UIAlertAction actionWithTitle:@"取消"
+                                                      style:UIAlertActionStyleCancel
+                                                    handler:^(UIAlertAction *action) {
+                                                    }]];
+            [self presentViewController:alert animated:YES completion:nil];
+        }else{
+            UIActionSheet *actionsheet = [[UIActionSheet alloc] initWithTitle:@"确定要退出吗?" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"退出登录" otherButtonTitles:nil];
+            actionsheet.tag = 100;
+            [actionsheet showInView:self.view];
+        }
     }
 }
 
@@ -124,19 +140,51 @@
         NSString *lastVersion = [releaseInfo objectForKey:@"version"];
         if (![lastVersion isEqualToString:currentVersion]) {
             trackViewUrl = [releaseInfo objectForKey:@"trackViewUrl"];
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"有新的版本更新，是否前往更新？" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"更新", nil];
-            alert.tag = 10000;
-            [alert show];
+            if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1){
+                alert = [UIAlertController alertControllerWithTitle:@"更新" message:@"有新的版本更新，是否前往更新？" preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:@"更新"
+                                                          style:UIAlertActionStyleDestructive
+                                                        handler:^(UIAlertAction *action) {
+                                                            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
+                                                        }]];
+                [alert addAction:[UIAlertAction actionWithTitle:@"关闭"
+                                                          style:UIAlertActionStyleCancel
+                                                        handler:^(UIAlertAction *action) {
+                                                        }]];
+                [self presentViewController:alert animated:YES completion:nil];
+            }else{
+                UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"更新" message:@"有新的版本更新，是否前往更新？" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"更新", nil];
+                alert2.tag = 10000;
+                [alert2 show];
+            }
         }
         else{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"此版本为最新版本" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-            alert.tag = 10001;
-            [alert show];
+            if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1){
+                alert = [UIAlertController alertControllerWithTitle:@"更新" message:@"此版本为最新版本" preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:@"确定"
+                                                          style:UIAlertActionStyleDestructive
+                                                        handler:^(UIAlertAction *action) {
+                                                        }]];
+                [self presentViewController:alert animated:YES completion:nil];
+            }else{
+                UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"更新" message:@"此版本为最新版本" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                alert2.tag = 10001;
+                [alert2 show];
+            }
         }
     }else{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"没有获取到版本信息" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        alert.tag = 10001;
-        [alert show];
+        if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1){
+            alert = [UIAlertController alertControllerWithTitle:@"更新" message:@"没有获取到版本信息" preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:@"确定"
+                                                      style:UIAlertActionStyleDestructive
+                                                    handler:^(UIAlertAction *action) {
+                                                    }]];
+            [self presentViewController:alert animated:YES completion:nil];
+        }else{
+            UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"更新" message:@"没有获取到版本信息" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            alert2.tag = 10001;
+            [alert2 show];
+        }
     }
 }
 
