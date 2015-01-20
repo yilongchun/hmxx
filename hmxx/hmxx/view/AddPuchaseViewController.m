@@ -73,6 +73,7 @@
     datePicker.datePickerMode = UIDatePickerModeDate;
     
     [self loadData];
+    selectedIndex = 0;
 }
 
 //加载数据
@@ -183,7 +184,6 @@
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    
     if (buttonIndex == 0) {
         if (actionSheet.tag == 1) {
             NSDictionary *info = [dataSource objectAtIndex:selectedIndex];
@@ -196,7 +196,6 @@
             NSString *destDateString = [dateFormatter stringFromDate:date];
             [self.dateBtn setTitle:destDateString forState:UIControlStateNormal];
         }
-        
     }
 }
 
@@ -222,52 +221,76 @@
     //Make a frame for the picker & then create the picker
     CGRect pickerFrame = CGRectMake(12, 15, self.view.frame.size.width-24-20, 216);
     picker.frame = pickerFrame;
-//    UIPickerView *ios8Picker = picker;
-//    NSDictionary *info = [dataSource objectAtIndex:(long)ios8Picker.tag];
-//    NSString *str = [info objectForKey:@"name"];
-//    [self.typeBtn setTitle:str forState:UIControlStateNormal];
-    
-    //set the pickers selection indicator to true so that the user will now which one that they are chosing
-//    [picker setShowsSelectionIndicator:YES];
-    
-    //Add the picker to the alert controller
+
     [alert.view addSubview:picker];
-    
-//    //make the toolbar view
-//    UIToolbar *toolView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, alert.view.frame.size.width-16, kToolBarHeight)];
-////    toolView.backgroundColor = [UIColor blackColor]; //set it's background
-//    toolView.barStyle = UIBarStyleBlackTranslucent;
-//    
-//    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 160, kToolBarHeight)];
-//    titleLabel.backgroundColor = [UIColor clearColor];
-//    titleLabel.font = [UIFont systemFontOfSize:14];
-//    titleLabel.textColor = [UIColor whiteColor];
-//    titleLabel.textAlignment = NSTextAlignmentCenter;
-//    //    titleLabel.text = title;
-//    UIBarButtonItem *bbtTitle = [[UIBarButtonItem alloc] initWithCustomView:titleLabel];
-//    UIBarButtonItem *bbtSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-//    UIBarButtonItem *bbtOK = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStyleDone target:self action:@selector(OKWithPicker)];
-//    bbtOK.width = 60.f;
-//    UIBarButtonItem *bbtCancel = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(CancleWithPicker)];
-//    bbtCancel.width = 60.f;
-//    toolView.items = [NSArray arrayWithObjects:bbtCancel,bbtSpace,bbtTitle,bbtSpace,bbtOK, nil];
-    
-//    [alert.view addSubview:toolView];
-    
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-//-(void)OKWithPicker{
-//    NSLog(@"ok");
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//}
-//-(void)CancleWithPicker{
-//    NSLog(@"cancel");
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//}
-
 -(void)save{
-    NSLog(@"save");
+    
+    if ([self.typeBtn.titleLabel.text isEqualToString:@"请选择采购类型"]) {
+        [self alertMsg:@"请选择采购类型"];
+        return;
+    }
+    if ([self.dateBtn.titleLabel.text isEqualToString:@"请选择日期"]) {
+        [self alertMsg:@"请选择日期"];
+        return;
+    }
+    if ([self.priceText.text isEqualToString:@""]) {
+        [self alertMsg:@"请填写单价"];
+        return;
+    }
+    if ([self.numText.text isEqualToString:@""]) {
+        [self alertMsg:@"请填写数量"];
+        return;
+    }
+    
+    
+    [HUD show:YES];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *userid = [userDefaults objectForKey:@"userid"];
+    NSDictionary *info = [self.dataSource objectAtIndex:selectedIndex];
+    NSString *purchase_type = [info objectForKey:@"id"];
+    
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setValue:userid forKey:@"userid"];
+    [dic setValue:schoolid forKey:@"schoolId"];
+    [dic setValue:purchase_type forKey:@"purchaseType"];
+    [dic setValue:self.dateBtn.titleLabel.text forKey:@"purchaseDate"];
+    [dic setValue:self.supplierText.text forKey:@"supplier"];
+    [dic setValue:self.supplierQuText.text forKey:@"supplierQu"];
+    [dic setValue:self.numText.text forKey:@"num"];
+    [dic setValue:self.purchaserText.text forKey:@"purchaser"];
+    [dic setValue:self.signerText.text forKey:@"signer"];
+    [dic setValue:self.priceText.text forKey:@"price"];
+    [dic setValue:self.totalPriceText.text forKey:@"totalPrice"];
+    [dic setValue:self.unitText.text forKey:@"unit"];
+    
+    MKNetworkOperation *op = [engine operationWithPath:@"/purchase/save.do" params:dic httpMethod:@"POST"];
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        NSString *result = [operation responseString];
+        NSError *error;
+        NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+        if (resultDict == nil) {
+            NSLog(@"json parse failed \r\n");
+        }
+        NSNumber *success = [resultDict objectForKey:@"success"];
+        NSString *msg = [resultDict objectForKey:@"msg"];
+        if ([success boolValue]) {
+            [HUD hide:YES];
+            [self okMsk:msg];
+            [self performSelector:@selector(backAndReload) withObject:nil afterDelay:1.5f];
+        }else{
+            [HUD hide:YES];
+            [self alertMsg:msg];
+            
+        }
+    }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
+        NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
+        [HUD hide:YES];
+        [self alertMsg:@"连接失败"];
+    }];
+    [engine enqueueOperation:op];
 }
 
 //成功
@@ -282,7 +305,6 @@
     [hud hide:YES afterDelay:1.5];
 }
 
-
 //提示
 - (void)alertMsg:(NSString *)msg{
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -292,4 +314,21 @@
     hud.removeFromSuperViewOnHide = YES;
     [hud hide:YES afterDelay:1.5];
 }
+
+-(void)backAndReload{
+    [self.navigationController popViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadPurchase" object:nil];
+}
+
+
+-(void)textFieldDidEndEditing:( UITextField *)textField{
+    if (textField.tag == 10 || textField.tag == 11) {
+        int num = [self.numText.text intValue];
+        double price = [self.priceText.text doubleValue];
+        double total = num * price;
+        self.totalPriceText.text = [NSString stringWithFormat:@"%.2f",total];
+    }
+}
+
+
 @end

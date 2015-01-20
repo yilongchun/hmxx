@@ -11,13 +11,14 @@
 @interface PurchaseDetailViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIButton *typeBtn;
-
-@property (weak, nonatomic) IBOutlet UITextField *text1;
-@property (weak, nonatomic) IBOutlet UITextField *text2;
-@property (weak, nonatomic) IBOutlet UITextField *text3;
-@property (weak, nonatomic) IBOutlet UITextField *text4;
-@property (weak, nonatomic) IBOutlet UITextField *text5;
-@property (weak, nonatomic) IBOutlet UITextField *text6;
-@property (weak, nonatomic) IBOutlet UITextField *text7;
+@property (weak, nonatomic) IBOutlet UIButton *dateBtn;
+@property (weak, nonatomic) IBOutlet UITextField *supplierText;
+@property (weak, nonatomic) IBOutlet UITextField *supplierQuText;
+@property (weak, nonatomic) IBOutlet UITextField *numText;
+@property (weak, nonatomic) IBOutlet UITextField *purchaserText;
+@property (weak, nonatomic) IBOutlet UITextField *signerText;
+@property (weak, nonatomic) IBOutlet UITextField *priceText;
+@property (weak, nonatomic) IBOutlet UITextField *unitText;
+@property (weak, nonatomic) IBOutlet UITextField *totalPriceText;
 @property (nonatomic, strong) NSDictionary *info;
 @end
