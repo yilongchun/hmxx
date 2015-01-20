@@ -40,7 +40,26 @@
         self.dateBtn.layer.borderWidth = 0.4f;
         self.dateBtn.layer.cornerRadius = 5.0f;
     }else{
-        
+        [self.label1 setFrame:CGRectMake(self.label1.frame.origin.x, self.label1.frame.origin.y-64, self.label1.frame.size.width, self.label1.frame.size.height)];
+        [self.label2 setFrame:CGRectMake(self.label2.frame.origin.x, self.label2.frame.origin.y-64, self.label2.frame.size.width, self.label2.frame.size.height)];
+        [self.label3 setFrame:CGRectMake(self.label3.frame.origin.x, self.label3.frame.origin.y-64, self.label3.frame.size.width, self.label3.frame.size.height)];
+        [self.label4 setFrame:CGRectMake(self.label4.frame.origin.x, self.label4.frame.origin.y-64, self.label4.frame.size.width, self.label4.frame.size.height)];
+        [self.label5 setFrame:CGRectMake(self.label5.frame.origin.x, self.label5.frame.origin.y-64, self.label5.frame.size.width, self.label5.frame.size.height)];
+        [self.label6 setFrame:CGRectMake(self.label6.frame.origin.x, self.label6.frame.origin.y-64, self.label6.frame.size.width, self.label6.frame.size.height)];
+        [self.label7 setFrame:CGRectMake(self.label7.frame.origin.x, self.label7.frame.origin.y-64, self.label7.frame.size.width, self.label7.frame.size.height)];
+        [self.label8 setFrame:CGRectMake(self.label8.frame.origin.x, self.label8.frame.origin.y-64, self.label8.frame.size.width, self.label8.frame.size.height)];
+        [self.label9 setFrame:CGRectMake(self.label9.frame.origin.x, self.label9.frame.origin.y-64, self.label9.frame.size.width, self.label9.frame.size.height)];
+        [self.label10 setFrame:CGRectMake(self.label10.frame.origin.x, self.label10.frame.origin.y-64, self.label10.frame.size.width, self.label10.frame.size.height)];
+        [self.typeBtn setFrame:CGRectMake(self.typeBtn.frame.origin.x, self.typeBtn.frame.origin.y-64, self.typeBtn.frame.size.width, self.typeBtn.frame.size.height)];
+        [self.dateBtn setFrame:CGRectMake(self.dateBtn.frame.origin.x, self.dateBtn.frame.origin.y-64, self.dateBtn.frame.size.width, self.dateBtn.frame.size.height)];
+        [self.supplierText setFrame:CGRectMake(self.supplierText.frame.origin.x, self.supplierText.frame.origin.y-64, self.supplierText.frame.size.width, self.supplierText.frame.size.height)];
+        [self.supplierQuText setFrame:CGRectMake(self.supplierQuText.frame.origin.x, self.supplierQuText.frame.origin.y-64, self.supplierQuText.frame.size.width, self.supplierQuText.frame.size.height)];
+        [self.purchaserText setFrame:CGRectMake(self.purchaserText.frame.origin.x, self.purchaserText.frame.origin.y-64, self.purchaserText.frame.size.width, self.purchaserText.frame.size.height)];
+        [self.signerText setFrame:CGRectMake(self.signerText.frame.origin.x, self.signerText.frame.origin.y-64, self.signerText.frame.size.width, self.signerText.frame.size.height)];
+        [self.priceText setFrame:CGRectMake(self.priceText.frame.origin.x, self.priceText.frame.origin.y-64, self.priceText.frame.size.width, self.priceText.frame.size.height)];
+        [self.numText setFrame:CGRectMake(self.numText.frame.origin.x, self.numText.frame.origin.y-64, self.numText.frame.size.width, self.numText.frame.size.height)];
+        [self.unitText setFrame:CGRectMake(self.unitText.frame.origin.x, self.unitText.frame.origin.y-64, self.unitText.frame.size.width, self.unitText.frame.size.height)];
+        [self.totalPriceText setFrame:CGRectMake(self.totalPriceText.frame.origin.x, self.totalPriceText.frame.origin.y-64, self.totalPriceText.frame.size.width, self.totalPriceText.frame.size.height)];
     }
     
     

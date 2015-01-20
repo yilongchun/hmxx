@@ -382,7 +382,12 @@
     if (i > 6) {
         if (height <= 480) {
             [mainScrollView setContentSize:CGSizeMake(width*2, height-170)];
-            spacePageControl = [[SMPageControl alloc] initWithFrame:CGRectMake(0.0, height-30, width, 10)];
+            if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+                spacePageControl = [[SMPageControl alloc] initWithFrame:CGRectMake(0.0, height-30, width, 10)];
+            }else{
+                spacePageControl = [[SMPageControl alloc] initWithFrame:CGRectMake(0.0, height-50, width, 10)];
+            }
+            
             [spacePageControl setPageIndicatorImage:[UIImage imageNamed:@"pageDot"]];
             [spacePageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot"]];
             spacePageControl.numberOfPages = 2;
