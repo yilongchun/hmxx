@@ -37,6 +37,10 @@
 		E4ED5D941A6D5A0B00FFB11A /* PurchaseTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4ED5D921A6D5A0B00FFB11A /* PurchaseTypeViewController.xib */; };
 		E4ED5D981A6D654700FFB11A /* PurchaseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ED5D961A6D654700FFB11A /* PurchaseDetailViewController.m */; };
 		E4ED5D991A6D654700FFB11A /* PurchaseDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4ED5D971A6D654700FFB11A /* PurchaseDetailViewController.xib */; };
+		E4EF0AE31A6E960300212041 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EF0AE11A6E960300212041 /* ScheduleViewController.m */; };
+		E4EF0AE41A6E960300212041 /* ScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EF0AE21A6E960300212041 /* ScheduleViewController.xib */; };
+		E4EF0AE81A6E96A100212041 /* AddScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EF0AE61A6E96A100212041 /* AddScheduleViewController.m */; };
+		E4EF0AE91A6E96A100212041 /* AddScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EF0AE71A6E96A100212041 /* AddScheduleViewController.xib */; };
 		E4EF57661A67C4DB004B57E6 /* ExpansionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EF57641A67C4DB004B57E6 /* ExpansionTableViewCell.m */; };
 		E4EF57671A67C4DB004B57E6 /* ExpansionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EF57651A67C4DB004B57E6 /* ExpansionTableViewCell.xib */; };
 		E4EF576B1A67E10B004B57E6 /* DaishGgtzViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EF57691A67E10B004B57E6 /* DaishGgtzViewController.m */; };
@@ -283,6 +287,12 @@
 		E4ED5D951A6D654700FFB11A /* PurchaseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PurchaseDetailViewController.h; path = view/PurchaseDetailViewController.h; sourceTree = "<group>"; };
 		E4ED5D961A6D654700FFB11A /* PurchaseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PurchaseDetailViewController.m; path = view/PurchaseDetailViewController.m; sourceTree = "<group>"; };
 		E4ED5D971A6D654700FFB11A /* PurchaseDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PurchaseDetailViewController.xib; path = view/PurchaseDetailViewController.xib; sourceTree = "<group>"; };
+		E4EF0AE01A6E960300212041 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleViewController.h; path = view/ScheduleViewController.h; sourceTree = "<group>"; };
+		E4EF0AE11A6E960300212041 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleViewController.m; path = view/ScheduleViewController.m; sourceTree = "<group>"; };
+		E4EF0AE21A6E960300212041 /* ScheduleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScheduleViewController.xib; path = view/ScheduleViewController.xib; sourceTree = "<group>"; };
+		E4EF0AE51A6E96A100212041 /* AddScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddScheduleViewController.h; path = view/AddScheduleViewController.h; sourceTree = "<group>"; };
+		E4EF0AE61A6E96A100212041 /* AddScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddScheduleViewController.m; path = view/AddScheduleViewController.m; sourceTree = "<group>"; };
+		E4EF0AE71A6E96A100212041 /* AddScheduleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddScheduleViewController.xib; path = view/AddScheduleViewController.xib; sourceTree = "<group>"; };
 		E4EF57631A67C4DB004B57E6 /* ExpansionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpansionTableViewCell.h; path = view/ExpansionTableViewCell.h; sourceTree = "<group>"; };
 		E4EF57641A67C4DB004B57E6 /* ExpansionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpansionTableViewCell.m; path = view/ExpansionTableViewCell.m; sourceTree = "<group>"; };
 		E4EF57651A67C4DB004B57E6 /* ExpansionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExpansionTableViewCell.xib; path = view/ExpansionTableViewCell.xib; sourceTree = "<group>"; };
@@ -1051,6 +1061,12 @@
 				E4ED5D951A6D654700FFB11A /* PurchaseDetailViewController.h */,
 				E4ED5D961A6D654700FFB11A /* PurchaseDetailViewController.m */,
 				E4ED5D971A6D654700FFB11A /* PurchaseDetailViewController.xib */,
+				E4EF0AE01A6E960300212041 /* ScheduleViewController.h */,
+				E4EF0AE11A6E960300212041 /* ScheduleViewController.m */,
+				E4EF0AE21A6E960300212041 /* ScheduleViewController.xib */,
+				E4EF0AE51A6E96A100212041 /* AddScheduleViewController.h */,
+				E4EF0AE61A6E96A100212041 /* AddScheduleViewController.m */,
+				E4EF0AE71A6E96A100212041 /* AddScheduleViewController.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -1167,6 +1183,7 @@
 				E4F369701A63ED080037A533 /* start_open.png in Resources */,
 				E43C21F11A66DEEF00E1DB45 /* UpAccessory@2x.png in Resources */,
 				E4F21DAE1A66B1BB005372EA /* XscqtjxqViewController.xib in Resources */,
+				E4EF0AE91A6E96A100212041 /* AddScheduleViewController.xib in Resources */,
 				E4F21DA41A668F7A005372EA /* BwrzViewController.xib in Resources */,
 				E4F369751A6405F10037A533 /* MainViewController.xib in Resources */,
 				E4F21D841A666C47005372EA /* smiley_add_btn_nor.png in Resources */,
@@ -1239,6 +1256,7 @@
 				E409296A1A690A7E00EBAF82 /* AddBwrzViewController.xib in Resources */,
 				E4F077541A658E70004D7453 /* yuanwurizhi1.png in Resources */,
 				E4F0774D1A658E70004D7453 /* huodongguanli1@2x.png in Resources */,
+				E4EF0AE41A6E960300212041 /* ScheduleViewController.xib in Resources */,
 				E4F077501A658E70004D7453 /* yuanqingjieshao1.png in Resources */,
 				E4F369E31A642A670037A533 /* ic_index_004.png in Resources */,
 				E4F0774C1A658E70004D7453 /* huodongguanli1.png in Resources */,
@@ -1306,6 +1324,7 @@
 				E4ED5D891A6D420A00FFB11A /* IQTextView.m in Sources */,
 				E4ED5D8E1A6D420A00FFB11A /* UIView+IQKeyboardToolbar.m in Sources */,
 				E4ED5D631A6CFFED00FFB11A /* PurchaseTableViewCell.m in Sources */,
+				E4EF0AE81A6E96A100212041 /* AddScheduleViewController.m in Sources */,
 				E4F369C61A64088F0037A533 /* UIButton+AFNetworking.m in Sources */,
 				E4F369621A63E3FE0037A533 /* MBProgressHUD.m in Sources */,
 				E4F076951A655C4A004D7453 /* YqjsViewController.m in Sources */,
@@ -1369,6 +1388,7 @@
 				E4EF576B1A67E10B004B57E6 /* DaishGgtzViewController.m in Sources */,
 				E4F077101A6568BC004D7453 /* CustomMoviePlayerViewController.m in Sources */,
 				E4F21D781A666BF0005372EA /* ELCAssetCell.m in Sources */,
+				E4EF0AE31A6E960300212041 /* ScheduleViewController.m in Sources */,
 				E4F369541A63E36C0037A533 /* NSDate+RFC1123.m in Sources */,
 				E4ED5D871A6D420A00FFB11A /* IQKeyboardManager.m in Sources */,
 				E4F369F81A6443930037A533 /* KcbViewController.m in Sources */,

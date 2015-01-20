@@ -21,6 +21,7 @@
 #import "MyTabbarController3.h"
 #import "XscqtjViewController.h"
 #import "PurchaseViewController.h"
+#import "ScheduleViewController.h"
 
 @interface MainViewController ()<MBProgressHUDDelegate,UIAlertViewDelegate>{
     MKNetworkEngine *engine;
@@ -306,7 +307,7 @@
             UIButton *btn1 = [[UIButton alloc] init];
             [btn1 setFrame:btnr];
             [btn1 setBackgroundImage:[UIImage imageNamed:@"ic_index_007.png"] forState:UIControlStateNormal];
-            [btn1 addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+            [btn1 addTarget:self action:@selector(grrz) forControlEvents:UIControlEventTouchUpInside];
             UILabel *label1 = [[UILabel alloc] init];
             if (btn1.frame.origin.x != 0) {
                 [label1 setFrame:CGRectMake(btn1.frame.origin.x, btn1.frame.origin.y+95, 90, 20)];
@@ -641,6 +642,13 @@
 //采买报表
 -(void)cmbb{
     PurchaseViewController *vc = [[PurchaseViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+    [self.navigationController setNavigationBarHidden:NO];
+}
+
+//个人日志
+-(void)grrz{
+    ScheduleViewController *vc = [[ScheduleViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
     [self.navigationController setNavigationBarHidden:NO];
 }

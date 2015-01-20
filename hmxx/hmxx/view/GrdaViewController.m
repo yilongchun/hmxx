@@ -31,6 +31,8 @@
     [self.navigationController setNavigationBarHidden:NO];
     [self setTitle:@"个人中心"];
     
+    self.view.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
+    
     UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(updateImgAction:)];
     [self.myimageview addGestureRecognizer:singleTap1];
     

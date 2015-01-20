@@ -62,7 +62,7 @@
         [self.totalPriceText setFrame:CGRectMake(self.totalPriceText.frame.origin.x, self.totalPriceText.frame.origin.y-64, self.totalPriceText.frame.size.width, self.totalPriceText.frame.size.height)];
     }
     
-    
+    self.view.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
     //添加加载等待条
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     HUD.labelText = @"加载中...";
