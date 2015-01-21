@@ -167,7 +167,31 @@
 
 - (IBAction)chooseDate:(id)sender {
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1){
-        [self alertWithPicer:datePicker title:@"请选择日期"];
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
+                                                                       message:@"请选择日期\n\n\n\n\n\n\n\n\n\n"// change UIAlertController height
+                                                                preferredStyle:UIAlertControllerStyleActionSheet];
+        [alert addAction:[UIAlertAction actionWithTitle:@"确定"
+                                                  style:UIAlertActionStyleDestructive
+                                                handler:^(UIAlertAction *action) {
+                                                    NSDate *date = datePicker.date;
+                                                    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                                                    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+                                                    NSString *destDateString = [dateFormatter stringFromDate:date];
+                                                    [self.dateBtn setTitle:destDateString forState:UIControlStateNormal];
+                                                }]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"取消"
+                                                  style:UIAlertActionStyleCancel
+                                                handler:^(UIAlertAction *action) {
+                                                    
+                                                }]];
+        
+        
+        //Make a frame for the picker & then create the picker
+        CGRect pickerFrame = CGRectMake(12, 15, self.view.frame.size.width-24-20, 216);
+        datePicker.frame = pickerFrame;
+        [alert.view addSubview:datePicker];
+        [self presentViewController:alert animated:YES completion:nil];
     }else{
         UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"请选择日期\n\n\n\n\n\n\n\n\n\n\n\n"
                                                                  delegate:self

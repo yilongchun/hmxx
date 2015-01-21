@@ -22,6 +22,7 @@
 #import "XscqtjViewController.h"
 #import "PurchaseViewController.h"
 #import "ScheduleViewController.h"
+#import "CollectionViewController.h"
 
 @interface MainViewController ()<MBProgressHUDDelegate,UIAlertViewDelegate>{
     MKNetworkEngine *engine;
@@ -387,7 +388,7 @@
             UIButton *btn6 = [[UIButton alloc] init];
             [btn6 setFrame:btnr];
             [btn6 setBackgroundImage:[UIImage imageNamed:@"ic_index_007.png"] forState:UIControlStateNormal];
-            [btn6 addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+            [btn6 addTarget:self action:@selector(aa) forControlEvents:UIControlEventTouchUpInside];
             UILabel *label6 = [[UILabel alloc] init];
             if (btn6.frame.origin.x != 0) {
                 [label6 setFrame:CGRectMake(btn6.frame.origin.x, btn6.frame.origin.y+95, 90, 20)];
@@ -649,6 +650,12 @@
 //个人日志
 -(void)grrz{
     ScheduleViewController *vc = [[ScheduleViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+    [self.navigationController setNavigationBarHidden:NO];
+}
+
+-(void)aa{
+    CollectionViewController *vc = [[CollectionViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
     [self.navigationController setNavigationBarHidden:NO];
 }

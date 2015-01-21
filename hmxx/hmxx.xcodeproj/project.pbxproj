@@ -41,6 +41,10 @@
 		E4EF0AE41A6E960300212041 /* ScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EF0AE21A6E960300212041 /* ScheduleViewController.xib */; };
 		E4EF0AE81A6E96A100212041 /* AddScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EF0AE61A6E96A100212041 /* AddScheduleViewController.m */; };
 		E4EF0AE91A6E96A100212041 /* AddScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EF0AE71A6E96A100212041 /* AddScheduleViewController.xib */; };
+		E4EF0AED1A6EA9C300212041 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EF0AEB1A6EA9C300212041 /* CollectionViewController.m */; };
+		E4EF0AEE1A6EA9C300212041 /* CollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EF0AEC1A6EA9C300212041 /* CollectionViewController.xib */; };
+		E4EF0AF71A6EAFD900212041 /* CollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EF0AF51A6EAFD900212041 /* CollectionCell.m */; };
+		E4EF0AF81A6EAFD900212041 /* CollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EF0AF61A6EAFD900212041 /* CollectionCell.xib */; };
 		E4EF57661A67C4DB004B57E6 /* ExpansionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EF57641A67C4DB004B57E6 /* ExpansionTableViewCell.m */; };
 		E4EF57671A67C4DB004B57E6 /* ExpansionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EF57651A67C4DB004B57E6 /* ExpansionTableViewCell.xib */; };
 		E4EF576B1A67E10B004B57E6 /* DaishGgtzViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EF57691A67E10B004B57E6 /* DaishGgtzViewController.m */; };
@@ -293,6 +297,12 @@
 		E4EF0AE51A6E96A100212041 /* AddScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddScheduleViewController.h; path = view/AddScheduleViewController.h; sourceTree = "<group>"; };
 		E4EF0AE61A6E96A100212041 /* AddScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddScheduleViewController.m; path = view/AddScheduleViewController.m; sourceTree = "<group>"; };
 		E4EF0AE71A6E96A100212041 /* AddScheduleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddScheduleViewController.xib; path = view/AddScheduleViewController.xib; sourceTree = "<group>"; };
+		E4EF0AEA1A6EA9C300212041 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionViewController.h; path = view/CollectionViewController.h; sourceTree = "<group>"; };
+		E4EF0AEB1A6EA9C300212041 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionViewController.m; path = view/CollectionViewController.m; sourceTree = "<group>"; };
+		E4EF0AEC1A6EA9C300212041 /* CollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CollectionViewController.xib; path = view/CollectionViewController.xib; sourceTree = "<group>"; };
+		E4EF0AF41A6EAFD900212041 /* CollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionCell.h; path = view/CollectionCell.h; sourceTree = "<group>"; };
+		E4EF0AF51A6EAFD900212041 /* CollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionCell.m; path = view/CollectionCell.m; sourceTree = "<group>"; };
+		E4EF0AF61A6EAFD900212041 /* CollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CollectionCell.xib; path = view/CollectionCell.xib; sourceTree = "<group>"; };
 		E4EF57631A67C4DB004B57E6 /* ExpansionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpansionTableViewCell.h; path = view/ExpansionTableViewCell.h; sourceTree = "<group>"; };
 		E4EF57641A67C4DB004B57E6 /* ExpansionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpansionTableViewCell.m; path = view/ExpansionTableViewCell.m; sourceTree = "<group>"; };
 		E4EF57651A67C4DB004B57E6 /* ExpansionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExpansionTableViewCell.xib; path = view/ExpansionTableViewCell.xib; sourceTree = "<group>"; };
@@ -1067,6 +1077,12 @@
 				E4EF0AE51A6E96A100212041 /* AddScheduleViewController.h */,
 				E4EF0AE61A6E96A100212041 /* AddScheduleViewController.m */,
 				E4EF0AE71A6E96A100212041 /* AddScheduleViewController.xib */,
+				E4EF0AEA1A6EA9C300212041 /* CollectionViewController.h */,
+				E4EF0AEB1A6EA9C300212041 /* CollectionViewController.m */,
+				E4EF0AEC1A6EA9C300212041 /* CollectionViewController.xib */,
+				E4EF0AF41A6EAFD900212041 /* CollectionCell.h */,
+				E4EF0AF51A6EAFD900212041 /* CollectionCell.m */,
+				E4EF0AF61A6EAFD900212041 /* CollectionCell.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -1218,10 +1234,12 @@
 				E4F077461A658E70004D7453 /* daishenhehd2.png in Resources */,
 				E4F3692A1A63E0920037A533 /* LoginViewController.xib in Resources */,
 				E4F077521A658E70004D7453 /* yuanqingjieshao2.png in Resources */,
+				E4EF0AF81A6EAFD900212041 /* CollectionCell.xib in Resources */,
 				E4F076EE1A6566EC004D7453 /* sr_refresh@2X.png in Resources */,
 				E4F076C21A655F76004D7453 /* ic_index_003.png in Resources */,
 				E4F369F01A642B4D0037A533 /* SpTableViewCell.xib in Resources */,
 				E4EF57751A68067B004B57E6 /* DaishHdxqViewController.xib in Resources */,
+				E4EF0AEE1A6EA9C300212041 /* CollectionViewController.xib in Resources */,
 				E4F077061A65681D004D7453 /* BwhdViewController.xib in Resources */,
 				E4F0774A1A658E70004D7453 /* gonggaoguanli2.png in Resources */,
 				E4F076FC1A656760004D7453 /* ContentCell.xib in Resources */,
@@ -1366,6 +1384,7 @@
 				E4F369C11A64088F0037A533 /* AFURLResponseSerialization.m in Sources */,
 				E4F369C91A64088F0037A533 /* UIRefreshControl+AFNetworking.m in Sources */,
 				E4F21DA31A668F7A005372EA /* BwrzViewController.m in Sources */,
+				E4EF0AED1A6EA9C300212041 /* CollectionViewController.m in Sources */,
 				E4F368FC1A63CEF40037A533 /* main.m in Sources */,
 				E4F21D7B1A666BF0005372EA /* ELCImagePickerController.m in Sources */,
 				E4F369C41A64088F0037A533 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -1395,6 +1414,7 @@
 				E4ED5D8A1A6D420A00FFB11A /* IQTitleBarButtonItem.m in Sources */,
 				E4F21DA81A66A2AE005372EA /* XscqtjViewController.m in Sources */,
 				E40929691A690A7E00EBAF82 /* AddBwrzViewController.m in Sources */,
+				E4EF0AF71A6EAFD900212041 /* CollectionCell.m in Sources */,
 				E4F076F01A6566EC004D7453 /* SRSlimeView.m in Sources */,
 				E4F076FB1A656760004D7453 /* ContentCell.m in Sources */,
 			);
