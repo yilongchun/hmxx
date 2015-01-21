@@ -273,14 +273,23 @@
         }
         NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
         NSString *purchaseDate = [info objectForKey:@"purchaseDate"];
+        
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSDate *date = [dateFormatter dateFromString:purchaseDate];
+        NSDateFormatter *dateFormatter2 = [[NSDateFormatter alloc] init];
+        [dateFormatter2 setDateFormat:@"yyyy年MM月dd日"];
+        NSString *date2 = [dateFormatter2 stringFromDate:date];
+        
         NSString *creator = [info objectForKey:@"creator"];
 //        NSString *create_date = [info objectForKey:@"createDate"];
         NSNumber *total_price = [info objectForKey:@"total_price"];
         
-        cell.dateLabel.text = purchaseDate;
+        cell.dateLabel.text = date2;
         cell.createrLabel.text = [NSString stringWithFormat:@"%@",creator];
-        cell.date2Label.text = @"2015-01-18 10:15:40";
-        cell.moneyLabel.text = [NSString stringWithFormat:@"总额:￥%.2f",[total_price doubleValue]];
+        
+        cell.moneyLabel.text = [NSString stringWithFormat:@"￥%.2f",[total_price doubleValue]];
         return cell;
     }
 

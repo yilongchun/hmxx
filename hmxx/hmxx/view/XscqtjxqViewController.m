@@ -106,7 +106,13 @@
     
     if (self.info != nil) {
         NSString *title = [self.info objectForKey:@"title"];
-        self.title = title;
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSDate *date = [dateFormatter dateFromString:title];
+        NSDateFormatter *dateFormatter2 = [[NSDateFormatter alloc] init];
+        [dateFormatter2 setDateFormat:@"yyyy年MM月dd日"];
+        NSString *date2 = [dateFormatter2 stringFromDate:date];
+        self.title = date2;
         schoolNum = [self.info objectForKey:@"schoolNum"];//应到人数
         attendanceNum = [self.info objectForKey:@"attendanceNum"];//出勤人数
         sickNum = [self.info objectForKey:@"sickNum"];//病假人数
@@ -274,7 +280,6 @@
                     if (!cell) {
                         cell = [[[NSBundle mainBundle] loadNibNamed:@"ExpansionTableViewCell" owner:self options:nil] lastObject];
                     }
-                    NSLog(@"%d %d",indexPath.row,selectedIndex.row);
                     NSDictionary *data;
                     if (indexPath.row - selectedIndex.row > 0) {
                        data = [self.dataSource objectAtIndex:indexPath.row-5-3];

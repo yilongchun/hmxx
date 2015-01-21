@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *priceText;
 @property (weak, nonatomic) IBOutlet UITextField *unitText;
 @property (weak, nonatomic) IBOutlet UITextField *totalPriceText;
+@property (weak, nonatomic) IBOutlet UITextView *remarkText;
 @property (nonatomic, strong) NSDictionary *info;
 @property (weak, nonatomic) IBOutlet UILabel *label1;
 @property (weak, nonatomic) IBOutlet UILabel *label2;
@@ -31,4 +32,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *label8;
 @property (weak, nonatomic) IBOutlet UILabel *label9;
 @property (weak, nonatomic) IBOutlet UILabel *label10;
+@property (weak, nonatomic) IBOutlet UILabel *label11;
 @end

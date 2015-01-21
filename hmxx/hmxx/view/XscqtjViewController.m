@@ -258,8 +258,13 @@
         
         NSDictionary *data = [self.dataSource objectAtIndex:indexPath.row];
         NSString *title = [data objectForKey:@"title"];
-        NSString *title2 = [NSString stringWithFormat:@"%@ 出勤统计数据",title];
-        cell.textLabel.text = title2;
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSDate *date = [dateFormatter dateFromString:title];
+        NSDateFormatter *dateFormatter2 = [[NSDateFormatter alloc] init];
+        [dateFormatter2 setDateFormat:@"yyyy年MM月dd日"];
+        NSString *date2 = [dateFormatter2 stringFromDate:date];
+        cell.textLabel.text = date2;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return cell;
     }

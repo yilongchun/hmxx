@@ -32,6 +32,8 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"食品采购日报表";
     
+    
+    
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
         self.typeBtn.layer.borderColor = [UIColor colorWithRed:194/255.0 green:194/255.0 blue:194/255.0 alpha:1].CGColor;
         self.typeBtn.layer.borderWidth = 0.4f;
@@ -39,6 +41,16 @@
         self.dateBtn.layer.borderColor = [UIColor colorWithRed:194/255.0 green:194/255.0 blue:194/255.0 alpha:1].CGColor;
         self.dateBtn.layer.borderWidth = 0.4f;
         self.dateBtn.layer.cornerRadius = 5.0f;
+        self.remarkText.layer.borderColor = [UIColor colorWithRed:194/255.0 green:194/255.0 blue:194/255.0 alpha:1].CGColor;
+        self.remarkText.layer.borderWidth = 0.4f;
+        self.remarkText.layer.cornerRadius = 5.0f;
+        
+        
+        if (self.remarkText.frame.size.height + self.remarkText.frame.origin.y > [UIScreen mainScreen].bounds.size.height) {
+            [self.remarkText setFrame:CGRectMake(self.remarkText.frame.origin.x, self.remarkText.frame.origin.y, [UIScreen mainScreen].bounds.size.width-self.remarkText.frame.origin.x-8, [UIScreen mainScreen].bounds.size.height - self.remarkText.frame.origin.y-8)];
+        }else{
+            [self.remarkText setFrame:CGRectMake(self.remarkText.frame.origin.x, self.remarkText.frame.origin.y, [UIScreen mainScreen].bounds.size.width-self.remarkText.frame.origin.x-8, self.remarkText.frame.size.height)];
+        }
     }else{
         [self.label1 setFrame:CGRectMake(self.label1.frame.origin.x, self.label1.frame.origin.y-64, self.label1.frame.size.width, self.label1.frame.size.height)];
         [self.label2 setFrame:CGRectMake(self.label2.frame.origin.x, self.label2.frame.origin.y-64, self.label2.frame.size.width, self.label2.frame.size.height)];
@@ -50,6 +62,7 @@
         [self.label8 setFrame:CGRectMake(self.label8.frame.origin.x, self.label8.frame.origin.y-64, self.label8.frame.size.width, self.label8.frame.size.height)];
         [self.label9 setFrame:CGRectMake(self.label9.frame.origin.x, self.label9.frame.origin.y-64, self.label9.frame.size.width, self.label9.frame.size.height)];
         [self.label10 setFrame:CGRectMake(self.label10.frame.origin.x, self.label10.frame.origin.y-64, self.label10.frame.size.width, self.label10.frame.size.height)];
+        [self.label11 setFrame:CGRectMake(self.label11.frame.origin.x, self.label11.frame.origin.y-64, self.label11.frame.size.width, self.label11.frame.size.height)];
         [self.typeBtn setFrame:CGRectMake(self.typeBtn.frame.origin.x, self.typeBtn.frame.origin.y-64, self.typeBtn.frame.size.width, self.typeBtn.frame.size.height)];
         [self.dateBtn setFrame:CGRectMake(self.dateBtn.frame.origin.x, self.dateBtn.frame.origin.y-64, self.dateBtn.frame.size.width, self.dateBtn.frame.size.height)];
         [self.supplierText setFrame:CGRectMake(self.supplierText.frame.origin.x, self.supplierText.frame.origin.y-64, self.supplierText.frame.size.width, self.supplierText.frame.size.height)];
@@ -60,7 +73,14 @@
         [self.numText setFrame:CGRectMake(self.numText.frame.origin.x, self.numText.frame.origin.y-64, self.numText.frame.size.width, self.numText.frame.size.height)];
         [self.unitText setFrame:CGRectMake(self.unitText.frame.origin.x, self.unitText.frame.origin.y-64, self.unitText.frame.size.width, self.unitText.frame.size.height)];
         [self.totalPriceText setFrame:CGRectMake(self.totalPriceText.frame.origin.x, self.totalPriceText.frame.origin.y-64, self.totalPriceText.frame.size.width, self.totalPriceText.frame.size.height)];
+        [self.remarkText setFrame:CGRectMake(self.remarkText.frame.origin.x, self.remarkText.frame.origin.y-64, [UIScreen mainScreen].bounds.size.width-self.remarkText.frame.origin.x-8, self.remarkText.frame.size.height)];
+        if (self.remarkText.frame.size.height + self.remarkText.frame.origin.y +64 > [UIScreen mainScreen].bounds.size.height) {
+            [self.remarkText setFrame:CGRectMake(self.remarkText.frame.origin.x, self.remarkText.frame.origin.y, [UIScreen mainScreen].bounds.size.width-self.remarkText.frame.origin.x-8, [UIScreen mainScreen].bounds.size.height - self.remarkText.frame.origin.y-8 - 64)];
+        }
     }
+    
+    
+    
     
     self.view.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
     //添加加载等待条
@@ -298,16 +318,17 @@
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:userid forKey:@"userid"];
     [dic setValue:schoolid forKey:@"schoolId"];
-    [dic setValue:purchase_type forKey:@"purchaseType"];
-    [dic setValue:self.dateBtn.titleLabel.text forKey:@"purchaseDate"];
-    [dic setValue:self.supplierText.text forKey:@"supplier"];
-    [dic setValue:self.supplierQuText.text forKey:@"supplierQu"];
-    [dic setValue:self.numText.text forKey:@"num"];
-    [dic setValue:self.purchaserText.text forKey:@"purchaser"];
-    [dic setValue:self.signerText.text forKey:@"signer"];
-    [dic setValue:self.priceText.text forKey:@"price"];
-    [dic setValue:self.totalPriceText.text forKey:@"totalPrice"];
-    [dic setValue:self.unitText.text forKey:@"unit"];
+    [dic setValue:purchase_type forKey:@"purchaseType"];//采购类型
+    [dic setValue:self.dateBtn.titleLabel.text forKey:@"purchaseDate"];//日期
+    [dic setValue:self.supplierText.text forKey:@"supplier"];//供货单位
+    [dic setValue:self.supplierQuText.text forKey:@"supplierQu"];//资质
+    [dic setValue:self.numText.text forKey:@"num"];//数量
+    [dic setValue:self.purchaserText.text forKey:@"purchaser"];//采购人
+    [dic setValue:self.signerText.text forKey:@"signer"];//签收人
+    [dic setValue:self.priceText.text forKey:@"price"];//单价
+    [dic setValue:self.totalPriceText.text forKey:@"totalPrice"];//总价
+    [dic setValue:self.unitText.text forKey:@"unit"];//单位
+    [dic setValue:self.remarkText.text forKey:@"remark"];//备注
     
     MKNetworkOperation *op = [engine operationWithPath:@"/purchase/save.do" params:dic httpMethod:@"POST"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
