@@ -260,10 +260,16 @@
         }
         NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
         NSString *tntitle = [info objectForKey:@"dailyTitle"];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSDate *date = [dateFormatter dateFromString:tntitle];
+        NSDateFormatter *dateFormatter2 = [[NSDateFormatter alloc] init];
+        [dateFormatter2 setDateFormat:@"yyyy年MM月dd日"];
+        NSString *date2 = [dateFormatter2 stringFromDate:date];
 //        NSString *teacherfileid = [info objectForKey:@"fileid"];
         NSString *tncreatedate = [info objectForKey:@"createDate"];
         NSString *source = [info objectForKey:@"creatorName"];
-        cell.gtitle.text = tntitle;
+        cell.gtitle.text = date2;
         cell.gdate.text = tncreatedate;
         cell.gsource.text = [NSString stringWithFormat:@"发布者:%@",source];
         return cell;
@@ -274,7 +280,7 @@
     if ([self.dataSource count] == indexPath.row) {
         return 44;
     }else{
-        return 66;
+        return 53;
     }
 }
 

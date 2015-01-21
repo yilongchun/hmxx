@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *contentTextview;
 
 
-@property (weak, nonatomic) IBOutlet UIButton *btn2;
+//@property (weak, nonatomic) IBOutlet UIButton *btn2;
 @property (weak, nonatomic) IBOutlet UILabel *title1;
 @property (weak, nonatomic) IBOutlet UILabel *title2;
 

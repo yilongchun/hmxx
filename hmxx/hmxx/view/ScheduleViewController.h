@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ScheduleViewController : UIViewController
-
+@interface ScheduleViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@property (nonatomic, strong) UITableView *mytableview;
+@property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) NSString *type;
 @end

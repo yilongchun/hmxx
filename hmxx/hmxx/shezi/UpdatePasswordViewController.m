@@ -30,7 +30,7 @@
     self.title = @"修改密码";
     //添加按钮
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]
-                                 initWithTitle:@"提交"
+                                 initWithTitle:@"保存"
                                  style:UIBarButtonItemStyleBordered
                                  target:self
                                  action:@selector(updatePassword)];
@@ -59,7 +59,7 @@
     
     //添加加载等待条
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    HUD.labelText = @"提交中";
+    HUD.labelText = @"加载中...";
     [self.view addSubview:HUD];
     HUD.delegate = self;
     

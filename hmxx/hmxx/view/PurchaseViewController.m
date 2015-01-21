@@ -299,7 +299,7 @@
     if ([self.dataSource count] == indexPath.row) {
         return 44;
     }else{
-        return 64;
+        return 53;
     }
 }
 

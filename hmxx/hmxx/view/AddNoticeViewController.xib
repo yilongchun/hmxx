@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddNoticeViewController">
             <connections>
-                <outlet property="btn2" destination="AG0-yy-dXl" id="am3-Zq-UIv"/>
                 <outlet property="contentTextview" destination="Jxa-Ut-ph9" id="rTI-xM-HbT"/>
                 <outlet property="title1" destination="y6a-5f-v5v" id="Bus-Ug-7zF"/>
                 <outlet property="title2" destination="EHK-ad-dSF" id="O4I-po-1MS"/>
@@ -47,19 +46,6 @@
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AG0-yy-dXl">
-                    <rect key="frame" x="20" y="276" width="280" height="40"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.4549019608" green="0.68627450980000004" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="发    布">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="addBtn:" destination="-1" eventType="touchUpInside" id="RT5-QO-x5U"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <point key="canvasLocation" x="305" y="259"/>

@@ -44,9 +44,9 @@
         [self.title1 setFrame:CGRectMake(self.title1.frame.origin.x, self.title1.frame.origin.y-64, self.title1.frame.size.width, self.title1.frame.size.height)];
         [self.title2 setFrame:CGRectMake(self.title2.frame.origin.x, self.title2.frame.origin.y-64, self.title2.frame.size.width, self.title2.frame.size.height)];
         
-        [self.btn2 setFrame:CGRectMake(self.btn2.frame.origin.x, self.btn2.frame.origin.y-64, self.btn2.frame.size.width, self.btn2.frame.size.height)];
-        
-        [self.btn2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//        [self.btn2 setFrame:CGRectMake(self.btn2.frame.origin.x, self.btn2.frame.origin.y-64, self.btn2.frame.size.width, self.btn2.frame.size.height)];
+//        
+//        [self.btn2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }
     
     self.contentTextview.layer.borderColor = [UIColor colorWithRed:219/255.0 green:219/255.0 blue:219/255.0 alpha:1].CGColor;
@@ -64,7 +64,7 @@
     self.view.backgroundColor = [UIColor colorWithRed:238/255.0 green:238/255.0 blue:238/255.0 alpha:1];
     
     
-    self.btn2.layer.cornerRadius = 5.0f;
+//    self.btn2.layer.cornerRadius = 5.0f;
     
     self.title = @"发布公告";
     
@@ -72,6 +72,13 @@
     UITapGestureRecognizer *tapGr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     tapGr.cancelsTouchesInView =NO;
     [self.view addGestureRecognizer:tapGr];
+    
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]
+                                 initWithTitle:@"保存"
+                                 style:UIBarButtonItemStyleBordered
+                                 target:self
+                                 action:@selector(save)];
+    self.navigationItem.rightBarButtonItem = rightBtn;
     
 }
 

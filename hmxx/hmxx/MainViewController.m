@@ -23,6 +23,7 @@
 #import "PurchaseViewController.h"
 #import "ScheduleViewController.h"
 #import "CollectionViewController.h"
+#import "MyTabbarController4.h"
 
 @interface MainViewController ()<MBProgressHUDDelegate,UIAlertViewDelegate>{
     MKNetworkEngine *engine;
@@ -649,7 +650,7 @@
 
 //个人日志
 -(void)grrz{
-    ScheduleViewController *vc = [[ScheduleViewController alloc] init];
+    MyTabbarController4 *vc = [[MyTabbarController4 alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
     [self.navigationController setNavigationBarHidden:NO];
 }

@@ -73,7 +73,7 @@
     
     //添加按钮
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]
-                                 initWithTitle:@"提交"
+                                 initWithTitle:@"保存"
                                  style:UIBarButtonItemStyleBordered
                                  target:self
                                  action:@selector(save)];

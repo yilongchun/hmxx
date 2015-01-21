@@ -253,7 +253,7 @@
         static NSString *cellIdentifier = @"cell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
         }
         
         NSDictionary *data = [self.dataSource objectAtIndex:indexPath.row];
@@ -266,6 +266,12 @@
         NSString *date2 = [dateFormatter2 stringFromDate:date];
         cell.textLabel.text = date2;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
+        NSNumber *schoolNum = [data objectForKey:@"schoolNum"];
+        NSNumber *attendanceNum = [data objectForKey:@"attendanceNum"];
+        NSString *detailTitle = [NSString stringWithFormat:@"应到:%d 出勤:%d",[schoolNum intValue],[attendanceNum intValue]];
+        cell.detailTextLabel.text = detailTitle;
+        [cell.detailTextLabel setFont:[UIFont systemFontOfSize:14]];
         return cell;
     }
     

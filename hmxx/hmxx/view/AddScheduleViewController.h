@@ -11,6 +11,8 @@
 @interface AddScheduleViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextView *mytextview;
 @property (weak, nonatomic) IBOutlet UILabel *label1;
+@property (weak, nonatomic) IBOutlet UILabel *label2;
+@property (weak, nonatomic) IBOutlet UILabel *label3;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *scheduleTypeSegmented;
 @property (weak, nonatomic) IBOutlet UITextField *titleText;
 
