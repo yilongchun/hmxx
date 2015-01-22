@@ -114,7 +114,17 @@
     rows = [NSNumber numberWithInt:10];
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setValue:userid forKey:@"userid"];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *userdata = [userDefaults objectForKey:@"user"];
+    NSNumber *roletype = [userdata objectForKey:@"roletype"];
+    if ([roletype intValue] == 2) {//学校管理员  不传userid
+        [dic setValue:@"" forKey:@"userid"];
+    }else if([roletype intValue] == 3){//非教师用户 传userid
+        [dic setValue:userid forKey:@"userid"];
+    }else{
+        [dic setValue:@"" forKey:@"userid"];
+    }
     [dic setValue:page forKey:@"page"];
     [dic setValue:rows forKey:@"rows"];
     [dic setValue:type forKey:@"dailyType"];
