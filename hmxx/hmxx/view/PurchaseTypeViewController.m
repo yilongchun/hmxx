@@ -63,6 +63,18 @@
         [mytableview setLayoutMargins:UIEdgeInsetsZero];
     }
     
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc]
+                                    initWithTitle:@"编辑"
+                                    style:UIBarButtonItemStyleBordered
+                                    target:self
+                                    action:@selector(toggleEdit:)];
+    self.navigationItem.rightBarButtonItem = editButton;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(loadData)
+                                                 name:@"reloadPurchaseType"
+                                               object:nil];
+    
     //添加加载等待条
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     HUD.labelText = @"加载中...";
@@ -185,12 +197,14 @@
     static NSString *cellIdentifier = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
     }
     
     NSDictionary *info = [dataSource objectAtIndex:indexPath.row];
     NSString *typeName = [info objectForKey:@"typeName"];
+    NSNumber *totalPrice = [info objectForKey:@"totalPrice"];
     cell.textLabel.text = typeName;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"￥%.2f",[totalPrice doubleValue]];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
@@ -229,6 +243,59 @@
     
     //    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSDictionary *info = [dataSource objectAtIndex:indexPath.row];
+        NSString *detailId = [info objectForKey:@"id"];
+        
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setValue:detailId forKey:@"id"];
+        MKNetworkOperation *op = [engine operationWithPath:@"/purchase/delect.do" params:dic httpMethod:@"GET"];
+        [op addCompletionHandler:^(MKNetworkOperation *operation) {
+            NSString *result = [operation responseString];
+            NSError *error;
+            NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+            if (resultDict == nil) {
+                NSLog(@"json parse failed \r\n");
+            }
+            NSNumber *success = [resultDict objectForKey:@"success"];
+            NSString *msg = [resultDict objectForKey:@"msg"];
+            if ([success boolValue]) {
+                [dataSource removeObjectAtIndex:indexPath.row];
+                [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadPurchase" object:nil];
+                [HUD hide:YES];
+                [self okMsk:msg];
+            }else{
+                [HUD hide:YES];
+                [self alertMsg:msg];
+                
+            }
+        }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
+            NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
+            [HUD hide:YES];
+            [self alertMsg:@"连接失败"];
+        }];
+        [engine enqueueOperation:op];
+    }
+    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+    }
+}
+
+-(IBAction)toggleEdit:(id)sender {
+    [self.mytableview setEditing:!self.mytableview.editing animated:YES];
+    if (self.mytableview.editing) {
+        self.navigationItem.rightBarButtonItem.title = @"取消";
+    }else{
+        self.navigationItem.rightBarButtonItem.title = @"编辑";
+    }
 }
 
 #pragma mark - scrollView delegate

@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PurchaseDetailViewController : UIViewController
-
+@interface PurchaseDetailViewController : UIViewController<UIActionSheetDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
+@property (nonatomic, strong) NSMutableArray *dataSource;
 @property (weak, nonatomic) IBOutlet UIButton *typeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *dateBtn;
 @property (weak, nonatomic) IBOutlet UITextField *supplierText;

@@ -32,9 +32,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"食品采购日报表";
-    
-    
-    
+
     [myscrollview setContentSize:CGSizeMake(self.view.frame.size.width, 560)];
     
     self.typeBtn.layer.borderColor = [UIColor colorWithRed:194/255.0 green:194/255.0 blue:194/255.0 alpha:1].CGColor;
