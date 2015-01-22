@@ -11,7 +11,7 @@
                 <outlet property="hasReceiptLabel" destination="Fwy-1T-TNf" id="XGf-l0-1aL"/>
                 <outlet property="myscrollview" destination="TqT-CQ-ugX" id="TE3-cB-WJ9"/>
                 <outlet property="myswitch" destination="MMI-MF-hFZ" id="DS0-o4-cnv"/>
-                <outlet property="numText" destination="bJQ-qx-bNH" id="Rbh-fi-xWz"/>
+                <outlet property="numText" destination="3JA-Yt-Lu3" id="Yrk-mt-ssU"/>
                 <outlet property="priceText" destination="bJQ-qx-bNH" id="fGX-5g-xX0"/>
                 <outlet property="purchaserText" destination="cyo-NB-fH6" id="Y9K-Lk-AlQ"/>
                 <outlet property="remarkText" destination="9aV-px-S0v" id="VJb-rL-40a"/>

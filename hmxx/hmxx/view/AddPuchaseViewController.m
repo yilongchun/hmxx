@@ -304,10 +304,10 @@
     [dic setValue:schoolid forKey:@"schoolId"];
     [dic setValue:purchase_type forKey:@"purchaseType"];//采购类型
     [dic setValue:self.dateBtn.titleLabel.text forKey:@"purchaseDate"];//日期
-    [dic setValue:self.supplierText.text forKey:@"supplier"];//供货单位
-    [dic setValue:self.supplierQuText.text forKey:@"supplierQu"];//资质
+    [dic setValue:self.supplierText.text == nil ? @"" : self.supplierText.text forKey:@"supplier"];//供货单位
+    [dic setValue:self.supplierQuText.text == nil ? @"" : self.supplierQuText.text forKey:@"supplierQu"];//资质
     [dic setValue:self.numText.text forKey:@"num"];//数量
-    [dic setValue:self.purchaserText.text forKey:@"purchaser"];//采购人
+    [dic setValue:self.purchaserText.text == nil ? @"" : self.purchaserText.text forKey:@"purchaser"];//采购人
     [dic setValue:self.signerText.text forKey:@"signer"];//签收人
     [dic setValue:self.priceText.text forKey:@"price"];//单价
     [dic setValue:self.totalPriceText.text forKey:@"totalPrice"];//总价
