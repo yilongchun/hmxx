@@ -19,6 +19,9 @@
 		E43C21F11A66DEEF00E1DB45 /* UpAccessory@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E43C21ED1A66DEEF00E1DB45 /* UpAccessory@2x.png */; };
 		E4C664B01A710436003CCC0E /* ScheduleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C664AE1A710436003CCC0E /* ScheduleDetailViewController.m */; };
 		E4C664B11A710436003CCC0E /* ScheduleDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4C664AF1A710436003CCC0E /* ScheduleDetailViewController.xib */; };
+		E4C664B71A715809003CCC0E /* grayBg.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C664B61A715809003CCC0E /* grayBg.png */; };
+		E4C664B91A715C24003CCC0E /* loginBtnBg.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C664B81A715C24003CCC0E /* loginBtnBg.png */; };
+		E4C664BB1A715D79003CCC0E /* loginBtnBg2.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C664BA1A715D79003CCC0E /* loginBtnBg2.png */; };
 		E4C7451E1A6FC76D009402ED /* DailyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C7451C1A6FC76D009402ED /* DailyTableViewCell.m */; };
 		E4C7451F1A6FC76D009402ED /* DailyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4C7451D1A6FC76D009402ED /* DailyTableViewCell.xib */; };
 		E4C745221A6FCA1B009402ED /* MyTabbarController4.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C745211A6FCA1B009402ED /* MyTabbarController4.m */; };
@@ -264,6 +267,9 @@
 		E4C664AD1A710436003CCC0E /* ScheduleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleDetailViewController.h; path = view/ScheduleDetailViewController.h; sourceTree = "<group>"; };
 		E4C664AE1A710436003CCC0E /* ScheduleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleDetailViewController.m; path = view/ScheduleDetailViewController.m; sourceTree = "<group>"; };
 		E4C664AF1A710436003CCC0E /* ScheduleDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScheduleDetailViewController.xib; path = view/ScheduleDetailViewController.xib; sourceTree = "<group>"; };
+		E4C664B61A715809003CCC0E /* grayBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grayBg.png; sourceTree = "<group>"; };
+		E4C664B81A715C24003CCC0E /* loginBtnBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginBtnBg.png; sourceTree = "<group>"; };
+		E4C664BA1A715D79003CCC0E /* loginBtnBg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginBtnBg2.png; sourceTree = "<group>"; };
 		E4C7451B1A6FC76D009402ED /* DailyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DailyTableViewCell.h; path = view/DailyTableViewCell.h; sourceTree = "<group>"; };
 		E4C7451C1A6FC76D009402ED /* DailyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DailyTableViewCell.m; path = view/DailyTableViewCell.m; sourceTree = "<group>"; };
 		E4C7451D1A6FC76D009402ED /* DailyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DailyTableViewCell.xib; path = view/DailyTableViewCell.xib; sourceTree = "<group>"; };
@@ -792,6 +798,9 @@
 		E4F3692B1A63E1D20037A533 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E4C664BA1A715D79003CCC0E /* loginBtnBg2.png */,
+				E4C664B81A715C24003CCC0E /* loginBtnBg.png */,
+				E4C664B61A715809003CCC0E /* grayBg.png */,
 				E4EF576D1A67FF29004B57E6 /* 37x-Checkmark.png */,
 				E4EF576E1A67FF29004B57E6 /* 37x-Checkmark@2x.png */,
 				E43C21EA1A66DEEF00E1DB45 /* DownAccessory.png */,
@@ -1261,9 +1270,11 @@
 				E4F077271A657E39004D7453 /* ic_item_chuqin.png in Resources */,
 				E4F077511A658E70004D7453 /* yuanqingjieshao1@2x.png in Resources */,
 				E4F077461A658E70004D7453 /* daishenhehd2.png in Resources */,
+				E4C664B71A715809003CCC0E /* grayBg.png in Resources */,
 				E4F3692A1A63E0920037A533 /* LoginViewController.xib in Resources */,
 				E4F077521A658E70004D7453 /* yuanqingjieshao2.png in Resources */,
 				E4EF0AF81A6EAFD900212041 /* CollectionCell.xib in Resources */,
+				E4C664BB1A715D79003CCC0E /* loginBtnBg2.png in Resources */,
 				E4F076EE1A6566EC004D7453 /* sr_refresh@2X.png in Resources */,
 				E4F076C21A655F76004D7453 /* ic_index_003.png in Resources */,
 				E4F369F01A642B4D0037A533 /* SpTableViewCell.xib in Resources */,
@@ -1331,6 +1342,7 @@
 				E4F21D801A666BF0005372EA /* Overlay.png in Resources */,
 				E4F369331A63E1D20037A533 /* default4.png in Resources */,
 				E4F0774E1A658E70004D7453 /* huodongguanli2.png in Resources */,
+				E4C664B91A715C24003CCC0E /* loginBtnBg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

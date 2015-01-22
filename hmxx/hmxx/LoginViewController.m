@@ -51,6 +51,9 @@
     tapGr.cancelsTouchesInView =NO;
     [self.view addGestureRecognizer:tapGr];
     
+    [self.loginBtn setBackgroundImage:[[UIImage imageNamed:@"loginBtnBg.png"]stretchableImageWithLeftCapWidth:5.0 topCapHeight:5.0] forState:UIControlStateNormal];
+    [self.loginBtn setBackgroundImage:[[UIImage imageNamed:@"loginBtnBg2.png"]stretchableImageWithLeftCapWidth:5.0 topCapHeight:5.0] forState:UIControlStateHighlighted];
+    
     //添加加载等待条
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
@@ -58,14 +61,7 @@
     
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     
-//    self.loginBtn.layer.cornerRadius = 5.0f;
-    self.loginImageView.layer.cornerRadius = 5.0f;
-    UITapGestureRecognizer *click;
-    click = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(login)];
-    click.numberOfTapsRequired = 1;
-    [self.loginImageView addGestureRecognizer:click];
-    
-    
+    self.loginBtn.layer.cornerRadius = 5.0f;
     
     _mainController = [[MainViewController alloc] init];
     
@@ -82,7 +78,7 @@
     [super viewDidAppear:animated];
     if ([self.logintype isEqualToString:@"login"] && ![Utils isBlankString:self.username.text] && ![Utils isBlankString:self.password.text]) {
         self.logintype = @"";
-        [self login];
+        [self login:nil];
     }
 }
 
@@ -168,7 +164,7 @@
     [hud hide:YES afterDelay:1.5];
 }
 
-- (void)login{
+- (IBAction)login:(id)sender{
     if (self.username.text.length == 0) {
         [self alertMsg:@"请输入账号"];
         return;
@@ -179,7 +175,7 @@
     
     
     [self viewTapped:nil];
-    HUD.labelText = @"登陆中...";
+    HUD.labelText = @"请稍后...";
     [HUD show:YES];
     
     NSString *app_Version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];

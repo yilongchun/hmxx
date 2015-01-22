@@ -274,9 +274,9 @@
         
         if ([menuStr isEqualToString:@"myschool"]) {
             i++;
-            UIButton *btn4 = [[UIButton alloc] init];
+            UIButton *btn4 = [UIButton buttonWithType:UIButtonTypeCustom];
             [btn4 setFrame:btnr];
-            [btn4 setBackgroundImage:[UIImage imageNamed:@"ic_index_003.png"] forState:UIControlStateNormal];
+            [btn4 setBackgroundImage:[UIImage imageNamed:@"ic_index_003.png"] forState:UIControlStateNormal];;
             [btn4 addTarget:self action:@selector(wdxx) forControlEvents:UIControlEventTouchUpInside];
             UILabel *label4 = [[UILabel alloc] init];
             if (btn4.frame.origin.x != 0) {

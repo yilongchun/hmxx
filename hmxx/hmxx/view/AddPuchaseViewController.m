@@ -40,6 +40,9 @@
     self.typeBtn.layer.cornerRadius = 5.0f;
     
     
+    [self.typeBtn setBackgroundImage:[[UIImage imageNamed:@"grayBg.png"]stretchableImageWithLeftCapWidth:0.0 topCapHeight:0.0] forState:UIControlStateHighlighted];
+    [self.dateBtn setBackgroundImage:[[UIImage imageNamed:@"grayBg.png"]stretchableImageWithLeftCapWidth:0.0 topCapHeight:0.0] forState:UIControlStateHighlighted];
+    
 //    CGSize imageSize = CGSizeMake(self.typeBtn.frame.size.width, self.typeBtn.frame.size.height);
 //    UIGraphicsBeginImageContextWithOptions(imageSize, 0, [UIScreen mainScreen].scale);
 //    [[UIColor colorWithRed:194/255.0 green:194/255.0 blue:194/255.0 alpha:1] set];

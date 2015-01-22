@@ -139,12 +139,12 @@
             if (data != nil) {
                 NSArray *arr = [data objectForKey:@"rows"];
                 self.dataSource = [NSMutableArray arrayWithArray:arr];
-//                NSNumber *total = [data objectForKey:@"total"];
-//                if ([total intValue] % [rows intValue] == 0) {
-//                    totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue]];
-//                }else{
-//                    totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue] + 1];
-//                }
+                NSNumber *total = [data objectForKey:@"total"];
+                if ([total intValue] % [rows intValue] == 0) {
+                    totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue]];
+                }else{
+                    totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue] + 1];
+                }
                 [mytableview reloadData];
             }
             [HUD hide:YES];
@@ -161,7 +161,51 @@
     [engine enqueueOperation:op];
 }
 
-
+- (void)loadMore{
+    if ([page intValue] < [totalpage intValue]) {
+        page = [NSNumber numberWithInt:[page intValue] +1];
+    }
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setValue:schoolid forKey:@"schoolId"];
+    [dic setValue:page forKey:@"page"];
+    [dic setValue:rows forKey:@"rows"];
+    [dic setValue:purchaseDate forKey:@"purchaseDate"];
+    MKNetworkOperation *op = [engine operationWithPath:@"/purchase/purchasedetailList.do" params:dic httpMethod:@"GET"];
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        NSString *result = [operation responseString];
+        NSError *error;
+        NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+        if (resultDict == nil) {
+            NSLog(@"json parse failed \r\n");
+        }
+        NSNumber *success = [resultDict objectForKey:@"success"];
+        NSString *msg = [resultDict objectForKey:@"msg"];
+        if ([success boolValue]) {
+            NSDictionary *data = [resultDict objectForKey:@"data"];
+            if (data != nil) {
+                NSArray *arr = [data objectForKey:@"rows"];
+                [self.dataSource addObjectsFromArray:arr];
+                NSNumber *total = [data objectForKey:@"total"];
+                if ([total intValue] % [rows intValue] == 0) {
+                    totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue]];
+                }else{
+                    totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue] + 1];
+                }
+                [mytableview reloadData];
+            }
+            [HUD hide:YES];
+        }else{
+            [HUD hide:YES];
+            [self alertMsg:msg];
+            
+        }
+    }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
+        NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
+        [HUD hide:YES];
+        [self alertMsg:@"连接失败"];
+    }];
+    [engine enqueueOperation:op];
+}
 
 //成功
 - (void)okMsk:(NSString *)msg{
@@ -190,28 +234,51 @@
 #pragma mark - UITableViewDatasource Methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[self dataSource] count];
+    if (page != totalpage && [self.dataSource count] != 0) {
+        return [[self dataSource] count] + 1;
+    }else{
+        return [[self dataSource] count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellIdentifier = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
+    if ([self.dataSource count] == indexPath.row) {
+        static NSString *cellIdentifier = @"morecell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            cell.textLabel.text = @"显示下10条";
+            [cell.textLabel setFont:[UIFont systemFontOfSize:15]];
+            [cell.textLabel setTextColor:[UIColor grayColor]];
+        }
+        cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        return cell;
+        
+    }else{
+        static NSString *cellIdentifier = @"cell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
+        }
+        
+        NSDictionary *info = [dataSource objectAtIndex:indexPath.row];
+        NSString *typeName = [info objectForKey:@"typeName"];
+        NSNumber *totalPrice = [info objectForKey:@"totalPrice"];
+        cell.textLabel.text = typeName;
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"￥%.2f",[totalPrice doubleValue]];
+        [cell.detailTextLabel setTextColor:[UIColor blackColor]];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        return cell;
     }
     
-    NSDictionary *info = [dataSource objectAtIndex:indexPath.row];
-    NSString *typeName = [info objectForKey:@"typeName"];
-    NSNumber *totalPrice = [info objectForKey:@"totalPrice"];
-    cell.textLabel.text = typeName;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"￥%.2f",[totalPrice doubleValue]];
-    [cell.detailTextLabel setTextColor:[UIColor blackColor]];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 44;
+    if ([self.dataSource count] == indexPath.row) {
+        return 55;
+    }else{
+        return 44;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -225,24 +292,23 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    //    if ([self.dataSource count] == indexPath.row) {
-    //        if (page == totalpage) {
-    //
-    //        }else{
-    //            [HUD show:YES];
-    //            [self loadMore];
-    //        }
-    //
-    //    }else{
-    if (indexPath.row < [dataSource count]) {
-        PurchaseDetailViewController *vc = [[PurchaseDetailViewController alloc] init];
-        NSDictionary *info = [dataSource objectAtIndex:indexPath.row];
-        vc.info = info;
-        vc.title = @"采购详情";
-        [self.navigationController pushViewController:vc animated:YES];
+    if ([self.dataSource count] == indexPath.row) {
+        if (page == totalpage) {
+            
+        }else{
+            [HUD show:YES];
+            [self loadMore];
+        }
+        
+    }else{
+        if (indexPath.row < [dataSource count]) {
+            PurchaseDetailViewController *vc = [[PurchaseDetailViewController alloc] init];
+            NSDictionary *info = [dataSource objectAtIndex:indexPath.row];
+            vc.info = info;
+            vc.title = @"采购详情";
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     }
-    
-    //    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

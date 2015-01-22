@@ -315,25 +315,24 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-        if ([self.dataSource count] == indexPath.row) {
-            if (page == totalpage) {
-    
-            }else{
-                [HUD show:YES];
-                [self loadMore];
-            }
-    
+    if ([self.dataSource count] == indexPath.row) {
+        if (page == totalpage) {
+            
         }else{
-    if (indexPath.row < [self.dataSource count]) {
-        NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
-        NSString *purchaseDate = [info objectForKey:@"purchaseDate"];
-        PurchaseTypeViewController *vc = [[PurchaseTypeViewController alloc] init];
-        vc.purchaseDate = purchaseDate;
-        vc.title = purchaseDate;
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    
+            [HUD show:YES];
+            [self loadMore];
         }
+        
+    }else{
+        if (indexPath.row < [self.dataSource count]) {
+            NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
+            NSString *purchaseDate = [info objectForKey:@"purchaseDate"];
+            PurchaseTypeViewController *vc = [[PurchaseTypeViewController alloc] init];
+            vc.purchaseDate = purchaseDate;
+            vc.title = purchaseDate;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
