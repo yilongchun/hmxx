@@ -9,17 +9,6 @@
             <connections>
                 <outlet property="dateBtn" destination="215-td-dqf" id="WOj-tF-Ave"/>
                 <outlet property="hasReceiptLabel" destination="Fwy-1T-TNf" id="XGf-l0-1aL"/>
-                <outlet property="label1" destination="Nv2-rq-YLd" id="ojv-rA-uRO"/>
-                <outlet property="label10" destination="WlV-Vh-kwm" id="JT1-eh-AGe"/>
-                <outlet property="label11" destination="P9M-Ze-ah6" id="F8h-Ti-x9d"/>
-                <outlet property="label2" destination="IEe-hC-iAE" id="Rio-GE-I9z"/>
-                <outlet property="label3" destination="8z7-4H-Rm1" id="TW2-uo-9Ii"/>
-                <outlet property="label4" destination="bOw-Os-4AC" id="ze9-x4-UJy"/>
-                <outlet property="label5" destination="bAY-WE-9XK" id="PAU-ym-yhD"/>
-                <outlet property="label6" destination="VAa-xW-gNO" id="ip9-jH-4Bk"/>
-                <outlet property="label7" destination="T98-sg-nRc" id="A6i-HV-LZz"/>
-                <outlet property="label8" destination="Ohk-lD-yHj" id="bmW-az-CdM"/>
-                <outlet property="label9" destination="Kyo-Sv-bhK" id="mVP-fb-E2a"/>
                 <outlet property="myscrollview" destination="TqT-CQ-ugX" id="TE3-cB-WJ9"/>
                 <outlet property="myswitch" destination="MMI-MF-hFZ" id="DS0-o4-cnv"/>
                 <outlet property="numText" destination="bJQ-qx-bNH" id="Rbh-fi-xWz"/>

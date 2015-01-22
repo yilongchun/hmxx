@@ -12,6 +12,7 @@
 #import "MBProgressHUD.h"
 #import "SRRefreshView.h"
 #import "DailyTableViewCell.h"
+#import "ScheduleDetailViewController.h"
 
 @interface ScheduleViewController ()<MBProgressHUDDelegate,SRRefreshDelegate>{
     MBProgressHUD *HUD;
@@ -43,7 +44,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(loadData)
-                                                 name:@"reloadSchedule"
+                                                 name:@"reloadDaily"
                                                object:nil];
     
     //初始化tableview
@@ -289,28 +290,24 @@
 //}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-        if ([self.dataSource count] == indexPath.row) {
-            if (page == totalpage) {
-    
-            }else{
-                [HUD show:YES];
-                [self loadMore];
-            }
-    
-//        }
-//        else{
-//    if (indexPath.row < [self.dataSource count]) {
-//        NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
-//        NSString *tnid = [info objectForKey:@"id"];
-//        NSString *source = [info objectForKey:@"teachername"];
-//        DaishHdxqViewController *ggxq = [[DaishHdxqViewController alloc]init];
-//        ggxq.title = @"活动详情";
-//        ggxq.detailid = tnid;
-//        ggxq.creater = source;
-//        [self.navigationController pushViewController:ggxq animated:YES];
-//    }
-    
+    if ([self.dataSource count] == indexPath.row) {
+        if (page == totalpage) {
+            
+        }else{
+            [HUD show:YES];
+            [self loadMore];
         }
+        
+    }else{
+        if (indexPath.row < [self.dataSource count]) {
+            NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
+            NSString *detailId = [info objectForKey:@"id"];
+            ScheduleDetailViewController *vc = [[ScheduleDetailViewController alloc] init];
+            vc.detailId = detailId;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

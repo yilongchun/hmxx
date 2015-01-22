@@ -17,6 +17,8 @@
 		E43C21EF1A66DEEF00E1DB45 /* DownAccessory@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E43C21EB1A66DEEF00E1DB45 /* DownAccessory@2x.png */; };
 		E43C21F01A66DEEF00E1DB45 /* UpAccessory.png in Resources */ = {isa = PBXBuildFile; fileRef = E43C21EC1A66DEEF00E1DB45 /* UpAccessory.png */; };
 		E43C21F11A66DEEF00E1DB45 /* UpAccessory@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E43C21ED1A66DEEF00E1DB45 /* UpAccessory@2x.png */; };
+		E4C664B01A710436003CCC0E /* ScheduleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C664AE1A710436003CCC0E /* ScheduleDetailViewController.m */; };
+		E4C664B11A710436003CCC0E /* ScheduleDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4C664AF1A710436003CCC0E /* ScheduleDetailViewController.xib */; };
 		E4C7451E1A6FC76D009402ED /* DailyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C7451C1A6FC76D009402ED /* DailyTableViewCell.m */; };
 		E4C7451F1A6FC76D009402ED /* DailyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4C7451D1A6FC76D009402ED /* DailyTableViewCell.xib */; };
 		E4C745221A6FCA1B009402ED /* MyTabbarController4.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C745211A6FCA1B009402ED /* MyTabbarController4.m */; };
@@ -259,6 +261,9 @@
 		E43C21EB1A66DEEF00E1DB45 /* DownAccessory@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DownAccessory@2x.png"; sourceTree = "<group>"; };
 		E43C21EC1A66DEEF00E1DB45 /* UpAccessory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UpAccessory.png; sourceTree = "<group>"; };
 		E43C21ED1A66DEEF00E1DB45 /* UpAccessory@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UpAccessory@2x.png"; sourceTree = "<group>"; };
+		E4C664AD1A710436003CCC0E /* ScheduleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleDetailViewController.h; path = view/ScheduleDetailViewController.h; sourceTree = "<group>"; };
+		E4C664AE1A710436003CCC0E /* ScheduleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleDetailViewController.m; path = view/ScheduleDetailViewController.m; sourceTree = "<group>"; };
+		E4C664AF1A710436003CCC0E /* ScheduleDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScheduleDetailViewController.xib; path = view/ScheduleDetailViewController.xib; sourceTree = "<group>"; };
 		E4C7451B1A6FC76D009402ED /* DailyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DailyTableViewCell.h; path = view/DailyTableViewCell.h; sourceTree = "<group>"; };
 		E4C7451C1A6FC76D009402ED /* DailyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DailyTableViewCell.m; path = view/DailyTableViewCell.m; sourceTree = "<group>"; };
 		E4C7451D1A6FC76D009402ED /* DailyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DailyTableViewCell.xib; path = view/DailyTableViewCell.xib; sourceTree = "<group>"; };
@@ -1092,6 +1097,9 @@
 				E4EF0AE01A6E960300212041 /* ScheduleViewController.h */,
 				E4EF0AE11A6E960300212041 /* ScheduleViewController.m */,
 				E4EF0AE21A6E960300212041 /* ScheduleViewController.xib */,
+				E4C664AD1A710436003CCC0E /* ScheduleDetailViewController.h */,
+				E4C664AE1A710436003CCC0E /* ScheduleDetailViewController.m */,
+				E4C664AF1A710436003CCC0E /* ScheduleDetailViewController.xib */,
 				E4EF0AE51A6E96A100212041 /* AddScheduleViewController.h */,
 				E4EF0AE61A6E96A100212041 /* AddScheduleViewController.m */,
 				E4EF0AE71A6E96A100212041 /* AddScheduleViewController.xib */,
@@ -1275,6 +1283,7 @@
 				E4F369FC1A6444EA0037A533 /* ic_kcb_bg.png in Resources */,
 				E4F21D5D1A666BB4005372EA /* AddActivityViewController.xib in Resources */,
 				E4F369FD1A6444EA0037A533 /* ic_kcb_bg2.png in Resources */,
+				E4C664B11A710436003CCC0E /* ScheduleDetailViewController.xib in Resources */,
 				E4EF576C1A67E10B004B57E6 /* DaishGgtzViewController.xib in Resources */,
 				E4ED5D691A6D016B00FFB11A /* PurchaseViewController.xib in Resources */,
 				E4C745271A6FEE5D009402ED /* MoreTableViewCell.xib in Resources */,
@@ -1378,6 +1387,7 @@
 				E4F369741A6405F10037A533 /* MainViewController.m in Sources */,
 				E4F369C81A64088F0037A533 /* UIProgressView+AFNetworking.m in Sources */,
 				E4F21D7A1A666BF0005372EA /* ELCConsole.m in Sources */,
+				E4C664B01A710436003CCC0E /* ScheduleDetailViewController.m in Sources */,
 				E4C7451E1A6FC76D009402ED /* DailyTableViewCell.m in Sources */,
 				E4ED5D681A6D016B00FFB11A /* PurchaseViewController.m in Sources */,
 				E4F369611A63E3FE0037A533 /* MBProgressHUD+Add.m in Sources */,

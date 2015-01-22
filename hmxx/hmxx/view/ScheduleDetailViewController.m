@@ -1,30 +1,38 @@
 //
-//  AddScheduleViewController.m
+//  ScheduleDetailViewController.m
 //  hmxx
 //
-//  Created by yons on 15-1-20.
+//  Created by yons on 15-1-22.
 //  Copyright (c) 2015年 hmzl. All rights reserved.
 //
 
-#import "AddScheduleViewController.h"
+#import "ScheduleDetailViewController.h"
 #import "Utils.h"
 #import "MKNetworkKit.h"
 #import "MBProgressHUD.h"
 
-@interface AddScheduleViewController ()<MBProgressHUDDelegate>{
+@interface ScheduleDetailViewController ()<MBProgressHUDDelegate>{
     MKNetworkEngine *engine;
     MBProgressHUD *HUD;
 }
 
 @end
 
-@implementation AddScheduleViewController
+@implementation ScheduleDetailViewController
+@synthesize detailId;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.title = @"新增日志";
+    self.title = @"日志详情";
+    
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]
+                                 initWithTitle:@"修改"
+                                 style:UIBarButtonItemStyleBordered
+                                 target:self
+                                 action:@selector(save)];
+    self.navigationItem.rightBarButtonItem = rightBtn;
     
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     
@@ -43,7 +51,7 @@
         [self.label2 setFrame:CGRectMake(self.label2.frame.origin.x, self.label2.frame.origin.y-44, self.label2.frame.size.width, self.label2.frame.size.height)];
         [self.label3 setFrame:CGRectMake(self.label3.frame.origin.x, self.label3.frame.origin.y-44, self.label3.frame.size.width, self.label3.frame.size.height)];
         [self.scheduleTypeSegmented setFrame:CGRectMake(self.scheduleTypeSegmented.frame.origin.x, self.scheduleTypeSegmented.frame.origin.y-64, self.scheduleTypeSegmented.frame.size.width, self.scheduleTypeSegmented.frame.size.height)];
-        [self.titleText setFrame:CGRectMake(self.titleText.frame.origin.x, self.titleText.frame.origin.y-44, self.titleText.frame.size.width, self.titleText.frame.size.height)];
+        [self.titleLabel setFrame:CGRectMake(self.titleLabel.frame.origin.x, self.titleLabel.frame.origin.y-44, self.titleLabel.frame.size.width, self.titleLabel.frame.size.height)];
         [self.mytextview setFrame:CGRectMake(self.mytextview.frame.origin.x, self.mytextview.frame.origin.y-44, self.mytextview.frame.size.width, self.mytextview.frame.size.height)];
     }
     
@@ -54,22 +62,61 @@
     self.mytextview.autoresizingMask = UIViewAutoresizingNone;
     self.mytextview.scrollEnabled = YES;
     self.mytextview.returnKeyType = UIReturnKeyDefault;
-    self.view.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
     self.mytextview.backgroundColor = [UIColor whiteColor];
     [self.mytextview.layer setMasksToBounds:YES];
+    self.view.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
     
-    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]
-                                 initWithTitle:@"保存"
-                                 style:UIBarButtonItemStyleBordered
-                                 target:self
-                                 action:@selector(save)];
-    self.navigationItem.rightBarButtonItem = rightBtn;
+    [self loadData];
+}
+
+-(void)loadData{
+    [HUD show:YES];
+    
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setValue:detailId forKey:@"id"];
+    MKNetworkOperation *op = [engine operationWithPath:@"/busdaily/findbyid.do" params:dic httpMethod:@"GET"];
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
+        NSString *result = [operation responseString];
+        NSError *error;
+        NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+        if (resultDict == nil) {
+            NSLog(@"json parse failed \r\n");
+        }
+        NSNumber *success = [resultDict objectForKey:@"success"];
+        NSString *msg = [resultDict objectForKey:@"msg"];
+        //        NSString *code = [resultDict objectForKey:@"code"];
+        if ([success boolValue]) {
+            NSDictionary *data = [resultDict objectForKey:@"data"];
+            if (data != nil) {
+                NSString *title = [data objectForKey:@"title"];
+                NSString *daily_type = [data objectForKey:@"daily_type"];
+                NSString *content = [data objectForKey:@"content"];
+                if ([daily_type isEqualToString:@"1"]) {
+                    self.scheduleTypeSegmented.selectedSegmentIndex = 0;
+                }else if([daily_type isEqualToString:@"2"]){
+                    self.scheduleTypeSegmented.selectedSegmentIndex = 1;
+                }
+                self.titleLabel.text = title;
+                self.mytextview.text = content;
+                [HUD hide:YES];
+            }
+        }else{
+            [HUD hide:YES];
+            [self alertMsg:msg];
+        }
+    }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
+        NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
+        [HUD hide:YES];
+        [self alertMsg:@"连接服务器失败"];
+    }];
+    [engine enqueueOperation:op];
 }
 
 -(void)save{
-    [self.titleText resignFirstResponder];
+    [self.titleLabel resignFirstResponder];
     [self.mytextview resignFirstResponder];
-    if (self.titleText.text.length == 0) {
+    if (self.titleLabel.text.length == 0) {
         [self alertMsg:@"请填写日期标题"];
         return;
     }
@@ -90,10 +137,11 @@
     }else if (self.scheduleTypeSegmented.selectedSegmentIndex == 1) {
         [dic setValue:@"2" forKey:@"dailyType"];
     }
-    [dic setValue:self.titleText.text forKey:@"title"];
+    [dic setValue:detailId forKey:@"id"];
+    [dic setValue:self.titleLabel.text forKey:@"title"];
     [dic setValue:self.mytextview.text forKey:@"content"];
     
-    MKNetworkOperation *op = [engine operationWithPath:@"/busdaily/save.do" params:dic httpMethod:@"POST"];
+    MKNetworkOperation *op = [engine operationWithPath:@"/busdaily/update.do" params:dic httpMethod:@"POST"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         NSLog(@"[operation responseData]-->>%@", [operation responseString]);
         NSString *result = [operation responseString];
