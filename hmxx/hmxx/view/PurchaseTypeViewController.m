@@ -205,6 +205,7 @@
     NSNumber *totalPrice = [info objectForKey:@"totalPrice"];
     cell.textLabel.text = typeName;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"￥%.2f",[totalPrice doubleValue]];
+    [cell.detailTextLabel setTextColor:[UIColor blackColor]];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
