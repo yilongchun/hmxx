@@ -26,12 +26,16 @@
 
 @implementation AddPuchaseViewController
 @synthesize dataSource;
+@synthesize myscrollview;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"食品采购日报表";
     
+    
+    
+    [myscrollview setContentSize:CGSizeMake(self.view.frame.size.width, 560)];
     
     self.typeBtn.layer.borderColor = [UIColor colorWithRed:194/255.0 green:194/255.0 blue:194/255.0 alpha:1].CGColor;
     self.typeBtn.layer.borderWidth = 0.4f;
@@ -46,7 +50,7 @@
 //    UIGraphicsEndImageContext();
 //    [self.typeBtn setImage:pressedColorImg forState:UIControlStateHighlighted];
     
-    
+    [self.myswitch addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
     
     self.dateBtn.layer.borderColor = [UIColor colorWithRed:194/255.0 green:194/255.0 blue:194/255.0 alpha:1].CGColor;
     self.dateBtn.layer.borderWidth = 0.4f;
@@ -58,37 +62,38 @@
         
         
         
-        if (self.remarkText.frame.size.height + self.remarkText.frame.origin.y > [UIScreen mainScreen].bounds.size.height) {
-            [self.remarkText setFrame:CGRectMake(self.remarkText.frame.origin.x, self.remarkText.frame.origin.y, [UIScreen mainScreen].bounds.size.width-self.remarkText.frame.origin.x-8, [UIScreen mainScreen].bounds.size.height - self.remarkText.frame.origin.y-8)];
-        }else{
+//        if (self.remarkText.frame.size.height + self.remarkText.frame.origin.y > [UIScreen mainScreen].bounds.size.height) {
+//            [self.remarkText setFrame:CGRectMake(self.remarkText.frame.origin.x, self.remarkText.frame.origin.y, [UIScreen mainScreen].bounds.size.width-self.remarkText.frame.origin.x-8, [UIScreen mainScreen].bounds.size.height - self.remarkText.frame.origin.y-8)];
+//        }else{
             [self.remarkText setFrame:CGRectMake(self.remarkText.frame.origin.x, self.remarkText.frame.origin.y, [UIScreen mainScreen].bounds.size.width-self.remarkText.frame.origin.x-8, self.remarkText.frame.size.height)];
-        }
+//        }
     }else{
-        [self.label1 setFrame:CGRectMake(self.label1.frame.origin.x, self.label1.frame.origin.y-64, self.label1.frame.size.width, self.label1.frame.size.height)];
-        [self.label2 setFrame:CGRectMake(self.label2.frame.origin.x, self.label2.frame.origin.y-64, self.label2.frame.size.width, self.label2.frame.size.height)];
-        [self.label3 setFrame:CGRectMake(self.label3.frame.origin.x, self.label3.frame.origin.y-64, self.label3.frame.size.width, self.label3.frame.size.height)];
-        [self.label4 setFrame:CGRectMake(self.label4.frame.origin.x, self.label4.frame.origin.y-64, self.label4.frame.size.width, self.label4.frame.size.height)];
-        [self.label5 setFrame:CGRectMake(self.label5.frame.origin.x, self.label5.frame.origin.y-64, self.label5.frame.size.width, self.label5.frame.size.height)];
-        [self.label6 setFrame:CGRectMake(self.label6.frame.origin.x, self.label6.frame.origin.y-64, self.label6.frame.size.width, self.label6.frame.size.height)];
-        [self.label7 setFrame:CGRectMake(self.label7.frame.origin.x, self.label7.frame.origin.y-64, self.label7.frame.size.width, self.label7.frame.size.height)];
-        [self.label8 setFrame:CGRectMake(self.label8.frame.origin.x, self.label8.frame.origin.y-64, self.label8.frame.size.width, self.label8.frame.size.height)];
-        [self.label9 setFrame:CGRectMake(self.label9.frame.origin.x, self.label9.frame.origin.y-64, self.label9.frame.size.width, self.label9.frame.size.height)];
-        [self.label10 setFrame:CGRectMake(self.label10.frame.origin.x, self.label10.frame.origin.y-64, self.label10.frame.size.width, self.label10.frame.size.height)];
-        [self.label11 setFrame:CGRectMake(self.label11.frame.origin.x, self.label11.frame.origin.y-64, self.label11.frame.size.width, self.label11.frame.size.height)];
-        [self.typeBtn setFrame:CGRectMake(self.typeBtn.frame.origin.x, self.typeBtn.frame.origin.y-64, self.typeBtn.frame.size.width, self.typeBtn.frame.size.height)];
-        [self.dateBtn setFrame:CGRectMake(self.dateBtn.frame.origin.x, self.dateBtn.frame.origin.y-64, self.dateBtn.frame.size.width, self.dateBtn.frame.size.height)];
-        [self.supplierText setFrame:CGRectMake(self.supplierText.frame.origin.x, self.supplierText.frame.origin.y-64, self.supplierText.frame.size.width, self.supplierText.frame.size.height)];
-        [self.supplierQuText setFrame:CGRectMake(self.supplierQuText.frame.origin.x, self.supplierQuText.frame.origin.y-64, self.supplierQuText.frame.size.width, self.supplierQuText.frame.size.height)];
-        [self.purchaserText setFrame:CGRectMake(self.purchaserText.frame.origin.x, self.purchaserText.frame.origin.y-64, self.purchaserText.frame.size.width, self.purchaserText.frame.size.height)];
-        [self.signerText setFrame:CGRectMake(self.signerText.frame.origin.x, self.signerText.frame.origin.y-64, self.signerText.frame.size.width, self.signerText.frame.size.height)];
-        [self.priceText setFrame:CGRectMake(self.priceText.frame.origin.x, self.priceText.frame.origin.y-64, self.priceText.frame.size.width, self.priceText.frame.size.height)];
-        [self.numText setFrame:CGRectMake(self.numText.frame.origin.x, self.numText.frame.origin.y-64, self.numText.frame.size.width, self.numText.frame.size.height)];
-        [self.unitText setFrame:CGRectMake(self.unitText.frame.origin.x, self.unitText.frame.origin.y-64, self.unitText.frame.size.width, self.unitText.frame.size.height)];
-        [self.totalPriceText setFrame:CGRectMake(self.totalPriceText.frame.origin.x, self.totalPriceText.frame.origin.y-64, self.totalPriceText.frame.size.width, self.totalPriceText.frame.size.height)];
-        [self.remarkText setFrame:CGRectMake(self.remarkText.frame.origin.x, self.remarkText.frame.origin.y-64, [UIScreen mainScreen].bounds.size.width-self.remarkText.frame.origin.x-8, self.remarkText.frame.size.height)];
-        if (self.remarkText.frame.size.height + self.remarkText.frame.origin.y +64 > [UIScreen mainScreen].bounds.size.height) {
-            [self.remarkText setFrame:CGRectMake(self.remarkText.frame.origin.x, self.remarkText.frame.origin.y, [UIScreen mainScreen].bounds.size.width-self.remarkText.frame.origin.x-8, [UIScreen mainScreen].bounds.size.height - self.remarkText.frame.origin.y-8 - 64)];
-        }
+//        [myscrollview setFrame:CGRectMake(myscrollview.frame.origin.x, myscrollview.frame.origin.y+64, myscrollview.frame.size.width, myscrollview.frame.size.height)];
+//        [self.label1 setFrame:CGRectMake(self.label1.frame.origin.x, self.label1.frame.origin.y-64, self.label1.frame.size.width, self.label1.frame.size.height)];
+//        [self.label2 setFrame:CGRectMake(self.label2.frame.origin.x, self.label2.frame.origin.y-64, self.label2.frame.size.width, self.label2.frame.size.height)];
+//        [self.label3 setFrame:CGRectMake(self.label3.frame.origin.x, self.label3.frame.origin.y-64, self.label3.frame.size.width, self.label3.frame.size.height)];
+//        [self.label4 setFrame:CGRectMake(self.label4.frame.origin.x, self.label4.frame.origin.y-64, self.label4.frame.size.width, self.label4.frame.size.height)];
+//        [self.label5 setFrame:CGRectMake(self.label5.frame.origin.x, self.label5.frame.origin.y-64, self.label5.frame.size.width, self.label5.frame.size.height)];
+//        [self.label6 setFrame:CGRectMake(self.label6.frame.origin.x, self.label6.frame.origin.y-64, self.label6.frame.size.width, self.label6.frame.size.height)];
+//        [self.label7 setFrame:CGRectMake(self.label7.frame.origin.x, self.label7.frame.origin.y-64, self.label7.frame.size.width, self.label7.frame.size.height)];
+//        [self.label8 setFrame:CGRectMake(self.label8.frame.origin.x, self.label8.frame.origin.y-64, self.label8.frame.size.width, self.label8.frame.size.height)];
+//        [self.label9 setFrame:CGRectMake(self.label9.frame.origin.x, self.label9.frame.origin.y-64, self.label9.frame.size.width, self.label9.frame.size.height)];
+//        [self.label10 setFrame:CGRectMake(self.label10.frame.origin.x, self.label10.frame.origin.y-64, self.label10.frame.size.width, self.label10.frame.size.height)];
+//        [self.label11 setFrame:CGRectMake(self.label11.frame.origin.x, self.label11.frame.origin.y-64, self.label11.frame.size.width, self.label11.frame.size.height)];
+//        [self.typeBtn setFrame:CGRectMake(self.typeBtn.frame.origin.x, self.typeBtn.frame.origin.y-64, self.typeBtn.frame.size.width, self.typeBtn.frame.size.height)];
+//        [self.dateBtn setFrame:CGRectMake(self.dateBtn.frame.origin.x, self.dateBtn.frame.origin.y-64, self.dateBtn.frame.size.width, self.dateBtn.frame.size.height)];
+//        [self.supplierText setFrame:CGRectMake(self.supplierText.frame.origin.x, self.supplierText.frame.origin.y-64, self.supplierText.frame.size.width, self.supplierText.frame.size.height)];
+//        [self.supplierQuText setFrame:CGRectMake(self.supplierQuText.frame.origin.x, self.supplierQuText.frame.origin.y-64, self.supplierQuText.frame.size.width, self.supplierQuText.frame.size.height)];
+//        [self.purchaserText setFrame:CGRectMake(self.purchaserText.frame.origin.x, self.purchaserText.frame.origin.y-64, self.purchaserText.frame.size.width, self.purchaserText.frame.size.height)];
+//        [self.signerText setFrame:CGRectMake(self.signerText.frame.origin.x, self.signerText.frame.origin.y-64, self.signerText.frame.size.width, self.signerText.frame.size.height)];
+//        [self.priceText setFrame:CGRectMake(self.priceText.frame.origin.x, self.priceText.frame.origin.y-64, self.priceText.frame.size.width, self.priceText.frame.size.height)];
+//        [self.numText setFrame:CGRectMake(self.numText.frame.origin.x, self.numText.frame.origin.y-64, self.numText.frame.size.width, self.numText.frame.size.height)];
+//        [self.unitText setFrame:CGRectMake(self.unitText.frame.origin.x, self.unitText.frame.origin.y-64, self.unitText.frame.size.width, self.unitText.frame.size.height)];
+//        [self.totalPriceText setFrame:CGRectMake(self.totalPriceText.frame.origin.x, self.totalPriceText.frame.origin.y-64, self.totalPriceText.frame.size.width, self.totalPriceText.frame.size.height)];
+//        [self.remarkText setFrame:CGRectMake(self.remarkText.frame.origin.x, self.remarkText.frame.origin.y-64, [UIScreen mainScreen].bounds.size.width-self.remarkText.frame.origin.x-8, self.remarkText.frame.size.height)];
+//        if (self.remarkText.frame.size.height + self.remarkText.frame.origin.y +64 > [UIScreen mainScreen].bounds.size.height) {
+//            [self.remarkText setFrame:CGRectMake(self.remarkText.frame.origin.x, self.remarkText.frame.origin.y, [UIScreen mainScreen].bounds.size.width-self.remarkText.frame.origin.x-8, [UIScreen mainScreen].bounds.size.height - self.remarkText.frame.origin.y-8 - 64)];
+//        }
     }
     
     
@@ -340,6 +345,11 @@
     [dic setValue:self.priceText.text forKey:@"price"];//单价
     [dic setValue:self.totalPriceText.text forKey:@"totalPrice"];//总价
     [dic setValue:self.unitText.text forKey:@"unit"];//单位
+    if (self.myswitch.isOn) {
+        [dic setValue:@"1"  forKey:@"hasReceipt"];//索票
+    }else{
+        [dic setValue:@"0"  forKey:@"hasReceipt"];//索票
+    }
     [dic setValue:self.remarkText.text forKey:@"remark"];//备注
     
     MKNetworkOperation *op = [engine operationWithPath:@"/purchase/save.do" params:dic httpMethod:@"POST"];
@@ -403,6 +413,15 @@
         double price = [self.priceText.text doubleValue];
         double total = num * price;
         self.totalPriceText.text = [NSString stringWithFormat:@"%.2f",total];
+    }
+}
+
+-(void)switchAction:(UISwitch *)sender{
+    BOOL isOn = [sender isOn];
+    if (isOn) {
+        self.hasReceiptLabel.text = @"有";
+    }else{
+        self.hasReceiptLabel.text = @"无";
     }
 }
 

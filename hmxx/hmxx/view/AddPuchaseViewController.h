@@ -34,4 +34,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *label9;
 @property (weak, nonatomic) IBOutlet UILabel *label10;
 @property (weak, nonatomic) IBOutlet UILabel *label11;
+@property (weak, nonatomic) IBOutlet UIScrollView *myscrollview;
+@property (weak, nonatomic) IBOutlet UISwitch *myswitch;
+@property (weak, nonatomic) IBOutlet UILabel *hasReceiptLabel;
 @end
