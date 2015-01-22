@@ -11,5 +11,5 @@
 @interface ScheduleViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *mytableview;
 @property (nonatomic, strong) NSMutableArray *dataSource;
-@property (nonatomic, strong) NSString *type;
+@property (nonatomic, copy) NSNumber *type;
 @end

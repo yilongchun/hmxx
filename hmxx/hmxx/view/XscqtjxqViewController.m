@@ -51,12 +51,13 @@
     mytableView = [[UITableView alloc] initWithFrame:cg style:UITableViewStylePlain];
     mytableView.dataSource = self;
     mytableView.delegate = self;
-    if ([mytableView respondsToSelector:@selector(setSeparatorInset:)]) {
-        [mytableView setSeparatorInset:UIEdgeInsetsZero];
-    }
-    if ([mytableView respondsToSelector:@selector(setLayoutMargins:)]) {
-        [mytableView setLayoutMargins:UIEdgeInsetsZero];
-    }
+    mytableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    if ([mytableView respondsToSelector:@selector(setSeparatorInset:)]) {
+//        [mytableView setSeparatorInset:UIEdgeInsetsZero];
+//    }
+//    if ([mytableView respondsToSelector:@selector(setLayoutMargins:)]) {
+//        [mytableView setLayoutMargins:UIEdgeInsetsZero];
+//    }
     [self.view addSubview:mytableView];
     [mytableView addSubview:self.slimeView];
     
@@ -343,14 +344,14 @@
 
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-        [cell setSeparatorInset:UIEdgeInsetsZero];
-    }
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-        [cell setLayoutMargins:UIEdgeInsetsZero];
-    }
-}
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+//        [cell setSeparatorInset:UIEdgeInsetsZero];
+//    }
+//    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+//        [cell setLayoutMargins:UIEdgeInsetsZero];
+//    }
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

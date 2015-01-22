@@ -50,13 +50,13 @@
     }
     mytableview = [[UITableView alloc] initWithFrame:cg style:UITableViewStylePlain];
     //    [mytableview setSeparatorColor:[UIColor colorWithRed:42/255.0 green:173/255.0 blue:128/255.0 alpha:1]];
-    if ([mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
-        [mytableview setSeparatorInset:UIEdgeInsetsZero];
-    }
-    if ([mytableview respondsToSelector:@selector(setLayoutMargins:)]) {
-        [mytableview setLayoutMargins:UIEdgeInsetsZero];
-    }
-//    mytableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    if ([mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
+//        [mytableview setSeparatorInset:UIEdgeInsetsZero];
+//    }
+//    if ([mytableview respondsToSelector:@selector(setLayoutMargins:)]) {
+//        [mytableview setLayoutMargins:UIEdgeInsetsZero];
+//    }
+    mytableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     mytableview.dataSource = self;
     mytableview.delegate = self;
     [self.view addSubview:mytableview];
@@ -245,7 +245,7 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-            cell.textLabel.text = @"加载中...";
+            cell.textLabel.text = @"显示下10条";
             [cell.textLabel setFont:[UIFont systemFontOfSize:15]];
             [cell.textLabel setTextColor:[UIColor grayColor]];
         }
@@ -278,40 +278,39 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.dataSource count] == indexPath.row) {
-        return 44;
+        return 55;
     }else{
         return 53;
     }
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-        [cell setSeparatorInset:UIEdgeInsetsZero];
-    }
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-        [cell setLayoutMargins:UIEdgeInsetsZero];
-    }
-}
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+//        [cell setSeparatorInset:UIEdgeInsetsZero];
+//    }
+//    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+//        [cell setLayoutMargins:UIEdgeInsetsZero];
+//    }
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if ([self.dataSource count] == indexPath.row) {
-//        if (page == totalpage) {
-//            
-//        }else{
-//            [HUD show:YES];
-//            [self loadMore];
-//        }
-//        
-//    }else{
-    if (indexPath.row < [self.dataSource count]) {
-        UpdateBwrzViewController *vc = [[UpdateBwrzViewController alloc] init];
-        NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
-        NSString *detailId = [info objectForKey:@"id"];
-        vc.detailId = detailId;
-        [self.navigationController pushViewController:vc animated:YES];
+    if ([self.dataSource count] == indexPath.row) {
+        if (page == totalpage) {
+            
+        }else{
+            [HUD show:YES];
+            [self loadMore];
+        }
+        
+    }else{
+        if (indexPath.row < [self.dataSource count]) {
+            UpdateBwrzViewController *vc = [[UpdateBwrzViewController alloc] init];
+            NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
+            NSString *detailId = [info objectForKey:@"id"];
+            vc.detailId = detailId;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     }
-//    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     
@@ -326,17 +325,6 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [_slimeView scrollViewDidScroll];
-    CGFloat height = scrollView.frame.size.height;
-    CGFloat contentYOffset = scrollView.contentOffset.y;
-    CGFloat distanceFromBotton = scrollView.contentSize.height-contentYOffset;
-    if (distanceFromBotton < height+44) {
-        if (page != totalpage){
-            if (!isLoading) {
-                [HUD show:YES];
-                [self loadMore];
-            }
-        }
-    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate

@@ -33,17 +33,29 @@
     self.title = @"食品采购日报表";
     
     
+    self.typeBtn.layer.borderColor = [UIColor colorWithRed:194/255.0 green:194/255.0 blue:194/255.0 alpha:1].CGColor;
+    self.typeBtn.layer.borderWidth = 0.4f;
+    self.typeBtn.layer.cornerRadius = 5.0f;
     
+    
+//    CGSize imageSize = CGSizeMake(self.typeBtn.frame.size.width, self.typeBtn.frame.size.height);
+//    UIGraphicsBeginImageContextWithOptions(imageSize, 0, [UIScreen mainScreen].scale);
+//    [[UIColor colorWithRed:194/255.0 green:194/255.0 blue:194/255.0 alpha:1] set];
+//    UIRectFill(CGRectMake(0, 0, imageSize.width, imageSize.height));
+//    UIImage *pressedColorImg = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    [self.typeBtn setImage:pressedColorImg forState:UIControlStateHighlighted];
+    
+    
+    
+    self.dateBtn.layer.borderColor = [UIColor colorWithRed:194/255.0 green:194/255.0 blue:194/255.0 alpha:1].CGColor;
+    self.dateBtn.layer.borderWidth = 0.4f;
+    self.dateBtn.layer.cornerRadius = 5.0f;
+    self.remarkText.layer.borderColor = [UIColor colorWithRed:194/255.0 green:194/255.0 blue:194/255.0 alpha:1].CGColor;
+    self.remarkText.layer.borderWidth = 0.4f;
+    self.remarkText.layer.cornerRadius = 5.0f;
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
-        self.typeBtn.layer.borderColor = [UIColor colorWithRed:194/255.0 green:194/255.0 blue:194/255.0 alpha:1].CGColor;
-        self.typeBtn.layer.borderWidth = 0.4f;
-        self.typeBtn.layer.cornerRadius = 5.0f;
-        self.dateBtn.layer.borderColor = [UIColor colorWithRed:194/255.0 green:194/255.0 blue:194/255.0 alpha:1].CGColor;
-        self.dateBtn.layer.borderWidth = 0.4f;
-        self.dateBtn.layer.cornerRadius = 5.0f;
-        self.remarkText.layer.borderColor = [UIColor colorWithRed:194/255.0 green:194/255.0 blue:194/255.0 alpha:1].CGColor;
-        self.remarkText.layer.borderWidth = 0.4f;
-        self.remarkText.layer.cornerRadius = 5.0f;
+        
         
         
         if (self.remarkText.frame.size.height + self.remarkText.frame.origin.y > [UIScreen mainScreen].bounds.size.height) {

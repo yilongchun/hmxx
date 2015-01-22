@@ -20,16 +20,17 @@
     // Do any additional setup after loading the view from its nib.
     
     self.view.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
+    self.typeBtn.layer.borderColor = [UIColor colorWithRed:194/255.0 green:194/255.0 blue:194/255.0 alpha:1].CGColor;
+    self.typeBtn.layer.borderWidth = 0.4f;
+    self.typeBtn.layer.cornerRadius = 5.0f;
+    self.dateBtn.layer.borderColor = [UIColor colorWithRed:194/255.0 green:194/255.0 blue:194/255.0 alpha:1].CGColor;
+    self.dateBtn.layer.borderWidth = 0.4f;
+    self.dateBtn.layer.cornerRadius = 5.0f;
+    self.remarkText.layer.borderColor = [UIColor colorWithRed:194/255.0 green:194/255.0 blue:194/255.0 alpha:1].CGColor;
+    self.remarkText.layer.borderWidth = 0.4f;
+    self.remarkText.layer.cornerRadius = 5.0f;
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
-        self.typeBtn.layer.borderColor = [UIColor colorWithRed:194/255.0 green:194/255.0 blue:194/255.0 alpha:1].CGColor;
-        self.typeBtn.layer.borderWidth = 0.4f;
-        self.typeBtn.layer.cornerRadius = 5.0f;
-        self.dateBtn.layer.borderColor = [UIColor colorWithRed:194/255.0 green:194/255.0 blue:194/255.0 alpha:1].CGColor;
-        self.dateBtn.layer.borderWidth = 0.4f;
-        self.dateBtn.layer.cornerRadius = 5.0f;
-        self.remarkText.layer.borderColor = [UIColor colorWithRed:194/255.0 green:194/255.0 blue:194/255.0 alpha:1].CGColor;
-        self.remarkText.layer.borderWidth = 0.4f;
-        self.remarkText.layer.cornerRadius = 5.0f;
+        
         
         
         if (self.remarkText.frame.size.height + self.remarkText.frame.origin.y > [UIScreen mainScreen].bounds.size.height) {

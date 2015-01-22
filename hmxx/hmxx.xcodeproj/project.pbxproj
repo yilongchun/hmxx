@@ -20,6 +20,8 @@
 		E4C7451E1A6FC76D009402ED /* DailyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C7451C1A6FC76D009402ED /* DailyTableViewCell.m */; };
 		E4C7451F1A6FC76D009402ED /* DailyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4C7451D1A6FC76D009402ED /* DailyTableViewCell.xib */; };
 		E4C745221A6FCA1B009402ED /* MyTabbarController4.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C745211A6FCA1B009402ED /* MyTabbarController4.m */; };
+		E4C745261A6FEE5D009402ED /* MoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C745241A6FEE5D009402ED /* MoreTableViewCell.m */; };
+		E4C745271A6FEE5D009402ED /* MoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4C745251A6FEE5D009402ED /* MoreTableViewCell.xib */; };
 		E4ED5D631A6CFFED00FFB11A /* PurchaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ED5D611A6CFFED00FFB11A /* PurchaseTableViewCell.m */; };
 		E4ED5D641A6CFFED00FFB11A /* PurchaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4ED5D621A6CFFED00FFB11A /* PurchaseTableViewCell.xib */; };
 		E4ED5D681A6D016B00FFB11A /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ED5D661A6D016B00FFB11A /* PurchaseViewController.m */; };
@@ -262,6 +264,9 @@
 		E4C7451D1A6FC76D009402ED /* DailyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DailyTableViewCell.xib; path = view/DailyTableViewCell.xib; sourceTree = "<group>"; };
 		E4C745201A6FCA1B009402ED /* MyTabbarController4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyTabbarController4.h; path = view/MyTabbarController4.h; sourceTree = "<group>"; };
 		E4C745211A6FCA1B009402ED /* MyTabbarController4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyTabbarController4.m; path = view/MyTabbarController4.m; sourceTree = "<group>"; };
+		E4C745231A6FEE5D009402ED /* MoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreTableViewCell.h; path = view/MoreTableViewCell.h; sourceTree = "<group>"; };
+		E4C745241A6FEE5D009402ED /* MoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreTableViewCell.m; path = view/MoreTableViewCell.m; sourceTree = "<group>"; };
+		E4C745251A6FEE5D009402ED /* MoreTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MoreTableViewCell.xib; path = view/MoreTableViewCell.xib; sourceTree = "<group>"; };
 		E4ED5D601A6CFFED00FFB11A /* PurchaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PurchaseTableViewCell.h; path = view/PurchaseTableViewCell.h; sourceTree = "<group>"; };
 		E4ED5D611A6CFFED00FFB11A /* PurchaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PurchaseTableViewCell.m; path = view/PurchaseTableViewCell.m; sourceTree = "<group>"; };
 		E4ED5D621A6CFFED00FFB11A /* PurchaseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PurchaseTableViewCell.xib; path = view/PurchaseTableViewCell.xib; sourceTree = "<group>"; };
@@ -1096,6 +1101,9 @@
 				E4EF0AF41A6EAFD900212041 /* CollectionCell.h */,
 				E4EF0AF51A6EAFD900212041 /* CollectionCell.m */,
 				E4EF0AF61A6EAFD900212041 /* CollectionCell.xib */,
+				E4C745231A6FEE5D009402ED /* MoreTableViewCell.h */,
+				E4C745241A6FEE5D009402ED /* MoreTableViewCell.m */,
+				E4C745251A6FEE5D009402ED /* MoreTableViewCell.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -1269,6 +1277,7 @@
 				E4F369FD1A6444EA0037A533 /* ic_kcb_bg2.png in Resources */,
 				E4EF576C1A67E10B004B57E6 /* DaishGgtzViewController.xib in Resources */,
 				E4ED5D691A6D016B00FFB11A /* PurchaseViewController.xib in Resources */,
+				E4C745271A6FEE5D009402ED /* MoreTableViewCell.xib in Resources */,
 				E4F076C01A655F76004D7453 /* ic_bwrz_002.png in Resources */,
 				E4F21D8A1A667319005372EA /* AddNoticeViewController.xib in Resources */,
 				E4F0769F1A655E79004D7453 /* ic_bwrz_002@2x.png in Resources */,
@@ -1390,6 +1399,7 @@
 				E4F076F61A656722004D7453 /* HPGrowingTextView.m in Sources */,
 				E4F368FF1A63CEF40037A533 /* AppDelegate.m in Sources */,
 				E4F369521A63E36C0037A533 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
+				E4C745261A6FEE5D009402ED /* MoreTableViewCell.m in Sources */,
 				E4F076F71A656722004D7453 /* HPTextViewInternal.m in Sources */,
 				E4F369BF1A64088F0037A533 /* AFURLConnectionOperation.m in Sources */,
 				E4C745221A6FCA1B009402ED /* MyTabbarController4.m in Sources */,

@@ -55,6 +55,7 @@
     mytableview.delegate = self;
     [self.view addSubview:mytableview];
     [mytableview addSubview:self.slimeView];
+//    mytableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     if ([mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
         [mytableview setSeparatorInset:UIEdgeInsetsZero];
     }

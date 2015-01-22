@@ -41,9 +41,9 @@
     UIImage *img2_h = [UIImage imageNamed:@"daishenhehd1.png"];
     
     ScheduleViewController *vc1 = [[ScheduleViewController alloc] init];
-    vc1.type = @"1";
+    vc1.type = [NSNumber numberWithInt:1];
     ScheduleViewController *vc2 = [[ScheduleViewController alloc] init];
-    vc2.type = @"2";
+    vc2.type = [NSNumber numberWithInt:2];
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
         
         img1 = [img1 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];

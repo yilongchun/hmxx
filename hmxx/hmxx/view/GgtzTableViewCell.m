@@ -42,7 +42,7 @@
 //    CGContextStrokeRect(context, CGRectMake(5, 0, rect.size.width - 10, 1));
     
     //下分割线
-    CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:42/255.0 green:173/255.0 blue:128/255.0 alpha:1].CGColor);
+    CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:210/255.0 green:210/255.0 blue:210/255.0 alpha:1].CGColor);
     CGContextStrokeRect(context, CGRectMake(0, rect.size.height, rect.size.width, 1));
     
 }

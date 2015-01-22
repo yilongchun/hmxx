@@ -54,12 +54,13 @@
         cg = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-50-64);
     }
     mytableview = [[UITableView alloc] initWithFrame:cg style:UITableViewStylePlain];
-    if ([mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
-        [mytableview setSeparatorInset:UIEdgeInsetsZero];
-    }
-    if ([mytableview respondsToSelector:@selector(setLayoutMargins:)]) {
-        [mytableview setLayoutMargins:UIEdgeInsetsZero];
-    }
+    mytableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    if ([mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
+//        [mytableview setSeparatorInset:UIEdgeInsetsZero];
+//    }
+//    if ([mytableview respondsToSelector:@selector(setLayoutMargins:)]) {
+//        [mytableview setLayoutMargins:UIEdgeInsetsZero];
+//    }
     mytableview.dataSource = self;
     mytableview.delegate = self;
     [self.view addSubview:mytableview];
@@ -115,6 +116,7 @@
     [dic setValue:userid forKey:@"userid"];
     [dic setValue:page forKey:@"page"];
     [dic setValue:rows forKey:@"rows"];
+    [dic setValue:type forKey:@"dailyType"];
     //    [dic setValue:classId forKey:@"classId"];
     MKNetworkOperation *op = [engine operationWithPath:@"/busdaily/findPageList.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
@@ -162,7 +164,7 @@
     [dic setValue:userid forKey:@"userid"];
     [dic setValue:page forKey:@"page"];
     [dic setValue:rows forKey:@"rows"];
-    
+    [dic setValue:type forKey:@"dailyType"];
     MKNetworkOperation *op = [engine operationWithPath:@"/busdaily/findPageList.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         NSString *result = [operation responseString];
@@ -244,7 +246,7 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-            cell.textLabel.text = @"加载中...";
+            cell.textLabel.text = @"显示下10条";
             [cell.textLabel setFont:[UIFont systemFontOfSize:15]];
             [cell.textLabel setTextColor:[UIColor grayColor]];
         }
@@ -258,49 +260,45 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:@"DailyTableViewCell" owner:self options:nil] lastObject];
         }
         NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
-//        NSString *content = [info objectForKey:@"content"];
-//        
-//        
-//        
-//        cell.gdispcription.text = tncontent;
-//        cell.gdispcription.numberOfLines = 2;// 不可少Label属性之一
-//        cell.gdispcription.lineBreakMode = NSLineBreakByCharWrapping;// 不可少Label属性之二
-//        //[cell.gdispcription sizeToFit];
-//        //        cell.gpinglun.text = [NSString stringWithFormat:@"评论(%@)",noticecount];
-//        cell.gdate.text = tncreatedate;
-//        cell.gsource.text = [NSString stringWithFormat:@"发布者:%@",source];
+        NSString *title = [info objectForKey:@"title"];
+        NSString *createDate = [info objectForKey:@"createDate"];
+        NSString *creator = [info objectForKey:@"creator"];
+        cell.titleLabel.text = title;
+        cell.createrLabel.text = creator;
+        cell.dateLabel.text = createDate;
         return cell;
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.dataSource count] == indexPath.row) {
-        return 44;
+        return 55;
     }else{
         return 54;
     }
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-        [cell setSeparatorInset:UIEdgeInsetsZero];
-    }
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-        [cell setLayoutMargins:UIEdgeInsetsZero];
-    }
-}
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+//        [cell setSeparatorInset:UIEdgeInsetsZero];
+//    }
+//    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+//        [cell setLayoutMargins:UIEdgeInsetsZero];
+//    }
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    //    if ([self.dataSource count] == indexPath.row) {
-    //        if (page == totalpage) {
-    //
-    //        }else{
-    //            [HUD show:YES];
-    //            [self loadMore];
-    //        }
-    //
-    //    }else{
+        if ([self.dataSource count] == indexPath.row) {
+            if (page == totalpage) {
+    
+            }else{
+                [HUD show:YES];
+                [self loadMore];
+            }
+    
+//        }
+//        else{
 //    if (indexPath.row < [self.dataSource count]) {
 //        NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
 //        NSString *tnid = [info objectForKey:@"id"];
@@ -312,7 +310,7 @@
 //        [self.navigationController pushViewController:ggxq animated:YES];
 //    }
     
-    //    }
+        }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -320,17 +318,6 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [_slimeView scrollViewDidScroll];
-    CGFloat height = scrollView.frame.size.height;
-    CGFloat contentYOffset = scrollView.contentOffset.y;
-    CGFloat distanceFromBotton = scrollView.contentSize.height-contentYOffset;
-    if (distanceFromBotton < height+44) {
-        if (page != totalpage){
-            if (!isLoading) {
-                [HUD show:YES];
-                [self loadMore];
-            }
-        }
-    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate

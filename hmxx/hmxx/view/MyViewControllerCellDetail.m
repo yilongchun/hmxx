@@ -337,7 +337,7 @@
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
             if (!cell) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-                cell.textLabel.text = @"加载中...";
+                cell.textLabel.text = @"显示下10条";
                 [cell.textLabel setFont:[UIFont systemFontOfSize:15]];
                 [cell.textLabel setTextColor:[UIColor grayColor]];
             }
@@ -434,7 +434,7 @@
         return size.height;
     }else{
         if ([self.dataSource count] == indexPath.row) {
-            return 44;
+            return 55;
         }else{
             NSInteger row = [indexPath row];
             // 列寬
@@ -611,17 +611,6 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [_slimeView scrollViewDidScroll];
-    CGFloat height = scrollView.frame.size.height;
-    CGFloat contentYOffset = scrollView.contentOffset.y;
-    CGFloat distanceFromBotton = scrollView.contentSize.height-contentYOffset;
-    if (distanceFromBotton < height+44) {
-        if ([page intValue] != [totalpage intValue] && [totalpage intValue] != 0){
-            if (!isLoading) {
-                [HUD show:YES];
-                [self loadDataPingLunMore];
-            }
-        }
-    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate

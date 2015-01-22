@@ -245,7 +245,7 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-            cell.textLabel.text = @"加载中...";
+            cell.textLabel.text = @"显示下10条";
             [cell.textLabel setFont:[UIFont systemFontOfSize:15]];
             [cell.textLabel setTextColor:[UIColor grayColor]];
         }
@@ -287,32 +287,32 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.dataSource count] == indexPath.row) {
-        return 44;
+        return 55;
     }else{
         return 100;
     }
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-        [cell setSeparatorInset:UIEdgeInsetsZero];
-    }
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-        [cell setLayoutMargins:UIEdgeInsetsZero];
-    }
-}
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+//        [cell setSeparatorInset:UIEdgeInsetsZero];
+//    }
+//    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+//        [cell setLayoutMargins:UIEdgeInsetsZero];
+//    }
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if ([self.dataSource count] == indexPath.row) {
-//        if (page == totalpage) {
-//            
-//        }else{
-//            [HUD show:YES];
-//            [self loadMore];
-//        }
-//        
-//    }else{
+    if ([self.dataSource count] == indexPath.row) {
+        if (page == totalpage) {
+            
+        }else{
+            [HUD show:YES];
+            [self loadMore];
+        }
+        
+    }else{
     if (indexPath.row < [self.dataSource count]) {
         NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
         NSString *tnid = [info objectForKey:@"id"];
@@ -324,7 +324,7 @@
         [self.navigationController pushViewController:ggxq animated:YES];
     }
     
-//    }
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -332,17 +332,6 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [_slimeView scrollViewDidScroll];
-    CGFloat height = scrollView.frame.size.height;
-    CGFloat contentYOffset = scrollView.contentOffset.y;
-    CGFloat distanceFromBotton = scrollView.contentSize.height-contentYOffset;
-    if (distanceFromBotton < height+44) {
-        if (page != totalpage){
-            if (!isLoading) {
-                [HUD show:YES];
-                [self loadMore];
-            }
-        }
-    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
