@@ -247,11 +247,11 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-            cell.textLabel.text = @"显示下10条";
             [cell.textLabel setFont:[UIFont systemFontOfSize:15]];
             [cell.textLabel setTextColor:[UIColor grayColor]];
+            cell.textLabel.textAlignment = NSTextAlignmentCenter;
         }
-        cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        cell.textLabel.text = @"显示下10条";
         return cell;
         
     }else{
@@ -294,6 +294,8 @@
         if (page == totalpage) {
             
         }else{
+            UITableViewCell *cell = (UITableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+            cell.textLabel.text = @"加载中...";
             [HUD show:YES];
             [self loadMore];
         }

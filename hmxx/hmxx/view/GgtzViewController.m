@@ -246,17 +246,19 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-            cell.textLabel.text = @"显示下10条";
             [cell.textLabel setFont:[UIFont systemFontOfSize:15]];
             [cell.textLabel setTextColor:[UIColor grayColor]];
+            cell.textLabel.textAlignment = NSTextAlignmentCenter;
         }
-        cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        cell.textLabel.text = @"显示下10条";
         return cell;
     }else{
         static NSString *cellIdentifier = @"ggtzcell";
         GgtzTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
             cell = [[[NSBundle mainBundle] loadNibNamed:@"GgtzTableViewCell" owner:self options:nil] lastObject];
+//            cell.imageview.layer.cornerRadius = 5.0f;
+//            cell.imageview.layer.masksToBounds = YES;
         }
         
         NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
@@ -307,6 +309,8 @@
         if (page == totalpage) {
             
         }else{
+            UITableViewCell *cell = (UITableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+            cell.textLabel.text = @"加载中...";
             [HUD show:YES];
             [self loadMore];
         }
