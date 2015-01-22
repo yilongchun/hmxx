@@ -34,6 +34,7 @@
         }
         // 加载nib
         self = [arrayOfViews objectAtIndex:0];
+//        self.layer.cornerRadius = 5.0f;
     }
     return self;
 }
