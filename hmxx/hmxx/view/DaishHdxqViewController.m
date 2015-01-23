@@ -229,6 +229,7 @@
                     tmpView = (TapImageView *)[cell.contentView viewWithTag:10+i];
                     tmpView.identifier = cell;
                 }
+                tapCell = cell;
             }else if ([type isEqualToString:@"t_activity_video"]){//显示视频
                 self.videoPlayButton = [UIButton buttonWithType:UIButtonTypeCustom];
                 UIImage *backgroundImage = [UIImage imageNamed:@"chat_video_play.png"];
@@ -374,7 +375,7 @@
     TapImageView *tmpView = sender;
     currentIndex = tmpView.tag - 10;
     
-    tapCell = tmpView.identifier;
+//    tapCell = tmpView.identifier;
     
     //转换后的rect
     CGRect convertRect = [[tmpView superview] convertRect:tmpView.frame toView:self.view];

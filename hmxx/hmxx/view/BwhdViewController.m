@@ -272,10 +272,9 @@
         cell.gtitle.text = tntitle;
         
         if ([Utils isBlankString:teacherfileid]) {
-            [cell.imageview setImage:[UIImage imageNamed:@"nopicture.png"]];
+            [cell.imageview setImage:[UIImage imageNamed:@"chatListCellHead.png"]];
         }else{
-//            [cell.imageview setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/image/show.do?id=%@",[Utils getImageHostname],teacherfileid]] placeholderImage:[UIImage imageNamed:@"nopicture.png"]];
-            [cell.imageview setImageWithURL:[NSURL URLWithString:teacherfileid] placeholderImage:[UIImage imageNamed:@"nopicture.png"]];
+            [cell.imageview setImageWithURL:[NSURL URLWithString:teacherfileid] placeholderImage:[UIImage imageNamed:@"chatListCellHead.png"]];
         }
         cell.gdispcription.text = tncontent;
         cell.gdispcription.numberOfLines = 2;// 不可少Label属性之一

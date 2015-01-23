@@ -276,9 +276,9 @@
         cell.gdate.text = tncreatedate;
         cell.gsource.text = [NSString stringWithFormat:@"%@",noticename];
         if ([Utils isBlankString:fileid]) {
-            [cell.imageview setImage:[UIImage imageNamed:@"nopicture.png"]];
+            [cell.imageview setImage:[UIImage imageNamed:@"chatListCellHead.png"]];
         }else{
-            [cell.imageview setImageWithURL:[NSURL URLWithString:fileid] placeholderImage:[UIImage imageNamed:@"nopicture.png"]];
+            [cell.imageview setImageWithURL:[NSURL URLWithString:fileid] placeholderImage:[UIImage imageNamed:@"chatListCellHead.png"]];
         }
         return cell;
     }

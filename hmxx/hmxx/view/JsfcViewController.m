@@ -256,11 +256,18 @@
         NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
         NSString *teacherName = [info objectForKey:@"teacherName"];
         NSString *flieid = [info objectForKey:@"flieid"];
+        NSDictionary *classList = [info objectForKey:@"classList"];
+        NSNumber *ishead = [classList objectForKey:@"ishead"];
         cell.username.text = teacherName;
         if ([Utils isBlankString:flieid]) {
-            [cell.userimage setImage:[UIImage imageNamed:@"nopicture.png"]];
+            [cell.userimage setImage:[UIImage imageNamed:@"chatListCellHead.png"]];
         }else{
-            [cell.userimage setImageWithURL:[NSURL URLWithString:flieid] placeholderImage:[UIImage imageNamed:@"nopicture.png"]];
+            [cell.userimage setImageWithURL:[NSURL URLWithString:flieid] placeholderImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+        }
+        if ([ishead boolValue]) {
+            cell.userjob.text = @"班主任";
+        }else{
+            cell.userjob.text = @"教师";
         }
         return cell;
     }

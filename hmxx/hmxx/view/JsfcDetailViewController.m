@@ -10,6 +10,7 @@
 #import "Utils.h"
 #import "MKNetworkKit.h"
 #import "MBProgressHUD.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface JsfcDetailViewController ()<MBProgressHUDDelegate>{
     MKNetworkEngine *engine;
@@ -54,16 +55,22 @@
         if ([success boolValue]) {
             NSDictionary *data = [resultDict objectForKey:@"data"];
             if (data != nil) {
-//                NSString *title = [data objectForKey:@"title"];
-//                NSString *daily_type = [data objectForKey:@"daily_type"];
-//                NSString *content = [data objectForKey:@"content"];
-//                if ([daily_type isEqualToString:@"1"]) {
-//                    self.scheduleTypeSegmented.selectedSegmentIndex = 0;
-//                }else if([daily_type isEqualToString:@"2"]){
-//                    self.scheduleTypeSegmented.selectedSegmentIndex = 1;
-//                }
-//                self.titleLabel.text = title;
-//                self.mytextview.text = content;
+                NSString *teacherName = [data objectForKey:@"teacherName"];
+                NSString *flieid = [data objectForKey:@"flieid"];
+                NSArray *classList = [data objectForKey:@"classList"];
+                NSDictionary *classDic = [classList objectAtIndex:0];
+                NSNumber *ishead = [classDic objectForKey:@"ishead"];
+                self.username.text = teacherName;
+                if ([Utils isBlankString:flieid]) {
+                    [self.userimage setImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+                }else{
+                    [self.userimage setImageWithURL:[NSURL URLWithString:flieid] placeholderImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+                }
+                if ([ishead boolValue]) {
+                    self.userjob.text = @"班主任";
+                }else{
+                    self.userjob.text = @"教师";
+                }
                 [HUD hide:YES];
             }
         }else{

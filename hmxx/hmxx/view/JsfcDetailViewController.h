@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface JsfcDetailViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIImageView *userimage;
+@property (weak, nonatomic) IBOutlet UILabel *username;
+@property (weak, nonatomic) IBOutlet UILabel *userjob;
 @property(nonatomic,strong) NSString *detailId;
 @end
