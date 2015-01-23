@@ -46,27 +46,27 @@
                 }
             }
         }
+        self.leftContent.text = leftstr;
+        NSMutableAttributedString * attributedString1 = [[NSMutableAttributedString alloc] initWithString:self.leftContent.text];
+        NSMutableParagraphStyle * paragraphStyle1 = [[NSMutableParagraphStyle alloc] init];
+        [paragraphStyle1 setLineSpacing:3];
+        [attributedString1 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle1 range:NSMakeRange(0, [self.leftContent.text length])];
+        [self.leftContent setAttributedText:attributedString1];
+        [self.leftContent sizeToFit];
         
+        self.rightContent.text = rightstr;
+        NSMutableAttributedString * attributedString2 = [[NSMutableAttributedString alloc] initWithString:self.rightContent.text];
+        NSMutableParagraphStyle * paragraphStyle2 = [[NSMutableParagraphStyle alloc] init];
+        [paragraphStyle2 setLineSpacing:3];
+        [attributedString2 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle2 range:NSMakeRange(0, [self.rightContent.text length])];
+        [self.rightContent setAttributedText:attributedString2];
+        [self.rightContent sizeToFit];
+        
+        [self.conBackground setFrame:CGRectMake(self.conBackground.frame.origin.x, self.conBackground.frame.origin.y, self.conBackground.frame.size.width, self.leftContent.frame.size.height+80)];
     }else{
     }
     
-    self.leftContent.text = leftstr;
-    NSMutableAttributedString * attributedString1 = [[NSMutableAttributedString alloc] initWithString:self.leftContent.text];
-    NSMutableParagraphStyle * paragraphStyle1 = [[NSMutableParagraphStyle alloc] init];
-    [paragraphStyle1 setLineSpacing:3];
-    [attributedString1 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle1 range:NSMakeRange(0, [self.leftContent.text length])];
-    [self.leftContent setAttributedText:attributedString1];
-    [self.leftContent sizeToFit];
     
-    self.rightContent.text = rightstr;
-    NSMutableAttributedString * attributedString2 = [[NSMutableAttributedString alloc] initWithString:self.rightContent.text];
-    NSMutableParagraphStyle * paragraphStyle2 = [[NSMutableParagraphStyle alloc] init];
-    [paragraphStyle2 setLineSpacing:3];
-    [attributedString2 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle2 range:NSMakeRange(0, [self.rightContent.text length])];
-    [self.rightContent setAttributedText:attributedString2];
-    [self.rightContent sizeToFit];
-    
-    [self.conBackground setFrame:CGRectMake(self.conBackground.frame.origin.x, self.conBackground.frame.origin.y, self.conBackground.frame.size.width, self.leftContent.frame.size.height+80)];
     
 }
 

@@ -34,11 +34,11 @@
     UIBarButtonItem *buttonItem1 = [[UIBarButtonItem alloc] initWithCustomView:someButton];
     [self.navigationItem setRightBarButtonItem:buttonItem1];
     
-    UIImage *img1 = [UIImage imageNamed:@"daishenhegg2.png"];
-    UIImage *img1_h = [UIImage imageNamed:@"daishenhegg1.png"];
+    UIImage *img1 = [UIImage imageNamed:@"planmanage2.png"];
+    UIImage *img1_h = [UIImage imageNamed:@"planmanage1.png"];
     
-    UIImage *img2 = [UIImage imageNamed:@"daishenhehd2.png"];
-    UIImage *img2_h = [UIImage imageNamed:@"daishenhehd1.png"];
+    UIImage *img2 = [UIImage imageNamed:@"summarymanage2.png"];
+    UIImage *img2_h = [UIImage imageNamed:@"summarymanage1.png"];
     
     ScheduleViewController *vc1 = [[ScheduleViewController alloc] init];
     vc1.type = [NSNumber numberWithInt:1];

@@ -47,6 +47,14 @@
 		E4ED5D941A6D5A0B00FFB11A /* PurchaseTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4ED5D921A6D5A0B00FFB11A /* PurchaseTypeViewController.xib */; };
 		E4ED5D981A6D654700FFB11A /* PurchaseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ED5D961A6D654700FFB11A /* PurchaseDetailViewController.m */; };
 		E4ED5D991A6D654700FFB11A /* PurchaseDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4ED5D971A6D654700FFB11A /* PurchaseDetailViewController.xib */; };
+		E4EDA2991A7255620018E967 /* planmanage1.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EDA2911A7255620018E967 /* planmanage1.png */; };
+		E4EDA29A1A7255620018E967 /* planmanage1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EDA2921A7255620018E967 /* planmanage1@2x.png */; };
+		E4EDA29B1A7255620018E967 /* planmanage2.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EDA2931A7255620018E967 /* planmanage2.png */; };
+		E4EDA29C1A7255620018E967 /* planmanage2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EDA2941A7255620018E967 /* planmanage2@2x.png */; };
+		E4EDA29D1A7255620018E967 /* summarymanage1.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EDA2951A7255620018E967 /* summarymanage1.png */; };
+		E4EDA29E1A7255620018E967 /* summarymanage1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EDA2961A7255620018E967 /* summarymanage1@2x.png */; };
+		E4EDA29F1A7255620018E967 /* summarymanage2.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EDA2971A7255620018E967 /* summarymanage2.png */; };
+		E4EDA2A01A7255620018E967 /* summarymanage2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EDA2981A7255620018E967 /* summarymanage2@2x.png */; };
 		E4EF0AE31A6E960300212041 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EF0AE11A6E960300212041 /* ScheduleViewController.m */; };
 		E4EF0AE41A6E960300212041 /* ScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EF0AE21A6E960300212041 /* ScheduleViewController.xib */; };
 		E4EF0AE81A6E96A100212041 /* AddScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EF0AE61A6E96A100212041 /* AddScheduleViewController.m */; };
@@ -315,6 +323,14 @@
 		E4ED5D951A6D654700FFB11A /* PurchaseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PurchaseDetailViewController.h; path = view/PurchaseDetailViewController.h; sourceTree = "<group>"; };
 		E4ED5D961A6D654700FFB11A /* PurchaseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PurchaseDetailViewController.m; path = view/PurchaseDetailViewController.m; sourceTree = "<group>"; };
 		E4ED5D971A6D654700FFB11A /* PurchaseDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PurchaseDetailViewController.xib; path = view/PurchaseDetailViewController.xib; sourceTree = "<group>"; };
+		E4EDA2911A7255620018E967 /* planmanage1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = planmanage1.png; sourceTree = "<group>"; };
+		E4EDA2921A7255620018E967 /* planmanage1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "planmanage1@2x.png"; sourceTree = "<group>"; };
+		E4EDA2931A7255620018E967 /* planmanage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = planmanage2.png; sourceTree = "<group>"; };
+		E4EDA2941A7255620018E967 /* planmanage2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "planmanage2@2x.png"; sourceTree = "<group>"; };
+		E4EDA2951A7255620018E967 /* summarymanage1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = summarymanage1.png; sourceTree = "<group>"; };
+		E4EDA2961A7255620018E967 /* summarymanage1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "summarymanage1@2x.png"; sourceTree = "<group>"; };
+		E4EDA2971A7255620018E967 /* summarymanage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = summarymanage2.png; sourceTree = "<group>"; };
+		E4EDA2981A7255620018E967 /* summarymanage2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "summarymanage2@2x.png"; sourceTree = "<group>"; };
 		E4EF0AE01A6E960300212041 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleViewController.h; path = view/ScheduleViewController.h; sourceTree = "<group>"; };
 		E4EF0AE11A6E960300212041 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleViewController.m; path = view/ScheduleViewController.m; sourceTree = "<group>"; };
 		E4EF0AE21A6E960300212041 /* ScheduleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScheduleViewController.xib; path = view/ScheduleViewController.xib; sourceTree = "<group>"; };
@@ -798,6 +814,14 @@
 		E4F3692B1A63E1D20037A533 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E4EDA2911A7255620018E967 /* planmanage1.png */,
+				E4EDA2921A7255620018E967 /* planmanage1@2x.png */,
+				E4EDA2931A7255620018E967 /* planmanage2.png */,
+				E4EDA2941A7255620018E967 /* planmanage2@2x.png */,
+				E4EDA2951A7255620018E967 /* summarymanage1.png */,
+				E4EDA2961A7255620018E967 /* summarymanage1@2x.png */,
+				E4EDA2971A7255620018E967 /* summarymanage2.png */,
+				E4EDA2981A7255620018E967 /* summarymanage2@2x.png */,
 				E4C664BA1A715D79003CCC0E /* loginBtnBg2.png */,
 				E4C664B81A715C24003CCC0E /* loginBtnBg.png */,
 				E4C664B61A715809003CCC0E /* grayBg.png */,
@@ -1238,12 +1262,14 @@
 				E43C21F11A66DEEF00E1DB45 /* UpAccessory@2x.png in Resources */,
 				E4F21DAE1A66B1BB005372EA /* XscqtjxqViewController.xib in Resources */,
 				E4EF0AE91A6E96A100212041 /* AddScheduleViewController.xib in Resources */,
+				E4EDA29A1A7255620018E967 /* planmanage1@2x.png in Resources */,
 				E4F21DA41A668F7A005372EA /* BwrzViewController.xib in Resources */,
 				E4F369751A6405F10037A533 /* MainViewController.xib in Resources */,
 				E4F21D841A666C47005372EA /* smiley_add_btn_nor.png in Resources */,
 				E4F369F21A642C010037A533 /* ic_sp_001.png in Resources */,
 				E4F21DA91A66A2AE005372EA /* XscqtjViewController.xib in Resources */,
 				E4F36A011A6448300037A533 /* ic_index_007.png in Resources */,
+				E4EDA2A01A7255620018E967 /* summarymanage2@2x.png in Resources */,
 				E4F077531A658E70004D7453 /* yuanqingjieshao2@2x.png in Resources */,
 				E4ED5D6E1A6D0D7600FFB11A /* AddPuchaseViewController.xib in Resources */,
 				E4F0774F1A658E70004D7453 /* huodongguanli2@2x.png in Resources */,
@@ -1267,6 +1293,7 @@
 				E43C21E91A66C1EF00E1DB45 /* TjxqTableViewCell.xib in Resources */,
 				E4F369DB1A6415280037A533 /* UpdatePasswordViewController.xib in Resources */,
 				E4F21D581A666A77005372EA /* ic_bwgg_011.png in Resources */,
+				E4EDA29F1A7255620018E967 /* summarymanage2.png in Resources */,
 				E4F077271A657E39004D7453 /* ic_item_chuqin.png in Resources */,
 				E4F077511A658E70004D7453 /* yuanqingjieshao1@2x.png in Resources */,
 				E4F077461A658E70004D7453 /* daishenhehd2.png in Resources */,
@@ -1289,6 +1316,7 @@
 				E4F076E01A656680004D7453 /* GgtzTableViewCell.xib in Resources */,
 				E4F077251A657D3E004D7453 /* ic_index_006.png in Resources */,
 				E4F076E41A656680004D7453 /* GgxqViewController.xib in Resources */,
+				E4EDA29C1A7255620018E967 /* planmanage2@2x.png in Resources */,
 				E4F369891A64066D0037A533 /* ic_index_bg.png in Resources */,
 				E4F077411A658E70004D7453 /* daishenhegg1@2x.png in Resources */,
 				E4F369FC1A6444EA0037A533 /* ic_kcb_bg.png in Resources */,
@@ -1299,6 +1327,7 @@
 				E4ED5D691A6D016B00FFB11A /* PurchaseViewController.xib in Resources */,
 				E4C745271A6FEE5D009402ED /* MoreTableViewCell.xib in Resources */,
 				E4F076C01A655F76004D7453 /* ic_bwrz_002.png in Resources */,
+				E4EDA29E1A7255620018E967 /* summarymanage1@2x.png in Resources */,
 				E4F21D8A1A667319005372EA /* AddNoticeViewController.xib in Resources */,
 				E4F0769F1A655E79004D7453 /* ic_bwrz_002@2x.png in Resources */,
 				E4F369881A64066D0037A533 /* ic_index_012.png in Resources */,
@@ -1329,6 +1358,7 @@
 				E4F077401A658E70004D7453 /* daishenhegg1.png in Resources */,
 				E4F076ED1A6566EC004D7453 /* sr_refresh.png in Resources */,
 				E4F077451A658E70004D7453 /* daishenhehd1@2x.png in Resources */,
+				E4EDA29B1A7255620018E967 /* planmanage2.png in Resources */,
 				E43C21F01A66DEEF00E1DB45 /* UpAccessory.png in Resources */,
 				E43C21EF1A66DEEF00E1DB45 /* DownAccessory@2x.png in Resources */,
 				E4F369071A63CEF40037A533 /* Images.xcassets in Resources */,
@@ -1338,7 +1368,9 @@
 				E4F369F41A642C4F0037A533 /* nopicture.png in Resources */,
 				E4F3698F1A6406D60037A533 /* chatListCellHead.png in Resources */,
 				E4ED5D991A6D654700FFB11A /* PurchaseDetailViewController.xib in Resources */,
+				E4EDA29D1A7255620018E967 /* summarymanage1.png in Resources */,
 				E4F21D7E1A666BF0005372EA /* ELCAssetPicker.xib in Resources */,
+				E4EDA2991A7255620018E967 /* planmanage1.png in Resources */,
 				E4F21D801A666BF0005372EA /* Overlay.png in Resources */,
 				E4F369331A63E1D20037A533 /* default4.png in Resources */,
 				E4F0774E1A658E70004D7453 /* huodongguanli2.png in Resources */,

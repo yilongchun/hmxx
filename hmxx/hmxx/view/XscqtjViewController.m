@@ -35,6 +35,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
     self.title = @"学生出勤统计";
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
     self.navigationItem.backBarButtonItem = backItem;
@@ -271,6 +274,7 @@
         NSNumber *attendanceNum = [data objectForKey:@"attendanceNum"];
         NSString *detailTitle = [NSString stringWithFormat:@"应到:%d 出勤:%d",[schoolNum intValue],[attendanceNum intValue]];
         cell.detailTextLabel.text = detailTitle;
+        [cell.detailTextLabel setTextColor:[UIColor blackColor]];
         [cell.detailTextLabel setFont:[UIFont systemFontOfSize:14]];
         return cell;
     }
