@@ -10,6 +10,8 @@
 #import "GuideViewController.h"
 #import "LoginViewController.h"
 #import "IQKeyboardManager.h"
+#import "Utils.h"
+#import "MainViewController.h"
 
 @interface AppDelegate ()
 
@@ -22,8 +24,6 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    
-    
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"everLaunched"]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"everLaunched"];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
@@ -32,14 +32,61 @@
         self.window.rootViewController = vc;
     }else {
         NSLog(@"second launch再次程序启动");
+        [self login];
+    }
+    [self.window makeKeyAndVisible];
+    return YES;
+    
+}
+
+-(void)login{
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *loginusername = [userDefaults objectForKey:@"loginusername"];
+    NSString *loginpassword = [userDefaults objectForKey:@"loginpassword"];
+    NSString *logined = [userDefaults objectForKey:@"LOGINED"];
+    
+    if ([logined isEqualToString:@"YES"]) {//已经登陆
+        if (![Utils isBlankString:loginusername] && ![Utils isBlankString:loginpassword]) {
+            NSString *app_Version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+            NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+            [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/app/Slogin.do?userId=%@&password=%@&clientType=%@&clientVersion=%@",[Utils getHostname],loginusername,loginpassword,@"2",app_Version]]];
+            [request setHTTPMethod:@"GET"];
+            NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+            NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:returnData options:0 error:nil];
+            NSNumber *success = [resultDict objectForKey:@"success"];
+            if ([success boolValue]) {
+                NSDictionary *data = [resultDict objectForKey:@"data"];
+                NSString *userid = [data objectForKey:@"userid"];
+                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                [userDefaults setObject:userid forKey:@"userid"];
+                [userDefaults setObject:loginusername forKey:@"loginusername"];
+                [userDefaults setObject:loginpassword forKey:@"loginpassword"];
+                [userDefaults setObject:@"YES" forKey:@"LOGINED"];
+                MainViewController *mainController = [[MainViewController alloc] init];
+                UINavigationController *vc = [[UINavigationController alloc] initWithRootViewController:mainController];
+                self.window.rootViewController = vc;
+            }else{
+                LoginViewController *loginvc =  [[LoginViewController alloc] init];
+                loginvc.logintype = @"login";
+                UINavigationController *vc = [[UINavigationController alloc] initWithRootViewController:loginvc];
+                [vc setNavigationBarHidden:YES];
+                self.window.rootViewController = vc;
+            }
+        }else{
+            LoginViewController *loginvc =  [[LoginViewController alloc] init];
+            loginvc.logintype = @"login";
+            UINavigationController *vc = [[UINavigationController alloc] initWithRootViewController:loginvc];
+            [vc setNavigationBarHidden:YES];
+            self.window.rootViewController = vc;
+        }
+    }else{//未登陆
         LoginViewController *loginvc =  [[LoginViewController alloc] init];
         loginvc.logintype = @"login";
         UINavigationController *vc = [[UINavigationController alloc] initWithRootViewController:loginvc];
         [vc setNavigationBarHidden:YES];
         self.window.rootViewController = vc;
     }
-    [self.window makeKeyAndVisible];
-    return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

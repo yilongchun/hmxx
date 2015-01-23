@@ -69,17 +69,17 @@
     NSString *loginusername = [userDefaults objectForKey:@"loginusername"];
     NSString *loginpassword = [userDefaults objectForKey:@"loginpassword"];
     
-    self.username.text = loginusername;
-    self.password.text = loginpassword;
+//    self.username.text = loginusername;
+//    self.password.text = loginpassword;
     
 }
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    if ([self.logintype isEqualToString:@"login"] && ![Utils isBlankString:self.username.text] && ![Utils isBlankString:self.password.text]) {
-        self.logintype = @"";
-        [self login:nil];
-    }
+//    if ([self.logintype isEqualToString:@"login"] && ![Utils isBlankString:self.username.text] && ![Utils isBlankString:self.password.text]) {
+//        self.logintype = @"";
+//        [self login:nil];
+//    }
 }
 
 
@@ -210,7 +210,7 @@
             [userDefaults setObject:userid forKey:@"userid"];
             [userDefaults setObject:self.username.text forKey:@"loginusername"];
             [userDefaults setObject:self.password.text forKey:@"loginpassword"];
-            
+            [userDefaults setObject:@"YES" forKey:@"LOGINED"];
 //            if (_mainController == nil) {
                     _mainController = [[MainViewController alloc] init];;
 //            }

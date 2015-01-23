@@ -10,6 +10,7 @@
 #import "LoginViewController.h"
 #import "YjfkViewController.h"
 #import "UpdatePasswordViewController.h"
+#import "LoginViewController.h"
 
 @interface ShezhiViewController (){
     NSString *trackViewUrl;
@@ -117,7 +118,7 @@
                                                     }]];
             [self presentViewController:alert animated:YES completion:nil];
         }else{
-            UIActionSheet *actionsheet = [[UIActionSheet alloc] initWithTitle:@"确定要退出吗?" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"退出登录" otherButtonTitles:nil];
+            UIActionSheet *actionsheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"退出登录" otherButtonTitles:nil];
             actionsheet.tag = 100;
             [actionsheet showInView:self.view];
         }
@@ -194,7 +195,18 @@
         if (buttonIndex == 0) {
             //退出登陆
             [self.navigationController setNavigationBarHidden:YES];
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            UIViewController *rootVc = [self.navigationController.viewControllers objectAtIndex:0];
+            if ([rootVc isKindOfClass:[LoginViewController class]]) {
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            }else{
+                LoginViewController *loginvc =  [[LoginViewController alloc] init];
+                loginvc.logintype = @"login";
+                UINavigationController *vc = [[UINavigationController alloc] initWithRootViewController:loginvc];
+                [vc setNavigationBarHidden:YES];
+                self.view.window.rootViewController = vc;
+            }
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            [userDefaults setObject:@"NO" forKey:@"LOGINED"];
         }
     }
 }
@@ -205,6 +217,15 @@
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
         }
     }
+}
+- (UIViewController *)appRootViewController
+{
+    UIViewController *appRootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    UIViewController *topVC = appRootVC;
+    while (topVC.presentedViewController) {
+        topVC = topVC.presentedViewController;
+    }
+    return topVC;
 }
 
 /*

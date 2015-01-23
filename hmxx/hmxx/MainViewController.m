@@ -52,6 +52,17 @@
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
+    
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];//设置系统返回按钮的颜色
+        [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:116/255.0 green:176/255.0 blue:64/255.0 alpha:1]];//设置导航栏标题的颜色
+    }else{
+        //        [self.loginBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        //        [self.loginBtn setBackgroundColor:[UIColor clearColor]];
+        
+    }
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, nil]];
+    
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
     self.navigationItem.backBarButtonItem = backItem;
     backItem.title = @"返回";
