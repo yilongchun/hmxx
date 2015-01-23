@@ -335,7 +335,7 @@
         if ([success boolValue]) {
             [HUD hide:YES];
             [self okMsk:msg];
-            [self performSelector:@selector(backAndReload) withObject:nil afterDelay:1.5f];
+            [self performSelector:@selector(backAndReload) withObject:nil afterDelay:1.0f];
         }else{
             [HUD hide:YES];
             [self alertMsg:msg];
@@ -358,7 +358,7 @@
     hud.delegate = self;
     hud.labelText = msg;
     [hud show:YES];
-    [hud hide:YES afterDelay:1.5];
+    [hud hide:YES afterDelay:1.0];
 }
 
 //提示
@@ -368,7 +368,7 @@
     hud.labelText = msg;
     hud.margin = 10.f;
     hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:1.5];
+    [hud hide:YES afterDelay:1.0];
 }
 
 -(void)backAndReload{

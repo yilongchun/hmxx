@@ -309,7 +309,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	if (animated && animationType == MBProgressHUDAnimationZoomIn) {
 		self.transform = CGAffineTransformConcat(rotationTransform, CGAffineTransformMakeScale(0.5f, 0.5f));
 	} else if (animated && animationType == MBProgressHUDAnimationZoomOut) {
-		self.transform = CGAffineTransformConcat(rotationTransform, CGAffineTransformMakeScale(1.5f, 1.5f));
+		self.transform = CGAffineTransformConcat(rotationTransform, CGAffineTransformMakeScale(1.0f, 1.0f));
 	}
 	self.showStarted = [NSDate date];
 	// Fade in
@@ -337,7 +337,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 		// 0.02 prevents the hud from passing through touches during the animation the hud will get completely hidden
 		// in the done method
 		if (animationType == MBProgressHUDAnimationZoomIn) {
-			self.transform = CGAffineTransformConcat(rotationTransform, CGAffineTransformMakeScale(1.5f, 1.5f));
+			self.transform = CGAffineTransformConcat(rotationTransform, CGAffineTransformMakeScale(1.0f, 1.0f));
 		} else if (animationType == MBProgressHUDAnimationZoomOut) {
 			self.transform = CGAffineTransformConcat(rotationTransform, CGAffineTransformMakeScale(0.5f, 0.5f));
 		}
