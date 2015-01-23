@@ -55,6 +55,12 @@
 		E4EDA29E1A7255620018E967 /* summarymanage1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EDA2961A7255620018E967 /* summarymanage1@2x.png */; };
 		E4EDA29F1A7255620018E967 /* summarymanage2.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EDA2971A7255620018E967 /* summarymanage2.png */; };
 		E4EDA2A01A7255620018E967 /* summarymanage2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EDA2981A7255620018E967 /* summarymanage2@2x.png */; };
+		E4EDA2A41A7296510018E967 /* JsfcViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EDA2A21A7296510018E967 /* JsfcViewController.m */; };
+		E4EDA2A51A7296510018E967 /* JsfcViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EDA2A31A7296510018E967 /* JsfcViewController.xib */; };
+		E4EDA2A91A7299820018E967 /* JsfcTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EDA2A71A7299820018E967 /* JsfcTableViewCell.m */; };
+		E4EDA2AA1A7299820018E967 /* JsfcTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EDA2A81A7299820018E967 /* JsfcTableViewCell.xib */; };
+		E4EDA2AE1A72A4320018E967 /* JsfcDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EDA2AC1A72A4320018E967 /* JsfcDetailViewController.m */; };
+		E4EDA2AF1A72A4320018E967 /* JsfcDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EDA2AD1A72A4320018E967 /* JsfcDetailViewController.xib */; };
 		E4EF0AE31A6E960300212041 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EF0AE11A6E960300212041 /* ScheduleViewController.m */; };
 		E4EF0AE41A6E960300212041 /* ScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EF0AE21A6E960300212041 /* ScheduleViewController.xib */; };
 		E4EF0AE81A6E96A100212041 /* AddScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EF0AE61A6E96A100212041 /* AddScheduleViewController.m */; };
@@ -331,6 +337,15 @@
 		E4EDA2961A7255620018E967 /* summarymanage1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "summarymanage1@2x.png"; sourceTree = "<group>"; };
 		E4EDA2971A7255620018E967 /* summarymanage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = summarymanage2.png; sourceTree = "<group>"; };
 		E4EDA2981A7255620018E967 /* summarymanage2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "summarymanage2@2x.png"; sourceTree = "<group>"; };
+		E4EDA2A11A7296510018E967 /* JsfcViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JsfcViewController.h; path = view/JsfcViewController.h; sourceTree = "<group>"; };
+		E4EDA2A21A7296510018E967 /* JsfcViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JsfcViewController.m; path = view/JsfcViewController.m; sourceTree = "<group>"; };
+		E4EDA2A31A7296510018E967 /* JsfcViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JsfcViewController.xib; path = view/JsfcViewController.xib; sourceTree = "<group>"; };
+		E4EDA2A61A7299820018E967 /* JsfcTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JsfcTableViewCell.h; path = view/JsfcTableViewCell.h; sourceTree = "<group>"; };
+		E4EDA2A71A7299820018E967 /* JsfcTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JsfcTableViewCell.m; path = view/JsfcTableViewCell.m; sourceTree = "<group>"; };
+		E4EDA2A81A7299820018E967 /* JsfcTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JsfcTableViewCell.xib; path = view/JsfcTableViewCell.xib; sourceTree = "<group>"; };
+		E4EDA2AB1A72A4320018E967 /* JsfcDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JsfcDetailViewController.h; path = view/JsfcDetailViewController.h; sourceTree = "<group>"; };
+		E4EDA2AC1A72A4320018E967 /* JsfcDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JsfcDetailViewController.m; path = view/JsfcDetailViewController.m; sourceTree = "<group>"; };
+		E4EDA2AD1A72A4320018E967 /* JsfcDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JsfcDetailViewController.xib; path = view/JsfcDetailViewController.xib; sourceTree = "<group>"; };
 		E4EF0AE01A6E960300212041 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleViewController.h; path = view/ScheduleViewController.h; sourceTree = "<group>"; };
 		E4EF0AE11A6E960300212041 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleViewController.m; path = view/ScheduleViewController.m; sourceTree = "<group>"; };
 		E4EF0AE21A6E960300212041 /* ScheduleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScheduleViewController.xib; path = view/ScheduleViewController.xib; sourceTree = "<group>"; };
@@ -1145,6 +1160,15 @@
 				E4C745231A6FEE5D009402ED /* MoreTableViewCell.h */,
 				E4C745241A6FEE5D009402ED /* MoreTableViewCell.m */,
 				E4C745251A6FEE5D009402ED /* MoreTableViewCell.xib */,
+				E4EDA2A11A7296510018E967 /* JsfcViewController.h */,
+				E4EDA2A21A7296510018E967 /* JsfcViewController.m */,
+				E4EDA2A31A7296510018E967 /* JsfcViewController.xib */,
+				E4EDA2A61A7299820018E967 /* JsfcTableViewCell.h */,
+				E4EDA2A71A7299820018E967 /* JsfcTableViewCell.m */,
+				E4EDA2A81A7299820018E967 /* JsfcTableViewCell.xib */,
+				E4EDA2AB1A72A4320018E967 /* JsfcDetailViewController.h */,
+				E4EDA2AC1A72A4320018E967 /* JsfcDetailViewController.m */,
+				E4EDA2AD1A72A4320018E967 /* JsfcDetailViewController.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -1300,6 +1324,7 @@
 				E4C664B71A715809003CCC0E /* grayBg.png in Resources */,
 				E4F3692A1A63E0920037A533 /* LoginViewController.xib in Resources */,
 				E4F077521A658E70004D7453 /* yuanqingjieshao2.png in Resources */,
+				E4EDA2A51A7296510018E967 /* JsfcViewController.xib in Resources */,
 				E4EF0AF81A6EAFD900212041 /* CollectionCell.xib in Resources */,
 				E4C664BB1A715D79003CCC0E /* loginBtnBg2.png in Resources */,
 				E4F076EE1A6566EC004D7453 /* sr_refresh@2X.png in Resources */,
@@ -1354,6 +1379,7 @@
 				E4F369381A63E1D20037A533 /* ic_login_password.png in Resources */,
 				E4ED5D641A6CFFED00FFB11A /* PurchaseTableViewCell.xib in Resources */,
 				E4F077491A658E70004D7453 /* gonggaoguanli1@2x.png in Resources */,
+				E4EDA2AF1A72A4320018E967 /* JsfcDetailViewController.xib in Resources */,
 				E4F077561A658E70004D7453 /* yuanwurizhi2.png in Resources */,
 				E4F077401A658E70004D7453 /* daishenhegg1.png in Resources */,
 				E4F076ED1A6566EC004D7453 /* sr_refresh.png in Resources */,
@@ -1373,6 +1399,7 @@
 				E4EDA2991A7255620018E967 /* planmanage1.png in Resources */,
 				E4F21D801A666BF0005372EA /* Overlay.png in Resources */,
 				E4F369331A63E1D20037A533 /* default4.png in Resources */,
+				E4EDA2AA1A7299820018E967 /* JsfcTableViewCell.xib in Resources */,
 				E4F0774E1A658E70004D7453 /* huodongguanli2.png in Resources */,
 				E4C664B91A715C24003CCC0E /* loginBtnBg.png in Resources */,
 			);
@@ -1409,15 +1436,18 @@
 				E4F21D791A666BF0005372EA /* ELCAssetTablePicker.m in Sources */,
 				E4F369EB1A642B0C0037A533 /* JYSlideSegmentController.m in Sources */,
 				E4F076E11A656680004D7453 /* GgtzViewController.m in Sources */,
+				E4EDA2AE1A72A4320018E967 /* JsfcDetailViewController.m in Sources */,
 				E4ED5D8F1A6D420A00FFB11A /* UIWindow+Hierarchy.m in Sources */,
 				E4F369DC1A6415280037A533 /* YjfkViewController.m in Sources */,
 				E4F369271A63E0920037A533 /* GuideViewController.m in Sources */,
 				E4F076EF1A6566EC004D7453 /* SRRefreshView.m in Sources */,
+				E4EDA2A91A7299820018E967 /* JsfcTableViewCell.m in Sources */,
 				E4F0769B1A655CB0004D7453 /* MyTabbarController.m in Sources */,
 				E4ED5D6D1A6D0D7600FFB11A /* AddPuchaseViewController.m in Sources */,
 				E4ED5D891A6D420A00FFB11A /* IQTextView.m in Sources */,
 				E4ED5D8E1A6D420A00FFB11A /* UIView+IQKeyboardToolbar.m in Sources */,
 				E4ED5D631A6CFFED00FFB11A /* PurchaseTableViewCell.m in Sources */,
+				E4EDA2A41A7296510018E967 /* JsfcViewController.m in Sources */,
 				E4EF0AE81A6E96A100212041 /* AddScheduleViewController.m in Sources */,
 				E4F369C61A64088F0037A533 /* UIButton+AFNetworking.m in Sources */,
 				E4F369621A63E3FE0037A533 /* MBProgressHUD.m in Sources */,

@@ -8,10 +8,12 @@
 
 #import "MyTabbarController.h"
 #import "YqjsViewController.h"
+#import "JsfcViewController.h"
 
 
-
-@interface MyTabbarController ()
+@interface MyTabbarController (){
+    UIBarButtonItem *buttonItem1;
+}
 
 @end
 
@@ -29,36 +31,35 @@
     
     UIImage *img1 = [UIImage imageNamed:@"yuanqingjieshao2.png"];
     UIImage *img1_h = [UIImage imageNamed:@"yuanqingjieshao1.png"];
-    
+    UIImage *img2 = [UIImage imageNamed:@"yuanqingjieshao2.png"];
+    UIImage *img2_h = [UIImage imageNamed:@"yuanqingjieshao1.png"];
     
     
     
     YqjsViewController *vc1 = [[YqjsViewController alloc] init];
-    
+    JsfcViewController *vc2 = [[JsfcViewController alloc] init];
     
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
         img1 = [img1 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         img1_h = [img1_h imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        
+        img2 = [img2 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        img2_h = [img2_h imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         
         
         UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:@"园情介绍" image:img1 selectedImage:img1_h];
         [item1 setTag:0];
         vc1.tabBarItem = item1;
-        
+        UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:@"教师风采" image:img2 selectedImage:img2_h];
+        [item2 setTag:1];
+        vc2.tabBarItem = item2;
         
     }else{
         UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:@"园情介绍" image:img1 tag:0];
         vc1.tabBarItem = item1;
-        
+        UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:@"教师风采" image:img2 tag:1];
+        vc2.tabBarItem = item2;
         
     }
-    
-    
-    //    初始化第二个视图控制器
-    UIViewController *vc2 = [[UIViewController alloc] init];
-    [vc2.view setBackgroundColor:[UIColor whiteColor]];
-    vc2.tabBarItem =[[UITabBarItem alloc] initWithTitle:@"教师风采" image:[UIImage imageNamed:@"ic_bwrz_002.png"] tag:1];
     //    把导航控制器加入到数组
     NSMutableArray *viewArr_ = [NSMutableArray arrayWithObjects:vc1,vc2, nil];
     
@@ -67,6 +68,15 @@
     
     self.selectedIndex = 0;
     [[self tabBar] setSelectedImageTintColor:[UIColor colorWithRed:116/255.0 green:176/255.0 blue:64/255.0 alpha:1]];
+    
+    //设置导航栏右侧按钮
+    UIImage* image= [UIImage imageNamed:@"ic_bwgg_011.png"];
+    CGRect frame= CGRectMake(0, 0, 30, 30);
+    UIButton* someButton= [[UIButton alloc] initWithFrame:frame];
+    [someButton addTarget:self action:@selector(action1) forControlEvents:UIControlEventTouchUpInside];
+    [someButton setBackgroundImage:image forState:UIControlStateNormal];
+    [someButton setShowsTouchWhenHighlighted:NO];
+    buttonItem1 = [[UIBarButtonItem alloc] initWithCustomView:someButton];
     
     
 }
@@ -77,9 +87,15 @@
 {
     if (item.tag == 0) {
         self.title = @"园情介绍";
+        [self.navigationItem setRightBarButtonItem:nil];
     }else if (item.tag == 1){
         self.title = @"教师风采";
+        [self.navigationItem setRightBarButtonItem:buttonItem1];
     }
+}
+
+-(void)action1{
+    
 }
 
 - (void)didReceiveMemoryWarning {

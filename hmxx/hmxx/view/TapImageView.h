@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ContentCell.h"
 
 @protocol TapImageViewDelegate <NSObject>
 
@@ -17,6 +18,8 @@
 @interface TapImageView : UIImageView
 
 @property (nonatomic, strong) id identifier;
+
+@property (nonatomic, strong) ContentCell *concell;
 
 @property (weak) id<TapImageViewDelegate> t_delegate;
 

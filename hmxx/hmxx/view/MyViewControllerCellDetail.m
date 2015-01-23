@@ -32,8 +32,6 @@
     UIView *markView;
     UIView *scrollPanel;
     ContentCell *tapCell;
-    
-    BOOL isLoading;
 }
 
 @property (strong, nonatomic)UIButton *videoPlayButton;
@@ -69,11 +67,11 @@
     HUD.labelText = @"加载中...";
     [self.view addSubview:HUD];
     HUD.delegate = self;
-    isLoading = NO;
+    
     self.mytableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.mytableview addSubview:self.slimeView];
     
-    scrollPanel = [[UIView alloc] initWithFrame:self.view.bounds];
+    scrollPanel = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     scrollPanel.backgroundColor = [UIColor clearColor];
     scrollPanel.alpha = 0;
     [self.view addSubview:scrollPanel];
@@ -83,7 +81,7 @@
     markView.alpha = 0.0;
     [scrollPanel addSubview:markView];
     
-    myScrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    myScrollView = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [scrollPanel addSubview:myScrollView];
     myScrollView.pagingEnabled = YES;
     myScrollView.delegate = self;
@@ -216,7 +214,7 @@
 }
 
 - (void)loadDataPingLunMore{
-    isLoading = YES;
+    
     if ([page intValue]< [totalpage intValue]) {
         page = [NSNumber numberWithInt:[page intValue] +1];
     }
@@ -249,16 +247,13 @@
                 }
                 [self.mytableview reloadData];
             }
-            isLoading = NO;
             [HUD hide:YES];
         }else{
-            isLoading = NO;
             [HUD hide:YES];
             [self alertMsg:msg];
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        isLoading = NO;
         [HUD hide:YES];
         [self alertMsg:@"连接服务器失败"];
     }];
@@ -319,8 +314,12 @@
                     [cell.contentView addSubview:tmpView];
                     tmpView = (TapImageView *)[cell.contentView viewWithTag:10+i];
                     tmpView.identifier = cell;
+                    tmpView.concell = cell;
+                    NSLog(@"tmpView.identifier : %@",tmpView.identifier);
+                    NSLog(@"tmpView.identifier : %@",cell);
                 }
-                
+                tapCell = cell;
+                NSLog(@"tapCell:%@",tapCell);
             }else if ([type isEqualToString:@"t_activity_video"]){//显示视频
                 self.videoPlayButton = [UIButton buttonWithType:UIButtonTypeCustom];
                 UIImage *backgroundImage = [UIImage imageNamed:@"chat_video_play.png"];
@@ -553,15 +552,17 @@
 #pragma mark - custom delegate
 - (void) tappedWithObject:(id)sender
 {
-    
+    NSLog(@"%@",sender);
     [self.view bringSubviewToFront:scrollPanel];
     scrollPanel.alpha = 1.0;
     
     TapImageView *tmpView = sender;
     currentIndex = tmpView.tag - 10;
-    
-    tapCell = tmpView.identifier;
-    
+    NSLog(@"tapCell:%@",tapCell);
+    NSLog(@"tmpView.identifier : %@",tmpView.concell);
+//    tapCell = tmpView.identifier;
+    NSLog(@"tmpView.identifier : %@",tmpView.identifier);
+    NSLog(@"tmpView.identifier : %@",tapCell);
     //转换后的rect
     CGRect convertRect = [[tmpView superview] convertRect:tmpView.frame toView:self.view];
     
