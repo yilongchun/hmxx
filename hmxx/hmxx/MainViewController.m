@@ -169,11 +169,11 @@
                 NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                 [userDefaults setObject:data forKey:@"user"];
                 
-                NSString *schoolName = [data objectForKey:@"schoolName"];
-//                NSString *userName = [data objectForKey:@"userName"];
+//                NSString *schoolName = [data objectForKey:@"schoolName"];
+                NSString *userName = [data objectForKey:@"userName"];
 //                NSString *uId = [data objectForKey:@"uId"];
                 NSString *fileid = [data objectForKey:@"fileid"];
-                self.username.text = schoolName;
+                self.username.text = userName;
                 //设置头像
                 if ([Utils isBlankString:fileid]) {
                     [self.userimg setImage:[UIImage imageNamed:@"chatListCellHead.png"]];
@@ -304,7 +304,7 @@
                 [mainScrollView addSubview:btn2];
                 [mainScrollView addSubview:label2];
             }
-        }else if([menuStr isEqualToString:@"schedule"]){
+        }else if([menuStr isEqualToString:@"personalmanage"]){
             i++;
             UIButton *btn1 = [[UIButton alloc] init];
             [btn1 setFrame:btnr];
