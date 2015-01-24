@@ -7,21 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SMPageControl.h"
 
-@interface MainViewController : UIViewController<UINavigationControllerDelegate,UIScrollViewDelegate>{
-    BOOL loginSuccess;
-}
+@interface MainViewController : UIViewController<UINavigationControllerDelegate,UIScrollViewDelegate>
 
 
 - (IBAction)setup:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *userimg;
 @property (weak, nonatomic) IBOutlet UILabel *username;
-
 @property (nonatomic, copy) NSString *flag;
 @property (nonatomic, strong) NSMutableArray *menus;
-
-
-
 
 @end

@@ -112,9 +112,6 @@
 		E4F077111A6568BC004D7453 /* TapImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F0770F1A6568BC004D7453 /* TapImageView.m */; };
 		E4F077141A6568E1004D7453 /* ImgScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F077131A6568E1004D7453 /* ImgScrollView.m */; };
 		E4F077161A656E35004D7453 /* chat_video_play.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F077151A656E35004D7453 /* chat_video_play.png */; };
-		E4F077191A65722C004D7453 /* SMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F077181A65722C004D7453 /* SMPageControl.m */; };
-		E4F0771C1A657263004D7453 /* currentPageDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F0771A1A657263004D7453 /* currentPageDot@2x.png */; };
-		E4F0771D1A657263004D7453 /* pageDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F0771B1A657263004D7453 /* pageDot@2x.png */; };
 		E4F077211A657C4F004D7453 /* ic_index_002.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F0771F1A657C4F004D7453 /* ic_index_002.png */; };
 		E4F077251A657D3E004D7453 /* ic_index_006.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F077231A657D3E004D7453 /* ic_index_006.png */; };
 		E4F077271A657E39004D7453 /* ic_item_chuqin.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F077261A657E39004D7453 /* ic_item_chuqin.png */; };
@@ -423,10 +420,6 @@
 		E4F077121A6568E1004D7453 /* ImgScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImgScrollView.h; path = view/ImgScrollView.h; sourceTree = "<group>"; };
 		E4F077131A6568E1004D7453 /* ImgScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImgScrollView.m; path = view/ImgScrollView.m; sourceTree = "<group>"; };
 		E4F077151A656E35004D7453 /* chat_video_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_video_play.png; sourceTree = "<group>"; };
-		E4F077171A65722C004D7453 /* SMPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMPageControl.h; path = view/SMPageControl.h; sourceTree = "<group>"; };
-		E4F077181A65722C004D7453 /* SMPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMPageControl.m; path = view/SMPageControl.m; sourceTree = "<group>"; };
-		E4F0771A1A657263004D7453 /* currentPageDot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "currentPageDot@2x.png"; sourceTree = "<group>"; };
-		E4F0771B1A657263004D7453 /* pageDot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pageDot@2x.png"; sourceTree = "<group>"; };
 		E4F0771F1A657C4F004D7453 /* ic_index_002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_index_002.png; sourceTree = "<group>"; };
 		E4F077231A657D3E004D7453 /* ic_index_006.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_index_006.png; sourceTree = "<group>"; };
 		E4F077261A657E39004D7453 /* ic_item_chuqin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_item_chuqin.png; sourceTree = "<group>"; };
@@ -880,8 +873,6 @@
 				E4F369FF1A6448300037A533 /* ic_index_007.png */,
 				E4F369E11A642A670037A533 /* ic_index_004.png */,
 				E4F3697E1A64066D0037A533 /* ic_index_012.png */,
-				E4F0771A1A657263004D7453 /* currentPageDot@2x.png */,
-				E4F0771B1A657263004D7453 /* pageDot@2x.png */,
 				E4F077151A656E35004D7453 /* chat_video_play.png */,
 				E4F076A81A655F76004D7453 /* ic_bwrz_002.png */,
 				E4F076A91A655F76004D7453 /* ic_bwrz_002@2x.png */,
@@ -1046,8 +1037,6 @@
 				E4F21D591A666BB4005372EA /* AddActivityViewController.h */,
 				E4F21D5A1A666BB4005372EA /* AddActivityViewController.m */,
 				E4F21D5B1A666BB4005372EA /* AddActivityViewController.xib */,
-				E4F077171A65722C004D7453 /* SMPageControl.h */,
-				E4F077181A65722C004D7453 /* SMPageControl.m */,
 				E4F077121A6568E1004D7453 /* ImgScrollView.h */,
 				E4F077131A6568E1004D7453 /* ImgScrollView.m */,
 				E4F0770C1A6568BC004D7453 /* CustomMoviePlayerViewController.h */,
@@ -1300,7 +1289,6 @@
 				E4F21D951A667BDF005372EA /* DaiShHdViewController.xib in Resources */,
 				E4F21D851A666C47005372EA /* smiley_add_btn_pressed.png in Resources */,
 				E4F21D7F1A666BF0005372EA /* ELCAssetTablePicker.xib in Resources */,
-				E4F0771C1A657263004D7453 /* currentPageDot@2x.png in Resources */,
 				E4F076C11A655F76004D7453 /* ic_bwrz_002@2x.png in Resources */,
 				E4F0768E1A653E47004D7453 /* GrdaViewController.xib in Resources */,
 				E4ED5D861A6D420A00FFB11A /* IQKeyboardManager.bundle in Resources */,
@@ -1361,7 +1349,6 @@
 				E4F21D9A1A667D3A005372EA /* DaiShGgViewController.xib in Resources */,
 				E4F369391A63E1D20037A533 /* ic_login_user.png in Resources */,
 				E4F369DF1A6418EF0037A533 /* ic_sz_002.png in Resources */,
-				E4F0771D1A657263004D7453 /* pageDot@2x.png in Resources */,
 				E4F369051A63CEF40037A533 /* Main.storyboard in Resources */,
 				E4F077471A658E70004D7453 /* daishenhehd2@2x.png in Resources */,
 				E4F369371A63E1D20037A533 /* guide_4.png in Resources */,
@@ -1478,7 +1465,6 @@
 				E4F369CA1A64088F0037A533 /* UIWebView+AFNetworking.m in Sources */,
 				E4F369BC1A64088F0037A533 /* AFHTTPSessionManager.m in Sources */,
 				E4F077111A6568BC004D7453 /* TapImageView.m in Sources */,
-				E4F077191A65722C004D7453 /* SMPageControl.m in Sources */,
 				E4F077141A6568E1004D7453 /* ImgScrollView.m in Sources */,
 				E4F076F61A656722004D7453 /* HPGrowingTextView.m in Sources */,
 				E4F368FF1A63CEF40037A533 /* AppDelegate.m in Sources */,

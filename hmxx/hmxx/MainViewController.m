@@ -31,7 +31,7 @@
     NSArray *sparr;//食谱
     MBProgressHUD *HUD;
     
-    SMPageControl *spacePageControl;
+    UIPageControl *spacePageControl;
     UIScrollView *mainScrollView;
     
     MyTabbarController *tabBarCtl;//我的学校
@@ -445,16 +445,13 @@
         if (height <= 480) {
             [mainScrollView setContentSize:CGSizeMake(width*2, height-170)];
             if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
-                spacePageControl = [[SMPageControl alloc] initWithFrame:CGRectMake(0.0, height-30, width, 10)];
+                spacePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, height-30, width, 10)];
             }else{
-                spacePageControl = [[SMPageControl alloc] initWithFrame:CGRectMake(0.0, height-50, width, 10)];
+                spacePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, height-50, width, 10)];
             }
-            
-            [spacePageControl setPageIndicatorImage:[UIImage imageNamed:@"pageDot"]];
-            [spacePageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot"]];
+            spacePageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
+            spacePageControl.pageIndicatorTintColor = [UIColor grayColor];
             spacePageControl.numberOfPages = 2;
-            spacePageControl.indicatorMargin = 10.0f;
-            spacePageControl.indicatorDiameter = 10.0f;
             spacePageControl.userInteractionEnabled = NO;
             [self.view addSubview:spacePageControl];
         }else{
