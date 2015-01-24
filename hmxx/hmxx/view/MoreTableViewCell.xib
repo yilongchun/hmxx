@@ -14,19 +14,22 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sCz-MD-h3k">
-                        <rect key="frame" x="8" y="8" width="304" height="38"/>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" id="S2G-8k-Bu2">
+                        <rect key="frame" x="106" y="17" width="20" height="20"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </activityIndicatorView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="加载中..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fwW-lz-of7">
+                        <rect key="frame" x="120" y="17" width="80" height="20"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <state key="normal" title="显示下20条">
-                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="moreButton" destination="sCz-MD-h3k" id="psU-cZ-tis"/>
+                <outlet property="activity" destination="S2G-8k-Bu2" id="zNf-Le-1Vl"/>
+                <outlet property="msg" destination="fwW-lz-of7" id="aCr-bx-34e"/>
             </connections>
             <point key="canvasLocation" x="376" y="307.5"/>
         </tableViewCell>

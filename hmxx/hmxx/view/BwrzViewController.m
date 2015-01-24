@@ -14,6 +14,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "UpdateBwrzViewController.h"
 #import "SRRefreshView.h"
+#import "MoreTableViewCell.h"
 
 @interface BwrzViewController ()<MBProgressHUDDelegate,SRRefreshDelegate>{
     MBProgressHUD *HUD;
@@ -22,7 +23,7 @@
     NSNumber *page;
     NSNumber *rows;
     
-    BOOL isLoading;
+    UIActivityIndicatorView *tempactivity;
 }
 @property (nonatomic, strong) SRRefreshView         *slimeView;
 
@@ -67,7 +68,6 @@
     [self.view addSubview:HUD];
     HUD.delegate = self;
     [HUD show:YES];
-    isLoading = NO;
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     
     self.dataSource = [[NSMutableArray alloc] init];
@@ -151,7 +151,6 @@
 }
 
 - (void)loadMore{
-    isLoading = YES;
     if ([page intValue] < [totalpage intValue]) {
         page = [NSNumber numberWithInt:[page intValue] +1];
     }
@@ -185,20 +184,16 @@
                 }else{
                     totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue] + 1];
                 }
-                [mytableview reloadData];
             }
-            isLoading = NO;
-            [HUD hide:YES];
+            if ([tempactivity isAnimating]) {
+                [tempactivity stopAnimating];
+            }
+            [mytableview reloadData];
         }else{
-            isLoading = NO;
-            [HUD hide:YES];
             [self alertMsg:msg];
-            
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        isLoading = NO;
-        [HUD hide:YES];
         [self alertMsg:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
@@ -242,14 +237,11 @@
     
     if ([self.dataSource count] == indexPath.row) {
         static NSString *cellIdentifier = @"morecell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        MoreTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-            [cell.textLabel setFont:[UIFont systemFontOfSize:15]];
-            [cell.textLabel setTextColor:[UIColor grayColor]];
-            cell.textLabel.textAlignment = NSTextAlignmentCenter;
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"MoreTableViewCell" owner:self options:nil] lastObject];
         }
-        cell.textLabel.text = @"显示下10条";
+        cell.msg.text = @"显示下10条";
         return cell;
         
     }else{
@@ -298,9 +290,10 @@
         if (page == totalpage) {
             
         }else{
-            UITableViewCell *cell = (UITableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-            cell.textLabel.text = @"加载中...";
-            [HUD show:YES];
+            MoreTableViewCell *cell = (MoreTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+            cell.msg.text = @"加载中...";
+            [cell.activity startAnimating];
+            tempactivity = cell.activity;
             [self loadMore];
         }
         

@@ -14,6 +14,7 @@
 #import "GgxqViewController.h"
 #import "SRRefreshView.h"
 #import "UIImageView+AFNetworking.h"
+#import "MoreTableViewCell.h"
 
 
 @interface GgtzViewController ()<MBProgressHUDDelegate,SRRefreshDelegate>{
@@ -23,8 +24,8 @@
     NSNumber *page;
     NSNumber *rows;
     
-    BOOL isLoading;
     NSString *schoolid;
+    UIActivityIndicatorView *tempactivity;
 }
     
 @property (nonatomic, strong) SRRefreshView         *slimeView;
@@ -37,7 +38,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(loadData)
                                                  name:@"reloadGggl"
@@ -65,8 +65,6 @@
     
     [mytableView addSubview:self.slimeView];
     
-    isLoading = NO;
-    
     //添加加载等待条
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     HUD.labelText = @"加载中...";
@@ -80,7 +78,6 @@
     schoolid = [userDefaults objectForKey:@"schoolid"];
     
     self.dataSource = [[NSMutableArray alloc] init];
-    
     
     //初始化数据
     [self loadData];
@@ -149,13 +146,12 @@
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
         [HUD hide:YES];
-        [self alertMsg:@"连接失败"];
+        [self alertMsg:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
 }
 
 - (void)loadMore{
-    isLoading = YES;
     if ([page intValue] < [totalpage intValue]) {
         page = [NSNumber numberWithInt:[page intValue] +1];
     }
@@ -185,22 +181,17 @@
                 }else{
                     totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue] + 1];
                 }
-                [self.mytableView reloadData];
-                
             }
-            isLoading = NO;
-            [HUD hide:YES];
+            if ([tempactivity isAnimating]) {
+                [tempactivity stopAnimating];
+            }
+            [mytableView reloadData];
         }else{
-            isLoading = NO;
-            [HUD hide:YES];
             [self alertMsg:msg];
-            
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        isLoading = NO;
-        [HUD hide:YES];
-        [self alertMsg:@"连接失败"];
+        [self alertMsg:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
 }
@@ -243,14 +234,11 @@
     
     if ([self.dataSource count] == indexPath.row) {
         static NSString *cellIdentifier = @"morecell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        MoreTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-            [cell.textLabel setFont:[UIFont systemFontOfSize:15]];
-            [cell.textLabel setTextColor:[UIColor grayColor]];
-            cell.textLabel.textAlignment = NSTextAlignmentCenter;
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"MoreTableViewCell" owner:self options:nil] lastObject];
         }
-        cell.textLabel.text = @"显示下10条";
+        cell.msg.text = @"显示下10条";
         return cell;
     }else{
         static NSString *cellIdentifier = @"ggtzcell";
@@ -307,14 +295,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.dataSource count] == indexPath.row) {
         if (page == totalpage) {
-            
         }else{
-            UITableViewCell *cell = (UITableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-            cell.textLabel.text = @"加载中...";
-            [HUD show:YES];
+            MoreTableViewCell *cell = (MoreTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+            cell.msg.text = @"加载中...";
+            [cell.activity startAnimating];
+            tempactivity = cell.activity;
             [self loadMore];
         }
-        
     }else{
         if (indexPath.row < [self.dataSource count]) {
             NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];

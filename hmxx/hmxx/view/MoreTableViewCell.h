@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MoreTableViewCell : UITableViewCell
-
-@property (weak, nonatomic) IBOutlet UIButton *moreButton;
-
+@property (weak, nonatomic) IBOutlet UILabel *msg;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activity;
 @end

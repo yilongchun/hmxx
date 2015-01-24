@@ -152,7 +152,7 @@
         }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
             NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
             [HUD hide:YES];
-            [self alertMsg:@"连接失败"];
+            [self alertMsg:@"连接服务器失败"];
         }];
         [engine enqueueOperation:op];
     }
