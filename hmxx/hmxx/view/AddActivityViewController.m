@@ -236,7 +236,7 @@
             NSLog(@"json parse failed \r\n");
         }
         NSNumber *success = [resultDict objectForKey:@"success"];
-        NSString *msg = [resultDict objectForKey:@"msg"];
+//        NSString *msg = [resultDict objectForKey:@"msg"];
         if ([success boolValue]) {
             NSString *fileurl = [resultDict objectForKey:@"data"];
             [fileArr addObject:fileurl];
@@ -310,7 +310,11 @@
             NSFileManager *fileMgr = [NSFileManager defaultManager];
             NSError *err;
             BOOL b = [fileMgr removeItemAtPath:[videoUrl absoluteString] error:&err];
-            NSLog(@"%@ %@",b ? @"删除视频成功" : @"删除视频失败",videoUrl);
+            if (!b) {
+                NSLog(@"删除视频失败");
+            }else{
+                NSLog(@"删除视频成功");
+            }
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
@@ -323,9 +327,6 @@
 }
 
 - (IBAction)launchController{
-    
-    
-    
     if (self.chosenImages.count > 0 && type == 1) {
         UIActionSheet *actionsheet = [[UIActionSheet alloc] initWithTitle:@"选择" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"选择照片", nil];
         actionsheet.tag = 1;
@@ -449,8 +450,8 @@
         //在str1这个字符串中搜索\n，判断有没有
         if ([mstr rangeOfString:str].location != NSNotFound) {
             NSString *filepath = [mstr substringFromIndex:[mstr rangeOfString:str].location];
-            BOOL b = [fileMgr removeItemAtPath:filepath error:&err];
-            NSLog(@"%@ %@",b ? @"删除视频成功" : @"删除视频失败",videoUrl);
+            [fileMgr removeItemAtPath:filepath error:&err];
+//            NSLog(@"%@ %@",b ? @"删除视频成功" : @"删除视频失败",videoUrl);
         }
     }
 }

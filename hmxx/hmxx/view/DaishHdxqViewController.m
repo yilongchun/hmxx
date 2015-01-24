@@ -24,7 +24,7 @@
     
     UIScrollView *myScrollView;
     NSInteger currentIndex;
-    int imgCount;
+    NSUInteger imgCount;
     UIView *markView;
     UIView *scrollPanel;
     ContentCell *tapCell;
@@ -262,7 +262,7 @@
             NSDictionary *file = [filelist objectAtIndex:0];
             NSString *type = [file objectForKey:@"type"];
             if ([type isEqualToString:@"t_activity_image"]) {//显示图片
-                int count = 0;
+                NSUInteger count = 0;
                 if ([filelist count] % 3 == 0) {
                     count = [filelist count] / 3;
                 }else{

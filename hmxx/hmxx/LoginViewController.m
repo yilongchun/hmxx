@@ -65,9 +65,9 @@
     
     _mainController = [[MainViewController alloc] init];
     
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *loginusername = [userDefaults objectForKey:@"loginusername"];
-    NSString *loginpassword = [userDefaults objectForKey:@"loginpassword"];
+//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//    NSString *loginusername = [userDefaults objectForKey:@"loginusername"];
+//    NSString *loginpassword = [userDefaults objectForKey:@"loginpassword"];
     
 //    self.username.text = loginusername;
 //    self.password.text = loginpassword;
@@ -76,10 +76,6 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-//    if ([self.logintype isEqualToString:@"login"] && ![Utils isBlankString:self.username.text] && ![Utils isBlankString:self.password.text]) {
-//        self.logintype = @"";
-//        [self login:nil];
-//    }
 }
 
 

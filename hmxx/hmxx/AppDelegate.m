@@ -40,7 +40,6 @@
 }
 
 -(void)login{
-    
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *loginusername = [userDefaults objectForKey:@"loginusername"];
     NSString *loginpassword = [userDefaults objectForKey:@"loginpassword"];
@@ -67,26 +66,21 @@
                 UINavigationController *vc = [[UINavigationController alloc] initWithRootViewController:mainController];
                 self.window.rootViewController = vc;
             }else{
-                LoginViewController *loginvc =  [[LoginViewController alloc] init];
-                loginvc.logintype = @"login";
-                UINavigationController *vc = [[UINavigationController alloc] initWithRootViewController:loginvc];
-                [vc setNavigationBarHidden:YES];
-                self.window.rootViewController = vc;
+                [self goToLogin];
             }
         }else{
-            LoginViewController *loginvc =  [[LoginViewController alloc] init];
-            loginvc.logintype = @"login";
-            UINavigationController *vc = [[UINavigationController alloc] initWithRootViewController:loginvc];
-            [vc setNavigationBarHidden:YES];
-            self.window.rootViewController = vc;
+            [self goToLogin];
         }
     }else{//未登陆
-        LoginViewController *loginvc =  [[LoginViewController alloc] init];
-        loginvc.logintype = @"login";
-        UINavigationController *vc = [[UINavigationController alloc] initWithRootViewController:loginvc];
-        [vc setNavigationBarHidden:YES];
-        self.window.rootViewController = vc;
+        [self goToLogin];
     }
+}
+
+-(void)goToLogin{
+    LoginViewController *loginvc =  [[LoginViewController alloc] init];
+    UINavigationController *vc = [[UINavigationController alloc] initWithRootViewController:loginvc];
+    [vc setNavigationBarHidden:YES];
+    self.window.rootViewController = vc;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

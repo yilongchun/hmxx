@@ -33,6 +33,15 @@
     
     SMPageControl *spacePageControl;
     UIScrollView *mainScrollView;
+    
+    MyTabbarController *tabBarCtl;//我的学校
+    MyTabbarController2 *tabBarCtl2;//园务管理
+    MyTabbarController3 *tabBarCtl3;//学校审核
+    XscqtjViewController *vc1;//学校出勤统计
+    PurchaseViewController *vc2;//采买报表
+    MyTabbarController4 *tabBarCtl4;//个人日志
+    KcbViewController *kcb;//作息时间表
+    GrdaViewController *grda;//个人中心
 }
 
 @property (strong, nonatomic)NSDate *lastPlaySoundDate;
@@ -486,11 +495,78 @@
     [engine enqueueOperation:op];
 }
 
+
+
+
+//加载作息时间表
+- (void)loadZxsjb:(NSString *)schoolid{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setValue:schoolid forKey:@"schoolId"];
+    
+    MKNetworkOperation *op = [engine operationWithPath:@"/SchoolTimes/findAllList.do" params:dic httpMethod:@"GET"];
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        //        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
+        NSString *result = [operation responseString];
+        NSError *error;
+        NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+        if (resultDict == nil) {
+            NSLog(@"json parse failed \r\n");
+        }
+        NSNumber *success = [resultDict objectForKey:@"success"];
+        //            NSString *msg = [resultDict objectForKey:@"msg"];
+        //        NSString *code = [resultDict objectForKey:@"code"];
+        if ([success boolValue]) {
+            NSArray *data = [resultDict objectForKey:@"data"];
+            if (data != nil) {
+                kcbarr = data;
+            }
+        }else{
+            
+            
+        }
+    }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
+        NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
+    }];
+    [engine enqueueOperation:op];
+}
+
+
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+    
+}
+
+
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+//隐藏导航栏
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    if ([viewController isKindOfClass:[MainViewController class]]) {
+        [self.navigationController setNavigationBarHidden:YES];
+    }
+}
+
+
+//设置
+- (IBAction)setup:(UIButton *)sender {
+    ShezhiViewController *sz = [[ShezhiViewController alloc] init];
+    [self.navigationController pushViewController:sz animated:YES];
+}
+
 //学生食谱
 - (IBAction)xsspAction:(UIButton *)sender {
-    
     NSMutableArray *vcs = [NSMutableArray array];
-    
     for (int i = 0 ; i < [sparr count]; i++) {
         BbspViewController *vc = [[BbspViewController alloc] init];
         NSArray *data = [sparr objectAtIndex:i];
@@ -543,126 +619,76 @@
     }
 }
 
-
-//加载作息时间表
-- (void)loadZxsjb:(NSString *)schoolid{
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setValue:schoolid forKey:@"schoolId"];
-    
-    MKNetworkOperation *op = [engine operationWithPath:@"/SchoolTimes/findAllList.do" params:dic httpMethod:@"GET"];
-    [op addCompletionHandler:^(MKNetworkOperation *operation) {
-        //        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
-        NSString *result = [operation responseString];
-        NSError *error;
-        NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
-        if (resultDict == nil) {
-            NSLog(@"json parse failed \r\n");
-        }
-        NSNumber *success = [resultDict objectForKey:@"success"];
-        //            NSString *msg = [resultDict objectForKey:@"msg"];
-        //        NSString *code = [resultDict objectForKey:@"code"];
-        if ([success boolValue]) {
-            NSArray *data = [resultDict objectForKey:@"data"];
-            if (data != nil) {
-                kcbarr = data;
-            }
-        }else{
-            
-            
-        }
-    }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
-        NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-    }];
-    [engine enqueueOperation:op];
-}
-
 //作息时间表
 - (IBAction)zxsjbAction:(UIButton *)sender {
-    KcbViewController *vc = [[KcbViewController alloc] init];
-    vc.title = @"作息时间表";
-    vc.dataSource = kcbarr;
-    [self.navigationController setNavigationBarHidden:NO];
-    [self.navigationController pushViewController:vc animated:YES];
-    
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-    
-}
-
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-//隐藏导航栏
-- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
-    
-    if ([viewController isKindOfClass:[MainViewController class]]) {
-        [self.navigationController setNavigationBarHidden:YES];
+    if (kcb == nil) {
+        kcb = [[KcbViewController alloc] init];
+        kcb.title = @"作息时间表";
+        kcb.dataSource = kcbarr;
     }
+    [self.navigationController pushViewController:kcb animated:YES];
+    [self.navigationController setNavigationBarHidden:NO];
 }
 
-
-//设置
-- (IBAction)setup:(UIButton *)sender {
-    ShezhiViewController *sz = [[ShezhiViewController alloc] init];
-    [self.navigationController pushViewController:sz animated:YES];
-}
 //个人中心
 - (void)grdaAction:(UITapGestureRecognizer *)sender{
-    GrdaViewController *vc = [[GrdaViewController alloc] init];
-    
-    [self.navigationController pushViewController:vc animated:YES];
+    if (grda == nil) {
+        grda = [[GrdaViewController alloc] init];
+    }
+    [self.navigationController pushViewController:grda animated:YES];
+    [self.navigationController setNavigationBarHidden:NO];
 }
 //我的学校
 -(void)wdxx{
-    MyTabbarController *tabBarCtl = [[MyTabbarController alloc] init];
+    if (tabBarCtl == nil) {
+        tabBarCtl = [[MyTabbarController alloc] init];
+    }
     [self.navigationController pushViewController:tabBarCtl animated:YES];
     [self.navigationController setNavigationBarHidden:NO];
 }
 
 //园务管理
 -(void)ywgl{
-    MyTabbarController2 *tabBarCtl = [[MyTabbarController2 alloc] init];
-    [self.navigationController pushViewController:tabBarCtl animated:YES];
+    if (tabBarCtl2 == nil) {
+        tabBarCtl2 = [[MyTabbarController2 alloc] init];
+    }
+    [self.navigationController pushViewController:tabBarCtl2 animated:YES];
     [self.navigationController setNavigationBarHidden:NO];
 }
 
 //学校审核
 -(void)xxsh{
-    MyTabbarController3 *tabBarCtl = [[MyTabbarController3 alloc] init];
-    [self.navigationController pushViewController:tabBarCtl animated:YES];
+    if (tabBarCtl3 == nil) {
+        tabBarCtl3 = [[MyTabbarController3 alloc] init];
+    }
+    [self.navigationController pushViewController:tabBarCtl3 animated:YES];
     [self.navigationController setNavigationBarHidden:NO];
 }
 
 //学生出勤统计
 -(void)xscqtj{
-    XscqtjViewController *vc = [[XscqtjViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    if (vc1 == nil) {
+        vc1 = [[XscqtjViewController alloc] init];
+    }
+    [self.navigationController pushViewController:vc1 animated:YES];
     [self.navigationController setNavigationBarHidden:NO];
 }
 
 //采买报表
 -(void)cmbb{
-    PurchaseViewController *vc = [[PurchaseViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    if (vc2 == nil) {
+        vc2 = [[PurchaseViewController alloc] init];
+    }
+    [self.navigationController pushViewController:vc2 animated:YES];
     [self.navigationController setNavigationBarHidden:NO];
 }
 
 //个人日志
 -(void)grrz{
-    MyTabbarController4 *vc = [[MyTabbarController4 alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    if (tabBarCtl4 == nil) {
+        tabBarCtl4 = [[MyTabbarController4 alloc] init];
+    }
+    [self.navigationController pushViewController:tabBarCtl4 animated:YES];
     [self.navigationController setNavigationBarHidden:NO];
 }
 

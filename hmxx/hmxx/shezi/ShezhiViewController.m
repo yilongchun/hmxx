@@ -198,19 +198,21 @@
 
 -(void)loginout{
     //退出登陆
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:@"NO" forKey:@"LOGINED"];
     [self.navigationController setNavigationBarHidden:YES];
     UIViewController *rootVc = [self.navigationController.viewControllers objectAtIndex:0];
     if ([rootVc isKindOfClass:[LoginViewController class]]) {
         [self.navigationController popToRootViewControllerAnimated:YES];
     }else{
         LoginViewController *loginvc =  [[LoginViewController alloc] init];
-        loginvc.logintype = @"login";
         UINavigationController *vc = [[UINavigationController alloc] initWithRootViewController:loginvc];
         [vc setNavigationBarHidden:YES];
         self.view.window.rootViewController = vc;
     }
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:@"NO" forKey:@"LOGINED"];
+    
+    
+    
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
