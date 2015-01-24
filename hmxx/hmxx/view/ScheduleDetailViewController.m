@@ -20,6 +20,7 @@
 
 @implementation ScheduleDetailViewController
 @synthesize detailId;
+@synthesize type;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,6 +42,8 @@
     HUD.labelText = @"加载中...";
     [self.view addSubview:HUD];
     HUD.delegate = self;
+    
+    [self.scheduleTypeSegmented setSelectedSegmentIndex:[type intValue]-1];
     
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
         self.mytextview.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;

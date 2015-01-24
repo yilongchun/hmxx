@@ -308,6 +308,7 @@
             NSString *detailId = [info objectForKey:@"id"];
             ScheduleDetailViewController *vc = [[ScheduleDetailViewController alloc] init];
             vc.detailId = detailId;
+            vc.type = type;
             [self.navigationController pushViewController:vc animated:YES];
         }
         
