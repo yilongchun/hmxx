@@ -62,7 +62,16 @@
         [self.rightContent setAttributedText:attributedString2];
         [self.rightContent sizeToFit];
         
-        [self.conBackground setFrame:CGRectMake(self.conBackground.frame.origin.x, self.conBackground.frame.origin.y, self.conBackground.frame.size.width, self.leftContent.frame.size.height+80)];
+        
+        
+        CGFloat height = self.leftContent.frame.size.height;
+        if (self.rightContent.frame.size.height > height) {
+            height = self.rightContent.frame.size.height;
+        }
+        
+        
+        
+        [self.conBackground setFrame:CGRectMake(self.conBackground.frame.origin.x, self.conBackground.frame.origin.y, self.conBackground.frame.size.width, height+80)];
     }else{
     }
     

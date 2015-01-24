@@ -255,7 +255,7 @@
         }else{
             flag = false;
             [HUD hide:YES];
-            NSLog(@"上传失败 %@ %d",msg,num);
+//            NSLog(@"上传失败 %@ %d",msg,num);
             [self alertMsg:@"上传失败"];
         }
         if (saveFlag) {
