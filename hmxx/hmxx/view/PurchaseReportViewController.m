@@ -16,6 +16,7 @@
 #import "ReportFirstTableViewCell.h"
 #import "ReportSecondTableViewCell.h"
 #import "ReportThirdTableViewCell.h"
+#import "PurchaseTypeViewController.h"
 
 @interface PurchaseReportViewController ()<MBProgressHUDDelegate,SRRefreshDelegate>{
     MBProgressHUD *HUD;
@@ -437,7 +438,16 @@
         }
         
     }else{
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        
+        NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
+        NSString *purchaseDate = [info objectForKey:@"purchaseDate"];
+        PurchaseTypeViewController *vc = [[PurchaseTypeViewController alloc] init];
+        vc.purchaseDate = purchaseDate;
+        vc.title = purchaseDate;
+        [self.navigationController pushViewController:vc animated:YES];
+        
     }
     
     
