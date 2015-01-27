@@ -27,6 +27,12 @@
 		E4C745221A6FCA1B009402ED /* MyTabbarController4.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C745211A6FCA1B009402ED /* MyTabbarController4.m */; };
 		E4C745261A6FEE5D009402ED /* MoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C745241A6FEE5D009402ED /* MoreTableViewCell.m */; };
 		E4C745271A6FEE5D009402ED /* MoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4C745251A6FEE5D009402ED /* MoreTableViewCell.xib */; };
+		E4CB95571A76547200CCC498 /* ReportFirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB95551A76547200CCC498 /* ReportFirstTableViewCell.m */; };
+		E4CB95581A76547200CCC498 /* ReportFirstTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4CB95561A76547200CCC498 /* ReportFirstTableViewCell.xib */; };
+		E4EC15331A77A0F70048ACDB /* ReportSecondTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EC15311A77A0F70048ACDB /* ReportSecondTableViewCell.m */; };
+		E4EC15341A77A0F70048ACDB /* ReportSecondTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EC15321A77A0F70048ACDB /* ReportSecondTableViewCell.xib */; };
+		E4EC15381A77A2290048ACDB /* ReportThirdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EC15361A77A2290048ACDB /* ReportThirdTableViewCell.m */; };
+		E4EC15391A77A2290048ACDB /* ReportThirdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EC15371A77A2290048ACDB /* ReportThirdTableViewCell.xib */; };
 		E4ED5D631A6CFFED00FFB11A /* PurchaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ED5D611A6CFFED00FFB11A /* PurchaseTableViewCell.m */; };
 		E4ED5D641A6CFFED00FFB11A /* PurchaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4ED5D621A6CFFED00FFB11A /* PurchaseTableViewCell.xib */; };
 		E4ED5D681A6D016B00FFB11A /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ED5D661A6D016B00FFB11A /* PurchaseViewController.m */; };
@@ -139,6 +145,9 @@
 		E4F077551A658E70004D7453 /* yuanwurizhi1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F0773D1A658E70004D7453 /* yuanwurizhi1@2x.png */; };
 		E4F077561A658E70004D7453 /* yuanwurizhi2.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F0773E1A658E70004D7453 /* yuanwurizhi2.png */; };
 		E4F077571A658E70004D7453 /* yuanwurizhi2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F0773F1A658E70004D7453 /* yuanwurizhi2@2x.png */; };
+		E4F134391A73EA34001A9303 /* MyTabbarController5.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F134381A73EA34001A9303 /* MyTabbarController5.m */; };
+		E4F1344C1A73F8FE001A9303 /* PurchaseReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F1344A1A73F8FE001A9303 /* PurchaseReportViewController.m */; };
+		E4F1344D1A73F8FE001A9303 /* PurchaseReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F1344B1A73F8FE001A9303 /* PurchaseReportViewController.xib */; };
 		E4F21D581A666A77005372EA /* ic_bwgg_011.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F21D571A666A77005372EA /* ic_bwgg_011.png */; };
 		E4F21D5C1A666BB4005372EA /* AddActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F21D5A1A666BB4005372EA /* AddActivityViewController.m */; };
 		E4F21D5D1A666BB4005372EA /* AddActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F21D5B1A666BB4005372EA /* AddActivityViewController.xib */; };
@@ -289,6 +298,15 @@
 		E4C745231A6FEE5D009402ED /* MoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreTableViewCell.h; path = view/MoreTableViewCell.h; sourceTree = "<group>"; };
 		E4C745241A6FEE5D009402ED /* MoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreTableViewCell.m; path = view/MoreTableViewCell.m; sourceTree = "<group>"; };
 		E4C745251A6FEE5D009402ED /* MoreTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MoreTableViewCell.xib; path = view/MoreTableViewCell.xib; sourceTree = "<group>"; };
+		E4CB95541A76547200CCC498 /* ReportFirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReportFirstTableViewCell.h; path = view/ReportFirstTableViewCell.h; sourceTree = "<group>"; };
+		E4CB95551A76547200CCC498 /* ReportFirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReportFirstTableViewCell.m; path = view/ReportFirstTableViewCell.m; sourceTree = "<group>"; };
+		E4CB95561A76547200CCC498 /* ReportFirstTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReportFirstTableViewCell.xib; path = view/ReportFirstTableViewCell.xib; sourceTree = "<group>"; };
+		E4EC15301A77A0F70048ACDB /* ReportSecondTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReportSecondTableViewCell.h; path = view/ReportSecondTableViewCell.h; sourceTree = "<group>"; };
+		E4EC15311A77A0F70048ACDB /* ReportSecondTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReportSecondTableViewCell.m; path = view/ReportSecondTableViewCell.m; sourceTree = "<group>"; };
+		E4EC15321A77A0F70048ACDB /* ReportSecondTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReportSecondTableViewCell.xib; path = view/ReportSecondTableViewCell.xib; sourceTree = "<group>"; };
+		E4EC15351A77A2290048ACDB /* ReportThirdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReportThirdTableViewCell.h; path = view/ReportThirdTableViewCell.h; sourceTree = "<group>"; };
+		E4EC15361A77A2290048ACDB /* ReportThirdTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReportThirdTableViewCell.m; path = view/ReportThirdTableViewCell.m; sourceTree = "<group>"; };
+		E4EC15371A77A2290048ACDB /* ReportThirdTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReportThirdTableViewCell.xib; path = view/ReportThirdTableViewCell.xib; sourceTree = "<group>"; };
 		E4ED5D601A6CFFED00FFB11A /* PurchaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PurchaseTableViewCell.h; path = view/PurchaseTableViewCell.h; sourceTree = "<group>"; };
 		E4ED5D611A6CFFED00FFB11A /* PurchaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PurchaseTableViewCell.m; path = view/PurchaseTableViewCell.m; sourceTree = "<group>"; };
 		E4ED5D621A6CFFED00FFB11A /* PurchaseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PurchaseTableViewCell.xib; path = view/PurchaseTableViewCell.xib; sourceTree = "<group>"; };
@@ -447,6 +465,11 @@
 		E4F0773D1A658E70004D7453 /* yuanwurizhi1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yuanwurizhi1@2x.png"; sourceTree = "<group>"; };
 		E4F0773E1A658E70004D7453 /* yuanwurizhi2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yuanwurizhi2.png; sourceTree = "<group>"; };
 		E4F0773F1A658E70004D7453 /* yuanwurizhi2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yuanwurizhi2@2x.png"; sourceTree = "<group>"; };
+		E4F134371A73EA34001A9303 /* MyTabbarController5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyTabbarController5.h; path = view/MyTabbarController5.h; sourceTree = "<group>"; };
+		E4F134381A73EA34001A9303 /* MyTabbarController5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyTabbarController5.m; path = view/MyTabbarController5.m; sourceTree = "<group>"; };
+		E4F134491A73F8FE001A9303 /* PurchaseReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PurchaseReportViewController.h; path = view/PurchaseReportViewController.h; sourceTree = "<group>"; };
+		E4F1344A1A73F8FE001A9303 /* PurchaseReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PurchaseReportViewController.m; path = view/PurchaseReportViewController.m; sourceTree = "<group>"; };
+		E4F1344B1A73F8FE001A9303 /* PurchaseReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PurchaseReportViewController.xib; path = view/PurchaseReportViewController.xib; sourceTree = "<group>"; };
 		E4F21D571A666A77005372EA /* ic_bwgg_011.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_bwgg_011.png; sourceTree = "<group>"; };
 		E4F21D591A666BB4005372EA /* AddActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddActivityViewController.h; path = view/AddActivityViewController.h; sourceTree = "<group>"; };
 		E4F21D5A1A666BB4005372EA /* AddActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = AddActivityViewController.m; path = view/AddActivityViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -1093,12 +1116,6 @@
 				E4F21D961A667D3A005372EA /* DaiShGgViewController.h */,
 				E4F21D971A667D3A005372EA /* DaiShGgViewController.m */,
 				E4F21D981A667D3A005372EA /* DaiShGgViewController.xib */,
-				E4F21DA51A66A2AE005372EA /* XscqtjViewController.h */,
-				E4F21DA61A66A2AE005372EA /* XscqtjViewController.m */,
-				E4F21DA71A66A2AE005372EA /* XscqtjViewController.xib */,
-				E4F21DAA1A66B1BB005372EA /* XscqtjxqViewController.h */,
-				E4F21DAB1A66B1BB005372EA /* XscqtjxqViewController.m */,
-				E4F21DAC1A66B1BB005372EA /* XscqtjxqViewController.xib */,
 				E43C21E51A66C1EF00E1DB45 /* TjxqTableViewCell.h */,
 				E43C21E61A66C1EF00E1DB45 /* TjxqTableViewCell.m */,
 				E43C21E71A66C1EF00E1DB45 /* TjxqTableViewCell.xib */,
@@ -1158,6 +1175,26 @@
 				E4EDA2AB1A72A4320018E967 /* JsfcDetailViewController.h */,
 				E4EDA2AC1A72A4320018E967 /* JsfcDetailViewController.m */,
 				E4EDA2AD1A72A4320018E967 /* JsfcDetailViewController.xib */,
+				E4F134371A73EA34001A9303 /* MyTabbarController5.h */,
+				E4F134381A73EA34001A9303 /* MyTabbarController5.m */,
+				E4F21DA51A66A2AE005372EA /* XscqtjViewController.h */,
+				E4F21DA61A66A2AE005372EA /* XscqtjViewController.m */,
+				E4F21DA71A66A2AE005372EA /* XscqtjViewController.xib */,
+				E4F21DAA1A66B1BB005372EA /* XscqtjxqViewController.h */,
+				E4F21DAB1A66B1BB005372EA /* XscqtjxqViewController.m */,
+				E4F21DAC1A66B1BB005372EA /* XscqtjxqViewController.xib */,
+				E4F134491A73F8FE001A9303 /* PurchaseReportViewController.h */,
+				E4F1344A1A73F8FE001A9303 /* PurchaseReportViewController.m */,
+				E4F1344B1A73F8FE001A9303 /* PurchaseReportViewController.xib */,
+				E4CB95541A76547200CCC498 /* ReportFirstTableViewCell.h */,
+				E4CB95551A76547200CCC498 /* ReportFirstTableViewCell.m */,
+				E4CB95561A76547200CCC498 /* ReportFirstTableViewCell.xib */,
+				E4EC15301A77A0F70048ACDB /* ReportSecondTableViewCell.h */,
+				E4EC15311A77A0F70048ACDB /* ReportSecondTableViewCell.m */,
+				E4EC15321A77A0F70048ACDB /* ReportSecondTableViewCell.xib */,
+				E4EC15351A77A2290048ACDB /* ReportThirdTableViewCell.h */,
+				E4EC15361A77A2290048ACDB /* ReportThirdTableViewCell.m */,
+				E4EC15371A77A2290048ACDB /* ReportThirdTableViewCell.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -1271,9 +1308,12 @@
 				E4F0770B1A65685C004D7453 /* MyViewControllerCellDetail.xib in Resources */,
 				E4F21D811A666BF0005372EA /* Overlay@2x.png in Resources */,
 				E4F077431A658E70004D7453 /* daishenhegg2@2x.png in Resources */,
+				E4CB95581A76547200CCC498 /* ReportFirstTableViewCell.xib in Resources */,
+				E4EC15341A77A0F70048ACDB /* ReportSecondTableViewCell.xib in Resources */,
 				E4F369701A63ED080037A533 /* start_open.png in Resources */,
 				E43C21F11A66DEEF00E1DB45 /* UpAccessory@2x.png in Resources */,
 				E4F21DAE1A66B1BB005372EA /* XscqtjxqViewController.xib in Resources */,
+				E4EC15391A77A2290048ACDB /* ReportThirdTableViewCell.xib in Resources */,
 				E4EF0AE91A6E96A100212041 /* AddScheduleViewController.xib in Resources */,
 				E4EDA29A1A7255620018E967 /* planmanage1@2x.png in Resources */,
 				E4F21DA41A668F7A005372EA /* BwrzViewController.xib in Resources */,
@@ -1387,6 +1427,7 @@
 				E4F21D801A666BF0005372EA /* Overlay.png in Resources */,
 				E4F369331A63E1D20037A533 /* default4.png in Resources */,
 				E4EDA2AA1A7299820018E967 /* JsfcTableViewCell.xib in Resources */,
+				E4F1344D1A73F8FE001A9303 /* PurchaseReportViewController.xib in Resources */,
 				E4F0774E1A658E70004D7453 /* huodongguanli2.png in Resources */,
 				E4C664B91A715C24003CCC0E /* loginBtnBg.png in Resources */,
 			);
@@ -1410,6 +1451,7 @@
 				E4F369591A63E36C0037A533 /* MKNetworkEngine.m in Sources */,
 				E4F076D51A656210004D7453 /* MyTabbarController2.m in Sources */,
 				E4F369BE1A64088F0037A533 /* AFSecurityPolicy.m in Sources */,
+				E4CB95571A76547200CCC498 /* ReportFirstTableViewCell.m in Sources */,
 				E4EF57741A68067B004B57E6 /* DaishHdxqViewController.m in Sources */,
 				E43C21E81A66C1EF00E1DB45 /* TjxqTableViewCell.m in Sources */,
 				E4F369BB1A64088F0037A533 /* AFHTTPRequestOperationManager.m in Sources */,
@@ -1421,8 +1463,10 @@
 				E4F21D761A666BF0005372EA /* ELCAlbumPickerController.m in Sources */,
 				E4F369571A63E36C0037A533 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				E4F21D791A666BF0005372EA /* ELCAssetTablePicker.m in Sources */,
+				E4F134391A73EA34001A9303 /* MyTabbarController5.m in Sources */,
 				E4F369EB1A642B0C0037A533 /* JYSlideSegmentController.m in Sources */,
 				E4F076E11A656680004D7453 /* GgtzViewController.m in Sources */,
+				E4EC15331A77A0F70048ACDB /* ReportSecondTableViewCell.m in Sources */,
 				E4EDA2AE1A72A4320018E967 /* JsfcDetailViewController.m in Sources */,
 				E4ED5D8F1A6D420A00FFB11A /* UIWindow+Hierarchy.m in Sources */,
 				E4F369DC1A6415280037A533 /* YjfkViewController.m in Sources */,
@@ -1487,6 +1531,7 @@
 				E4F21D7C1A666BF0005372EA /* ELCOverlayImageView.m in Sources */,
 				E4F21DA11A668F7A005372EA /* BwrzTableViewCell.m in Sources */,
 				E4F077051A65681D004D7453 /* BwhdViewController.m in Sources */,
+				E4F1344C1A73F8FE001A9303 /* PurchaseReportViewController.m in Sources */,
 				E4F369531A63E36C0037A533 /* NSData+MKBase64.m in Sources */,
 				E4F369C51A64088F0037A533 /* UIAlertView+AFNetworking.m in Sources */,
 				E4F3695A1A63E36C0037A533 /* MKNetworkOperation.m in Sources */,
@@ -1513,6 +1558,7 @@
 				E4EF0AF71A6EAFD900212041 /* CollectionCell.m in Sources */,
 				E4F076F01A6566EC004D7453 /* SRSlimeView.m in Sources */,
 				E4F076FB1A656760004D7453 /* ContentCell.m in Sources */,
+				E4EC15381A77A2290048ACDB /* ReportThirdTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

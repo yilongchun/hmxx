@@ -24,6 +24,7 @@
 #import "ScheduleViewController.h"
 #import "CollectionViewController.h"
 #import "MyTabbarController4.h"
+#import "MyTabbarController5.h"
 
 @interface MainViewController ()<MBProgressHUDDelegate,UIAlertViewDelegate>{
     MKNetworkEngine *engine;
@@ -37,9 +38,9 @@
     MyTabbarController *tabBarCtl;//我的学校
     MyTabbarController2 *tabBarCtl2;//园务管理
     MyTabbarController3 *tabBarCtl3;//学校审核
-    XscqtjViewController *vc1;//学校出勤统计
     PurchaseViewController *vc2;//采买报表
     MyTabbarController4 *tabBarCtl4;//个人日志
+    MyTabbarController5 *tabBarCtl5;//统计报表
     KcbViewController *kcb;//作息时间表
     GrdaViewController *grda;//个人中心
 }
@@ -397,7 +398,7 @@
             UILabel *label6 = [[UILabel alloc] init];
             if (btn6.frame.origin.x != 0) {
                 [label6 setFrame:CGRectMake(btn6.frame.origin.x, btn6.frame.origin.y+95, 90, 20)];
-                label6.text = @"学生出勤统计";
+                label6.text = @"统计报表";
                 label6.textAlignment = NSTextAlignmentCenter;
                 [label6 setFont:[UIFont systemFontOfSize:15]];
                 [label6 setBackgroundColor:[UIColor clearColor]];
@@ -662,12 +663,12 @@
     [self.navigationController setNavigationBarHidden:NO];
 }
 
-//学生出勤统计
+//统计报表
 -(void)xscqtj{
-    if (vc1 == nil) {
-        vc1 = [[XscqtjViewController alloc] init];
+    if (tabBarCtl5 == nil) {
+        tabBarCtl5 = [[MyTabbarController5 alloc] init];
     }
-    [self.navigationController pushViewController:vc1 animated:YES];
+    [self.navigationController pushViewController:tabBarCtl5 animated:YES];
     [self.navigationController setNavigationBarHidden:NO];
 }
 
