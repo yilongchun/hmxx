@@ -11,9 +11,7 @@
 #import "JsfcViewController.h"
 
 
-@interface MyTabbarController (){
-    UIBarButtonItem *buttonItem1;
-}
+@interface MyTabbarController ()
 
 @end
 
@@ -68,17 +66,6 @@
     
     self.selectedIndex = 0;
     [[self tabBar] setSelectedImageTintColor:[UIColor colorWithRed:116/255.0 green:176/255.0 blue:64/255.0 alpha:1]];
-    
-    //设置导航栏右侧按钮
-    UIImage* image= [UIImage imageNamed:@"ic_bwgg_011.png"];
-    CGRect frame= CGRectMake(0, 0, 30, 30);
-    UIButton* someButton= [[UIButton alloc] initWithFrame:frame];
-    [someButton addTarget:self action:@selector(action1) forControlEvents:UIControlEventTouchUpInside];
-    [someButton setBackgroundImage:image forState:UIControlStateNormal];
-    [someButton setShowsTouchWhenHighlighted:NO];
-    buttonItem1 = [[UIBarButtonItem alloc] initWithCustomView:someButton];
-    
-    
 }
 
 #pragma mark - UITabBarDelegate
@@ -87,10 +74,8 @@
 {
     if (item.tag == 0) {
         self.title = @"园情介绍";
-        [self.navigationItem setRightBarButtonItem:nil];
     }else if (item.tag == 1){
         self.title = @"教师风采";
-        [self.navigationItem setRightBarButtonItem:buttonItem1];
     }
 }
 
