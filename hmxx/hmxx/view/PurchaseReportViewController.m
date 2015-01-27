@@ -198,12 +198,12 @@
                     
                     for (int i = 0; i < dataArr.count; i++) {
                         NSDictionary *dic = [dataArr objectAtIndex:i];
-                        NSString *purchaseDate = [dic objectForKey:@"purchaseDate"];
+                        NSString *purchaseDate = [dic objectForKey:@"purchaseDate"];//取得日期
                         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
                         [dateFormatter setDateFormat:@"yyyy-MM-dd"];
                         NSDate *date = [dateFormatter dateFromString:purchaseDate];
                         NSCalendar *calendar = [NSCalendar currentCalendar];
-                        NSDateComponents *components = [calendar components:NSCalendarUnitWeekOfMonth|NSCalendarUnitMonth fromDate:date];
+                        NSDateComponents *components = [calendar components:NSCalendarUnitWeekOfMonth|NSCalendarUnitMonth|NSCalendarUnitWeekday fromDate:date];
 //                        NSLog(@"%@ %@ 是本月的第%d周",purchaseDate,date,[components weekOfMonth]);
                         
 //                        NSTimeZone *zone = [NSTimeZone systemTimeZone];
@@ -215,10 +215,13 @@
                         
                         NSInteger weekofMonth = [components weekOfMonth];
                         NSMutableDictionary *secondDic = [NSMutableDictionary dictionary];//第二级数据字典
-                        NSString *week = [NSString stringWithFormat:@"%d月第%d周报表",[components month],weekofMonth];
+                        NSString *week = [NSString stringWithFormat:@"%ld月第%ld周报表",(long)[components month],(long)weekofMonth];
                         [secondDic setValue:week forKey:@"weekofMonth"];
 //                        [datadic setDictionary:[data objectAtIndex:i]];
                         [secondDic setValue:@"2" forKey:@"level"];
+                        
+                        NSNumber *totalPrice = [dic objectForKey:@"total_price"];//取得总价
+                        
                         
                         
                         NSMutableArray *secondArr = [firstDic objectForKey:@"secondArr"];//第一级下的第二级数组
@@ -236,11 +239,16 @@
                             }
                             [tempThirdArr addObject:[dataArr objectAtIndex:i]];//取得第三级的日数据插入到第三级的数组中
                             [tempSecondDic setValue:tempThirdArr forKey:@"thirdArr"];//将第三级的数组设置到第二级数据字典中
+                            
+                            NSNumber *price = [tempSecondDic objectForKey:@"totalPrice"];
+                            NSNumber *allPrice = [NSNumber numberWithDouble:[totalPrice doubleValue] + [price doubleValue]];
+                            [tempSecondDic setValue:allPrice forKey:@"totalPrice"];
 //                            [self.dataSource replaceObjectAtIndex:index +j withObject:datadic];
                             
                         }else{
                             NSMutableArray *thirdArr = [NSMutableArray array];//第三级的数组应该放在第二级中
                             [thirdArr addObject:[dataArr objectAtIndex:i]];
+                            [secondDic setValue:totalPrice forKey:@"totalPrice"];
                             [secondDic setValue:thirdArr forKey:@"thirdArr"];//将第三级数组设置到第二级字典中
                             [self.dataSource insertObject:secondDic atIndex:index+j+1];
                             [secondArr addObject:secondDic];//将第二级的数据插入到第一级下的第二级数组中
@@ -277,7 +285,7 @@
             if ([secondIsExtend isEqualToString:@"YES"]) {
                 NSArray *thirdArr = [secondDic objectForKey:@"thirdArr"];
                 for (int j = 0; j< thirdArr.count; j++) {
-                    NSLog(@"%d",index+k+1);
+                    
                     [self.dataSource removeObjectAtIndex:index+1];
                     NSIndexPath *nextindex = [NSIndexPath indexPathForRow:index+k+1 inSection:0];
                     [insertIndexPaths addObject:nextindex];
@@ -285,7 +293,7 @@
                 }
             }else{
                 
-            }NSLog(@"%d",index+k+1);
+            }
             [self.dataSource removeObjectAtIndex:index+1];
             NSIndexPath *nextindex = [NSIndexPath indexPathForRow:index+k+1 inSection:0];
             [insertIndexPaths addObject:nextindex];
@@ -361,7 +369,9 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:@"ReportSecondTableViewCell" owner:self options:nil] lastObject];
         }
         NSString *purchaseDate = [data objectForKey:@"weekofMonth"];
+        NSNumber *totalPrice = [data objectForKey:@"totalPrice"];
         cell.titleLabel.text = purchaseDate;
+        cell.moneyLabel.text = [NSString stringWithFormat:@"￥%.2f",[totalPrice doubleValue]];
         return cell;
     }else if([level isEqualToString:@"3"]){
         static NSString *cellIdentifier = @"reportthird";
@@ -374,9 +384,46 @@
         [dateFormatter setDateFormat:@"yyyy-MM-dd"];
         NSDate *date = [dateFormatter dateFromString:purchaseDate];
         NSDateFormatter *dateFormatter2 = [[NSDateFormatter alloc] init];
-        [dateFormatter2 setDateFormat:@"yyyy.MM.dd详细报表"];
+        [dateFormatter2 setDateFormat:@"MM.dd"];
+        
+        
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDateComponents *components = [calendar components:NSCalendarUnitWeekday fromDate:date];
+        NSInteger weekday = [components weekday];
+        
+        NSString *weekdayStr ;
+        switch (weekday) {
+            case 1:
+                weekdayStr = @"(周日)";
+                break;
+            case 2:
+                weekdayStr = @"(周一)";
+                break;
+            case 3:
+                weekdayStr = @"(周二)";
+                break;
+            case 4:
+                weekdayStr = @"(周三)";
+                break;
+            case 5:
+                weekdayStr = @"(周四)";
+                break;
+            case 6:
+                weekdayStr = @"(周五)";
+                break;
+            case 7:
+                weekdayStr = @"(周六)";
+                break;
+            default:
+                break;
+        }
+        
         NSString *date2 = [dateFormatter2 stringFromDate:date];
-        cell.titleLabel.text = date2;
+        cell.titleLabel.text = [NSString stringWithFormat:@"%@%@",date2,weekdayStr];
+        
+        
+        NSNumber *total_price = [data objectForKey:@"total_price"];
+        cell.moneyLabel.text = [NSString stringWithFormat:@"￥%.2f",[total_price doubleValue]];
         return cell;
     }else{
         return nil;
