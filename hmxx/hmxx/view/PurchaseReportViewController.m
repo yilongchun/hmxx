@@ -24,10 +24,6 @@
     NSNumber *totalpage;
     NSNumber *page;
     NSNumber *rows;
-    
-    
-//    UIActivityIndicatorView *tempactivity;
-    
 }
 @property (nonatomic, strong) SRRefreshView *slimeView;
 @end
@@ -82,10 +78,6 @@
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     
     self.dataSource = [[NSMutableArray alloc] init];
-//    for (int i = 0; i< 20; i++) {
-//        [self.dataSource addObject:[NSString stringWithFormat:@"%d",i]];
-//    }
-    
     //初始化数据
     [self loadData];
     
@@ -114,21 +106,6 @@
 
 //加载数据
 - (void)loadData{
-    
-    
-    
-//    for (int i = 0; i < self.dataSource.count; i++) {
-//        NSDictionary *data = [self.dataSource objectAtIndex:i];
-//        NSString *level = [data objectForKey:@"level"];
-//        if ([level isEqualToString:@"1"]) {
-//            ReportFirstTableViewCell *cell = (ReportFirstTableViewCell *)[mytableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
-//            cell.isExpansion = NO;
-//            [cell.dataSource removeAllObjects];
-//        }
-//    }
-    
-    
-    
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:self.year forKey:@"purchaseyear"];
     MKNetworkOperation *op = [engine operationWithPath:@"/purchasestatis/purchaseyearList.do" params:dic httpMethod:@"GET"];
@@ -144,17 +121,14 @@
         if ([success boolValue]) {
             NSArray *data = [resultDict objectForKey:@"data"];
             if (data != nil) {
-                //self.dataSource = [NSMutableArray arrayWithArray:data];
                 NSMutableArray *arr = [NSMutableArray array];
                 for (int i = 0; i < data.count; i++) {
                     NSMutableDictionary *datadic = [NSMutableDictionary dictionary];
                     [datadic setDictionary:[data objectAtIndex:i]];
-//                    datadic = [data objectAtIndex:i];
                     [datadic setValue:@"1" forKey:@"level"];
                     [arr addObject:datadic];
                 }
                 self.dataSource = [NSMutableArray arrayWithArray:arr];
-                
             }
             [HUD hide:YES];
             [mytableview reloadData];
@@ -172,7 +146,6 @@
 
 //加载详情
 - (void)loadDetail:(NSString *)purchaseDate index:(NSInteger)index{
-    
 //    ReportFirstTableViewCell *cell = (ReportFirstTableViewCell *)[mytableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
     NSMutableDictionary *firstDic = [self.dataSource objectAtIndex:index];//取得第一级的数据
     NSString *firstIsExtend = [firstDic objectForKey:@"isExtend"];
@@ -195,7 +168,6 @@
                 if (dataArr != nil) {
                     NSMutableArray *insertIndexPaths = [NSMutableArray array];
                     int j = 0;
-                    
                     for (int i = 0; i < dataArr.count; i++) {
                         NSDictionary *dic = [dataArr objectAtIndex:i];
                         NSString *purchaseDate = [dic objectForKey:@"purchaseDate"];//取得日期
@@ -204,26 +176,12 @@
                         NSDate *date = [dateFormatter dateFromString:purchaseDate];
                         NSCalendar *calendar = [NSCalendar currentCalendar];
                         NSDateComponents *components = [calendar components:NSCalendarUnitWeekOfMonth|NSCalendarUnitMonth|NSCalendarUnitWeekday fromDate:date];
-//                        NSLog(@"%@ %@ 是本月的第%d周",purchaseDate,date,[components weekOfMonth]);
-                        
-//                        NSTimeZone *zone = [NSTimeZone systemTimeZone];
-//                        NSInteger interval = [zone secondsFromGMTForDate: date];
-//                        NSDate *localeDate = [date  dateByAddingTimeInterval: interval];
-//                        NSLog(@"%@",localeDate);
-                        
-                        
-                        
                         NSInteger weekofMonth = [components weekOfMonth];
                         NSMutableDictionary *secondDic = [NSMutableDictionary dictionary];//第二级数据字典
                         NSString *week = [NSString stringWithFormat:@"%ld月第%ld周报表",(long)[components month],(long)weekofMonth];
                         [secondDic setValue:week forKey:@"weekofMonth"];
-//                        [datadic setDictionary:[data objectAtIndex:i]];
                         [secondDic setValue:@"2" forKey:@"level"];
-                        
                         NSNumber *totalPrice = [dic objectForKey:@"total_price"];//取得总价
-                        
-                        
-                        
                         NSMutableArray *secondArr = [firstDic objectForKey:@"secondArr"];//第一级下的第二级数组
                         if (secondArr == nil) {
                             secondArr = [NSMutableArray array];
@@ -239,12 +197,10 @@
                             }
                             [tempThirdArr addObject:[dataArr objectAtIndex:i]];//取得第三级的日数据插入到第三级的数组中
                             [tempSecondDic setValue:tempThirdArr forKey:@"thirdArr"];//将第三级的数组设置到第二级数据字典中
-                            
                             NSNumber *price = [tempSecondDic objectForKey:@"totalPrice"];
                             NSNumber *allPrice = [NSNumber numberWithDouble:[totalPrice doubleValue] + [price doubleValue]];
                             [tempSecondDic setValue:allPrice forKey:@"totalPrice"];
 //                            [self.dataSource replaceObjectAtIndex:index +j withObject:datadic];
-                            
                         }else{
                             NSMutableArray *thirdArr = [NSMutableArray array];//第三级的数组应该放在第二级中
                             [thirdArr addObject:[dataArr objectAtIndex:i]];
@@ -281,18 +237,14 @@
         for (int i = 0; i < secondArr.count; i++) {
             NSDictionary *secondDic = [secondArr objectAtIndex:i];
             NSString *secondIsExtend = [secondDic objectForKey:@"isExtend"];
-            
             if ([secondIsExtend isEqualToString:@"YES"]) {
                 NSArray *thirdArr = [secondDic objectForKey:@"thirdArr"];
                 for (int j = 0; j< thirdArr.count; j++) {
-                    
                     [self.dataSource removeObjectAtIndex:index+1];
                     NSIndexPath *nextindex = [NSIndexPath indexPathForRow:index+k+1 inSection:0];
                     [insertIndexPaths addObject:nextindex];
                     k++;
                 }
-            }else{
-                
             }
             [self.dataSource removeObjectAtIndex:index+1];
             NSIndexPath *nextindex = [NSIndexPath indexPathForRow:index+k+1 inSection:0];
@@ -300,35 +252,6 @@
             k++;
         }
         [secondArr removeAllObjects];
-        
-        
-//
-//
-//            
-//            
-//            
-//            if (isExtend) {
-//                NSArray *thirdArr = [dic objectForKey:@"thirdArr"];
-//                for (int j = 0; j< thirdArr.count; j++) {NSLog(@"%ld",index+k+1);
-//                    [self.dataSource removeObjectAtIndex:index+1];NSLog(@"%d",index+1);
-//                    NSIndexPath *nextindex = [NSIndexPath indexPathForRow:index+i+j+2 inSection:0];NSLog(@"%d",index+i+j+2);
-//                    [insertIndexPaths addObject:nextindex];
-//                    NSIndexPath *nextindex = [NSIndexPath indexPathForRow:index+k+1 inSection:0];NSLog(@"a%d",index+k+1);
-//                    [insertIndexPaths addObject:nextindex];
-//                    k++;
-//                    [self.dataSource removeObjectAtIndex:index+1];
-//                }
-//            }else{
-//                
-//            }
-//            [self.dataSource removeObjectAtIndex:index+1];
-//            NSIndexPath *nextindex = [NSIndexPath indexPathForRow:index+k+1 inSection:0];NSLog(@"b%d",index+k+1);
-//            [insertIndexPaths addObject:nextindex];
-//            NSLog(@"%ld",index+k+1);
-//            
-//            k++;
-//        }
-        
         [mytableview beginUpdates];
         [mytableview deleteRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationFade];
         [mytableview endUpdates];

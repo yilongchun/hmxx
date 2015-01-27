@@ -27,6 +27,8 @@
     // Do any additional setup after loading the view from its nib.
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     
+    self.title = @"教师信息";
+    
     //添加加载等待条
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     HUD.labelText = @"加载中...";
@@ -60,16 +62,16 @@
                 NSArray *classList = [data objectForKey:@"classList"];
                 NSDictionary *classDic = [classList objectAtIndex:0];
                 NSNumber *ishead = [classDic objectForKey:@"ishead"];
-                self.username.text = teacherName;
+                self.username.text = [NSString stringWithFormat:@"%@",teacherName];
                 if ([Utils isBlankString:flieid]) {
                     [self.userimage setImage:[UIImage imageNamed:@"chatListCellHead.png"]];
                 }else{
                     [self.userimage setImageWithURL:[NSURL URLWithString:flieid] placeholderImage:[UIImage imageNamed:@"chatListCellHead.png"]];
                 }
                 if ([ishead boolValue]) {
-                    self.userjob.text = @"班主任";
+                    self.userjob.text = [NSString stringWithFormat:@"%@",@"班主任"];
                 }else{
-                    self.userjob.text = @"教师";
+                    self.userjob.text = [NSString stringWithFormat:@"%@",@"教师"];
                 }
                 [HUD hide:YES];
             }
