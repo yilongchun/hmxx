@@ -276,7 +276,7 @@
     if ([self.dataSource count] == indexPath.row) {
         return 55;
     }else{
-        return 90;
+        return 70;
     }
 }
 

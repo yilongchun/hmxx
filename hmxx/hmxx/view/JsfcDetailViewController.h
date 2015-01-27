@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JsfcDetailViewController : UIViewController
+@interface JsfcDetailViewController : UIViewController<UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *userimage;
 @property (weak, nonatomic) IBOutlet UILabel *username;
 @property (weak, nonatomic) IBOutlet UILabel *userjob;

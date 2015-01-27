@@ -228,6 +228,10 @@
             NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
             [HUD hide:YES];
             [self alertMsg:@"连接服务器失败"];
+            NSString *isExtend = [firstDic objectForKey:@"isExtend"];
+            if ([isExtend isEqualToString:@"YES"]) {
+                [firstDic setValue:@"NO" forKey:@"isExtend"];
+            }
         }];
         [engine enqueueOperation:op];
     }else{
