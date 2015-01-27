@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PurchaseReportViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UITableView *mytableview;
+@interface PurchaseReportViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@property (nonatomic, strong) UITableView *mytableview;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, strong) NSString *year;
 @end

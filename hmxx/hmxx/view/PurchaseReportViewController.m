@@ -56,7 +56,10 @@
     }else{
         cg = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64-49);
     }
-    [mytableview setFrame:cg];
+    mytableview = [[UITableView alloc] initWithFrame:cg style:UITableViewStylePlain];
+    //    mytableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    mytableview.dataSource = self;
+    mytableview.delegate = self;
 //    mytableView = [[UITableView alloc] initWithFrame:cg style:UITableViewStylePlain];
     mytableview.separatorStyle = UITableViewCellSeparatorStyleNone;
 //    mytableView.dataSource = self;
@@ -68,7 +71,7 @@
 //        [mytableview setLayoutMargins:UIEdgeInsetsZero];
 //    }
     [mytableview addSubview:self.slimeView];
-    
+    [self.view addSubview:mytableview];
     //添加加载等待条
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     HUD.labelText = @"加载中...";
