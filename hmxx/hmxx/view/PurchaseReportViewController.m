@@ -426,6 +426,7 @@
         PurchaseTypeViewController *vc = [[PurchaseTypeViewController alloc] init];
         vc.purchaseDate = purchaseDate;
         vc.title = purchaseDate;
+        vc.isShow = NO;
         [self.navigationController pushViewController:vc animated:YES];
         
     }

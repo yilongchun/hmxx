@@ -12,4 +12,5 @@
 @property (strong, nonatomic) UITableView *mytableview;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, copy) NSString *purchaseDate;
+@property (nonatomic) BOOL isShow;
 @end

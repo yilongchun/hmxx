@@ -56,12 +56,14 @@
     [self.view addSubview:HUD];
     HUD.delegate = self;
     [HUD show:YES];
+    if (self.isShow) {
+        UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]
+                                     initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+                                     target:self
+                                     action:@selector(save)];
+        self.navigationItem.rightBarButtonItem = rightBtn;
+    }
     
-    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]
-                                 initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
-                                 target:self
-                                 action:@selector(save)];
-    self.navigationItem.rightBarButtonItem = rightBtn;
     
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     

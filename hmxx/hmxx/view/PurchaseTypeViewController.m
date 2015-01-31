@@ -64,13 +64,15 @@
     if ([mytableview respondsToSelector:@selector(setLayoutMargins:)]) {
         [mytableview setLayoutMargins:UIEdgeInsetsZero];
     }
+    if (self.isShow) {
+        UIBarButtonItem *editButton = [[UIBarButtonItem alloc]
+                                       initWithTitle:@"编辑"
+                                       style:UIBarButtonItemStyleBordered
+                                       target:self
+                                       action:@selector(toggleEdit:)];
+        self.navigationItem.rightBarButtonItem = editButton;
+    }
     
-    UIBarButtonItem *editButton = [[UIBarButtonItem alloc]
-                                    initWithTitle:@"编辑"
-                                    style:UIBarButtonItemStyleBordered
-                                    target:self
-                                    action:@selector(toggleEdit:)];
-    self.navigationItem.rightBarButtonItem = editButton;
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(loadData)
@@ -308,6 +310,7 @@
             NSDictionary *info = [dataSource objectAtIndex:indexPath.row];
             vc.info = info;
             vc.title = @"采购详情";
+            vc.isShow = self.isShow;
             [self.navigationController pushViewController:vc animated:YES];
         }
     }
@@ -315,7 +318,11 @@
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
+    if (self.isShow) {
+        return YES;
+    }else{
+        return NO;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -25,4 +25,5 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *myscrollview;
 @property (weak, nonatomic) IBOutlet UISwitch *myswitch;
 @property (weak, nonatomic) IBOutlet UILabel *hasReceiptLabel;
+@property (nonatomic) BOOL isShow;
 @end
