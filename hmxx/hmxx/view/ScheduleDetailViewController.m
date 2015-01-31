@@ -35,12 +35,8 @@
     
     self.title = @"日志详情";
     
-    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]
-                                 initWithTitle:@"修改"
-                                 style:UIBarButtonItemStyleBordered
-                                 target:self
-                                 action:@selector(save)];
-    
+    UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(save)];
+
     if ([self.roletype intValue] == 2) {//学校管理员  不传userid  查看所有日志
         
         self.scheduleTypeSegmented.userInteractionEnabled = NO;
@@ -48,7 +44,7 @@
         self.mytextview.userInteractionEnabled = NO;
         
     }else if([self.roletype intValue] == 3){//非教师用户 传userid 查看个人日志
-        self.navigationItem.rightBarButtonItem = rightBtn;
+        self.navigationItem.rightBarButtonItem = edit;
     }
     
     

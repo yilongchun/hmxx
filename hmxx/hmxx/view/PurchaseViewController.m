@@ -72,13 +72,7 @@
                                                object:nil];
     
     
-    UIImage* image= [UIImage imageNamed:@"ic_bwgg_011.png"];
-    CGRect frame= CGRectMake(0, 0, 30, 30);
-    UIButton* someButton= [[UIButton alloc] initWithFrame:frame];
-    [someButton addTarget:self action:@selector(action1) forControlEvents:UIControlEventTouchUpInside];
-    [someButton setBackgroundImage:image forState:UIControlStateNormal];
-    [someButton setShowsTouchWhenHighlighted:NO];
-    UIBarButtonItem *buttonItem1 = [[UIBarButtonItem alloc] initWithCustomView:someButton];
+    UIBarButtonItem *buttonItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(action1)];
     [self.navigationItem setRightBarButtonItem:buttonItem1];
     
     //添加加载等待条

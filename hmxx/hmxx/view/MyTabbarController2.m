@@ -86,25 +86,9 @@
     [[self tabBar] setSelectedImageTintColor:[UIColor colorWithRed:116/255.0 green:176/255.0 blue:64/255.0 alpha:1]];
     
     //设置导航栏右侧按钮
-    UIImage* image= [UIImage imageNamed:@"ic_bwgg_011.png"];
-    CGRect frame= CGRectMake(0, 0, 30, 30);
-    UIButton* someButton= [[UIButton alloc] initWithFrame:frame];
-    [someButton addTarget:self action:@selector(action1) forControlEvents:UIControlEventTouchUpInside];
-    [someButton setBackgroundImage:image forState:UIControlStateNormal];
-    [someButton setShowsTouchWhenHighlighted:NO];
-    buttonItem1 = [[UIBarButtonItem alloc] initWithCustomView:someButton];
-    
-    UIButton* someButton2= [[UIButton alloc] initWithFrame:frame];
-    [someButton2 addTarget:self action:@selector(action2) forControlEvents:UIControlEventTouchUpInside];
-    [someButton2 setBackgroundImage:image forState:UIControlStateNormal];
-    [someButton2 setShowsTouchWhenHighlighted:NO];
-    buttonItem2 = [[UIBarButtonItem alloc] initWithCustomView:someButton2];
-    
-    UIButton* someButton3= [[UIButton alloc] initWithFrame:frame];
-    [someButton3 addTarget:self action:@selector(action3) forControlEvents:UIControlEventTouchUpInside];
-    [someButton3 setBackgroundImage:image forState:UIControlStateNormal];
-    [someButton3 setShowsTouchWhenHighlighted:NO];
-    buttonItem3 = [[UIBarButtonItem alloc] initWithCustomView:someButton3];
+    buttonItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(action1)];
+    buttonItem2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(action2)];
+    buttonItem3 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(action3)];
     
     [self.navigationItem setRightBarButtonItem:buttonItem1];
 }

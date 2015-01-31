@@ -33,14 +33,8 @@
     NSNumber *roletype = [userdata objectForKey:@"roletype"];
     
     if ([roletype intValue] == 3) {
-        UIImage* image= [UIImage imageNamed:@"ic_bwgg_011.png"];
-        CGRect frame= CGRectMake(0, 0, 30, 30);
-        UIButton* someButton= [[UIButton alloc] initWithFrame:frame];
-        [someButton addTarget:self action:@selector(action1) forControlEvents:UIControlEventTouchUpInside];
-        [someButton setBackgroundImage:image forState:UIControlStateNormal];
-        [someButton setShowsTouchWhenHighlighted:YES];
-        UIBarButtonItem *buttonItem1 = [[UIBarButtonItem alloc] initWithCustomView:someButton];
-        [self.navigationItem setRightBarButtonItem:buttonItem1];
+        UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(action1)];
+        [self.navigationItem setRightBarButtonItem:addItem];
     }
     
     

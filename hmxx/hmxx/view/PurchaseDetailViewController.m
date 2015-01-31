@@ -58,8 +58,7 @@
     [HUD show:YES];
     
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]
-                                 initWithTitle:@"修改"
-                                 style:UIBarButtonItemStyleBordered
+                                 initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
                                  target:self
                                  action:@selector(save)];
     self.navigationItem.rightBarButtonItem = rightBtn;

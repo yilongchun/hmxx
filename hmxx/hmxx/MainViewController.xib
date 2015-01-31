@@ -22,7 +22,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="94s-ao-LfH">
-                    <rect key="frame" x="277" y="32" width="25" height="25"/>
+                    <rect key="frame" x="275" y="32" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="ic_index_012.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -31,7 +31,7 @@
                         <action selector="setup:" destination="-1" eventType="touchUpInside" id="Ega-6U-NqK"/>
                     </connections>
                 </button>
-                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chatListCellHead.png" id="gMW-D0-V44">
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nopicture2.png" id="gMW-D0-V44">
                     <rect key="frame" x="115" y="47" width="90" height="90"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -64,9 +64,9 @@
         </label>
     </objects>
     <resources>
-        <image name="chatListCellHead.png" width="44" height="44"/>
         <image name="ic_index_012.png" width="42" height="44"/>
         <image name="ic_index_bg.png" width="1080" height="1920"/>
+        <image name="nopicture2.png" width="103" height="103"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

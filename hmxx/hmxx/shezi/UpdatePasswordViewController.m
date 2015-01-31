@@ -30,10 +30,7 @@
     self.title = @"修改密码";
     //添加按钮
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]
-                                 initWithTitle:@"保存"
-                                 style:UIBarButtonItemStyleBordered
-                                 target:self
-                                 action:@selector(updatePassword)];
+                                 initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(updatePassword)];
     self.navigationItem.rightBarButtonItem = rightBtn;
     
     
