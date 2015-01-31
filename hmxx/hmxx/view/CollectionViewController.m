@@ -43,7 +43,7 @@
 {
     static NSString *cellIdentifier = @"CollectionCell";
     CollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    [cell.myimageview setImage:[UIImage imageNamed:@"nopicture.png"]];
+    [cell.myimageview setImage:[UIImage imageNamed:@"nopicture2.png"]];
 //    cell.myimageview.layer.cornerRadius = 5.0f;
     
 //    cell.label1.text = [NSString stringWithFormat:@"%d",indexPath.row];

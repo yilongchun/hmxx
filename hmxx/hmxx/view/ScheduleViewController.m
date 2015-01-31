@@ -22,6 +22,8 @@
     NSNumber *page;
     NSNumber *rows;
     NSString *userid;
+    NSString *schoolid;
+    NSNumber *roletype;
     UIActivityIndicatorView *tempactivity;
 }
 @property (nonatomic, strong) SRRefreshView *slimeView;
@@ -81,7 +83,9 @@
     
     NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
     userid = [userdefault objectForKey:@"userid"];
-    
+    schoolid = [userdefault objectForKey:@"schoolid"];
+    NSDictionary *userdata = [userdefault objectForKey:@"user"];
+    roletype = [userdata objectForKey:@"roletype"];
     //初始化数据
     [self loadData];
 }
@@ -114,13 +118,14 @@
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *userdata = [userDefaults objectForKey:@"user"];
-    NSNumber *roletype = [userdata objectForKey:@"roletype"];
-    if ([roletype intValue] == 2) {//学校管理员  不传userid
+    NSString *path ;
+    if ([roletype intValue] == 2) {//学校管理员  不传userid  查看所有日志
         [dic setValue:@"" forKey:@"userid"];
-    }else if([roletype intValue] == 3){//非教师用户 传userid
+        [dic setValue:schoolid forKey:@"schoolId"];
+        path = @"/busdaily/findschoolList.do";
+    }else if([roletype intValue] == 3){//非教师用户 传userid 查看个人日志
         [dic setValue:userid forKey:@"userid"];
+        path = @"/busdaily/findPageList.do";
     }else{
         [dic setValue:@"" forKey:@"userid"];
     }
@@ -128,7 +133,7 @@
     [dic setValue:rows forKey:@"rows"];
     [dic setValue:type forKey:@"dailyType"];
     //    [dic setValue:classId forKey:@"classId"];
-    MKNetworkOperation *op = [engine operationWithPath:@"/busdaily/findPageList.do" params:dic httpMethod:@"GET"];
+    MKNetworkOperation *op = [engine operationWithPath:path params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         NSString *result = [operation responseString];
         NSError *error;
@@ -170,7 +175,17 @@
         page = [NSNumber numberWithInt:[page intValue] +1];
     }
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setValue:userid forKey:@"userid"];
+    NSString *path ;
+    if ([roletype intValue] == 2) {//学校管理员  不传userid  查看所有日志
+        [dic setValue:@"" forKey:@"userid"];
+        [dic setValue:schoolid forKey:@"schoolId"];
+        path = @"/busdaily/findschoolList.do";
+    }else if([roletype intValue] == 3){//非教师用户 传userid 查看个人日志
+        [dic setValue:userid forKey:@"userid"];
+        path = @"/busdaily/findPageList.do";
+    }else{
+        [dic setValue:@"" forKey:@"userid"];
+    }
     [dic setValue:page forKey:@"page"];
     [dic setValue:rows forKey:@"rows"];
     [dic setValue:type forKey:@"dailyType"];
@@ -309,6 +324,7 @@
             ScheduleDetailViewController *vc = [[ScheduleDetailViewController alloc] init];
             vc.detailId = detailId;
             vc.type = type;
+            vc.roletype = roletype;
             [self.navigationController pushViewController:vc animated:YES];
         }
         

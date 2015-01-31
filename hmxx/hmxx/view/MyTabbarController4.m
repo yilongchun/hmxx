@@ -27,14 +27,23 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     
-    UIImage* image= [UIImage imageNamed:@"ic_bwgg_011.png"];
-    CGRect frame= CGRectMake(0, 0, 30, 30);
-    UIButton* someButton= [[UIButton alloc] initWithFrame:frame];
-    [someButton addTarget:self action:@selector(action1) forControlEvents:UIControlEventTouchUpInside];
-    [someButton setBackgroundImage:image forState:UIControlStateNormal];
-    [someButton setShowsTouchWhenHighlighted:YES];
-    UIBarButtonItem *buttonItem1 = [[UIBarButtonItem alloc] initWithCustomView:someButton];
-    [self.navigationItem setRightBarButtonItem:buttonItem1];
+    NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
+    
+    NSDictionary *userdata = [userdefault objectForKey:@"user"];
+    NSNumber *roletype = [userdata objectForKey:@"roletype"];
+    
+    if ([roletype intValue] == 3) {
+        UIImage* image= [UIImage imageNamed:@"ic_bwgg_011.png"];
+        CGRect frame= CGRectMake(0, 0, 30, 30);
+        UIButton* someButton= [[UIButton alloc] initWithFrame:frame];
+        [someButton addTarget:self action:@selector(action1) forControlEvents:UIControlEventTouchUpInside];
+        [someButton setBackgroundImage:image forState:UIControlStateNormal];
+        [someButton setShowsTouchWhenHighlighted:YES];
+        UIBarButtonItem *buttonItem1 = [[UIBarButtonItem alloc] initWithCustomView:someButton];
+        [self.navigationItem setRightBarButtonItem:buttonItem1];
+    }
+    
+    
     
     UIImage *img1 = [UIImage imageNamed:@"planmanage2.png"];
     UIImage *img1_h = [UIImage imageNamed:@"planmanage1.png"];

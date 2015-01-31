@@ -258,6 +258,7 @@
 		E4F369FC1A6444EA0037A533 /* ic_kcb_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F369FA1A6444EA0037A533 /* ic_kcb_bg.png */; };
 		E4F369FD1A6444EA0037A533 /* ic_kcb_bg2.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F369FB1A6444EA0037A533 /* ic_kcb_bg2.png */; };
 		E4F36A011A6448300037A533 /* ic_index_007.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F369FF1A6448300037A533 /* ic_index_007.png */; };
+		E4F3B0041A7CF93600176E56 /* nopicture2.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F3B0031A7CF93600176E56 /* nopicture2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -368,7 +369,7 @@
 		E4EF0AE61A6E96A100212041 /* AddScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = AddScheduleViewController.m; path = view/AddScheduleViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E4EF0AE71A6E96A100212041 /* AddScheduleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddScheduleViewController.xib; path = view/AddScheduleViewController.xib; sourceTree = "<group>"; };
 		E4EF0AEA1A6EA9C300212041 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionViewController.h; path = view/CollectionViewController.h; sourceTree = "<group>"; };
-		E4EF0AEB1A6EA9C300212041 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionViewController.m; path = view/CollectionViewController.m; sourceTree = "<group>"; };
+		E4EF0AEB1A6EA9C300212041 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = CollectionViewController.m; path = view/CollectionViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E4EF0AEC1A6EA9C300212041 /* CollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CollectionViewController.xib; path = view/CollectionViewController.xib; sourceTree = "<group>"; };
 		E4EF0AF41A6EAFD900212041 /* CollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionCell.h; path = view/CollectionCell.h; sourceTree = "<group>"; };
 		E4EF0AF51A6EAFD900212041 /* CollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionCell.m; path = view/CollectionCell.m; sourceTree = "<group>"; };
@@ -385,7 +386,7 @@
 		E4EF57721A68067B004B57E6 /* DaishHdxqViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = DaishHdxqViewController.m; path = view/DaishHdxqViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E4EF57731A68067B004B57E6 /* DaishHdxqViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DaishHdxqViewController.xib; path = view/DaishHdxqViewController.xib; sourceTree = "<group>"; };
 		E4F0768A1A653E47004D7453 /* GrdaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrdaViewController.h; path = view/GrdaViewController.h; sourceTree = "<group>"; };
-		E4F0768B1A653E47004D7453 /* GrdaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrdaViewController.m; path = view/GrdaViewController.m; sourceTree = "<group>"; };
+		E4F0768B1A653E47004D7453 /* GrdaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = GrdaViewController.m; path = view/GrdaViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E4F0768C1A653E47004D7453 /* GrdaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GrdaViewController.xib; path = view/GrdaViewController.xib; sourceTree = "<group>"; };
 		E4F0768F1A655C4A004D7453 /* YqjsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YqjsViewController.h; path = view/YqjsViewController.h; sourceTree = "<group>"; };
 		E4F076901A655C4A004D7453 /* YqjsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = YqjsViewController.m; path = view/YqjsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -576,7 +577,7 @@
 		E4F3696E1A63E6BB0037A533 /* hmxx.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hmxx.pch; sourceTree = "<group>"; };
 		E4F3696F1A63ED080037A533 /* start_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start_open.png; sourceTree = "<group>"; };
 		E4F369711A6405F10037A533 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		E4F369721A6405F10037A533 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		E4F369721A6405F10037A533 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MainViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E4F369731A6405F10037A533 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		E4F369761A6406500037A533 /* ic_index_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_index_bg.png; sourceTree = "<group>"; };
 		E4F3697E1A64066D0037A533 /* ic_index_012.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_index_012.png; sourceTree = "<group>"; };
@@ -633,7 +634,7 @@
 		E4F369DE1A6418EF0037A533 /* ic_sz_002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_sz_002.png; sourceTree = "<group>"; };
 		E4F369E11A642A670037A533 /* ic_index_004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_index_004.png; sourceTree = "<group>"; };
 		E4F369E41A642ADF0037A533 /* BbspViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BbspViewController.h; path = view/BbspViewController.h; sourceTree = "<group>"; };
-		E4F369E51A642ADF0037A533 /* BbspViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BbspViewController.m; path = view/BbspViewController.m; sourceTree = "<group>"; };
+		E4F369E51A642ADF0037A533 /* BbspViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = BbspViewController.m; path = view/BbspViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E4F369E61A642ADF0037A533 /* BbspViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BbspViewController.xib; path = view/BbspViewController.xib; sourceTree = "<group>"; };
 		E4F369E91A642B0C0037A533 /* JYSlideSegmentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JYSlideSegmentController.h; path = view/JYSlideSegmentController.h; sourceTree = "<group>"; };
 		E4F369EA1A642B0C0037A533 /* JYSlideSegmentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JYSlideSegmentController.m; path = view/JYSlideSegmentController.m; sourceTree = "<group>"; };
@@ -648,6 +649,7 @@
 		E4F369FA1A6444EA0037A533 /* ic_kcb_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_kcb_bg.png; sourceTree = "<group>"; };
 		E4F369FB1A6444EA0037A533 /* ic_kcb_bg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_kcb_bg2.png; sourceTree = "<group>"; };
 		E4F369FF1A6448300037A533 /* ic_index_007.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_index_007.png; sourceTree = "<group>"; };
+		E4F3B0031A7CF93600176E56 /* nopicture2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nopicture2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -845,6 +847,7 @@
 		E4F3692B1A63E1D20037A533 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E4F3B0031A7CF93600176E56 /* nopicture2.png */,
 				E4EDA2911A7255620018E967 /* planmanage1.png */,
 				E4EDA2921A7255620018E967 /* planmanage1@2x.png */,
 				E4EDA2931A7255620018E967 /* planmanage2.png */,
@@ -1361,6 +1364,7 @@
 				E4EF57751A68067B004B57E6 /* DaishHdxqViewController.xib in Resources */,
 				E4EF0AEE1A6EA9C300212041 /* CollectionViewController.xib in Resources */,
 				E4F077061A65681D004D7453 /* BwhdViewController.xib in Resources */,
+				E4F3B0041A7CF93600176E56 /* nopicture2.png in Resources */,
 				E4F0774A1A658E70004D7453 /* gonggaoguanli2.png in Resources */,
 				E4F076FC1A656760004D7453 /* ContentCell.xib in Resources */,
 				E4F076E21A656680004D7453 /* GgtzViewController.xib in Resources */,

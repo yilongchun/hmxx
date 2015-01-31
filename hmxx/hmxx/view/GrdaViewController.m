@@ -73,9 +73,9 @@
     
     //设置头像
     if ([Utils isBlankString:fileid]) {
-        [self.myimageview setImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+        [self.myimageview setImage:[UIImage imageNamed:@"nopicture2.png"]];
     }else{
-        [self.myimageview setImageWithURL:[NSURL URLWithString:fileid] placeholderImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+        [self.myimageview setImageWithURL:[NSURL URLWithString:fileid] placeholderImage:[UIImage imageNamed:@"nopicture2.png"]];
     }
     
     self.myimageview.layer.cornerRadius = self.myimageview.frame.size.height/2;
