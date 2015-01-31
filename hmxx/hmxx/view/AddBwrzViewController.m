@@ -25,7 +25,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    CGRect rect = self.bjrs.frame;
+    rect.size.height = 40;
+    self.bjrs.frame = rect;
     
+    rect = self.cqrs.frame;
+    rect.size.height = 40;
+    self.cqrs.frame = rect;
+    
+    rect = self.bjrs2.frame;
+    rect.size.height = 40;
+    self.bjrs2.frame = rect;
+    
+    rect = self.sjrs.frame;
+    rect.size.height = 40;
+    self.sjrs.frame = rect;
+    
+    rect = self.cdrs.frame;
+    rect.size.height = 40;
+    self.cdrs.frame = rect;
     //初始化引擎
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     

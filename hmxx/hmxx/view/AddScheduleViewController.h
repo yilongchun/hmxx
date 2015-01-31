@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *label3;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *scheduleTypeSegmented;
 @property (weak, nonatomic) IBOutlet UITextField *titleText;
+@property (nonatomic, strong) NSString *type;
 
 @end

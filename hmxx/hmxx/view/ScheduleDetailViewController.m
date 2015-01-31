@@ -25,8 +25,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    CGRect rect = self.titleLabel.frame;
+    rect.size.height = 40;
+    self.titleLabel.frame = rect;
+    
+    rect = self.scheduleTypeSegmented.frame;
+    rect.size.height = 35;
+    self.scheduleTypeSegmented.frame = rect;
     
     self.title = @"日志详情";
+    
+    
     
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]
                                  initWithTitle:@"修改"

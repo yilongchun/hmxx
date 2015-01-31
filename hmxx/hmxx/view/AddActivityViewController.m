@@ -31,7 +31,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    CGRect rect = self.titleLabel.frame;
+    rect.size.height = 40;
+    self.titleLabel.frame = rect;
     //初始化引擎
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     

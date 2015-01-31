@@ -23,7 +23,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    CGRect rect = self.titleText.frame;
+    rect.size.height = 40;
+    self.titleText.frame = rect;
     
+    rect = self.scheduleTypeSegmented.frame;
+    rect.size.height = 35;
+    self.scheduleTypeSegmented.frame = rect;
+    
+    if ([self.type isEqualToString:@"1"]) {
+        [self.scheduleTypeSegmented setSelectedSegmentIndex:0];
+    }else if([self.type isEqualToString:@"2"]){
+        [self.scheduleTypeSegmented setSelectedSegmentIndex:1];
+    }
+   
     self.title = @"新增日志";
     
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];

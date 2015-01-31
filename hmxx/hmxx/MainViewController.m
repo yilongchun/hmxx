@@ -613,7 +613,7 @@
         [self.navigationController pushViewController:slideSegmentController animated:YES];
     }else{
         //提示没有信息
-        [self alertMsg:@"暂时没有食谱信息，请稍后再试"];
+        [self alertMsg:@"未获取到食谱信息，请稍后查看"];
     }
 }
 

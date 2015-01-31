@@ -24,6 +24,7 @@
     NSNumber *totalpage;
     NSNumber *page;
     NSNumber *rows;
+    NSString *schoolid;
 }
 @property (nonatomic, strong) SRRefreshView *slimeView;
 @end
@@ -77,6 +78,9 @@
     [HUD show:YES];
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     
+    NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
+    schoolid = [userdefault objectForKey:@"schoolid"];
+    
     self.dataSource = [[NSMutableArray alloc] init];
     //初始化数据
     [self loadData];
@@ -107,6 +111,7 @@
 //加载数据
 - (void)loadData{
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setValue:schoolid forKey:@"schoolId"];
     [dic setValue:self.year forKey:@"purchaseyear"];
     MKNetworkOperation *op = [engine operationWithPath:@"/purchasestatis/purchaseyearList.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
@@ -152,6 +157,7 @@
     if ([firstIsExtend isEqualToString:@"YES"]) {
 //        cell.dataSource = [NSMutableArray array];
         NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+        [params setValue:schoolid forKey:@"schoolId"];
         [params setValue:purchaseDate forKey:@"purchaseDate"];
         MKNetworkOperation *op = [engine operationWithPath:@"/purchasestatis/purchaseList.do" params:params httpMethod:@"GET"];
         [op addCompletionHandler:^(MKNetworkOperation *operation) {

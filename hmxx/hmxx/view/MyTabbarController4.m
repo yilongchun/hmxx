@@ -10,7 +10,9 @@
 #import "ScheduleViewController.h"
 #import "AddScheduleViewController.h"
 
-@interface MyTabbarController4 ()
+@interface MyTabbarController4 (){
+    int type;
+}
 
 @end
 
@@ -81,8 +83,10 @@
 {
     if (item.tag == 0) {
         self.title = @"计划管理";
+        type = 1;
     }else if (item.tag == 1){
         self.title = @"总结管理";
+        type = 2;
     }
 }
 
@@ -93,6 +97,7 @@
 
 -(void)action1{
     AddScheduleViewController *vc = [[AddScheduleViewController alloc] init];
+    vc.type = [NSString stringWithFormat:@"%d",type];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
