@@ -62,6 +62,19 @@
                                      target:self
                                      action:@selector(save)];
         self.navigationItem.rightBarButtonItem = rightBtn;
+    }else{
+        [self.typeBtn setUserInteractionEnabled:NO];
+        [self.dateBtn setUserInteractionEnabled:NO];
+        [self.supplierText setUserInteractionEnabled:NO];
+        [self.supplierQuText setUserInteractionEnabled:NO];
+        [self.numText setUserInteractionEnabled:NO];
+        [self.purchaserText setUserInteractionEnabled:NO];
+        [self.signerText setUserInteractionEnabled:NO];
+        [self.priceText setUserInteractionEnabled:NO];
+        [self.unitText setUserInteractionEnabled:NO];
+        [self.totalPriceText setUserInteractionEnabled:NO];
+        [self.remarkText setUserInteractionEnabled:NO];
+        [self.myswitch setUserInteractionEnabled:NO];
     }
     
     
