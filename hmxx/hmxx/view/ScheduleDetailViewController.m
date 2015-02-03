@@ -58,7 +58,11 @@
     [self.view addSubview:HUD];
     HUD.delegate = self;
     
-    [self.scheduleTypeSegmented setSelectedSegmentIndex:[type intValue]-1];
+    if ([type intValue] == 2) {
+        self.scheduleTypeSegmented.selectedSegmentIndex = 0;
+    }else if([type intValue] == 1){
+        self.scheduleTypeSegmented.selectedSegmentIndex = 1;
+    }
     
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
         self.mytextview.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
@@ -110,9 +114,9 @@
                 NSString *title = [data objectForKey:@"title"];
                 NSString *daily_type = [data objectForKey:@"daily_type"];
                 NSString *content = [data objectForKey:@"content"];
-                if ([daily_type isEqualToString:@"1"]) {
+                if ([daily_type isEqualToString:@"2"]) {
                     self.scheduleTypeSegmented.selectedSegmentIndex = 0;
-                }else if([daily_type isEqualToString:@"2"]){
+                }else if([daily_type isEqualToString:@"1"]){
                     self.scheduleTypeSegmented.selectedSegmentIndex = 1;
                 }
                 self.titleLabel.text = title;

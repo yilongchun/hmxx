@@ -74,6 +74,7 @@
     
     datePicker = [ [ UIDatePicker alloc] initWithFrame:CGRectMake(0, 15, 0, 0)];
     datePicker.datePickerMode = UIDatePickerModeDate;
+    [datePicker setMaximumDate:[NSDate date]];
 //    [datePicker setLocale:[[NSLocale alloc]initWithLocaleIdentifier:@"zh_Hans_CN"]];
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
         [self.remarkText setFrame:CGRectMake(self.remarkText.frame.origin.x, self.remarkText.frame.origin.y, [UIScreen mainScreen].bounds.size.width-self.remarkText.frame.origin.x-8, self.remarkText.frame.size.height)];

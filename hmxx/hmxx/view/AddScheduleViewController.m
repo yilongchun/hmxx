@@ -98,9 +98,9 @@
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:userid forKey:@"userid"];
     if (self.scheduleTypeSegmented.selectedSegmentIndex == 0) {
-        [dic setValue:@"1" forKey:@"dailyType"];
-    }else if (self.scheduleTypeSegmented.selectedSegmentIndex == 1) {
         [dic setValue:@"2" forKey:@"dailyType"];
+    }else if (self.scheduleTypeSegmented.selectedSegmentIndex == 1) {
+        [dic setValue:@"1" forKey:@"dailyType"];
     }
     [dic setValue:self.titleText.text forKey:@"title"];
     [dic setValue:self.mytextview.text forKey:@"content"];

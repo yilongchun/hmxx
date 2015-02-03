@@ -94,7 +94,7 @@
     
     datePicker = [ [ UIDatePicker alloc] initWithFrame:CGRectMake(0, 15, 0, 0)];
     datePicker.datePickerMode = UIDatePickerModeDate;
-    
+    [datePicker setMaximumDate:[NSDate date]];
     [self loadData];
     selectedIndex = 0;
 }
