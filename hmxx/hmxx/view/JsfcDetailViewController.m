@@ -70,9 +70,9 @@
                 teacherId = [data objectForKey:@"userId"];
                 self.username.text = [NSString stringWithFormat:@"%@",teacherName];
                 if ([Utils isBlankString:flieid]) {
-                    [self.userimage setImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+                    [self.userimage setImage:[UIImage imageNamed:@"nopicture2.png"]];
                 }else{
-                    [self.userimage setImageWithURL:[NSURL URLWithString:flieid] placeholderImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+                    [self.userimage setImageWithURL:[NSURL URLWithString:flieid] placeholderImage:[UIImage imageNamed:@"nopicture2.png"]];
                 }
                 if ([ishead boolValue]) {
                     self.userjob.text = [NSString stringWithFormat:@"%@",@"班主任"];

@@ -259,9 +259,9 @@
         NSNumber *ishead = [classList objectForKey:@"ishead"];
         cell.username.text = teacherName;
         if ([Utils isBlankString:flieid]) {
-            [cell.userimage setImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+            [cell.userimage setImage:[UIImage imageNamed:@"nopicture2.png"]];
         }else{
-            [cell.userimage setImageWithURL:[NSURL URLWithString:flieid] placeholderImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+            [cell.userimage setImageWithURL:[NSURL URLWithString:flieid] placeholderImage:[UIImage imageNamed:@"nopicture2.png"]];
         }
         if ([ishead boolValue]) {
             cell.userjob.text = @"班主任";

@@ -390,9 +390,9 @@
             labelsize.width = ceil(labelsize.width);
             [cell.commentlabel setFrame:CGRectMake(cell.commentlabel.frame.origin.x, cell.commentlabel.frame.origin.y, labelsize.width, labelsize.height)];
             if ([Utils isBlankString:fileid]) {
-                [cell.img setImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+                [cell.img setImage:[UIImage imageNamed:@"nopicture2.png"]];
             }else{
-                [cell.img setImageWithURL:[NSURL URLWithString:fileid] placeholderImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+                [cell.img setImageWithURL:[NSURL URLWithString:fileid] placeholderImage:[UIImage imageNamed:@"nopicture2.png"]];
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;

@@ -49,8 +49,8 @@
 //    cell.label1.text = [NSString stringWithFormat:@"%d",indexPath.row];
 //    cell.backgroundColor = [UIColor whiteColor];
 //    UIImageView *imageView = (UIImageView *)[cell viewWithTag:0];
-//    imageView.image = [UIImage imageNamed:@"chatListCellHead.png"];
-//    UIImageView *imageview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+//    imageView.image = [UIImage imageNamed:@"nopicture2.png"];
+//    UIImageView *imageview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nopicture2.png"]];
 //    [cell.contentView addSubview:imageview];
     return cell;
 }
