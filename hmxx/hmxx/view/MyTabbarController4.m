@@ -46,9 +46,9 @@
     UIImage *img2_h = [UIImage imageNamed:@"summarymanage1.png"];
     
     ScheduleViewController *vc1 = [[ScheduleViewController alloc] init];
-    vc1.type = [NSNumber numberWithInt:1];
+    vc1.type = [NSNumber numberWithInt:2];
     ScheduleViewController *vc2 = [[ScheduleViewController alloc] init];
-    vc2.type = [NSNumber numberWithInt:2];
+    vc2.type = [NSNumber numberWithInt:1];
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
         
         img1 = [img1 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -86,10 +86,10 @@
 {
     if (item.tag == 0) {
         self.title = @"计划管理";
-        type = 1;
+        type = 2;
     }else if (item.tag == 1){
         self.title = @"总结管理";
-        type = 2;
+        type = 1;
     }
 }
 
