@@ -74,20 +74,20 @@
         [self.bjsj setFrame:CGRectMake(self.bjsj.frame.origin.x, self.bjsj.frame.origin.y, self.bjsj.frame.size.width, 130)];
         NSLog(@"%f",self.bjsj.frame.size.height);
     }else{
-        [self.label1 setFrame:CGRectMake(self.label1.frame.origin.x, self.label1.frame.origin.y-64, self.label1.frame.size.width, self.label1.frame.size.height)];
-        [self.label2 setFrame:CGRectMake(self.label2.frame.origin.x, self.label2.frame.origin.y-64, self.label2.frame.size.width, self.label2.frame.size.height)];
-        [self.label3 setFrame:CGRectMake(self.label3.frame.origin.x, self.label3.frame.origin.y-64, self.label3.frame.size.width, self.label3.frame.size.height)];
-        [self.label4 setFrame:CGRectMake(self.label4.frame.origin.x, self.label4.frame.origin.y-64, self.label4.frame.size.width, self.label4.frame.size.height)];
-        [self.label5 setFrame:CGRectMake(self.label5.frame.origin.x, self.label5.frame.origin.y-64, self.label5.frame.size.width, self.label5.frame.size.height)];
-        [self.label6 setFrame:CGRectMake(self.label6.frame.origin.x, self.label6.frame.origin.y-64, self.label6.frame.size.width, self.label6.frame.size.height)];
-        
-        [self.bjrs setFrame:CGRectMake(self.bjrs.frame.origin.x, self.bjrs.frame.origin.y-64, self.bjrs.frame.size.width, self.bjrs.frame.size.height)];
-        [self.cqrs setFrame:CGRectMake(self.cqrs.frame.origin.x, self.cqrs.frame.origin.y-64, self.cqrs.frame.size.width, self.cqrs.frame.size.height)];
-        [self.bjrs2 setFrame:CGRectMake(self.bjrs2.frame.origin.x, self.bjrs2.frame.origin.y-64, self.bjrs2.frame.size.width, self.bjrs2.frame.size.height)];
-        [self.sjrs setFrame:CGRectMake(self.sjrs.frame.origin.x, self.sjrs.frame.origin.y-64, self.sjrs.frame.size.width, self.sjrs.frame.size.height)];
-        [self.cdrs setFrame:CGRectMake(self.cdrs.frame.origin.x, self.cdrs.frame.origin.y-64, self.cdrs.frame.size.width, self.cdrs.frame.size.height)];
-        [self.bjsj setFrame:CGRectMake(self.bjsj.frame.origin.x, self.bjsj.frame.origin.y-64, self.bjsj.frame.size.width, 130)];
-        [self.dateTitleLabel setFrame:CGRectMake(self.dateTitleLabel.frame.origin.x, self.dateTitleLabel.frame.origin.y-64, self.dateTitleLabel.frame.size.width, self.dateTitleLabel.frame.size.height)];
+//        [self.label1 setFrame:CGRectMake(self.label1.frame.origin.x, self.label1.frame.origin.y-64, self.label1.frame.size.width, self.label1.frame.size.height)];
+//        [self.label2 setFrame:CGRectMake(self.label2.frame.origin.x, self.label2.frame.origin.y-64, self.label2.frame.size.width, self.label2.frame.size.height)];
+//        [self.label3 setFrame:CGRectMake(self.label3.frame.origin.x, self.label3.frame.origin.y-64, self.label3.frame.size.width, self.label3.frame.size.height)];
+//        [self.label4 setFrame:CGRectMake(self.label4.frame.origin.x, self.label4.frame.origin.y-64, self.label4.frame.size.width, self.label4.frame.size.height)];
+//        [self.label5 setFrame:CGRectMake(self.label5.frame.origin.x, self.label5.frame.origin.y-64, self.label5.frame.size.width, self.label5.frame.size.height)];
+//        [self.label6 setFrame:CGRectMake(self.label6.frame.origin.x, self.label6.frame.origin.y-64, self.label6.frame.size.width, self.label6.frame.size.height)];
+//        
+//        [self.bjrs setFrame:CGRectMake(self.bjrs.frame.origin.x, self.bjrs.frame.origin.y-64, self.bjrs.frame.size.width, self.bjrs.frame.size.height)];
+//        [self.cqrs setFrame:CGRectMake(self.cqrs.frame.origin.x, self.cqrs.frame.origin.y-64, self.cqrs.frame.size.width, self.cqrs.frame.size.height)];
+//        [self.bjrs2 setFrame:CGRectMake(self.bjrs2.frame.origin.x, self.bjrs2.frame.origin.y-64, self.bjrs2.frame.size.width, self.bjrs2.frame.size.height)];
+//        [self.sjrs setFrame:CGRectMake(self.sjrs.frame.origin.x, self.sjrs.frame.origin.y-64, self.sjrs.frame.size.width, self.sjrs.frame.size.height)];
+//        [self.cdrs setFrame:CGRectMake(self.cdrs.frame.origin.x, self.cdrs.frame.origin.y-64, self.cdrs.frame.size.width, self.cdrs.frame.size.height)];
+//        [self.bjsj setFrame:CGRectMake(self.bjsj.frame.origin.x, self.bjsj.frame.origin.y-64, self.bjsj.frame.size.width, 130)];
+//        [self.dateTitleLabel setFrame:CGRectMake(self.dateTitleLabel.frame.origin.x, self.dateTitleLabel.frame.origin.y-64, self.dateTitleLabel.frame.size.width, self.dateTitleLabel.frame.size.height)];
         
     }
     

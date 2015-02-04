@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *sjrs;
 @property (weak, nonatomic) IBOutlet UITextField *cdrs;
 @property (strong, nonatomic) IBOutlet UITextView *bjsj;
-@property (weak, nonatomic) IBOutlet UILabel *dateTitleLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *dateTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *label1;
 @property (weak, nonatomic) IBOutlet UILabel *label2;
 @property (weak, nonatomic) IBOutlet UILabel *label3;
