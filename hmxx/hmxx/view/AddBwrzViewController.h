@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddBwrzViewController : UIViewController<UITextViewDelegate,UITextFieldDelegate>
+@interface AddBwrzViewController : UIViewController<UITextViewDelegate,UITextFieldDelegate,UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *bjrs;
 @property (weak, nonatomic) IBOutlet UITextField *cqrs;
 @property (weak, nonatomic) IBOutlet UITextField *bjrs2;
@@ -22,5 +22,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *label4;
 @property (weak, nonatomic) IBOutlet UILabel *label5;
 @property (weak, nonatomic) IBOutlet UILabel *label6;
-
+@property (weak, nonatomic) IBOutlet UIButton *dateBtn;
+- (IBAction)chooseDate:(id)sender;
 @end

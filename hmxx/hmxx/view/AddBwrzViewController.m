@@ -16,6 +16,7 @@
     MBProgressHUD *HUD;
     
     int studentnum;
+    UIDatePicker *datePicker;
 }
 
 @end
@@ -59,7 +60,14 @@
 //    self.bjsj.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 //    [self.bjsj.layer setMasksToBounds:YES];
     
-    
+    [self.dateBtn setBackgroundImage:[[UIImage imageNamed:@"grayBg.png"]stretchableImageWithLeftCapWidth:0.0 topCapHeight:0.0] forState:UIControlStateHighlighted];
+    self.dateBtn.layer.borderColor = [UIColor colorWithRed:194/255.0 green:194/255.0 blue:194/255.0 alpha:1].CGColor;
+    self.dateBtn.layer.borderWidth = 0.4f;
+    self.dateBtn.layer.cornerRadius = 5.0f;
+    self.view.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
+    datePicker = [ [ UIDatePicker alloc] initWithFrame:CGRectMake(0, 15, 0, 0)];
+    datePicker.datePickerMode = UIDatePickerModeDate;
+    [datePicker setMaximumDate:[NSDate date]];
     
     self.bjsj.layer.borderColor = [UIColor colorWithRed:219/255.0 green:219/255.0 blue:219/255.0 alpha:1].CGColor;
     self.bjsj.layer.borderWidth = 1.0;
@@ -105,7 +113,7 @@
 //                                               object:nil];
     
 
-    self.title = @"添加校务日志";
+    self.title = @"添加园务日志";
     
     //添加手势，点击输入框其他区域隐藏键盘
 //    UITapGestureRecognizer *tapGr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
@@ -151,6 +159,11 @@
     int num3 = [self.sjrs.text intValue];
     int num4 = [self.cdrs.text intValue];
     
+    if ([self.dateBtn.titleLabel.text isEqualToString:@"请选择日期"]) {
+        [self alertMsg:@"请选择日期"];
+        return;
+    }
+    
     if (studentnum != (num1 + num2 + num3 + num4)) {
         [self alertMsg:@"总人数不等于教职人数"];
     }else{
@@ -165,6 +178,7 @@
         [dic setValue:self.bjrs2.text forKey:@"sicknum"];
         [dic setValue:self.sjrs.text forKey:@"casualnum"];
         [dic setValue:self.cdrs.text forKey:@"latenum"];
+        [dic setValue:self.dateBtn.titleLabel.text forKey:@"dailytitle"];
         [dic setValue:@"" forKey:@"fileid"];
         MKNetworkOperation *op = [engine operationWithPath:@"/SchoolDaily/save.do" params:dic httpMethod:@"POST"];
         [op addCompletionHandler:^(MKNetworkOperation *operation) {
@@ -187,8 +201,6 @@
                 self.cdrs.text = @"";
                 [self okMsk:msg];
                 [self performSelector:@selector(backAndReload) withObject:nil afterDelay:1.0f];
-                
-                
             }else{
                 [HUD hide:YES];
 //                self.bjsj.text = @"";
@@ -204,6 +216,58 @@
             [self alertMsg:@"连接服务器失败"];
         }];
         [engine enqueueOperation:op];
+    }
+}
+
+- (IBAction)chooseDate:(id)sender {
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1){
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
+                                                                       message:@"请选择日期\n\n\n\n\n\n\n\n\n\n"// change UIAlertController height
+                                                                preferredStyle:UIAlertControllerStyleActionSheet];
+        [alert addAction:[UIAlertAction actionWithTitle:@"确定"
+                                                  style:UIAlertActionStyleDestructive
+                                                handler:^(UIAlertAction *action) {
+                                                    NSDate *date = datePicker.date;
+                                                    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                                                    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+                                                    NSString *destDateString = [dateFormatter stringFromDate:date];
+                                                    [self.dateBtn setTitle:destDateString forState:UIControlStateNormal];
+                                                }]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"取消"
+                                                  style:UIAlertActionStyleCancel
+                                                handler:^(UIAlertAction *action) {
+                                                    
+                                                }]];
+        
+        
+        //Make a frame for the picker & then create the picker
+        CGRect pickerFrame = CGRectMake(12, 15, self.view.frame.size.width-24-20, 216);
+        datePicker.frame = pickerFrame;
+        [alert.view addSubview:datePicker];
+        [self presentViewController:alert animated:YES completion:nil];
+    }else{
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"请选择日期\n\n\n\n\n\n\n\n\n\n\n\n"
+                                                                 delegate:self
+                                                        cancelButtonTitle:@"取消"
+                                                   destructiveButtonTitle:@"确定"
+                                                        otherButtonTitles:nil, nil];
+        actionSheet.tag = 2;
+        [actionSheet addSubview:datePicker];
+        [actionSheet showInView:self.view];
+    }
+    
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0) {
+        if (actionSheet.tag == 2){
+            NSDate *date = datePicker.date;
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+            NSString *destDateString = [dateFormatter stringFromDate:date];
+            [self.dateBtn setTitle:destDateString forState:UIControlStateNormal];
+        }
     }
 }
 
