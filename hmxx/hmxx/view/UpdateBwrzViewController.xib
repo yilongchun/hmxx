@@ -57,9 +57,6 @@
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="SSj-Cr-h8n"/>
-                    </connections>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="病假人数:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zhJ-lj-wpa">
                     <rect key="frame" x="10" y="210" width="74" height="21"/>
@@ -83,9 +80,6 @@
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="Xzx-WQ-1k6"/>
-                    </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="3Ic-Im-2ox">
                     <rect key="frame" x="90" y="249" width="220" height="30"/>
@@ -93,9 +87,6 @@
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="GPm-6d-pi6"/>
-                    </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="24a-qr-hYv">
                     <rect key="frame" x="90" y="297" width="220" height="30"/>
@@ -103,9 +94,6 @@
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="tsn-2k-7aa"/>
-                    </connections>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="迟到人数:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sqd-hh-EMD">
                     <rect key="frame" x="10" y="306" width="74" height="21"/>
@@ -138,9 +126,6 @@
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="G4L-pD-WYp"/>
-                    </connections>
                 </textView>
             </subviews>
             <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>

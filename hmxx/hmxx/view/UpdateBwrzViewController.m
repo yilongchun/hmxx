@@ -62,7 +62,7 @@
     self.bjsj.scrollEnabled = YES;
     self.bjsj.font = [UIFont fontWithName:@"Helvetica Neue" size:16.0];
     self.bjsj.returnKeyType = UIReturnKeyDefault;
-    self.bjsj.delegate = self;
+//    self.bjsj.delegate = self;
     [self.bjsj.layer setMasksToBounds:YES];
     self.bjsj.autoresizingMask = UIViewAutoresizingNone;
     self.title = @"校务日志详情";
@@ -92,9 +92,9 @@
     }
     
     //添加手势，点击输入框其他区域隐藏键盘
-    UITapGestureRecognizer *tapGr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
-    tapGr.cancelsTouchesInView =NO;
-    [self.view addGestureRecognizer:tapGr];
+//    UITapGestureRecognizer *tapGr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
+//    tapGr.cancelsTouchesInView =NO;
+//    [self.view addGestureRecognizer:tapGr];
     
     
     
@@ -112,16 +112,16 @@
 }
 
 //隐藏键盘
--(void)viewTapped:(UITapGestureRecognizer*)tapGr{
-    [self.bjsj resignFirstResponder];
-    [self.cqrs resignFirstResponder];
-    [self.bjrs2 resignFirstResponder];
-    [self.sjrs resignFirstResponder];
-    [self.cdrs resignFirstResponder];
-    if(self.view.frame.origin.y == -80){
-        [self moveView:80];
-    }
-}
+//-(void)viewTapped:(UITapGestureRecognizer*)tapGr{
+//    [self.bjsj resignFirstResponder];
+//    [self.cqrs resignFirstResponder];
+//    [self.bjrs2 resignFirstResponder];
+//    [self.sjrs resignFirstResponder];
+//    [self.cdrs resignFirstResponder];
+//    if(self.view.frame.origin.y == -80){
+//        [self moveView:80];
+//    }
+//}
 
 - (void)loadData{
     [HUD show:YES];
@@ -188,7 +188,7 @@
 }
 
 - (void)save{
-    [self viewTapped:nil];
+//    [self viewTapped:nil];
     
     int num1 = [self.cqrs.text intValue];
     int num2 = [self.bjrs2.text intValue];
@@ -279,40 +279,40 @@
 
 
 
-#pragma mark - 输入框代理
--(void)textFieldDidBeginEditing:(UITextField *)textField{
-    if (textField.tag != 99) {
-        if(self.view.frame.origin.y == -80){
-            [self moveView:80];
-        }
-    }
-}
-
-- (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
-    
-    if(textView.tag == 99){
-        if(self.view.frame.origin.y == 0){
-            [self moveView:-80];
-        }
-    }
-    return true;
-}
+//#pragma mark - 输入框代理
+//-(void)textFieldDidBeginEditing:(UITextField *)textField{
+//    if (textField.tag != 99) {
+//        if(self.view.frame.origin.y == -80){
+//            [self moveView:80];
+//        }
+//    }
+//}
+//
+//- (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
+//    
+//    if(textView.tag == 99){
+//        if(self.view.frame.origin.y == 0){
+//            [self moveView:-80];
+//        }
+//    }
+//    return true;
+//}
 
 //界面根据键盘的显示和隐藏上下移动
--(void)moveView:(float)move{
-    NSTimeInterval animationDuration = 1.0f;
-    CGRect frame = self.view.frame;
-    if(move == 0){
-        frame.origin.y =0;
-    }else{
-        frame.origin.y +=move;//view的X轴上移
-    }
-    [UIView beginAnimations:@"ResizeView" context:nil];
-    self.view.frame = frame;
-    [UIView setAnimationDuration:animationDuration];
-    self.view.frame = frame;
-    [UIView commitAnimations];//设置调整界面的动画效果
-}
+//-(void)moveView:(float)move{
+//    NSTimeInterval animationDuration = 1.0f;
+//    CGRect frame = self.view.frame;
+//    if(move == 0){
+//        frame.origin.y =0;
+//    }else{
+//        frame.origin.y +=move;//view的X轴上移
+//    }
+//    [UIView beginAnimations:@"ResizeView" context:nil];
+//    self.view.frame = frame;
+//    [UIView setAnimationDuration:animationDuration];
+//    self.view.frame = frame;
+//    [UIView commitAnimations];//设置调整界面的动画效果
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

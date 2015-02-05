@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <StoreKit/StoreKit.h>
 
-@interface ShezhiViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIAlertViewDelegate>
-@property (nonatomic, strong) UITableView *mytableview;
+@interface ShezhiViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIAlertViewDelegate,SKStoreProductViewControllerDelegate>
+
 @property (nonatomic, strong) UIAlertController *alert;
 @end

@@ -78,7 +78,12 @@
     [self.view addSubview:HUD];
     HUD.delegate = self;
     
-    
+    NSString* phoneVersion = [[UIDevice currentDevice] systemVersion];
+    NSString* phoneModel = [[UIDevice currentDevice] model];
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *appCurName = [infoDictionary objectForKey:@"CFBundleDisplayName"];
+    NSString *appCurVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    [self.mytextview setText:[NSString stringWithFormat:@"设备: %@,系统: %@,应用名称：%@,客户端版本:%@,",phoneModel,phoneVersion,appCurName,appCurVersion]];
     
 }
 
