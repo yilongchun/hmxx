@@ -25,6 +25,7 @@
 #import "CollectionViewController.h"
 #import "MyTabbarController4.h"
 #import "MyTabbarController5.h"
+#import "CwjTabBarController.h"
 
 @interface MainViewController ()<MBProgressHUDDelegate,UIAlertViewDelegate>{
     MKNetworkEngine *engine;
@@ -43,6 +44,7 @@
     MyTabbarController5 *tabBarCtl5;//统计报表
     KcbViewController *kcb;//作息时间表
     GrdaViewController *grda;//个人中心
+    CwjTabBarController *cwj;//晨午检
 }
 
 @property (strong, nonatomic)NSDate *lastPlaySoundDate;
@@ -405,12 +407,12 @@
                 [mainScrollView addSubview:btn6];
                 [mainScrollView addSubview:label6];
             }
-        }else if([menuStr isEqualToString:@"staff_1"]){
+        }else if([menuStr isEqualToString:@"schoolmxamin"]){
             i++;
             UIButton *btn6 = [[UIButton alloc] init];
             [btn6 setFrame:btnr];
             [btn6 setBackgroundImage:[UIImage imageNamed:@"ic_index_007.png"] forState:UIControlStateNormal];
-            [btn6 addTarget:self action:@selector(aa) forControlEvents:UIControlEventTouchUpInside];
+            [btn6 addTarget:self action:@selector(cwjAction) forControlEvents:UIControlEventTouchUpInside];
             UILabel *label6 = [[UILabel alloc] init];
             if (btn6.frame.origin.x != 0) {
                 [label6 setFrame:CGRectMake(btn6.frame.origin.x, btn6.frame.origin.y+95, 90, 20)];
@@ -711,9 +713,11 @@
 }
 
 //晨午检
--(void)aa{
-    CollectionViewController *vc = [[CollectionViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+-(void)cwjAction{
+    if (cwj == nil) {
+        cwj = [[CwjTabBarController alloc] init];
+    }
+    [self.navigationController pushViewController:cwj animated:YES];
     [self.navigationController setNavigationBarHidden:NO];
 }
 

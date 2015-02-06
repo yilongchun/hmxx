@@ -27,6 +27,24 @@
 		E4C745221A6FCA1B009402ED /* MyTabbarController4.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C745211A6FCA1B009402ED /* MyTabbarController4.m */; };
 		E4C745261A6FEE5D009402ED /* MoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C745241A6FEE5D009402ED /* MoreTableViewCell.m */; };
 		E4C745271A6FEE5D009402ED /* MoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4C745251A6FEE5D009402ED /* MoreTableViewCell.xib */; };
+		E4C74F001A84D8A5007241C3 /* CustomCellBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C74EF41A84D8A5007241C3 /* CustomCellBackground.m */; };
+		E4C74F011A84D8A5007241C3 /* CwjDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C74EF61A84D8A5007241C3 /* CwjDetailViewController.m */; };
+		E4C74F021A84D8A5007241C3 /* CwjDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4C74EF71A84D8A5007241C3 /* CwjDetailViewController.xib */; };
+		E4C74F031A84D8A5007241C3 /* CwjTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C74EF91A84D8A5007241C3 /* CwjTabBarController.m */; };
+		E4C74F041A84D8A5007241C3 /* CwjTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C74EFB1A84D8A5007241C3 /* CwjTableViewCell.m */; };
+		E4C74F051A84D8A5007241C3 /* CwjTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4C74EFC1A84D8A5007241C3 /* CwjTableViewCell.xib */; };
+		E4C74F061A84D8A5007241C3 /* CwjViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C74EFE1A84D8A5007241C3 /* CwjViewController.m */; };
+		E4C74F071A84D8A5007241C3 /* CwjViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4C74EFF1A84D8A5007241C3 /* CwjViewController.xib */; };
+		E4C74F0F1A84D905007241C3 /* checkbox1_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C74F091A84D905007241C3 /* checkbox1_checked.png */; };
+		E4C74F101A84D905007241C3 /* checkbox1_checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C74F0A1A84D905007241C3 /* checkbox1_checked@2x.png */; };
+		E4C74F111A84D905007241C3 /* checkbox1_unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C74F0B1A84D905007241C3 /* checkbox1_unchecked.png */; };
+		E4C74F121A84D905007241C3 /* checkbox1_unchecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C74F0C1A84D905007241C3 /* checkbox1_unchecked@2x.png */; };
+		E4C74F131A84D905007241C3 /* QCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C74F0E1A84D905007241C3 /* QCheckBox.m */; };
+		E4C74F171A84D958007241C3 /* LXReorderableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C74F161A84D958007241C3 /* LXReorderableCollectionViewFlowLayout.m */; };
+		E4C74F1E1A84D98B007241C3 /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C74F1B1A84D98B007241C3 /* UIScrollView+SVInfiniteScrolling.m */; };
+		E4C74F1F1A84D98B007241C3 /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C74F1D1A84D98B007241C3 /* UIScrollView+SVPullToRefresh.m */; };
+		E4C74F231A84FBB0007241C3 /* CwjClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C74F211A84FBB0007241C3 /* CwjClassViewController.m */; };
+		E4C74F241A84FBB0007241C3 /* CwjClassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4C74F221A84FBB0007241C3 /* CwjClassViewController.xib */; };
 		E4CB95571A76547200CCC498 /* ReportFirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB95551A76547200CCC498 /* ReportFirstTableViewCell.m */; };
 		E4CB95581A76547200CCC498 /* ReportFirstTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4CB95561A76547200CCC498 /* ReportFirstTableViewCell.xib */; };
 		E4EC15331A77A0F70048ACDB /* ReportSecondTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EC15311A77A0F70048ACDB /* ReportSecondTableViewCell.m */; };
@@ -300,6 +318,35 @@
 		E4C745231A6FEE5D009402ED /* MoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreTableViewCell.h; path = view/MoreTableViewCell.h; sourceTree = "<group>"; };
 		E4C745241A6FEE5D009402ED /* MoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreTableViewCell.m; path = view/MoreTableViewCell.m; sourceTree = "<group>"; };
 		E4C745251A6FEE5D009402ED /* MoreTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MoreTableViewCell.xib; path = view/MoreTableViewCell.xib; sourceTree = "<group>"; };
+		E4C74EF31A84D8A5007241C3 /* CustomCellBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomCellBackground.h; path = view/CustomCellBackground.h; sourceTree = "<group>"; };
+		E4C74EF41A84D8A5007241C3 /* CustomCellBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomCellBackground.m; path = view/CustomCellBackground.m; sourceTree = "<group>"; };
+		E4C74EF51A84D8A5007241C3 /* CwjDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CwjDetailViewController.h; path = view/CwjDetailViewController.h; sourceTree = "<group>"; };
+		E4C74EF61A84D8A5007241C3 /* CwjDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CwjDetailViewController.m; path = view/CwjDetailViewController.m; sourceTree = "<group>"; };
+		E4C74EF71A84D8A5007241C3 /* CwjDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CwjDetailViewController.xib; path = view/CwjDetailViewController.xib; sourceTree = "<group>"; };
+		E4C74EF81A84D8A5007241C3 /* CwjTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CwjTabBarController.h; path = view/CwjTabBarController.h; sourceTree = "<group>"; };
+		E4C74EF91A84D8A5007241C3 /* CwjTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CwjTabBarController.m; path = view/CwjTabBarController.m; sourceTree = "<group>"; };
+		E4C74EFA1A84D8A5007241C3 /* CwjTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CwjTableViewCell.h; path = view/CwjTableViewCell.h; sourceTree = "<group>"; };
+		E4C74EFB1A84D8A5007241C3 /* CwjTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CwjTableViewCell.m; path = view/CwjTableViewCell.m; sourceTree = "<group>"; };
+		E4C74EFC1A84D8A5007241C3 /* CwjTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CwjTableViewCell.xib; path = view/CwjTableViewCell.xib; sourceTree = "<group>"; };
+		E4C74EFD1A84D8A5007241C3 /* CwjViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CwjViewController.h; path = view/CwjViewController.h; sourceTree = "<group>"; };
+		E4C74EFE1A84D8A5007241C3 /* CwjViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CwjViewController.m; path = view/CwjViewController.m; sourceTree = "<group>"; };
+		E4C74EFF1A84D8A5007241C3 /* CwjViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CwjViewController.xib; path = view/CwjViewController.xib; sourceTree = "<group>"; };
+		E4C74F091A84D905007241C3 /* checkbox1_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox1_checked.png; sourceTree = "<group>"; };
+		E4C74F0A1A84D905007241C3 /* checkbox1_checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox1_checked@2x.png"; sourceTree = "<group>"; };
+		E4C74F0B1A84D905007241C3 /* checkbox1_unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox1_unchecked.png; sourceTree = "<group>"; };
+		E4C74F0C1A84D905007241C3 /* checkbox1_unchecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox1_unchecked@2x.png"; sourceTree = "<group>"; };
+		E4C74F0D1A84D905007241C3 /* QCheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCheckBox.h; sourceTree = "<group>"; };
+		E4C74F0E1A84D905007241C3 /* QCheckBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCheckBox.m; sourceTree = "<group>"; };
+		E4C74F151A84D958007241C3 /* LXReorderableCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXReorderableCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		E4C74F161A84D958007241C3 /* LXReorderableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXReorderableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		E4C74F191A84D98B007241C3 /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
+		E4C74F1A1A84D98B007241C3 /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
+		E4C74F1B1A84D98B007241C3 /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
+		E4C74F1C1A84D98B007241C3 /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
+		E4C74F1D1A84D98B007241C3 /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
+		E4C74F201A84FBB0007241C3 /* CwjClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CwjClassViewController.h; path = view/CwjClassViewController.h; sourceTree = "<group>"; };
+		E4C74F211A84FBB0007241C3 /* CwjClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CwjClassViewController.m; path = view/CwjClassViewController.m; sourceTree = "<group>"; };
+		E4C74F221A84FBB0007241C3 /* CwjClassViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CwjClassViewController.xib; path = view/CwjClassViewController.xib; sourceTree = "<group>"; };
 		E4CB95541A76547200CCC498 /* ReportFirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReportFirstTableViewCell.h; path = view/ReportFirstTableViewCell.h; sourceTree = "<group>"; };
 		E4CB95551A76547200CCC498 /* ReportFirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReportFirstTableViewCell.m; path = view/ReportFirstTableViewCell.m; sourceTree = "<group>"; };
 		E4CB95561A76547200CCC498 /* ReportFirstTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReportFirstTableViewCell.xib; path = view/ReportFirstTableViewCell.xib; sourceTree = "<group>"; };
@@ -677,6 +724,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E4C74F081A84D905007241C3 /* QCheckbox */ = {
+			isa = PBXGroup;
+			children = (
+				E4C74F091A84D905007241C3 /* checkbox1_checked.png */,
+				E4C74F0A1A84D905007241C3 /* checkbox1_checked@2x.png */,
+				E4C74F0B1A84D905007241C3 /* checkbox1_unchecked.png */,
+				E4C74F0C1A84D905007241C3 /* checkbox1_unchecked@2x.png */,
+				E4C74F0D1A84D905007241C3 /* QCheckBox.h */,
+				E4C74F0E1A84D905007241C3 /* QCheckBox.m */,
+			);
+			name = QCheckbox;
+			path = hmxx/QCheckbox;
+			sourceTree = SOURCE_ROOT;
+		};
+		E4C74F141A84D958007241C3 /* LXReorderableCollectionViewFlowLayout */ = {
+			isa = PBXGroup;
+			children = (
+				E4C74F151A84D958007241C3 /* LXReorderableCollectionViewFlowLayout.h */,
+				E4C74F161A84D958007241C3 /* LXReorderableCollectionViewFlowLayout.m */,
+			);
+			path = LXReorderableCollectionViewFlowLayout;
+			sourceTree = "<group>";
+		};
+		E4C74F181A84D98B007241C3 /* SVPullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				E4C74F191A84D98B007241C3 /* SVPullToRefresh.h */,
+				E4C74F1A1A84D98B007241C3 /* UIScrollView+SVInfiniteScrolling.h */,
+				E4C74F1B1A84D98B007241C3 /* UIScrollView+SVInfiniteScrolling.m */,
+				E4C74F1C1A84D98B007241C3 /* UIScrollView+SVPullToRefresh.h */,
+				E4C74F1D1A84D98B007241C3 /* UIScrollView+SVPullToRefresh.m */,
+			);
+			name = SVPullToRefresh;
+			path = hmxx/SVPullToRefresh;
+			sourceTree = SOURCE_ROOT;
+		};
 		E4ED5D6F1A6D420A00FFB11A /* IQKeyBoardManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -809,6 +892,9 @@
 				E4F369CE1A6415280037A533 /* shezi */,
 				E4F368F91A63CEF30037A533 /* Supporting Files */,
 				E4F3693A1A63E36C0037A533 /* MKNetworkKit */,
+				E4C74F141A84D958007241C3 /* LXReorderableCollectionViewFlowLayout */,
+				E4C74F181A84D98B007241C3 /* SVPullToRefresh */,
+				E4C74F081A84D905007241C3 /* QCheckbox */,
 				E4F3695C1A63E3FE0037A533 /* MBProgressHUD */,
 				E4F369941A64088F0037A533 /* AFNetworking */,
 				E4F076F11A656722004D7453 /* GrowingTextView */,
@@ -1164,12 +1250,6 @@
 				E4EF0AE51A6E96A100212041 /* AddScheduleViewController.h */,
 				E4EF0AE61A6E96A100212041 /* AddScheduleViewController.m */,
 				E4EF0AE71A6E96A100212041 /* AddScheduleViewController.xib */,
-				E4EF0AEA1A6EA9C300212041 /* CollectionViewController.h */,
-				E4EF0AEB1A6EA9C300212041 /* CollectionViewController.m */,
-				E4EF0AEC1A6EA9C300212041 /* CollectionViewController.xib */,
-				E4EF0AF41A6EAFD900212041 /* CollectionCell.h */,
-				E4EF0AF51A6EAFD900212041 /* CollectionCell.m */,
-				E4EF0AF61A6EAFD900212041 /* CollectionCell.xib */,
 				E4C745231A6FEE5D009402ED /* MoreTableViewCell.h */,
 				E4C745241A6FEE5D009402ED /* MoreTableViewCell.m */,
 				E4C745251A6FEE5D009402ED /* MoreTableViewCell.xib */,
@@ -1202,6 +1282,28 @@
 				E4EC15351A77A2290048ACDB /* ReportThirdTableViewCell.h */,
 				E4EC15361A77A2290048ACDB /* ReportThirdTableViewCell.m */,
 				E4EC15371A77A2290048ACDB /* ReportThirdTableViewCell.xib */,
+				E4C74EF81A84D8A5007241C3 /* CwjTabBarController.h */,
+				E4C74EF91A84D8A5007241C3 /* CwjTabBarController.m */,
+				E4C74EF31A84D8A5007241C3 /* CustomCellBackground.h */,
+				E4C74EF41A84D8A5007241C3 /* CustomCellBackground.m */,
+				E4C74EF51A84D8A5007241C3 /* CwjDetailViewController.h */,
+				E4C74EF61A84D8A5007241C3 /* CwjDetailViewController.m */,
+				E4C74EF71A84D8A5007241C3 /* CwjDetailViewController.xib */,
+				E4C74EFA1A84D8A5007241C3 /* CwjTableViewCell.h */,
+				E4C74EFB1A84D8A5007241C3 /* CwjTableViewCell.m */,
+				E4C74EFC1A84D8A5007241C3 /* CwjTableViewCell.xib */,
+				E4C74EFD1A84D8A5007241C3 /* CwjViewController.h */,
+				E4C74EFE1A84D8A5007241C3 /* CwjViewController.m */,
+				E4C74EFF1A84D8A5007241C3 /* CwjViewController.xib */,
+				E4C74F201A84FBB0007241C3 /* CwjClassViewController.h */,
+				E4C74F211A84FBB0007241C3 /* CwjClassViewController.m */,
+				E4C74F221A84FBB0007241C3 /* CwjClassViewController.xib */,
+				E4EF0AEA1A6EA9C300212041 /* CollectionViewController.h */,
+				E4EF0AEB1A6EA9C300212041 /* CollectionViewController.m */,
+				E4EF0AEC1A6EA9C300212041 /* CollectionViewController.xib */,
+				E4EF0AF41A6EAFD900212041 /* CollectionCell.h */,
+				E4EF0AF51A6EAFD900212041 /* CollectionCell.m */,
+				E4EF0AF61A6EAFD900212041 /* CollectionCell.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -1305,6 +1407,7 @@
 			files = (
 				E4EF57671A67C4DB004B57E6 /* ExpansionTableViewCell.xib in Resources */,
 				E43C21EE1A66DEEF00E1DB45 /* DownAccessory.png in Resources */,
+				E4C74F0F1A84D905007241C3 /* checkbox1_checked.png in Resources */,
 				E4EF576F1A67FF29004B57E6 /* 37x-Checkmark.png in Resources */,
 				E4F077161A656E35004D7453 /* chat_video_play.png in Resources */,
 				E4F076961A655C4A004D7453 /* YqjsViewController.xib in Resources */,
@@ -1317,6 +1420,7 @@
 				E4F077431A658E70004D7453 /* daishenhegg2@2x.png in Resources */,
 				E4CB95581A76547200CCC498 /* ReportFirstTableViewCell.xib in Resources */,
 				E4EC15341A77A0F70048ACDB /* ReportSecondTableViewCell.xib in Resources */,
+				E4C74F111A84D905007241C3 /* checkbox1_unchecked.png in Resources */,
 				E4F369701A63ED080037A533 /* start_open.png in Resources */,
 				E43C21F11A66DEEF00E1DB45 /* UpAccessory@2x.png in Resources */,
 				E4F21DAE1A66B1BB005372EA /* XscqtjxqViewController.xib in Resources */,
@@ -1358,9 +1462,11 @@
 				E4F077461A658E70004D7453 /* daishenhehd2.png in Resources */,
 				E4C664B71A715809003CCC0E /* grayBg.png in Resources */,
 				E4F3692A1A63E0920037A533 /* LoginViewController.xib in Resources */,
+				E4C74F071A84D8A5007241C3 /* CwjViewController.xib in Resources */,
 				E4F077521A658E70004D7453 /* yuanqingjieshao2.png in Resources */,
 				E4EDA2A51A7296510018E967 /* JsfcViewController.xib in Resources */,
 				E4EF0AF81A6EAFD900212041 /* CollectionCell.xib in Resources */,
+				E4C74F021A84D8A5007241C3 /* CwjDetailViewController.xib in Resources */,
 				E4C664BB1A715D79003CCC0E /* loginBtnBg2.png in Resources */,
 				E4F076EE1A6566EC004D7453 /* sr_refresh@2X.png in Resources */,
 				E4F076C21A655F76004D7453 /* ic_index_003.png in Resources */,
@@ -1385,10 +1491,13 @@
 				E4F369FD1A6444EA0037A533 /* ic_kcb_bg2.png in Resources */,
 				E4C664B11A710436003CCC0E /* ScheduleDetailViewController.xib in Resources */,
 				E4EF576C1A67E10B004B57E6 /* DaishGgtzViewController.xib in Resources */,
+				E4C74F241A84FBB0007241C3 /* CwjClassViewController.xib in Resources */,
 				E4ED5D691A6D016B00FFB11A /* PurchaseViewController.xib in Resources */,
 				E4C745271A6FEE5D009402ED /* MoreTableViewCell.xib in Resources */,
+				E4C74F101A84D905007241C3 /* checkbox1_checked@2x.png in Resources */,
 				E4F076C01A655F76004D7453 /* ic_bwrz_002.png in Resources */,
 				E4EDA29E1A7255620018E967 /* summarymanage1@2x.png in Resources */,
+				E4C74F051A84D8A5007241C3 /* CwjTableViewCell.xib in Resources */,
 				E4F21D8A1A667319005372EA /* AddNoticeViewController.xib in Resources */,
 				E4F0769F1A655E79004D7453 /* ic_bwrz_002@2x.png in Resources */,
 				E4F369881A64066D0037A533 /* ic_index_012.png in Resources */,
@@ -1417,6 +1526,7 @@
 				E4EDA2AF1A72A4320018E967 /* JsfcDetailViewController.xib in Resources */,
 				E4F077561A658E70004D7453 /* yuanwurizhi2.png in Resources */,
 				E4F077401A658E70004D7453 /* daishenhegg1.png in Resources */,
+				E4C74F121A84D905007241C3 /* checkbox1_unchecked@2x.png in Resources */,
 				E4F076ED1A6566EC004D7453 /* sr_refresh.png in Resources */,
 				E4F077451A658E70004D7453 /* daishenhehd1@2x.png in Resources */,
 				E4EDA29B1A7255620018E967 /* planmanage2.png in Resources */,
@@ -1473,6 +1583,7 @@
 				E4F21D791A666BF0005372EA /* ELCAssetTablePicker.m in Sources */,
 				E4F134391A73EA34001A9303 /* MyTabbarController5.m in Sources */,
 				E4F369EB1A642B0C0037A533 /* JYSlideSegmentController.m in Sources */,
+				E4C74F011A84D8A5007241C3 /* CwjDetailViewController.m in Sources */,
 				E4F076E11A656680004D7453 /* GgtzViewController.m in Sources */,
 				E4EC15331A77A0F70048ACDB /* ReportSecondTableViewCell.m in Sources */,
 				E4EDA2AE1A72A4320018E967 /* JsfcDetailViewController.m in Sources */,
@@ -1498,11 +1609,15 @@
 				E4F0770A1A65685C004D7453 /* MyViewControllerCellDetail.m in Sources */,
 				E4F369C71A64088F0037A533 /* UIImageView+AFNetworking.m in Sources */,
 				E4F369741A6405F10037A533 /* MainViewController.m in Sources */,
+				E4C74F1E1A84D98B007241C3 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				E4F369C81A64088F0037A533 /* UIProgressView+AFNetworking.m in Sources */,
 				E4F21D7A1A666BF0005372EA /* ELCConsole.m in Sources */,
 				E4C664B01A710436003CCC0E /* ScheduleDetailViewController.m in Sources */,
+				E4C74F001A84D8A5007241C3 /* CustomCellBackground.m in Sources */,
+				E4C74F061A84D8A5007241C3 /* CwjViewController.m in Sources */,
 				E4C7451E1A6FC76D009402ED /* DailyTableViewCell.m in Sources */,
 				E4ED5D681A6D016B00FFB11A /* PurchaseViewController.m in Sources */,
+				E4C74F231A84FBB0007241C3 /* CwjClassViewController.m in Sources */,
 				E4F369611A63E3FE0037A533 /* MBProgressHUD+Add.m in Sources */,
 				E4ED5D8D1A6D420A00FFB11A /* UIView+Hierarchy.m in Sources */,
 				E4F369C31A64088F0037A533 /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -1525,9 +1640,11 @@
 				E4F076F71A656722004D7453 /* HPTextViewInternal.m in Sources */,
 				E4F369BF1A64088F0037A533 /* AFURLConnectionOperation.m in Sources */,
 				E4C745221A6FCA1B009402ED /* MyTabbarController4.m in Sources */,
+				E4C74F171A84D958007241C3 /* LXReorderableCollectionViewFlowLayout.m in Sources */,
 				E4F369C01A64088F0037A533 /* AFURLRequestSerialization.m in Sources */,
 				E4ED5D881A6D420A00FFB11A /* IQSegmentedNextPrevious.m in Sources */,
 				E4F369C21A64088F0037A533 /* AFURLSessionManager.m in Sources */,
+				E4C74F1F1A84D98B007241C3 /* UIScrollView+SVPullToRefresh.m in Sources */,
 				E4F076DF1A656680004D7453 /* GgtzTableViewCell.m in Sources */,
 				E4F369C11A64088F0037A533 /* AFURLResponseSerialization.m in Sources */,
 				E4F369C91A64088F0037A533 /* UIRefreshControl+AFNetworking.m in Sources */,
@@ -1537,6 +1654,7 @@
 				E4F21D7B1A666BF0005372EA /* ELCImagePickerController.m in Sources */,
 				E4F369C41A64088F0037A533 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				E4F21D7C1A666BF0005372EA /* ELCOverlayImageView.m in Sources */,
+				E4C74F031A84D8A5007241C3 /* CwjTabBarController.m in Sources */,
 				E4F21DA11A668F7A005372EA /* BwrzTableViewCell.m in Sources */,
 				E4F077051A65681D004D7453 /* BwhdViewController.m in Sources */,
 				E4F1344C1A73F8FE001A9303 /* PurchaseReportViewController.m in Sources */,
@@ -1556,6 +1674,7 @@
 				E4EF576B1A67E10B004B57E6 /* DaishGgtzViewController.m in Sources */,
 				E4F077101A6568BC004D7453 /* CustomMoviePlayerViewController.m in Sources */,
 				E4F21D781A666BF0005372EA /* ELCAssetCell.m in Sources */,
+				E4C74F041A84D8A5007241C3 /* CwjTableViewCell.m in Sources */,
 				E4EF0AE31A6E960300212041 /* ScheduleViewController.m in Sources */,
 				E4F369541A63E36C0037A533 /* NSDate+RFC1123.m in Sources */,
 				E4ED5D871A6D420A00FFB11A /* IQKeyboardManager.m in Sources */,
@@ -1564,6 +1683,7 @@
 				E4F21DA81A66A2AE005372EA /* XscqtjViewController.m in Sources */,
 				E40929691A690A7E00EBAF82 /* AddBwrzViewController.m in Sources */,
 				E4EF0AF71A6EAFD900212041 /* CollectionCell.m in Sources */,
+				E4C74F131A84D905007241C3 /* QCheckBox.m in Sources */,
 				E4F076F01A6566EC004D7453 /* SRSlimeView.m in Sources */,
 				E4F076FB1A656760004D7453 /* ContentCell.m in Sources */,
 				E4EC15381A77A2290048ACDB /* ReportThirdTableViewCell.m in Sources */,

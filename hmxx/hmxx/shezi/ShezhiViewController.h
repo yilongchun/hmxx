@@ -12,4 +12,5 @@
 @interface ShezhiViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIAlertViewDelegate,SKStoreProductViewControllerDelegate>
 
 @property (nonatomic, strong) UIAlertController *alert;
+@property (nonatomic, strong) UIAlertView *alert2;
 @end

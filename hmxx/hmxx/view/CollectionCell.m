@@ -7,11 +7,23 @@
 //
 
 #import "CollectionCell.h"
+#import "CustomCellBackground.h"
 
 @implementation CollectionCell
 
 - (void)awakeFromNib {
     // Initialization code
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self)
+    {
+        // change to our custom selected background view
+        
+    }
+    return self;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -38,6 +50,16 @@
     }
     return self;
 }
+
+//-(void)setHighlighted:(BOOL)highlighted{
+//    [super setHighlighted:highlighted];
+//    if (highlighted) {
+//        CustomCellBackground *backgroundView = [[CustomCellBackground alloc] initWithFrame:CGRectZero];
+//        self.selectedBackgroundView = backgroundView;
+//    }else{
+//        self.selectedBackgroundView = nil;
+//    }
+//}
 
 
 @end

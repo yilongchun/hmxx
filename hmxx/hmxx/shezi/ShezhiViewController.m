@@ -23,6 +23,8 @@
 
 @implementation ShezhiViewController
 @synthesize alert;
+@synthesize alert2;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -41,6 +43,22 @@
     [tview setDataSource:self];
     [tview setScrollEnabled:YES];
     [self.view addSubview:tview];
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [engine cancelAllOperations];
+    alert = nil;
+    alert2 = nil;
+    NSLog(@"viewDidDisappear");
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [engine cancelAllOperations];
+    alert = nil;
+    alert2 = nil;
+    NSLog(@"viewWillDisappear");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -189,7 +207,7 @@
                                                             }]];
                     [self presentViewController:alert animated:YES completion:nil];
                 }else{
-                    UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"更新" message:@"有新的版本更新，是否前往更新？" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"更新", nil];
+                    alert2 = [[UIAlertView alloc] initWithTitle:@"更新" message:@"有新的版本更新，是否前往更新？" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"更新", nil];
                     alert2.tag = 10000;
                     [alert2 show];
                 }
@@ -203,10 +221,11 @@
                                                             }]];
                     [self presentViewController:alert animated:YES completion:nil];
                 }else{
-                    UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"更新" message:@"此版本为最新版本" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                    alert2 = [[UIAlertView alloc] initWithTitle:@"更新" message:@"此版本为最新版本" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                     alert2.tag = 10001;
                     [alert2 show];
                 }
+                NSLog(@"1");
             }
         }else{
             if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1){
@@ -215,12 +234,15 @@
                                                           style:UIAlertActionStyleDestructive
                                                         handler:^(UIAlertAction *action) {
                                                         }]];
+                NSLog(@"alert:%@",alert);
                 [self presentViewController:alert animated:YES completion:nil];
             }else{
-                UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"更新" message:@"没有获取到版本信息" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                alert2 = [[UIAlertView alloc] initWithTitle:@"更新" message:@"没有获取到版本信息" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                 alert2.tag = 10001;
+                NSLog(@"alert2:%@",alert2);
                 [alert2 show];
             }
+            NSLog(@"2");
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
@@ -233,7 +255,7 @@
                                                     }]];
             [self presentViewController:alert animated:YES completion:nil];
         }else{
-            UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"更新" message:@"没有获取到版本信息" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            alert2 = [[UIAlertView alloc] initWithTitle:@"更新" message:@"没有获取到版本信息" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
             alert2.tag = 10001;
             [alert2 show];
         }
@@ -260,7 +282,9 @@
                                                         
                                                     }else{
                                                         [self hideIndicator];
+                                                        NSString *des = [[error userInfo] objectForKey:NSLocalizedDescriptionKey];
                                                         NSLog(@"error:%@",error);
+                                                        NSLog(@"%@",des);
                                                     }
                                                 }];
     }else{
