@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -14,29 +14,28 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" id="S2G-8k-Bu2">
-                        <rect key="frame" x="106" y="17" width="20" height="20"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="S2G-8k-Bu2">
+                        <rect key="frame" x="101" y="17" width="20" height="20"/>
                     </activityIndicatorView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="加载中..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fwW-lz-of7">
-                        <rect key="frame" x="120" y="17" width="80" height="20"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="显示下10条" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwW-lz-of7">
+                        <rect key="frame" x="122" y="18" width="77" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="centerX" secondItem="fwW-lz-of7" secondAttribute="centerX" id="CUa-9S-jQj"/>
+                    <constraint firstItem="fwW-lz-of7" firstAttribute="leading" secondItem="S2G-8k-Bu2" secondAttribute="trailing" constant="1" id="M1i-sz-EAH"/>
+                    <constraint firstAttribute="centerY" secondItem="fwW-lz-of7" secondAttribute="centerY" id="jqQ-oj-UQ0"/>
+                    <constraint firstAttribute="centerY" secondItem="S2G-8k-Bu2" secondAttribute="centerY" id="wbx-uX-bSr"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="activity" destination="S2G-8k-Bu2" id="zNf-Le-1Vl"/>
                 <outlet property="msg" destination="fwW-lz-of7" id="aCr-bx-34e"/>
             </connections>
-            <point key="canvasLocation" x="376" y="307.5"/>
+            <point key="canvasLocation" x="376" y="431.5"/>
         </tableViewCell>
     </objects>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>
