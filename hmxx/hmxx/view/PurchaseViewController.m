@@ -58,13 +58,14 @@
     mytableview.delegate = self;
     [self.view addSubview:mytableview];
     [mytableview addSubview:self.slimeView];
-    mytableview.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    if ([mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
-//        [mytableview setSeparatorInset:UIEdgeInsetsZero];
-//    }
-//    if ([mytableview respondsToSelector:@selector(setLayoutMargins:)]) {
-//        [mytableview setLayoutMargins:UIEdgeInsetsZero];
-//    }
+    UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
+    [mytableview setTableFooterView:v];
+    if ([mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
+        [mytableview setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([mytableview respondsToSelector:@selector(setLayoutMargins:)]) {
+        [mytableview setLayoutMargins:UIEdgeInsetsZero];
+    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(loadData)
@@ -290,13 +291,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-//
-//    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-//        [cell setSeparatorInset:UIEdgeInsetsZero];
-//    }
-//    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-//        [cell setLayoutMargins:UIEdgeInsetsZero];
-//    }
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

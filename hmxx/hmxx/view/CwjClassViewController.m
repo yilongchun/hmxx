@@ -44,6 +44,10 @@
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
     
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
+    self.navigationItem.backBarButtonItem = backItem;
+    backItem.title = @"返回";
+    
     //初始化tableview
     CGRect cg;
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
@@ -53,9 +57,10 @@
         cg = CGRectMake(0, 0+40, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64-49);
     }
     mytableview = [[UITableView alloc] initWithFrame:cg style:UITableViewStylePlain];
-    //    mytableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     mytableview.dataSource = self;
     mytableview.delegate = self;
+    UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
+    [mytableview setTableFooterView:v];
     if ([mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
         [mytableview setSeparatorInset:UIEdgeInsetsZero];
     }

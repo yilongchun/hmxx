@@ -27,6 +27,7 @@
 @end
 
 @implementation DaishGgtzViewController
+@synthesize mytableview;
 
 - (id)init{
     self = [super init];
@@ -59,10 +60,16 @@
     
     self.passBtn.layer.cornerRadius = 5.0f;
     
-    self.mytableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self.mytableview addSubview:self.slimeView];
-    
+    UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
+    [mytableview setTableFooterView:v];
+    if ([mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
+        [mytableview setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([mytableview respondsToSelector:@selector(setLayoutMargins:)]) {
+        [mytableview setLayoutMargins:UIEdgeInsetsZero];
+    }
     [self loadData];
 }
 
@@ -189,13 +196,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-//        if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-//            [cell setSeparatorInset:UIEdgeInsetsZero];
-//        }
-//        if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-//            [cell setLayoutMargins:UIEdgeInsetsZero];
-//        }
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 

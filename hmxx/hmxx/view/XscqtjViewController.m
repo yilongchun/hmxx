@@ -49,7 +49,8 @@
         cg = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64-49);
     }
     mytableView = [[UITableView alloc] initWithFrame:cg style:UITableViewStylePlain];
-//    mytableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
+    [mytableView setTableFooterView:v];
     mytableView.dataSource = self;
     mytableView.delegate = self;
     if ([mytableView respondsToSelector:@selector(setSeparatorInset:)]) {
@@ -280,7 +281,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
         [cell setSeparatorInset:UIEdgeInsetsZero];
     }

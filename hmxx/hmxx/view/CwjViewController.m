@@ -52,6 +52,8 @@
     
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     [mytableview addSubview:self.slimeView];
+    UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
+    [mytableview setTableFooterView:v];
     if ([mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
         [mytableview setSeparatorInset:UIEdgeInsetsZero];
     }

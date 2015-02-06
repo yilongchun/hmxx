@@ -97,7 +97,7 @@
 //    [self.view addGestureRecognizer:tapGr];
     
     
-    
+    self.view.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
 
     
     

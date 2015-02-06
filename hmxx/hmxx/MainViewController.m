@@ -331,7 +331,7 @@
             i++;
             UIButton *btn1 = [[UIButton alloc] init];
             [btn1 setFrame:btnr];
-            [btn1 setBackgroundImage:[UIImage imageNamed:@"ic_index_007.png"] forState:UIControlStateNormal];
+            [btn1 setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
             [btn1 addTarget:self action:@selector(grrz) forControlEvents:UIControlEventTouchUpInside];
             UILabel *label1 = [[UILabel alloc] init];
             if (btn1.frame.origin.x != 0) {
@@ -411,7 +411,7 @@
             i++;
             UIButton *btn6 = [[UIButton alloc] init];
             [btn6 setFrame:btnr];
-            [btn6 setBackgroundImage:[UIImage imageNamed:@"ic_index_007.png"] forState:UIControlStateNormal];
+            [btn6 setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
             [btn6 addTarget:self action:@selector(cwjAction) forControlEvents:UIControlEventTouchUpInside];
             UILabel *label6 = [[UILabel alloc] init];
             if (btn6.frame.origin.x != 0) {
@@ -427,7 +427,7 @@
             i++;
             UIButton *btn6 = [[UIButton alloc] init];
             [btn6 setFrame:btnr];
-            [btn6 setBackgroundImage:[UIImage imageNamed:@"ic_index_007.png"] forState:UIControlStateNormal];
+            [btn6 setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
             [btn6 addTarget:self action:@selector(cmbb) forControlEvents:UIControlEventTouchUpInside];
             UILabel *label6 = [[UILabel alloc] init];
             if (btn6.frame.origin.x != 0) {
@@ -443,7 +443,7 @@
             i++;
             UIButton *btn6 = [[UIButton alloc] init];
             [btn6 setFrame:btnr];
-            [btn6 setBackgroundImage:[UIImage imageNamed:@"ic_index_007.png"] forState:UIControlStateNormal];
+            [btn6 setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
             [btn6 addTarget:self action:@selector(rzgl) forControlEvents:UIControlEventTouchUpInside];
             UILabel *label6 = [[UILabel alloc] init];
             if (btn6.frame.origin.x != 0) {

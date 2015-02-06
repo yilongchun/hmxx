@@ -29,8 +29,8 @@
     
     UIImage *img1 = [UIImage imageNamed:@"yuanqingjieshao2.png"];
     UIImage *img1_h = [UIImage imageNamed:@"yuanqingjieshao1.png"];
-    UIImage *img2 = [UIImage imageNamed:@"yuanqingjieshao2.png"];
-    UIImage *img2_h = [UIImage imageNamed:@"yuanqingjieshao1.png"];
+    UIImage *img2 = [UIImage imageNamed:@""];
+    UIImage *img2_h = [UIImage imageNamed:@""];
     
     
     

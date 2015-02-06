@@ -40,8 +40,8 @@
     if ([self.roletype intValue] == 2) {//学校管理员  不传userid  查看所有日志
         
         self.scheduleTypeSegmented.userInteractionEnabled = NO;
-        self.titleLabel.userInteractionEnabled = NO;
-        self.mytextview.userInteractionEnabled = NO;
+        self.titleLabel.enabled = NO;
+        self.mytextview.editable = NO;
         
     }else if([self.roletype intValue] == 3){//非教师用户 传userid 查看个人日志
         self.navigationItem.rightBarButtonItem = edit;

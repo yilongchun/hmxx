@@ -83,8 +83,8 @@
         }
     }else{
         if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1){
-            alert = [UIAlertController alertControllerWithTitle:@"确定要退出吗?" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-            [alert addAction:[UIAlertAction actionWithTitle:@"确定"
+            alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+            [alert addAction:[UIAlertAction actionWithTitle:@"退出登录"
                                                       style:UIAlertActionStyleDestructive
                                                     handler:^(UIAlertAction *action) {
                                                         [self loginout];

@@ -51,7 +51,8 @@
     mytableView = [[UITableView alloc] initWithFrame:cg style:UITableViewStylePlain];
     mytableView.dataSource = self;
     mytableView.delegate = self;
-//    mytableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
+    [mytableView setTableFooterView:v];
     if ([mytableView respondsToSelector:@selector(setSeparatorInset:)]) {
         [mytableView setSeparatorInset:UIEdgeInsetsZero];
     }

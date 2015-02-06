@@ -57,7 +57,8 @@
     mytableview.delegate = self;
     [self.view addSubview:mytableview];
     [mytableview addSubview:self.slimeView];
-//    mytableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+    UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
+    [mytableview setTableFooterView:v];
     if ([mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
         [mytableview setSeparatorInset:UIEdgeInsetsZero];
     }
@@ -283,7 +284,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
         [cell setSeparatorInset:UIEdgeInsetsZero];
     }

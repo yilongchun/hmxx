@@ -55,13 +55,11 @@
         cg = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64-49);
     }
     mytableview = [[UITableView alloc] initWithFrame:cg style:UITableViewStylePlain];
-    //    mytableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     mytableview.dataSource = self;
     mytableview.delegate = self;
-//    mytableView = [[UITableView alloc] initWithFrame:cg style:UITableViewStylePlain];
     mytableview.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    mytableView.dataSource = self;
-//    mytableView.delegate = self;
+//    UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
+//    [mytableview setTableFooterView:v];
 //    if ([mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
 //        [mytableview setSeparatorInset:UIEdgeInsetsZero];
 //    }

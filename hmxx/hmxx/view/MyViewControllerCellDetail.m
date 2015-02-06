@@ -42,7 +42,7 @@
 @end
 
 @implementation MyViewControllerCellDetail
-
+@synthesize mytableview;
 
 - (id)init{
     self = [super init];
@@ -71,14 +71,20 @@
     [self.view addSubview:HUD];
     HUD.delegate = self;
     
-    self.mytableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+    UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
+    [mytableview setTableFooterView:v];
     [self.mytableview addSubview:self.slimeView];
     
     scrollPanel = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     scrollPanel.backgroundColor = [UIColor clearColor];
     scrollPanel.alpha = 0;
     [self.view addSubview:scrollPanel];
-    
+    if ([mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
+        [mytableview setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([mytableview respondsToSelector:@selector(setLayoutMargins:)]) {
+        [mytableview setLayoutMargins:UIEdgeInsetsZero];
+    }
     markView = [[UIView alloc] initWithFrame:scrollPanel.bounds];
     markView.backgroundColor = [UIColor blackColor];
     markView.alpha = 0.0;
@@ -453,6 +459,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -32,14 +32,14 @@
 //    CollectionViewController *vc1 = [[CollectionViewController alloc] init];
     CwjViewController *vc1 = [[CwjViewController alloc] init];
     vc1.examinetype = @"1";
-    vc1.tabBarItem =[[UITabBarItem alloc] initWithTitle:@"晨检" image:[UIImage imageNamed:@"ic_bwrz_002.png"] tag:0];
+    vc1.tabBarItem =[[UITabBarItem alloc] initWithTitle:@"晨检" image:[UIImage imageNamed:@""] tag:0];
     
     
     //    初始化第二个视图控制器
 //    CollectionViewController *vc2 = [[CollectionViewController alloc] init];
     CwjViewController *vc2 = [[CwjViewController alloc] init];
     vc2.examinetype = @"2";
-    vc2.tabBarItem =[[UITabBarItem alloc] initWithTitle:@"午检" image:[UIImage imageNamed:@"ic_bwrz_001.png"] tag:1];
+    vc2.tabBarItem =[[UITabBarItem alloc] initWithTitle:@"午检" image:[UIImage imageNamed:@""] tag:1];
     
     //    把导航控制器加入到数组
     NSMutableArray *viewArr_ = [NSMutableArray arrayWithObjects:vc1,vc2, nil];
