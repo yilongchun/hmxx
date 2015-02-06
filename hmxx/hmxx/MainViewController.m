@@ -416,7 +416,7 @@
             UILabel *label6 = [[UILabel alloc] init];
             if (btn6.frame.origin.x != 0) {
                 [label6 setFrame:CGRectMake(btn6.frame.origin.x, btn6.frame.origin.y+95, 90, 20)];
-                label6.text = @"学校健康管理";
+                label6.text = @"晨午检";
                 label6.textAlignment = NSTextAlignmentCenter;
                 [label6 setFont:[UIFont systemFontOfSize:15]];
                 [label6 setBackgroundColor:[UIColor clearColor]];
