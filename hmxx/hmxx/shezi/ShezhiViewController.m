@@ -192,22 +192,23 @@
         if ([infoArray count]) {
             NSDictionary *releaseInfo = [infoArray objectAtIndex:0];
             NSString *lastVersion = [releaseInfo objectForKey:@"version"];
+            NSString *releaseNotes = [releaseInfo objectForKey:@"releaseNotes"];
             if (![lastVersion isEqualToString:currentVersion]) {
                 trackViewUrl = [releaseInfo objectForKey:@"trackViewUrl"];
                 if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1){
-                    alert = [UIAlertController alertControllerWithTitle:@"更新" message:@"有新的版本更新，是否前往更新？" preferredStyle:UIAlertControllerStyleAlert];
-                    [alert addAction:[UIAlertAction actionWithTitle:@"更新"
+                    alert = [UIAlertController alertControllerWithTitle:@"立即更新" message:releaseNotes preferredStyle:UIAlertControllerStyleAlert];
+                    [alert addAction:[UIAlertAction actionWithTitle:@"立即更新"
                                                               style:UIAlertActionStyleDestructive
                                                             handler:^(UIAlertAction *action) {
                                                                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
                                                             }]];
-                    [alert addAction:[UIAlertAction actionWithTitle:@"关闭"
+                    [alert addAction:[UIAlertAction actionWithTitle:@"以后再说"
                                                               style:UIAlertActionStyleCancel
                                                             handler:^(UIAlertAction *action) {
                                                             }]];
                     [self presentViewController:alert animated:YES completion:nil];
                 }else{
-                    alert2 = [[UIAlertView alloc] initWithTitle:@"更新" message:@"有新的版本更新，是否前往更新？" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"更新", nil];
+                    alert2 = [[UIAlertView alloc] initWithTitle:@"立即更新" message:releaseNotes delegate:self cancelButtonTitle:@"以后再说" otherButtonTitles:@"立即更新", nil];
                     alert2.tag = 10000;
                     [alert2 show];
                 }
@@ -287,11 +288,12 @@
                                                         NSLog(@"%@",des);
                                                     }
                                                 }];
-    }else{
-        //低于iOS6的系统版本没有这个类,不支持这个功能
-        NSString *string = [NSString stringWithFormat:@"https://itunes.apple.com/cn/app/hui-min-jia-yuan-tong-jiao/id%@?mt=8&uo=4",appID];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:string]];
     }
+//    else{
+//        //低于iOS6的系统版本没有这个类,不支持这个功能
+//        NSString *string = [NSString stringWithFormat:@"https://itunes.apple.com/cn/app/hui-min-jia-yuan-tong-jiao/id%@?mt=8&uo=4",appID];
+//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:string]];
+//    }
 }
 
 -(void) productViewControllerDidFinish:(SKStoreProductViewController *)viewController{
