@@ -100,6 +100,7 @@
     [dic setValue:self.examinedate forKey:@"examinedate"];
     [dic setValue:self.classid forKey:@"classid"];
     [dic setValue:userid forKey:@"userid"];
+    [dic setValue:@"1" forKey:@"situationtype"];
     MKNetworkOperation *op = [engine operationWithPath:@"/examine/findPageList.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         NSString *result = [operation responseString];

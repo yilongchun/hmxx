@@ -40,9 +40,9 @@
 //    self.navigationItem.backBarButtonItem = backItem;
 //    backItem.title = @"返回";
     
-    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
-        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
-    }
+//    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+//        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+//    }
     
     //初始化tableview
     CGRect cg;

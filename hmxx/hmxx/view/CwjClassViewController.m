@@ -40,9 +40,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
-        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
-    }
+//    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+//        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+//    }
     
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
     self.navigationItem.backBarButtonItem = backItem;
@@ -118,6 +118,7 @@
     [dic setValue:schoolid forKey:@"schoolId"];
     [dic setValue:examinetype forKey:@"examinetype"];
     [dic setValue:examinedate forKey:@"examinedate"];
+    
 //    [dic setValue:page forKey:@"page"];
 //    [dic setValue:rows forKey:@"rows"];
     //    [dic setValue:classId forKey:@"classId"];
