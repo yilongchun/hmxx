@@ -61,30 +61,30 @@
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
     CGFloat checkBoxWidth = 70;
     
-    QCheckBox *_check1 = [[QCheckBox alloc] initWithDelegate:self];
+    QCheckBox *_check1 = [[QCheckBox alloc] initWithDelegate:self normal:[UIImage imageNamed:@"btn_zc.png"] selected:[UIImage imageNamed:@"btn_normal.png"]];
     _check1.tag = 1;
     _check1.frame = CGRectMake((width-checkBoxWidth)/2 - 100, 102, checkBoxWidth, 40);
     [_check1 setTitle:@"正常" forState:UIControlStateNormal];
     [_check1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [_check1.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
+    [_check1.titleLabel setFont:[UIFont systemFontOfSize:16.0f]];
     [_check1 addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_check1];
     
-    QCheckBox *_check2 = [[QCheckBox alloc] initWithDelegate:self];
+    QCheckBox *_check2 = [[QCheckBox alloc] initWithDelegate:self normal:[UIImage imageNamed:@"btn_yc.png"] selected:[UIImage imageNamed:@"btn_normal.png"]];
     _check2.tag = 3;
     _check2.frame = CGRectMake((width-checkBoxWidth)/2, 102, checkBoxWidth, 40);
     [_check2 setTitle:@"异常" forState:UIControlStateNormal];
     [_check2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [_check2.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
+    [_check2.titleLabel setFont:[UIFont systemFontOfSize:16.0f]];
     [_check2 addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_check2];
     
-    QCheckBox *_check3 = [[QCheckBox alloc] initWithDelegate:self];
+    QCheckBox *_check3 = [[QCheckBox alloc] initWithDelegate:self normal:[UIImage imageNamed:@"btn_qq.png"] selected:[UIImage imageNamed:@"btn_normal.png"]];
     _check3.tag = 2;
     _check3.frame = CGRectMake((width-checkBoxWidth)/2 + 100, 102, checkBoxWidth, 40);
     [_check3 setTitle:@"缺勤" forState:UIControlStateNormal];
     [_check3 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [_check3.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
+    [_check3.titleLabel setFont:[UIFont systemFontOfSize:16.0f]];
     [_check3 addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_check3];
     _check1.userInteractionEnabled = NO;

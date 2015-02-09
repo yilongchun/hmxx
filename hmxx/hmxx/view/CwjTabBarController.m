@@ -28,18 +28,40 @@
     self.navigationItem.backBarButtonItem = backItem;
     backItem.title = @"返回";
     
-    //    初始化第一个视图控制器
-//    CollectionViewController *vc1 = [[CollectionViewController alloc] init];
+    UIImage *img1 = [UIImage imageNamed:@"tabbar_cj.png"];
+    UIImage *img1_h = [UIImage imageNamed:@"tabbar_cj_high.png"];
+    
+    UIImage *img2 = [UIImage imageNamed:@"tabbar_wj.png"];
+    UIImage *img2_h = [UIImage imageNamed:@"tabbar_wj_high.png"];
+    
     CwjViewController *vc1 = [[CwjViewController alloc] init];
     vc1.examinetype = @"1";
-    vc1.tabBarItem =[[UITabBarItem alloc] initWithTitle:@"晨检" image:[UIImage imageNamed:@""] tag:0];
-    
-    
-    //    初始化第二个视图控制器
-//    CollectionViewController *vc2 = [[CollectionViewController alloc] init];
     CwjViewController *vc2 = [[CwjViewController alloc] init];
     vc2.examinetype = @"2";
-    vc2.tabBarItem =[[UITabBarItem alloc] initWithTitle:@"午检" image:[UIImage imageNamed:@""] tag:1];
+    
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+        img1 = [img1 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        img1_h = [img1_h imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        
+        img2 = [img2 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        img2_h = [img2_h imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        
+        UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:@"晨检" image:img1 selectedImage:img1_h];
+        [item1 setTag:0];
+        vc1.tabBarItem = item1;
+        
+        UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:@"午检" image:img2 selectedImage:img2_h];
+        [item2 setTag:1];
+        vc2.tabBarItem = item2;
+        
+    }else{
+        UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:@"晨检" image:img1 tag:0];
+        vc1.tabBarItem = item1;
+        
+        UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:@"午检" image:img2 tag:1];
+        vc2.tabBarItem = item2;
+        
+    }
     
     //    把导航控制器加入到数组
     NSMutableArray *viewArr_ = [NSMutableArray arrayWithObjects:vc1,vc2, nil];

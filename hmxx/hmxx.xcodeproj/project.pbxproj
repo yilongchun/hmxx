@@ -17,6 +17,33 @@
 		E43C21EF1A66DEEF00E1DB45 /* DownAccessory@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E43C21EB1A66DEEF00E1DB45 /* DownAccessory@2x.png */; };
 		E43C21F01A66DEEF00E1DB45 /* UpAccessory.png in Resources */ = {isa = PBXBuildFile; fileRef = E43C21EC1A66DEEF00E1DB45 /* UpAccessory.png */; };
 		E43C21F11A66DEEF00E1DB45 /* UpAccessory@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E43C21ED1A66DEEF00E1DB45 /* UpAccessory@2x.png */; };
+		E4C3D2751A88BF5C0027753D /* jsfc_high.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D2711A88BF5C0027753D /* jsfc_high.png */; };
+		E4C3D2761A88BF5C0027753D /* jsfc_high@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D2721A88BF5C0027753D /* jsfc_high@2x.png */; };
+		E4C3D2771A88BF5C0027753D /* jsfc.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D2731A88BF5C0027753D /* jsfc.png */; };
+		E4C3D2781A88BF5C0027753D /* jsfc@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D2741A88BF5C0027753D /* jsfc@2x.png */; };
+		E4C3D2861A88C1710027753D /* btn_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D2791A88C1710027753D /* btn_normal.png */; };
+		E4C3D2871A88C1710027753D /* btn_qq.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D27A1A88C1710027753D /* btn_qq.png */; };
+		E4C3D2881A88C1710027753D /* btn_yc.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D27B1A88C1710027753D /* btn_yc.png */; };
+		E4C3D2891A88C1710027753D /* btn_zc.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D27C1A88C1710027753D /* btn_zc.png */; };
+		E4C3D28A1A88C1710027753D /* menu_cwj2.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D27D1A88C1710027753D /* menu_cwj2.png */; };
+		E4C3D28B1A88C1710027753D /* tabbar_cj_high.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D27E1A88C1710027753D /* tabbar_cj_high.png */; };
+		E4C3D28C1A88C1710027753D /* tabbar_cj_high@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D27F1A88C1710027753D /* tabbar_cj_high@2x.png */; };
+		E4C3D28D1A88C1710027753D /* tabbar_cj.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D2801A88C1710027753D /* tabbar_cj.png */; };
+		E4C3D28E1A88C1710027753D /* tabbar_cj@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D2811A88C1710027753D /* tabbar_cj@2x.png */; };
+		E4C3D28F1A88C1710027753D /* tabbar_wj_high.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D2821A88C1710027753D /* tabbar_wj_high.png */; };
+		E4C3D2901A88C1710027753D /* tabbar_wj_high@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D2831A88C1710027753D /* tabbar_wj_high@2x.png */; };
+		E4C3D2911A88C1710027753D /* tabbar_wj.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D2841A88C1710027753D /* tabbar_wj.png */; };
+		E4C3D2921A88C1710027753D /* tabbar_wj@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D2851A88C1710027753D /* tabbar_wj@2x.png */; };
+		E4C3D29B1A88C3D50027753D /* cgtj_high.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D2931A88C3D50027753D /* cgtj_high.png */; };
+		E4C3D29C1A88C3D50027753D /* cgtj_high@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D2941A88C3D50027753D /* cgtj_high@2x.png */; };
+		E4C3D29D1A88C3D50027753D /* cgtj.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D2951A88C3D50027753D /* cgtj.png */; };
+		E4C3D29E1A88C3D50027753D /* cgtj@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D2961A88C3D50027753D /* cgtj@2x.png */; };
+		E4C3D29F1A88C3D50027753D /* xscq_high.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D2971A88C3D50027753D /* xscq_high.png */; };
+		E4C3D2A01A88C3D50027753D /* xscq_high@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D2981A88C3D50027753D /* xscq_high@2x.png */; };
+		E4C3D2A11A88C3D50027753D /* xscq.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D2991A88C3D50027753D /* xscq.png */; };
+		E4C3D2A21A88C3D50027753D /* xscq@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D29A1A88C3D50027753D /* xscq@2x.png */; };
+		E4C3D2A81A88D0A00027753D /* grrz.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D2A71A88D0A00027753D /* grrz.png */; };
+		E4C3D2AA1A88F3B30027753D /* cmbb.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D2A91A88F3B30027753D /* cmbb.png */; };
 		E4C664B01A710436003CCC0E /* ScheduleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C664AE1A710436003CCC0E /* ScheduleDetailViewController.m */; };
 		E4C664B11A710436003CCC0E /* ScheduleDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4C664AF1A710436003CCC0E /* ScheduleDetailViewController.xib */; };
 		E4C664B71A715809003CCC0E /* grayBg.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C664B61A715809003CCC0E /* grayBg.png */; };
@@ -304,6 +331,33 @@
 		E43C21EB1A66DEEF00E1DB45 /* DownAccessory@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DownAccessory@2x.png"; sourceTree = "<group>"; };
 		E43C21EC1A66DEEF00E1DB45 /* UpAccessory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UpAccessory.png; sourceTree = "<group>"; };
 		E43C21ED1A66DEEF00E1DB45 /* UpAccessory@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UpAccessory@2x.png"; sourceTree = "<group>"; };
+		E4C3D2711A88BF5C0027753D /* jsfc_high.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jsfc_high.png; sourceTree = "<group>"; };
+		E4C3D2721A88BF5C0027753D /* jsfc_high@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jsfc_high@2x.png"; sourceTree = "<group>"; };
+		E4C3D2731A88BF5C0027753D /* jsfc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jsfc.png; sourceTree = "<group>"; };
+		E4C3D2741A88BF5C0027753D /* jsfc@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jsfc@2x.png"; sourceTree = "<group>"; };
+		E4C3D2791A88C1710027753D /* btn_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_normal.png; sourceTree = "<group>"; };
+		E4C3D27A1A88C1710027753D /* btn_qq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_qq.png; sourceTree = "<group>"; };
+		E4C3D27B1A88C1710027753D /* btn_yc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_yc.png; sourceTree = "<group>"; };
+		E4C3D27C1A88C1710027753D /* btn_zc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_zc.png; sourceTree = "<group>"; };
+		E4C3D27D1A88C1710027753D /* menu_cwj2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_cwj2.png; sourceTree = "<group>"; };
+		E4C3D27E1A88C1710027753D /* tabbar_cj_high.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_cj_high.png; sourceTree = "<group>"; };
+		E4C3D27F1A88C1710027753D /* tabbar_cj_high@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_cj_high@2x.png"; sourceTree = "<group>"; };
+		E4C3D2801A88C1710027753D /* tabbar_cj.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_cj.png; sourceTree = "<group>"; };
+		E4C3D2811A88C1710027753D /* tabbar_cj@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_cj@2x.png"; sourceTree = "<group>"; };
+		E4C3D2821A88C1710027753D /* tabbar_wj_high.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_wj_high.png; sourceTree = "<group>"; };
+		E4C3D2831A88C1710027753D /* tabbar_wj_high@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_wj_high@2x.png"; sourceTree = "<group>"; };
+		E4C3D2841A88C1710027753D /* tabbar_wj.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_wj.png; sourceTree = "<group>"; };
+		E4C3D2851A88C1710027753D /* tabbar_wj@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_wj@2x.png"; sourceTree = "<group>"; };
+		E4C3D2931A88C3D50027753D /* cgtj_high.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cgtj_high.png; sourceTree = "<group>"; };
+		E4C3D2941A88C3D50027753D /* cgtj_high@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cgtj_high@2x.png"; sourceTree = "<group>"; };
+		E4C3D2951A88C3D50027753D /* cgtj.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cgtj.png; sourceTree = "<group>"; };
+		E4C3D2961A88C3D50027753D /* cgtj@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cgtj@2x.png"; sourceTree = "<group>"; };
+		E4C3D2971A88C3D50027753D /* xscq_high.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xscq_high.png; sourceTree = "<group>"; };
+		E4C3D2981A88C3D50027753D /* xscq_high@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xscq_high@2x.png"; sourceTree = "<group>"; };
+		E4C3D2991A88C3D50027753D /* xscq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xscq.png; sourceTree = "<group>"; };
+		E4C3D29A1A88C3D50027753D /* xscq@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xscq@2x.png"; sourceTree = "<group>"; };
+		E4C3D2A71A88D0A00027753D /* grrz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grrz.png; sourceTree = "<group>"; };
+		E4C3D2A91A88F3B30027753D /* cmbb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cmbb.png; sourceTree = "<group>"; };
 		E4C664AD1A710436003CCC0E /* ScheduleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleDetailViewController.h; path = view/ScheduleDetailViewController.h; sourceTree = "<group>"; };
 		E4C664AE1A710436003CCC0E /* ScheduleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleDetailViewController.m; path = view/ScheduleDetailViewController.m; sourceTree = "<group>"; };
 		E4C664AF1A710436003CCC0E /* ScheduleDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScheduleDetailViewController.xib; path = view/ScheduleDetailViewController.xib; sourceTree = "<group>"; };
@@ -936,6 +990,33 @@
 		E4F3692B1A63E1D20037A533 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E4C3D2A91A88F3B30027753D /* cmbb.png */,
+				E4C3D2A71A88D0A00027753D /* grrz.png */,
+				E4C3D2931A88C3D50027753D /* cgtj_high.png */,
+				E4C3D2941A88C3D50027753D /* cgtj_high@2x.png */,
+				E4C3D2951A88C3D50027753D /* cgtj.png */,
+				E4C3D2961A88C3D50027753D /* cgtj@2x.png */,
+				E4C3D2971A88C3D50027753D /* xscq_high.png */,
+				E4C3D2981A88C3D50027753D /* xscq_high@2x.png */,
+				E4C3D2991A88C3D50027753D /* xscq.png */,
+				E4C3D29A1A88C3D50027753D /* xscq@2x.png */,
+				E4C3D2791A88C1710027753D /* btn_normal.png */,
+				E4C3D27A1A88C1710027753D /* btn_qq.png */,
+				E4C3D27B1A88C1710027753D /* btn_yc.png */,
+				E4C3D27C1A88C1710027753D /* btn_zc.png */,
+				E4C3D27D1A88C1710027753D /* menu_cwj2.png */,
+				E4C3D27E1A88C1710027753D /* tabbar_cj_high.png */,
+				E4C3D27F1A88C1710027753D /* tabbar_cj_high@2x.png */,
+				E4C3D2801A88C1710027753D /* tabbar_cj.png */,
+				E4C3D2811A88C1710027753D /* tabbar_cj@2x.png */,
+				E4C3D2821A88C1710027753D /* tabbar_wj_high.png */,
+				E4C3D2831A88C1710027753D /* tabbar_wj_high@2x.png */,
+				E4C3D2841A88C1710027753D /* tabbar_wj.png */,
+				E4C3D2851A88C1710027753D /* tabbar_wj@2x.png */,
+				E4C3D2711A88BF5C0027753D /* jsfc_high.png */,
+				E4C3D2721A88BF5C0027753D /* jsfc_high@2x.png */,
+				E4C3D2731A88BF5C0027753D /* jsfc.png */,
+				E4C3D2741A88BF5C0027753D /* jsfc@2x.png */,
 				E4F3B0031A7CF93600176E56 /* nopicture2.png */,
 				E4EDA2911A7255620018E967 /* planmanage1.png */,
 				E4EDA2921A7255620018E967 /* planmanage1@2x.png */,
@@ -1423,8 +1504,10 @@
 				E4C74F111A84D905007241C3 /* checkbox1_unchecked.png in Resources */,
 				E4F369701A63ED080037A533 /* start_open.png in Resources */,
 				E43C21F11A66DEEF00E1DB45 /* UpAccessory@2x.png in Resources */,
+				E4C3D2881A88C1710027753D /* btn_yc.png in Resources */,
 				E4F21DAE1A66B1BB005372EA /* XscqtjxqViewController.xib in Resources */,
 				E4EC15391A77A2290048ACDB /* ReportThirdTableViewCell.xib in Resources */,
+				E4C3D28E1A88C1710027753D /* tabbar_cj@2x.png in Resources */,
 				E4EF0AE91A6E96A100212041 /* AddScheduleViewController.xib in Resources */,
 				E4EDA29A1A7255620018E967 /* planmanage1@2x.png in Resources */,
 				E4F21DA41A668F7A005372EA /* BwrzViewController.xib in Resources */,
@@ -1434,24 +1517,31 @@
 				E4F21DA91A66A2AE005372EA /* XscqtjViewController.xib in Resources */,
 				E4F36A011A6448300037A533 /* ic_index_007.png in Resources */,
 				E4EDA2A01A7255620018E967 /* summarymanage2@2x.png in Resources */,
+				E4C3D28B1A88C1710027753D /* tabbar_cj_high.png in Resources */,
+				E4C3D29B1A88C3D50027753D /* cgtj_high.png in Resources */,
 				E4F077531A658E70004D7453 /* yuanqingjieshao2@2x.png in Resources */,
 				E4ED5D6E1A6D0D7600FFB11A /* AddPuchaseViewController.xib in Resources */,
 				E4F0774F1A658E70004D7453 /* huodongguanli2@2x.png in Resources */,
 				E4F21D951A667BDF005372EA /* DaiShHdViewController.xib in Resources */,
 				E4F21D851A666C47005372EA /* smiley_add_btn_pressed.png in Resources */,
 				E4F21D7F1A666BF0005372EA /* ELCAssetTablePicker.xib in Resources */,
+				E4C3D2A01A88C3D50027753D /* xscq_high@2x.png in Resources */,
+				E4C3D28F1A88C1710027753D /* tabbar_wj_high.png in Resources */,
 				E4F076C11A655F76004D7453 /* ic_bwrz_002@2x.png in Resources */,
 				E4F0768E1A653E47004D7453 /* GrdaViewController.xib in Resources */,
 				E4ED5D861A6D420A00FFB11A /* IQKeyboardManager.bundle in Resources */,
 				E4F077481A658E70004D7453 /* gonggaoguanli1.png in Resources */,
+				E4C3D2771A88BF5C0027753D /* jsfc.png in Resources */,
 				E4EF57701A67FF29004B57E6 /* 37x-Checkmark@2x.png in Resources */,
 				E4F077571A658E70004D7453 /* yuanwurizhi2@2x.png in Resources */,
 				E4F369DD1A6415280037A533 /* YjfkViewController.xib in Resources */,
+				E4C3D29E1A88C3D50027753D /* cgtj@2x.png in Resources */,
 				E4F077551A658E70004D7453 /* yuanwurizhi1@2x.png in Resources */,
 				E4F077421A658E70004D7453 /* daishenhegg2.png in Resources */,
 				E4ED5D941A6D5A0B00FFB11A /* PurchaseTypeViewController.xib in Resources */,
 				E4F21D7D1A666BF0005372EA /* ELCAlbumPickerController.xib in Resources */,
 				E4F369F91A6443930037A533 /* KcbViewController.xib in Resources */,
+				E4C3D2A21A88C3D50027753D /* xscq@2x.png in Resources */,
 				E4F369341A63E1D20037A533 /* guide_1.png in Resources */,
 				E43C21E91A66C1EF00E1DB45 /* TjxqTableViewCell.xib in Resources */,
 				E4F369DB1A6415280037A533 /* UpdatePasswordViewController.xib in Resources */,
@@ -1461,6 +1551,7 @@
 				E4F077511A658E70004D7453 /* yuanqingjieshao1@2x.png in Resources */,
 				E4F077461A658E70004D7453 /* daishenhehd2.png in Resources */,
 				E4C664B71A715809003CCC0E /* grayBg.png in Resources */,
+				E4C3D2861A88C1710027753D /* btn_normal.png in Resources */,
 				E4F3692A1A63E0920037A533 /* LoginViewController.xib in Resources */,
 				E4C74F071A84D8A5007241C3 /* CwjViewController.xib in Resources */,
 				E4F077521A658E70004D7453 /* yuanqingjieshao2.png in Resources */,
@@ -1468,20 +1559,25 @@
 				E4EF0AF81A6EAFD900212041 /* CollectionCell.xib in Resources */,
 				E4C74F021A84D8A5007241C3 /* CwjDetailViewController.xib in Resources */,
 				E4C664BB1A715D79003CCC0E /* loginBtnBg2.png in Resources */,
+				E4C3D28A1A88C1710027753D /* menu_cwj2.png in Resources */,
 				E4F076EE1A6566EC004D7453 /* sr_refresh@2X.png in Resources */,
+				E4C3D28D1A88C1710027753D /* tabbar_cj.png in Resources */,
 				E4F076C21A655F76004D7453 /* ic_index_003.png in Resources */,
 				E4F369F01A642B4D0037A533 /* SpTableViewCell.xib in Resources */,
 				E4EF57751A68067B004B57E6 /* DaishHdxqViewController.xib in Resources */,
+				E4C3D29F1A88C3D50027753D /* xscq_high.png in Resources */,
 				E4EF0AEE1A6EA9C300212041 /* CollectionViewController.xib in Resources */,
 				E4F077061A65681D004D7453 /* BwhdViewController.xib in Resources */,
 				E4F3B0041A7CF93600176E56 /* nopicture2.png in Resources */,
 				E4F0774A1A658E70004D7453 /* gonggaoguanli2.png in Resources */,
+				E4C3D2871A88C1710027753D /* btn_qq.png in Resources */,
 				E4F076FC1A656760004D7453 /* ContentCell.xib in Resources */,
 				E4F076E21A656680004D7453 /* GgtzViewController.xib in Resources */,
 				E4F0769E1A655E79004D7453 /* ic_bwrz_002.png in Resources */,
 				E4F369D91A6415280037A533 /* ShezhiViewController.xib in Resources */,
 				E4F076E01A656680004D7453 /* GgtzTableViewCell.xib in Resources */,
 				E4F077251A657D3E004D7453 /* ic_index_006.png in Resources */,
+				E4C3D2891A88C1710027753D /* btn_zc.png in Resources */,
 				E4F076E41A656680004D7453 /* GgxqViewController.xib in Resources */,
 				E4EDA29C1A7255620018E967 /* planmanage2@2x.png in Resources */,
 				E4F369891A64066D0037A533 /* ic_index_bg.png in Resources */,
@@ -1494,11 +1590,15 @@
 				E4C74F241A84FBB0007241C3 /* CwjClassViewController.xib in Resources */,
 				E4ED5D691A6D016B00FFB11A /* PurchaseViewController.xib in Resources */,
 				E4C745271A6FEE5D009402ED /* MoreTableViewCell.xib in Resources */,
+				E4C3D2A11A88C3D50027753D /* xscq.png in Resources */,
+				E4C3D2781A88BF5C0027753D /* jsfc@2x.png in Resources */,
 				E4C74F101A84D905007241C3 /* checkbox1_checked@2x.png in Resources */,
 				E4F076C01A655F76004D7453 /* ic_bwrz_002.png in Resources */,
 				E4EDA29E1A7255620018E967 /* summarymanage1@2x.png in Resources */,
 				E4C74F051A84D8A5007241C3 /* CwjTableViewCell.xib in Resources */,
 				E4F21D8A1A667319005372EA /* AddNoticeViewController.xib in Resources */,
+				E4C3D2AA1A88F3B30027753D /* cmbb.png in Resources */,
+				E4C3D2761A88BF5C0027753D /* jsfc_high@2x.png in Resources */,
 				E4F0769F1A655E79004D7453 /* ic_bwrz_002@2x.png in Resources */,
 				E4F369881A64066D0037A533 /* ic_index_012.png in Resources */,
 				E4F077441A658E70004D7453 /* daishenhehd1.png in Resources */,
@@ -1510,9 +1610,13 @@
 				E4F077471A658E70004D7453 /* daishenhehd2@2x.png in Resources */,
 				E4F369371A63E1D20037A533 /* guide_4.png in Resources */,
 				E4F369281A63E0920037A533 /* GuideViewController.xib in Resources */,
+				E4C3D29C1A88C3D50027753D /* cgtj_high@2x.png in Resources */,
+				E4C3D2911A88C1710027753D /* tabbar_wj.png in Resources */,
 				E4F369351A63E1D20037A533 /* guide_2.png in Resources */,
 				E409296A1A690A7E00EBAF82 /* AddBwrzViewController.xib in Resources */,
 				E4F077541A658E70004D7453 /* yuanwurizhi1.png in Resources */,
+				E4C3D2A81A88D0A00027753D /* grrz.png in Resources */,
+				E4C3D2921A88C1710027753D /* tabbar_wj@2x.png in Resources */,
 				E4F0774D1A658E70004D7453 /* huodongguanli1@2x.png in Resources */,
 				E4EF0AE41A6E960300212041 /* ScheduleViewController.xib in Resources */,
 				E4F077501A658E70004D7453 /* yuanqingjieshao1.png in Resources */,
@@ -1523,10 +1627,12 @@
 				E4F369381A63E1D20037A533 /* ic_login_password.png in Resources */,
 				E4ED5D641A6CFFED00FFB11A /* PurchaseTableViewCell.xib in Resources */,
 				E4F077491A658E70004D7453 /* gonggaoguanli1@2x.png in Resources */,
+				E4C3D28C1A88C1710027753D /* tabbar_cj_high@2x.png in Resources */,
 				E4EDA2AF1A72A4320018E967 /* JsfcDetailViewController.xib in Resources */,
 				E4F077561A658E70004D7453 /* yuanwurizhi2.png in Resources */,
 				E4F077401A658E70004D7453 /* daishenhegg1.png in Resources */,
 				E4C74F121A84D905007241C3 /* checkbox1_unchecked@2x.png in Resources */,
+				E4C3D2901A88C1710027753D /* tabbar_wj_high@2x.png in Resources */,
 				E4F076ED1A6566EC004D7453 /* sr_refresh.png in Resources */,
 				E4F077451A658E70004D7453 /* daishenhehd1@2x.png in Resources */,
 				E4EDA29B1A7255620018E967 /* planmanage2.png in Resources */,
@@ -1538,7 +1644,9 @@
 				E4F369361A63E1D20037A533 /* guide_3.png in Resources */,
 				E4F369F41A642C4F0037A533 /* nopicture.png in Resources */,
 				E4F3698F1A6406D60037A533 /* chatListCellHead.png in Resources */,
+				E4C3D2751A88BF5C0027753D /* jsfc_high.png in Resources */,
 				E4ED5D991A6D654700FFB11A /* PurchaseDetailViewController.xib in Resources */,
+				E4C3D29D1A88C3D50027753D /* cgtj.png in Resources */,
 				E4EDA29D1A7255620018E967 /* summarymanage1.png in Resources */,
 				E4F21D7E1A666BF0005372EA /* ELCAssetPicker.xib in Resources */,
 				E4EDA2991A7255620018E967 /* planmanage1.png in Resources */,

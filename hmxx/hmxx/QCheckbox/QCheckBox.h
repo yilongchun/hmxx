@@ -21,6 +21,7 @@
 @property(nonatomic, retain)id userInfo;
 
 - (id)initWithDelegate:(id)delegate;
+- (id)initWithDelegate:(id)delegate normal:(UIImage *)img1 selected:(UIImage *)img2;
 
 @end
 

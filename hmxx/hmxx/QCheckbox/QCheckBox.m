@@ -8,7 +8,7 @@
 
 #import "QCheckBox.h"
 
-#define Q_CHECK_ICON_WH                    (15.0)
+#define Q_CHECK_ICON_WH                    (24.0)
 #define Q_ICON_TITLE_MARGIN                (10.0)
 
 @implementation QCheckBox
@@ -25,6 +25,19 @@
         self.exclusiveTouch = YES;
         [self setImage:[UIImage imageNamed:@"checkbox1_unchecked.png"] forState:UIControlStateNormal];
         [self setImage:[UIImage imageNamed:@"checkbox1_checked.png"] forState:UIControlStateSelected];
+        [self addTarget:self action:@selector(checkboxBtnChecked) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return self;
+}
+
+- (id)initWithDelegate:(id)delegate normal:(UIImage *)img1 selected:(UIImage *)img2{
+    self = [super init];
+    if (self) {
+        _delegate = delegate;
+        
+        self.exclusiveTouch = YES;
+        [self setImage:img2 forState:UIControlStateNormal];
+        [self setImage:img1 forState:UIControlStateSelected];
         [self addTarget:self action:@selector(checkboxBtnChecked) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;

@@ -53,11 +53,11 @@
     }
     [currencyPicker selectRow:selectedIndex inComponent:0 animated:YES];
     
-    UIImage *img1 = [UIImage imageNamed:@""];
-    UIImage *img1_h = [UIImage imageNamed:@""];
+    UIImage *img1 = [UIImage imageNamed:@"xscq"];
+    UIImage *img1_h = [UIImage imageNamed:@"xscq_high"];
     
-    UIImage *img2 = [UIImage imageNamed:@""];
-    UIImage *img2_h = [UIImage imageNamed:@""];
+    UIImage *img2 = [UIImage imageNamed:@"cgtj"];
+    UIImage *img2_h = [UIImage imageNamed:@"cgtj_high"];
     
     XscqtjViewController *vc1 = [[XscqtjViewController alloc] init];
     vc2 = [[PurchaseReportViewController alloc] init];
