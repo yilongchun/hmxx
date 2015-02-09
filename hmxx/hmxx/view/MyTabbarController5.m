@@ -9,6 +9,7 @@
 #import "MyTabbarController5.h"
 #import "XscqtjViewController.h"
 #import "PurchaseReportViewController.h"
+#import "XsydViewController.h"
 
 @interface MyTabbarController5 (){
     UIBarButtonItem *rightButton;
@@ -62,6 +63,7 @@
     XscqtjViewController *vc1 = [[XscqtjViewController alloc] init];
     vc2 = [[PurchaseReportViewController alloc] init];
     vc2.year = year;
+    XsydViewController *vc3 = [[XsydViewController alloc] init];
     
     rightButton = [[UIBarButtonItem alloc]
                    initWithTitle:[NSString stringWithFormat:@"%@年",year]
@@ -83,15 +85,21 @@
         UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:@"采购统计" image:img2 selectedImage:img2_h];
         [item2 setTag:1];
         vc2.tabBarItem = item2;
+        
+        UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"学生异动统计" image:nil selectedImage:nil];
+        [item3 setTag:2];
+        vc3.tabBarItem = item3;
     }else{
         UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:@"学生出勤统计" image:img1 tag:0];
         vc1.tabBarItem = item1;
         UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:@"采购统计" image:img2 tag:1];
         vc2.tabBarItem = item2;
+        UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"学生异动统计" image:nil tag:2];
+        vc3.tabBarItem = item3;
     }
     
     //    把导航控制器加入到数组
-    NSMutableArray *viewArr_ = [NSMutableArray arrayWithObjects:vc1,vc2, nil];
+    NSMutableArray *viewArr_ = [NSMutableArray arrayWithObjects:vc1,vc2,vc3, nil];
     
     self.title = @"学生出勤统计";
     self.viewControllers = viewArr_;
@@ -110,6 +118,9 @@
     }else if (item.tag == 1){
         self.title = @"采购统计";
         self.navigationItem.rightBarButtonItem = rightButton;
+    }else if (item.tag == 2){
+        self.title = @"学生异动统计";
+        self.navigationItem.rightBarButtonItem = nil;
     }
 }
 

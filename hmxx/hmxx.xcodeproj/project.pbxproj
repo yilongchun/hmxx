@@ -44,6 +44,10 @@
 		E4C3D2A21A88C3D50027753D /* xscq@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D29A1A88C3D50027753D /* xscq@2x.png */; };
 		E4C3D2A81A88D0A00027753D /* grrz.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D2A71A88D0A00027753D /* grrz.png */; };
 		E4C3D2AA1A88F3B30027753D /* cmbb.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D2A91A88F3B30027753D /* cmbb.png */; };
+		E4C3D2B31A890C3C0027753D /* XsydViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C3D2B11A890C3C0027753D /* XsydViewController.m */; };
+		E4C3D2B41A890C3C0027753D /* XsydViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D2B21A890C3C0027753D /* XsydViewController.xib */; };
+		E4C3D2B81A8912420027753D /* XsydDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C3D2B61A8912420027753D /* XsydDetailViewController.m */; };
+		E4C3D2B91A8912420027753D /* XsydDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4C3D2B71A8912420027753D /* XsydDetailViewController.xib */; };
 		E4C664B01A710436003CCC0E /* ScheduleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C664AE1A710436003CCC0E /* ScheduleDetailViewController.m */; };
 		E4C664B11A710436003CCC0E /* ScheduleDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4C664AF1A710436003CCC0E /* ScheduleDetailViewController.xib */; };
 		E4C664B71A715809003CCC0E /* grayBg.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C664B61A715809003CCC0E /* grayBg.png */; };
@@ -358,6 +362,12 @@
 		E4C3D29A1A88C3D50027753D /* xscq@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xscq@2x.png"; sourceTree = "<group>"; };
 		E4C3D2A71A88D0A00027753D /* grrz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grrz.png; sourceTree = "<group>"; };
 		E4C3D2A91A88F3B30027753D /* cmbb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cmbb.png; sourceTree = "<group>"; };
+		E4C3D2B01A890C3C0027753D /* XsydViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XsydViewController.h; path = view/XsydViewController.h; sourceTree = "<group>"; };
+		E4C3D2B11A890C3C0027753D /* XsydViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XsydViewController.m; path = view/XsydViewController.m; sourceTree = "<group>"; };
+		E4C3D2B21A890C3C0027753D /* XsydViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = XsydViewController.xib; path = view/XsydViewController.xib; sourceTree = "<group>"; };
+		E4C3D2B51A8912420027753D /* XsydDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XsydDetailViewController.h; path = view/XsydDetailViewController.h; sourceTree = "<group>"; };
+		E4C3D2B61A8912420027753D /* XsydDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XsydDetailViewController.m; path = view/XsydDetailViewController.m; sourceTree = "<group>"; };
+		E4C3D2B71A8912420027753D /* XsydDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = XsydDetailViewController.xib; path = view/XsydDetailViewController.xib; sourceTree = "<group>"; };
 		E4C664AD1A710436003CCC0E /* ScheduleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleDetailViewController.h; path = view/ScheduleDetailViewController.h; sourceTree = "<group>"; };
 		E4C664AE1A710436003CCC0E /* ScheduleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleDetailViewController.m; path = view/ScheduleDetailViewController.m; sourceTree = "<group>"; };
 		E4C664AF1A710436003CCC0E /* ScheduleDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScheduleDetailViewController.xib; path = view/ScheduleDetailViewController.xib; sourceTree = "<group>"; };
@@ -1363,6 +1373,12 @@
 				E4EC15351A77A2290048ACDB /* ReportThirdTableViewCell.h */,
 				E4EC15361A77A2290048ACDB /* ReportThirdTableViewCell.m */,
 				E4EC15371A77A2290048ACDB /* ReportThirdTableViewCell.xib */,
+				E4C3D2B01A890C3C0027753D /* XsydViewController.h */,
+				E4C3D2B11A890C3C0027753D /* XsydViewController.m */,
+				E4C3D2B21A890C3C0027753D /* XsydViewController.xib */,
+				E4C3D2B51A8912420027753D /* XsydDetailViewController.h */,
+				E4C3D2B61A8912420027753D /* XsydDetailViewController.m */,
+				E4C3D2B71A8912420027753D /* XsydDetailViewController.xib */,
 				E4C74EF81A84D8A5007241C3 /* CwjTabBarController.h */,
 				E4C74EF91A84D8A5007241C3 /* CwjTabBarController.m */,
 				E4C74EF31A84D8A5007241C3 /* CustomCellBackground.h */,
@@ -1510,6 +1526,7 @@
 				E4C3D28E1A88C1710027753D /* tabbar_cj@2x.png in Resources */,
 				E4EF0AE91A6E96A100212041 /* AddScheduleViewController.xib in Resources */,
 				E4EDA29A1A7255620018E967 /* planmanage1@2x.png in Resources */,
+				E4C3D2B91A8912420027753D /* XsydDetailViewController.xib in Resources */,
 				E4F21DA41A668F7A005372EA /* BwrzViewController.xib in Resources */,
 				E4F369751A6405F10037A533 /* MainViewController.xib in Resources */,
 				E4F21D841A666C47005372EA /* smiley_add_btn_nor.png in Resources */,
@@ -1555,6 +1572,7 @@
 				E4F3692A1A63E0920037A533 /* LoginViewController.xib in Resources */,
 				E4C74F071A84D8A5007241C3 /* CwjViewController.xib in Resources */,
 				E4F077521A658E70004D7453 /* yuanqingjieshao2.png in Resources */,
+				E4C3D2B41A890C3C0027753D /* XsydViewController.xib in Resources */,
 				E4EDA2A51A7296510018E967 /* JsfcViewController.xib in Resources */,
 				E4EF0AF81A6EAFD900212041 /* CollectionCell.xib in Resources */,
 				E4C74F021A84D8A5007241C3 /* CwjDetailViewController.xib in Resources */,
@@ -1706,6 +1724,8 @@
 				E4ED5D8E1A6D420A00FFB11A /* UIView+IQKeyboardToolbar.m in Sources */,
 				E4ED5D631A6CFFED00FFB11A /* PurchaseTableViewCell.m in Sources */,
 				E4EDA2A41A7296510018E967 /* JsfcViewController.m in Sources */,
+				E4C3D2B31A890C3C0027753D /* XsydViewController.m in Sources */,
+				E4C3D2B81A8912420027753D /* XsydDetailViewController.m in Sources */,
 				E4EF0AE81A6E96A100212041 /* AddScheduleViewController.m in Sources */,
 				E4F369C61A64088F0037A533 /* UIButton+AFNetworking.m in Sources */,
 				E4F369621A63E3FE0037A533 /* MBProgressHUD.m in Sources */,
