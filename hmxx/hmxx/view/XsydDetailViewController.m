@@ -49,7 +49,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 6;
+    return 7;
 }
 
 
@@ -68,6 +68,7 @@
     NSString *createDate = [self.info objectForKey:@"createDate"];
     NSNumber *type = [self.info objectForKey:@"type"];
     NSString *studentname = [self.info objectForKey:@"studentname"];
+    NSString *creator = [self.info objectForKey:@"creator"];
     
     switch (indexPath.row) {
         case 0:
@@ -97,6 +98,9 @@
             [cell.textLabel sizeToFit];
             cell.textLabel.numberOfLines = 0;
             cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+            break;
+        case 6:
+            cell.textLabel.text = [NSString stringWithFormat:@"发布人    %@",creator];
             break;
         default:
             break;
