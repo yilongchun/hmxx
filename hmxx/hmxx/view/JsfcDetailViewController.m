@@ -31,8 +31,15 @@
     
     self.title = @"教师信息";
     
-    UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(updateImgAction:)];
-    [self.userimage addGestureRecognizer:singleTap1];
+    NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
+    NSDictionary *userdata = [userdefault objectForKey:@"user"];
+    NSNumber *roletype = [userdata objectForKey:@"roletype"];
+    
+    if ([roletype intValue] == 2) {
+        UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(updateImgAction:)];
+        [self.userimage addGestureRecognizer:singleTap1];
+    }
+    
     
     //添加加载等待条
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
