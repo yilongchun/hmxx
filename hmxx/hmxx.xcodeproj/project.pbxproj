@@ -311,6 +311,10 @@
 		E4F3B0041A7CF93600176E56 /* nopicture2.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F3B0031A7CF93600176E56 /* nopicture2.png */; };
 		E4F483391A8A0C0400EFCB4E /* XsydTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F483371A8A0C0400EFCB4E /* XsydTableViewCell.m */; };
 		E4F4833A1A8A0C0400EFCB4E /* XsydTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F483381A8A0C0400EFCB4E /* XsydTableViewCell.xib */; };
+		E4F4833F1A8A604D00EFCB4E /* xsyd_high.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F4833B1A8A604D00EFCB4E /* xsyd_high.png */; };
+		E4F483401A8A604D00EFCB4E /* xsyd_high@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F4833C1A8A604D00EFCB4E /* xsyd_high@2x.png */; };
+		E4F483411A8A604D00EFCB4E /* xsyd.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F4833D1A8A604D00EFCB4E /* xsyd.png */; };
+		E4F483421A8A604D00EFCB4E /* xsyd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F4833E1A8A604D00EFCB4E /* xsyd@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -768,6 +772,10 @@
 		E4F483361A8A0C0400EFCB4E /* XsydTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XsydTableViewCell.h; path = view/XsydTableViewCell.h; sourceTree = "<group>"; };
 		E4F483371A8A0C0400EFCB4E /* XsydTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XsydTableViewCell.m; path = view/XsydTableViewCell.m; sourceTree = "<group>"; };
 		E4F483381A8A0C0400EFCB4E /* XsydTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = XsydTableViewCell.xib; path = view/XsydTableViewCell.xib; sourceTree = "<group>"; };
+		E4F4833B1A8A604D00EFCB4E /* xsyd_high.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xsyd_high.png; sourceTree = "<group>"; };
+		E4F4833C1A8A604D00EFCB4E /* xsyd_high@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xsyd_high@2x.png"; sourceTree = "<group>"; };
+		E4F4833D1A8A604D00EFCB4E /* xsyd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xsyd.png; sourceTree = "<group>"; };
+		E4F4833E1A8A604D00EFCB4E /* xsyd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xsyd@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1005,6 +1013,10 @@
 		E4F3692B1A63E1D20037A533 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E4F4833B1A8A604D00EFCB4E /* xsyd_high.png */,
+				E4F4833C1A8A604D00EFCB4E /* xsyd_high@2x.png */,
+				E4F4833D1A8A604D00EFCB4E /* xsyd.png */,
+				E4F4833E1A8A604D00EFCB4E /* xsyd@2x.png */,
 				E4C3D2A91A88F3B30027753D /* cmbb.png */,
 				E4C3D2A71A88D0A00027753D /* grrz.png */,
 				E4C3D2931A88C3D50027753D /* cgtj_high.png */,
@@ -1585,6 +1597,7 @@
 				E4EDA2A51A7296510018E967 /* JsfcViewController.xib in Resources */,
 				E4EF0AF81A6EAFD900212041 /* CollectionCell.xib in Resources */,
 				E4C74F021A84D8A5007241C3 /* CwjDetailViewController.xib in Resources */,
+				E4F4833F1A8A604D00EFCB4E /* xsyd_high.png in Resources */,
 				E4C664BB1A715D79003CCC0E /* loginBtnBg2.png in Resources */,
 				E4C3D28A1A88C1710027753D /* menu_cwj2.png in Resources */,
 				E4F076EE1A6566EC004D7453 /* sr_refresh@2X.png in Resources */,
@@ -1595,6 +1608,7 @@
 				E4C3D29F1A88C3D50027753D /* xscq_high.png in Resources */,
 				E4EF0AEE1A6EA9C300212041 /* CollectionViewController.xib in Resources */,
 				E4F077061A65681D004D7453 /* BwhdViewController.xib in Resources */,
+				E4F483401A8A604D00EFCB4E /* xsyd_high@2x.png in Resources */,
 				E4F3B0041A7CF93600176E56 /* nopicture2.png in Resources */,
 				E4F0774A1A658E70004D7453 /* gonggaoguanli2.png in Resources */,
 				E4C3D2871A88C1710027753D /* btn_qq.png in Resources */,
@@ -1616,6 +1630,7 @@
 				E4EF576C1A67E10B004B57E6 /* DaishGgtzViewController.xib in Resources */,
 				E4C74F241A84FBB0007241C3 /* CwjClassViewController.xib in Resources */,
 				E4ED5D691A6D016B00FFB11A /* PurchaseViewController.xib in Resources */,
+				E4F483421A8A604D00EFCB4E /* xsyd@2x.png in Resources */,
 				E4C745271A6FEE5D009402ED /* MoreTableViewCell.xib in Resources */,
 				E4C3D2A11A88C3D50027753D /* xscq.png in Resources */,
 				E4C3D2781A88BF5C0027753D /* jsfc@2x.png in Resources */,
@@ -1623,6 +1638,7 @@
 				E4F076C01A655F76004D7453 /* ic_bwrz_002.png in Resources */,
 				E4EDA29E1A7255620018E967 /* summarymanage1@2x.png in Resources */,
 				E4C74F051A84D8A5007241C3 /* CwjTableViewCell.xib in Resources */,
+				E4F483411A8A604D00EFCB4E /* xsyd.png in Resources */,
 				E4F21D8A1A667319005372EA /* AddNoticeViewController.xib in Resources */,
 				E4C3D2AA1A88F3B30027753D /* cmbb.png in Resources */,
 				E4C3D2761A88BF5C0027753D /* jsfc_high@2x.png in Resources */,

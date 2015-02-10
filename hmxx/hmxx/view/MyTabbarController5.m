@@ -60,6 +60,9 @@
     UIImage *img2 = [UIImage imageNamed:@"cgtj"];
     UIImage *img2_h = [UIImage imageNamed:@"cgtj_high"];
     
+    UIImage *img3 = [UIImage imageNamed:@"xsyd"];
+    UIImage *img3_h = [UIImage imageNamed:@"xsyd_high"];
+    
     XscqtjViewController *vc1 = [[XscqtjViewController alloc] init];
     vc2 = [[PurchaseReportViewController alloc] init];
     vc2.year = year;
@@ -77,6 +80,8 @@
         img1_h = [img1_h imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         img2 = [img2 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         img2_h = [img2_h imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        img3 = [img3 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        img3_h = [img3_h imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         
         UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:@"学生出勤统计" image:img1 selectedImage:img1_h];
         [item1 setTag:0];
@@ -86,7 +91,7 @@
         [item2 setTag:1];
         vc2.tabBarItem = item2;
         
-        UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"学生异动统计" image:nil selectedImage:nil];
+        UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"学生异动统计" image:img3 selectedImage:img3_h];
         [item3 setTag:2];
         vc3.tabBarItem = item3;
     }else{
@@ -94,7 +99,7 @@
         vc1.tabBarItem = item1;
         UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:@"采购统计" image:img2 tag:1];
         vc2.tabBarItem = item2;
-        UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"学生异动统计" image:nil tag:2];
+        UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"学生异动统计" image:img3 tag:2];
         vc3.tabBarItem = item3;
     }
     
