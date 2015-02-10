@@ -13,6 +13,7 @@
 }
 
 @property (nonatomic, strong) UITableView *mytableview;
-@property (nonatomic, strong) NSDictionary *info;
+@property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) NSString *occurdate;
 
 @end

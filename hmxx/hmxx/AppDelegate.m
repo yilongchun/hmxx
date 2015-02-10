@@ -51,22 +51,31 @@
             NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
             [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/app/Slogin.do?userId=%@&password=%@&clientType=%@&clientVersion=%@",[Utils getHostname],loginusername,loginpassword,@"2",app_Version]]];
             [request setHTTPMethod:@"GET"];
-            NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-            NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:returnData options:0 error:nil];
-            NSNumber *success = [resultDict objectForKey:@"success"];
-            if ([success boolValue]) {
-                NSDictionary *data = [resultDict objectForKey:@"data"];
-                NSString *userid = [data objectForKey:@"userid"];
-                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-                [userDefaults setObject:userid forKey:@"userid"];
-                [userDefaults setObject:loginusername forKey:@"loginusername"];
-                [userDefaults setObject:loginpassword forKey:@"loginpassword"];
-                [userDefaults setObject:@"YES" forKey:@"LOGINED"];
-                MainViewController *mainController = [[MainViewController alloc] init];
-                UINavigationController *vc = [[UINavigationController alloc] initWithRootViewController:mainController];
-                self.window.rootViewController = vc;
-            }else{
+            NSError *error;
+            NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+            if (error) {
                 [self goToLogin];
+            }else{
+                NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:returnData options:0 error:&error];
+                if (error) {
+                    [self goToLogin];
+                }else{
+                    NSNumber *success = [resultDict objectForKey:@"success"];
+                    if ([success boolValue]) {
+                        NSDictionary *data = [resultDict objectForKey:@"data"];
+                        NSString *userid = [data objectForKey:@"userid"];
+                        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                        [userDefaults setObject:userid forKey:@"userid"];
+                        [userDefaults setObject:loginusername forKey:@"loginusername"];
+                        [userDefaults setObject:loginpassword forKey:@"loginpassword"];
+                        [userDefaults setObject:@"YES" forKey:@"LOGINED"];
+                        MainViewController *mainController = [[MainViewController alloc] init];
+                        UINavigationController *vc = [[UINavigationController alloc] initWithRootViewController:mainController];
+                        self.window.rootViewController = vc;
+                    }else{
+                        [self goToLogin];
+                    }
+                }
             }
         }else{
             [self goToLogin];

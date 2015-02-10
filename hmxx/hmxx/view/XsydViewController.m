@@ -13,6 +13,7 @@
 #import "SRRefreshView.h"
 #import "MoreTableViewCell.h"
 #import "XsydDetailViewController.h"
+#import "XsydTableViewCell.h"
 
 @interface XsydViewController ()<MBProgressHUDDelegate,SRRefreshDelegate>{
     MBProgressHUD *HUD;
@@ -41,16 +42,16 @@
     schoolid = [userDefaults objectForKey:@"schoolid"];
     
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
-    CGRect cg;
-    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
-        cg = CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64-49);
-        self.automaticallyAdjustsScrollViewInsets = NO;
-    }else{
-        cg = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64-49);
-    }
-    mytableview = [[UITableView alloc] initWithFrame:cg style:UITableViewStylePlain];
-    mytableview.dataSource = self;
-    mytableview.delegate = self;
+//    CGRect cg;
+//    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+//        cg = CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64-49);
+//        self.automaticallyAdjustsScrollViewInsets = NO;
+//    }else{
+//        cg = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64-49);
+//    }
+//    mytableview = [[UITableView alloc] initWithFrame:cg style:UITableViewStylePlain];
+//    mytableview.dataSource = self;
+//    mytableview.delegate = self;
     UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
     [mytableview setTableFooterView:v];
     if ([mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
@@ -59,8 +60,15 @@
     if ([mytableview respondsToSelector:@selector(setLayoutMargins:)]) {
         [mytableview setLayoutMargins:UIEdgeInsetsZero];
     }
+    
+    
+    
     [mytableview addSubview:self.slimeView];
     [self.view addSubview:mytableview];
+    
+    CGRect rect = self.slimeView.frame;
+    rect.size.width = [UIScreen mainScreen].bounds.size.width;
+    [self.slimeView setFrame:rect];
     
     //添加加载等待条
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -229,42 +237,19 @@
         return cell;
         
     }else{
-//        static NSString *cellIdentifier = @"xsydcell";
-//        XsydTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-//        if (!cell) {
-//            cell = [[[NSBundle mainBundle] loadNibNamed:@"XsydTableViewCell" owner:self options:nil] lastObject];
-//        }
-        static NSString *cellIdentifier = @"cell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        static NSString *cellIdentifier = @"xsydcell";
+        XsydTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];;
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"XsydTableViewCell" owner:self options:nil] lastObject];
         }
-        
-        
+
         NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
-        NSString *createDate = [info objectForKey:@"createDate"];
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-        NSDate *date = [dateFormatter dateFromString:createDate];
-        NSDateFormatter *dateFormatter2 = [[NSDateFormatter alloc] init];
-        [dateFormatter2 setDateFormat:@"yyyy年MM月dd日"];
-        NSString *date2 = [dateFormatter2 stringFromDate:date];
-        
-        
-        
-        
-        
-        NSString *classname = [info objectForKey:@"classname"];
-        NSNumber *type = [info objectForKey:@"type"];
-        NSString *detail;
-        if ([type isEqualToNumber:[NSNumber numberWithInt:0]]) {
-            detail = @"转入";
-        }else if ([type isEqualToNumber:[NSNumber numberWithInt:1]]){
-            detail = @"转出";
-        }
-        NSString *studentname = [info objectForKey:@"studentname"];
-        cell.textLabel.text = date2;
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@ %@",classname,studentname,detail];
+        NSString *occurdate = [info objectForKey:@"occurdate"];
+        NSNumber *studentnum = [info objectForKey:@"studentnum"];
+        NSNumber *classnum = [info objectForKey:@"classnum"];
+        cell.datelabel.text = occurdate;
+        cell.numlabel1.text = [NSString stringWithFormat:@"%d",[studentnum intValue]];
+        cell.numlabel2.text = [NSString stringWithFormat:@"%d",[classnum intValue]];
         
         return cell;
     }
@@ -303,7 +288,8 @@
     }else{
         XsydDetailViewController *vc = [[XsydDetailViewController alloc] init];
         NSDictionary *info = [dataSource objectAtIndex:indexPath.row];
-        vc.info = info;
+        NSString *occurdate = [info objectForKey:@"occurdate"];
+        vc.occurdate = occurdate;
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

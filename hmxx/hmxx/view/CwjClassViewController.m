@@ -51,10 +51,10 @@
     //初始化tableview
     CGRect cg;
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
-        cg = CGRectMake(0, 64+40, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64-49);
+        cg = CGRectMake(0, 64+44, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64-49-44);
         self.automaticallyAdjustsScrollViewInsets = NO;
     }else{
-        cg = CGRectMake(0, 0+40, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64-49);
+        cg = CGRectMake(0, 0+44, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64-49-44);
     }
     mytableview = [[UITableView alloc] initWithFrame:cg style:UITableViewStylePlain];
     mytableview.dataSource = self;

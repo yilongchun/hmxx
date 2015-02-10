@@ -54,6 +54,9 @@
     [mytableview addSubview:self.slimeView];
     UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
     [mytableview setTableFooterView:v];
+    CGRect rect = self.slimeView.frame;
+    rect.size.width = [UIScreen mainScreen].bounds.size.width;
+    [self.slimeView setFrame:rect];
     if ([mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
         [mytableview setSeparatorInset:UIEdgeInsetsZero];
     }

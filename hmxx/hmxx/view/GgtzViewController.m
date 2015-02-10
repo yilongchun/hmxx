@@ -239,6 +239,8 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:@"MoreTableViewCell" owner:self options:nil] lastObject];
         }
         cell.msg.text = @"显示下10条";
+//        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, cell.bounds.size.width);
+        
         return cell;
     }else{
         static NSString *cellIdentifier = @"ggtzcell";
@@ -269,6 +271,7 @@
         }else{
             [cell.imageview setImageWithURL:[NSURL URLWithString:fileid] placeholderImage:[UIImage imageNamed:@"nopicture2.png"]];
         }
+//        cell.separatorInset = UIEdgeInsetsZero;
         return cell;
     }
 

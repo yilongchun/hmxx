@@ -309,6 +309,8 @@
 		E4F369FD1A6444EA0037A533 /* ic_kcb_bg2.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F369FB1A6444EA0037A533 /* ic_kcb_bg2.png */; };
 		E4F36A011A6448300037A533 /* ic_index_007.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F369FF1A6448300037A533 /* ic_index_007.png */; };
 		E4F3B0041A7CF93600176E56 /* nopicture2.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F3B0031A7CF93600176E56 /* nopicture2.png */; };
+		E4F483391A8A0C0400EFCB4E /* XsydTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F483371A8A0C0400EFCB4E /* XsydTableViewCell.m */; };
+		E4F4833A1A8A0C0400EFCB4E /* XsydTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F483381A8A0C0400EFCB4E /* XsydTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -763,6 +765,9 @@
 		E4F369FB1A6444EA0037A533 /* ic_kcb_bg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_kcb_bg2.png; sourceTree = "<group>"; };
 		E4F369FF1A6448300037A533 /* ic_index_007.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_index_007.png; sourceTree = "<group>"; };
 		E4F3B0031A7CF93600176E56 /* nopicture2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nopicture2.png; sourceTree = "<group>"; };
+		E4F483361A8A0C0400EFCB4E /* XsydTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XsydTableViewCell.h; path = view/XsydTableViewCell.h; sourceTree = "<group>"; };
+		E4F483371A8A0C0400EFCB4E /* XsydTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XsydTableViewCell.m; path = view/XsydTableViewCell.m; sourceTree = "<group>"; };
+		E4F483381A8A0C0400EFCB4E /* XsydTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = XsydTableViewCell.xib; path = view/XsydTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1373,6 +1378,9 @@
 				E4EC15351A77A2290048ACDB /* ReportThirdTableViewCell.h */,
 				E4EC15361A77A2290048ACDB /* ReportThirdTableViewCell.m */,
 				E4EC15371A77A2290048ACDB /* ReportThirdTableViewCell.xib */,
+				E4F483361A8A0C0400EFCB4E /* XsydTableViewCell.h */,
+				E4F483371A8A0C0400EFCB4E /* XsydTableViewCell.m */,
+				E4F483381A8A0C0400EFCB4E /* XsydTableViewCell.xib */,
 				E4C3D2B01A890C3C0027753D /* XsydViewController.h */,
 				E4C3D2B11A890C3C0027753D /* XsydViewController.m */,
 				E4C3D2B21A890C3C0027753D /* XsydViewController.xib */,
@@ -1517,6 +1525,7 @@
 				E4F077431A658E70004D7453 /* daishenhegg2@2x.png in Resources */,
 				E4CB95581A76547200CCC498 /* ReportFirstTableViewCell.xib in Resources */,
 				E4EC15341A77A0F70048ACDB /* ReportSecondTableViewCell.xib in Resources */,
+				E4F4833A1A8A0C0400EFCB4E /* XsydTableViewCell.xib in Resources */,
 				E4C74F111A84D905007241C3 /* checkbox1_unchecked.png in Resources */,
 				E4F369701A63ED080037A533 /* start_open.png in Resources */,
 				E43C21F11A66DEEF00E1DB45 /* UpAccessory@2x.png in Resources */,
@@ -1736,6 +1745,7 @@
 				E4ED5D981A6D654700FFB11A /* PurchaseDetailViewController.m in Sources */,
 				E4F0770A1A65685C004D7453 /* MyViewControllerCellDetail.m in Sources */,
 				E4F369C71A64088F0037A533 /* UIImageView+AFNetworking.m in Sources */,
+				E4F483391A8A0C0400EFCB4E /* XsydTableViewCell.m in Sources */,
 				E4F369741A6405F10037A533 /* MainViewController.m in Sources */,
 				E4C74F1E1A84D98B007241C3 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				E4F369C81A64088F0037A533 /* UIProgressView+AFNetworking.m in Sources */,

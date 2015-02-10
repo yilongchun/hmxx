@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface XsydViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface XsydViewController : UIViewController
 
-@property (nonatomic, strong) UITableView *mytableview;
+@property (weak, nonatomic) IBOutlet UITableView *mytableview;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 
 @end
