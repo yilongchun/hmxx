@@ -65,16 +65,16 @@
     }
     
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
-        self.mytextview.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
-        self.automaticallyAdjustsScrollViewInsets = NO;
+//        self.mytextview.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
+//        self.automaticallyAdjustsScrollViewInsets = NO;
         [self.mytextview setFrame:CGRectMake(self.mytextview.frame.origin.x, self.mytextview.frame.origin.y, [UIScreen mainScreen].bounds.size.width-8-85, self.mytextview.frame.size.height)];
     }else{
-        [self.label1 setFrame:CGRectMake(self.label1.frame.origin.x, self.label1.frame.origin.y-55, self.label1.frame.size.width, self.label1.frame.size.height)];
-        [self.label2 setFrame:CGRectMake(self.label2.frame.origin.x, self.label2.frame.origin.y-44, self.label2.frame.size.width, self.label2.frame.size.height)];
-        [self.label3 setFrame:CGRectMake(self.label3.frame.origin.x, self.label3.frame.origin.y-44, self.label3.frame.size.width, self.label3.frame.size.height)];
-        [self.scheduleTypeSegmented setFrame:CGRectMake(self.scheduleTypeSegmented.frame.origin.x, self.scheduleTypeSegmented.frame.origin.y-64, self.scheduleTypeSegmented.frame.size.width, self.scheduleTypeSegmented.frame.size.height)];
-        [self.titleLabel setFrame:CGRectMake(self.titleLabel.frame.origin.x, self.titleLabel.frame.origin.y-44, self.titleLabel.frame.size.width, self.titleLabel.frame.size.height)];
-        [self.mytextview setFrame:CGRectMake(self.mytextview.frame.origin.x, self.mytextview.frame.origin.y-44, self.mytextview.frame.size.width, self.mytextview.frame.size.height)];
+//        [self.label1 setFrame:CGRectMake(self.label1.frame.origin.x, self.label1.frame.origin.y-55, self.label1.frame.size.width, self.label1.frame.size.height)];
+//        [self.label2 setFrame:CGRectMake(self.label2.frame.origin.x, self.label2.frame.origin.y-44, self.label2.frame.size.width, self.label2.frame.size.height)];
+//        [self.label3 setFrame:CGRectMake(self.label3.frame.origin.x, self.label3.frame.origin.y-44, self.label3.frame.size.width, self.label3.frame.size.height)];
+//        [self.scheduleTypeSegmented setFrame:CGRectMake(self.scheduleTypeSegmented.frame.origin.x, self.scheduleTypeSegmented.frame.origin.y-64, self.scheduleTypeSegmented.frame.size.width, self.scheduleTypeSegmented.frame.size.height)];
+//        [self.titleLabel setFrame:CGRectMake(self.titleLabel.frame.origin.x, self.titleLabel.frame.origin.y-44, self.titleLabel.frame.size.width, self.titleLabel.frame.size.height)];
+//        [self.mytextview setFrame:CGRectMake(self.mytextview.frame.origin.x, self.mytextview.frame.origin.y-44, self.mytextview.frame.size.width, self.mytextview.frame.size.height)];
     }
     
     self.mytextview.layer.backgroundColor = [[UIColor clearColor] CGColor];
