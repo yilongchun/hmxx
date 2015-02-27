@@ -195,6 +195,8 @@
 		E4F077551A658E70004D7453 /* yuanwurizhi1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F0773D1A658E70004D7453 /* yuanwurizhi1@2x.png */; };
 		E4F077561A658E70004D7453 /* yuanwurizhi2.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F0773E1A658E70004D7453 /* yuanwurizhi2.png */; };
 		E4F077571A658E70004D7453 /* yuanwurizhi2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F0773F1A658E70004D7453 /* yuanwurizhi2@2x.png */; };
+		E4F08A781AA082CF00C6B521 /* PurchaseTypeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F08A761AA082CF00C6B521 /* PurchaseTypeDetailViewController.m */; };
+		E4F08A791AA082CF00C6B521 /* PurchaseTypeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F08A771AA082CF00C6B521 /* PurchaseTypeDetailViewController.xib */; };
 		E4F134391A73EA34001A9303 /* MyTabbarController5.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F134381A73EA34001A9303 /* MyTabbarController5.m */; };
 		E4F1344C1A73F8FE001A9303 /* PurchaseReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F1344A1A73F8FE001A9303 /* PurchaseReportViewController.m */; };
 		E4F1344D1A73F8FE001A9303 /* PurchaseReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F1344B1A73F8FE001A9303 /* PurchaseReportViewController.xib */; };
@@ -585,6 +587,9 @@
 		E4F0773D1A658E70004D7453 /* yuanwurizhi1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yuanwurizhi1@2x.png"; sourceTree = "<group>"; };
 		E4F0773E1A658E70004D7453 /* yuanwurizhi2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yuanwurizhi2.png; sourceTree = "<group>"; };
 		E4F0773F1A658E70004D7453 /* yuanwurizhi2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yuanwurizhi2@2x.png"; sourceTree = "<group>"; };
+		E4F08A751AA082CF00C6B521 /* PurchaseTypeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PurchaseTypeDetailViewController.h; path = view/PurchaseTypeDetailViewController.h; sourceTree = "<group>"; };
+		E4F08A761AA082CF00C6B521 /* PurchaseTypeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PurchaseTypeDetailViewController.m; path = view/PurchaseTypeDetailViewController.m; sourceTree = "<group>"; };
+		E4F08A771AA082CF00C6B521 /* PurchaseTypeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PurchaseTypeDetailViewController.xib; path = view/PurchaseTypeDetailViewController.xib; sourceTree = "<group>"; };
 		E4F134371A73EA34001A9303 /* MyTabbarController5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyTabbarController5.h; path = view/MyTabbarController5.h; sourceTree = "<group>"; };
 		E4F134381A73EA34001A9303 /* MyTabbarController5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyTabbarController5.m; path = view/MyTabbarController5.m; sourceTree = "<group>"; };
 		E4F134491A73F8FE001A9303 /* PurchaseReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PurchaseReportViewController.h; path = view/PurchaseReportViewController.h; sourceTree = "<group>"; };
@@ -1341,6 +1346,9 @@
 				E4ED5D901A6D5A0B00FFB11A /* PurchaseTypeViewController.h */,
 				E4ED5D911A6D5A0B00FFB11A /* PurchaseTypeViewController.m */,
 				E4ED5D921A6D5A0B00FFB11A /* PurchaseTypeViewController.xib */,
+				E4F08A751AA082CF00C6B521 /* PurchaseTypeDetailViewController.h */,
+				E4F08A761AA082CF00C6B521 /* PurchaseTypeDetailViewController.m */,
+				E4F08A771AA082CF00C6B521 /* PurchaseTypeDetailViewController.xib */,
 				E4ED5D951A6D654700FFB11A /* PurchaseDetailViewController.h */,
 				E4ED5D961A6D654700FFB11A /* PurchaseDetailViewController.m */,
 				E4ED5D971A6D654700FFB11A /* PurchaseDetailViewController.xib */,
@@ -1552,6 +1560,7 @@
 				E4F369751A6405F10037A533 /* MainViewController.xib in Resources */,
 				E4F21D841A666C47005372EA /* smiley_add_btn_nor.png in Resources */,
 				E4F369F21A642C010037A533 /* ic_sp_001.png in Resources */,
+				E4F08A791AA082CF00C6B521 /* PurchaseTypeDetailViewController.xib in Resources */,
 				E4F21DA91A66A2AE005372EA /* XscqtjViewController.xib in Resources */,
 				E4F36A011A6448300037A533 /* ic_index_007.png in Resources */,
 				E4EDA2A01A7255620018E967 /* summarymanage2@2x.png in Resources */,
@@ -1800,6 +1809,7 @@
 				E4F369C21A64088F0037A533 /* AFURLSessionManager.m in Sources */,
 				E4C74F1F1A84D98B007241C3 /* UIScrollView+SVPullToRefresh.m in Sources */,
 				E4F076DF1A656680004D7453 /* GgtzTableViewCell.m in Sources */,
+				E4F08A781AA082CF00C6B521 /* PurchaseTypeDetailViewController.m in Sources */,
 				E4F369C11A64088F0037A533 /* AFURLResponseSerialization.m in Sources */,
 				E4F369C91A64088F0037A533 /* UIRefreshControl+AFNetworking.m in Sources */,
 				E4F21DA31A668F7A005372EA /* BwrzViewController.m in Sources */,

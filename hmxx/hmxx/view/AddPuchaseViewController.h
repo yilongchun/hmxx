@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *dateBtn;
 - (IBAction)chooseType:(id)sender;
 - (IBAction)chooseDate:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *purchasetitle;
 @property (weak, nonatomic) IBOutlet UITextField *supplierText;
 @property (weak, nonatomic) IBOutlet UITextField *supplierQuText;
 @property (weak, nonatomic) IBOutlet UITextField *numText;

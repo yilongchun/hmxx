@@ -302,6 +302,7 @@
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:userid forKey:@"userid"];
     [dic setValue:schoolid forKey:@"schoolId"];
+    [dic setValue:self.purchasetitle.text forKey:@"title"];
     [dic setValue:purchase_type forKey:@"purchaseType"];//采购类型
     [dic setValue:self.dateBtn.titleLabel.text forKey:@"purchaseDate"];//日期
     [dic setValue:self.supplierText.text == nil ? @"" : self.supplierText.text forKey:@"supplier"];//供货单位

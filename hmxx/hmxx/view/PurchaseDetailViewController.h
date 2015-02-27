@@ -12,6 +12,7 @@
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (weak, nonatomic) IBOutlet UIButton *typeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *dateBtn;
+@property (weak, nonatomic) IBOutlet UITextField *purchasetitle;
 @property (weak, nonatomic) IBOutlet UITextField *supplierText;
 @property (weak, nonatomic) IBOutlet UITextField *supplierQuText;
 @property (weak, nonatomic) IBOutlet UITextField *numText;

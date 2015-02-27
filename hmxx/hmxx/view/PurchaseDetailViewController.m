@@ -63,6 +63,7 @@
                                      action:@selector(save)];
         self.navigationItem.rightBarButtonItem = rightBtn;
     }else{
+        [self.purchasetitle setUserInteractionEnabled:NO];
         [self.typeBtn setUserInteractionEnabled:NO];
         [self.dateBtn setUserInteractionEnabled:NO];
         [self.supplierText setUserInteractionEnabled:NO];
@@ -106,13 +107,14 @@
     NSNumber *price = [info objectForKey:@"price"];
     NSString *remark = [info objectForKey:@"remark"];
     NSNumber *hasReceiptNum = [info objectForKey:@"hasReceipt"];
+    NSString *purchasetitle = [info objectForKey:@"title"];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     NSDate *date = [dateFormatter dateFromString:purchaseDate];
     [datePicker setDate:date];
     
- 
+    self.purchasetitle.text = purchasetitle;
     [self.typeBtn setTitle:typeName forState:UIControlStateNormal];
     [self.dateBtn setTitle:purchaseDate forState:UIControlStateNormal];
     self.supplierText.text = supplier;
@@ -336,6 +338,7 @@
     [dic setValue:detailId forKey:@"id"];
     [dic setValue:userid forKey:@"userid"];
     [dic setValue:schoolid forKey:@"schoolId"];
+    [dic setValue:self.purchasetitle.text forKey:@"title"];
     [dic setValue:purchase_type forKey:@"purchaseType"];//采购类型
     [dic setValue:self.dateBtn.titleLabel.text forKey:@"purchaseDate"];//日期
     [dic setValue:self.supplierText.text forKey:@"supplier"];//供货单位
@@ -406,6 +409,7 @@
     [self.navigationController popViewControllerAnimated:YES];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadPurchase" object:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadPurchaseType" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadPurchaseTypeDetail" object:nil];
 }
 
 

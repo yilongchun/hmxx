@@ -1,50 +1,45 @@
 //
-//  PurchaseTypeViewController.m
+//  PurchaseTypeDetailViewController.m
 //  hmxx
 //
-//  Created by yons on 15-1-19.
+//  Created by yons on 15-2-27.
 //  Copyright (c) 2015年 hmzl. All rights reserved.
 //
 
-#import "PurchaseTypeViewController.h"
+#import "PurchaseTypeDetailViewController.h"
 #import "MKNetworkKit.h"
 #import "Utils.h"
 #import "MBProgressHUD.h"
 #import "SRRefreshView.h"
+#import "PurchaseDetailViewController.h"
 #import "MoreTableViewCell.h"
-#import "PurchaseTypeDetailViewController.h"
 
-@interface PurchaseTypeViewController ()<MBProgressHUDDelegate,SRRefreshDelegate>{
+@interface PurchaseTypeDetailViewController ()<MBProgressHUDDelegate,SRRefreshDelegate>{
     MBProgressHUD *HUD;
     MKNetworkEngine *engine;
     NSNumber *totalpage;
     NSNumber *page;
     NSNumber *rows;
-
+    
     NSString *schoolid;
     UIActivityIndicatorView *tempactivity;
 }
 @property (nonatomic, strong) SRRefreshView *slimeView;
+
 @end
 
-@implementation PurchaseTypeViewController
+@implementation PurchaseTypeDetailViewController
 @synthesize mytableview;
 @synthesize dataSource;
+@synthesize purchaseType;
 @synthesize purchaseDate;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-//    self.title = @"";
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
     self.navigationItem.backBarButtonItem = backItem;
     backItem.title = @"返回";
-    
-//    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
-//        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
-//    }
-    
-    //初始化tableview
     CGRect cg;
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
         self.automaticallyAdjustsScrollViewInsets = NO;
@@ -65,12 +60,19 @@
     if ([mytableview respondsToSelector:@selector(setLayoutMargins:)]) {
         [mytableview setLayoutMargins:UIEdgeInsetsZero];
     }
-    
+    if (self.isShow) {
+        UIBarButtonItem *editButton = [[UIBarButtonItem alloc]
+                                       initWithTitle:@"编辑"
+                                       style:UIBarButtonItemStyleBordered
+                                       target:self
+                                       action:@selector(toggleEdit:)];
+        self.navigationItem.rightBarButtonItem = editButton;
+    }
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(loadData)
-                                                 name:@"reloadPurchaseType"
+                                                 name:@"reloadPurchaseTypeDetail"
                                                object:nil];
     
     //添加加载等待条
@@ -119,10 +121,9 @@
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:schoolid forKey:@"schoolId"];
-    [dic setValue:page forKey:@"page"];
-    [dic setValue:rows forKey:@"rows"];
     [dic setValue:purchaseDate forKey:@"purchaseDate"];
-    MKNetworkOperation *op = [engine operationWithPath:@"/purchase/purchasedetailList.do" params:dic httpMethod:@"GET"];
+    [dic setValue:purchaseType forKey:@"purchaseType"];
+    MKNetworkOperation *op = [engine operationWithPath:@"/purchase/purchasedetailallList.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         NSString *result = [operation responseString];
         NSError *error;
@@ -133,16 +134,11 @@
         NSNumber *success = [resultDict objectForKey:@"success"];
         NSString *msg = [resultDict objectForKey:@"msg"];
         if ([success boolValue]) {
-            NSDictionary *data = [resultDict objectForKey:@"data"];
+            NSArray *data = [resultDict objectForKey:@"data"];
             if (data != nil) {
-                NSArray *arr = [data objectForKey:@"rows"];
-                self.dataSource = [NSMutableArray arrayWithArray:arr];
-                NSNumber *total = [data objectForKey:@"total"];
-                if ([total intValue] % [rows intValue] == 0) {
-                    totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue]];
-                }else{
-                    totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue] + 1];
-                }
+                
+                self.dataSource = [NSMutableArray arrayWithArray:data];
+                
                 [mytableview reloadData];
             }
             [HUD hide:YES];
@@ -159,51 +155,7 @@
     [engine enqueueOperation:op];
 }
 
-- (void)loadMore{
-    if ([page intValue] < [totalpage intValue]) {
-        page = [NSNumber numberWithInt:[page intValue] +1];
-    }
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setValue:schoolid forKey:@"schoolId"];
-    [dic setValue:page forKey:@"page"];
-    [dic setValue:rows forKey:@"rows"];
-    [dic setValue:purchaseDate forKey:@"purchaseDate"];
-    MKNetworkOperation *op = [engine operationWithPath:@"/purchase/purchasedetailList.do" params:dic httpMethod:@"GET"];
-    [op addCompletionHandler:^(MKNetworkOperation *operation) {
-        NSString *result = [operation responseString];
-        NSError *error;
-        NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
-        if (resultDict == nil) {
-            NSLog(@"json parse failed \r\n");
-        }
-        NSNumber *success = [resultDict objectForKey:@"success"];
-        NSString *msg = [resultDict objectForKey:@"msg"];
-        if ([success boolValue]) {
-            NSDictionary *data = [resultDict objectForKey:@"data"];
-            if (data != nil) {
-                NSArray *arr = [data objectForKey:@"rows"];
-                [self.dataSource addObjectsFromArray:arr];
-                NSNumber *total = [data objectForKey:@"total"];
-                if ([total intValue] % [rows intValue] == 0) {
-                    totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue]];
-                }else{
-                    totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue] + 1];
-                }
-            }
-            if ([tempactivity isAnimating]) {
-                [tempactivity stopAnimating];
-            }
-            [mytableview reloadData];
-        }else{
-            [self alertMsg:msg];
-            
-        }
-    }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
-        NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        [self alertMsg:@"连接服务器失败"];
-    }];
-    [engine enqueueOperation:op];
-}
+
 
 //成功
 - (void)okMsk:(NSString *)msg{
@@ -232,48 +184,29 @@
 #pragma mark - UITableViewDatasource Methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (page != totalpage && [self.dataSource count] != 0) {
-        return [[self dataSource] count] + 1;
-    }else{
-        return [[self dataSource] count];
-    }
+    return [[self dataSource] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self.dataSource count] == indexPath.row) {
-        static NSString *cellIdentifier = @"morecell";
-        MoreTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-        if (!cell) {
-            cell = [[[NSBundle mainBundle] loadNibNamed:@"MoreTableViewCell" owner:self options:nil] lastObject];
-        }
-        cell.msg.text = @"显示下10条";
-        return cell;
-        
-    }else{
-        static NSString *cellIdentifier = @"cell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-        if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
-        }
-        
-        NSDictionary *info = [dataSource objectAtIndex:indexPath.row];
-        NSString *typeName = [info objectForKey:@"typeName"];
-        NSNumber *totalPrice = [info objectForKey:@"totalPrice"];
-        cell.textLabel.text = typeName;
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"￥%.2f",[totalPrice doubleValue]];
-        [cell.detailTextLabel setTextColor:[UIColor blackColor]];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        return cell;
+    static NSString *cellIdentifier = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
     }
     
+    NSDictionary *info = [dataSource objectAtIndex:indexPath.row];
+//    NSString *typeName = [info objectForKey:@"typeName"];
+    NSString *purchasetitle = [info objectForKey:@"title"];
+    NSNumber *totalPrice = [info objectForKey:@"totalPrice"];
+    cell.textLabel.text = purchasetitle;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"￥%.2f",[totalPrice doubleValue]];
+    [cell.detailTextLabel setTextColor:[UIColor blackColor]];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([self.dataSource count] == indexPath.row) {
-        return 55;
-    }else{
-        return 44;
-    }
+    return 44;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -286,31 +219,75 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([self.dataSource count] == indexPath.row) {
-        if (page == totalpage) {
-            
-        }else{
-            MoreTableViewCell *cell = (MoreTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-            cell.msg.text = @"加载中...";
-            [cell.activity startAnimating];
-            tempactivity = cell.activity;
-            [self loadMore];
-        }
-        
-    }else{
-        if (indexPath.row < [dataSource count]) {
-            PurchaseTypeDetailViewController *vc = [[PurchaseTypeDetailViewController alloc] init];
-            vc.purchaseDate = purchaseDate;
-            NSDictionary *info = [dataSource objectAtIndex:indexPath.row];
-            NSString *purchase_type = [info objectForKey:@"purchase_type"];
-            NSString *typeName = [info objectForKey:@"typeName"];
-            vc.purchaseType = purchase_type;
-            vc.isShow = self.isShow;
-            vc.title = typeName;
-            [self.navigationController pushViewController:vc animated:YES];
-        }
+    
+    if (indexPath.row < [dataSource count]) {
+        PurchaseDetailViewController *vc = [[PurchaseDetailViewController alloc] init];
+        NSDictionary *info = [dataSource objectAtIndex:indexPath.row];
+        vc.info = info;
+        vc.title = @"采购详情";
+        vc.isShow = self.isShow;
+        [self.navigationController pushViewController:vc animated:YES];
     }
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.isShow) {
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSDictionary *info = [dataSource objectAtIndex:indexPath.row];
+        NSString *detailId = [info objectForKey:@"id"];
+        
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setValue:detailId forKey:@"id"];
+        MKNetworkOperation *op = [engine operationWithPath:@"/purchase/delect.do" params:dic httpMethod:@"GET"];
+        [op addCompletionHandler:^(MKNetworkOperation *operation) {
+            NSString *result = [operation responseString];
+            NSError *error;
+            NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+            if (resultDict == nil) {
+                NSLog(@"json parse failed \r\n");
+            }
+            NSNumber *success = [resultDict objectForKey:@"success"];
+            NSString *msg = [resultDict objectForKey:@"msg"];
+            if ([success boolValue]) {
+                [dataSource removeObjectAtIndex:indexPath.row];
+                [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadPurchase" object:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadPurchaseType" object:nil];
+                [HUD hide:YES];
+                [self okMsk:msg];
+            }else{
+                [HUD hide:YES];
+                [self alertMsg:msg];
+                
+            }
+        }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
+            NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
+            [HUD hide:YES];
+            [self alertMsg:@"连接服务器失败"];
+        }];
+        [engine enqueueOperation:op];
+    }
+    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+    }
+}
+
+-(IBAction)toggleEdit:(id)sender {
+    [self.mytableview setEditing:!self.mytableview.editing animated:YES];
+    if (self.mytableview.editing) {
+        self.navigationItem.rightBarButtonItem.title = @"取消";
+    }else{
+        self.navigationItem.rightBarButtonItem.title = @"编辑";
+    }
 }
 
 #pragma mark - scrollView delegate
@@ -331,6 +308,11 @@
     [HUD show:YES];
     [self loadData];
     [_slimeView endRefresh];
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [self.mytableview setEditing:NO];
 }
 
 - (void)didReceiveMemoryWarning {
