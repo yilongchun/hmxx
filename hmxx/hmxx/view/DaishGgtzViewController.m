@@ -171,10 +171,16 @@
         cell.creater.text = [NSString stringWithFormat:@"%@  %@",noticename,self.creater];
         //    cell.content.text = @"测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试";
         cell.content.numberOfLines = 0;
+        cell.content.lineBreakMode = NSLineBreakByCharWrapping;
         [cell.content sizeToFit];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
         
+        CGFloat contentWidth = [UIScreen mainScreen].bounds.size.width ;
+        UIFont *font = [UIFont systemFontOfSize:17];
+        CGSize size = [content sizeWithFont:font constrainedToSize:CGSizeMake(contentWidth-16, MAXFLOAT) lineBreakMode:NSLineBreakByCharWrapping];
+        [cell.content setFrame:CGRectMake(cell.content.frame.origin.x, cell.content.frame.origin.y, cell.content.frame.size.width, size.height)];
+        return cell;
+    
     
 }
 
@@ -183,14 +189,14 @@
     
         NSInteger row = [indexPath row];
         // 列寬
-        CGFloat contentWidth = self.mytableview.frame.size.width;
+        CGFloat contentWidth = [UIScreen mainScreen].bounds.size.width;
         // 用何種字體進行顯示
         UIFont *font = [UIFont systemFontOfSize:17];
         // 該行要顯示的內容
         NSString *content = [[self.dataSource objectAtIndex:row] objectForKey:@"tncontent"];
         //    NSString *content = @"测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试";
         // 計算出顯示完內容需要的最小尺寸
-        CGSize size = [content sizeWithFont:font constrainedToSize:CGSizeMake(contentWidth, 1000.0f) lineBreakMode:NSLineBreakByCharWrapping];
+        CGSize size = [content sizeWithFont:font constrainedToSize:CGSizeMake(contentWidth-16, MAXFLOAT) lineBreakMode:NSLineBreakByCharWrapping];
         return size.height+106;
     
 }

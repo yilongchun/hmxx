@@ -279,8 +279,14 @@
         cell.creater.text = noticename;
         //    cell.content.text = @"测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试";
         cell.content.numberOfLines = 0;
+        cell.content.lineBreakMode = NSLineBreakByCharWrapping;
         [cell.content sizeToFit];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        CGFloat contentWidth = [UIScreen mainScreen].bounds.size.width ;
+        UIFont *font = [UIFont systemFontOfSize:17];
+        CGSize size = [content sizeWithFont:font constrainedToSize:CGSizeMake(contentWidth-16, MAXFLOAT) lineBreakMode:NSLineBreakByCharWrapping];
+        [cell.content setFrame:CGRectMake(cell.content.frame.origin.x, cell.content.frame.origin.y, cell.content.frame.size.width, size.height)];
         return cell;
         
     }else{
@@ -313,40 +319,14 @@
             
             //评论内容 高度自适应
             cell.commentlabel.text = commentContent;
-            //设置自动行数与字符换行
-            [cell.commentlabel setNumberOfLines:0];
+            cell.commentlabel.numberOfLines = 0;
+            cell.commentlabel.lineBreakMode = NSLineBreakByCharWrapping;
+            [cell.commentlabel sizeToFit];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            CGFloat contentWidth = [UIScreen mainScreen].bounds.size.width ;
             UIFont *font = [UIFont systemFontOfSize:14];
-            //设置一个行高上限
-            CGSize size = CGSizeMake(self.mytableview.frame.size.width-51-24,2000);
-            //计算实际frame大小，并将label的frame变成实际大小
-            NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
-            paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
-            NSDictionary *attributes = @{NSFontAttributeName:font, NSParagraphStyleAttributeName:paragraphStyle.copy};
-            CGRect rect;
-            
-            
-            if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
-                rect = [cell.commentlabel.text boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
-            }else{
-                NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:cell.commentlabel.text attributes:attributes];
-                NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-                [paragraphStyle setLineSpacing:10];
-                [attributedStr addAttribute:NSParagraphStyleAttributeName
-                                      value:paragraphStyle
-                                      range:NSMakeRange(0, [cell.commentlabel.text length])];
-                rect = [attributedStr boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin context:nil];
-            }
-            
-            
-            
-            
-            
-            CGSize labelsize = rect.size;
-            labelsize.height = ceil(labelsize.height);
-            labelsize.width = ceil(labelsize.width);
-            
-            
-            [cell.commentlabel setFrame:CGRectMake(cell.commentlabel.frame.origin.x, cell.commentlabel.frame.origin.y, labelsize.width, labelsize.height)];
+            CGSize size = [commentContent sizeWithFont:font constrainedToSize:CGSizeMake(contentWidth-59, MAXFLOAT) lineBreakMode:NSLineBreakByCharWrapping];
+            [cell.commentlabel setFrame:CGRectMake(cell.commentlabel.frame.origin.x, cell.commentlabel.frame.origin.y, cell.commentlabel.frame.size.width, size.height)];
             
             
             if ([Utils isBlankString:fileid]) {
@@ -368,27 +348,27 @@
     if (row == 0) {
         NSInteger row = [indexPath row];
         // 列寬
-        CGFloat contentWidth = self.mytableview.frame.size.width;
+        CGFloat contentWidth = [UIScreen mainScreen].bounds.size.width;
         // 用何種字體進行顯示
         UIFont *font = [UIFont systemFontOfSize:17];
         // 該行要顯示的內容
         NSString *content = [[self.dataSource objectAtIndex:row] objectForKey:@"tncontent"];
         //    NSString *content = @"测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试";
         // 計算出顯示完內容需要的最小尺寸
-        CGSize size = [content sizeWithFont:font constrainedToSize:CGSizeMake(contentWidth, 1000.0f) lineBreakMode:NSLineBreakByCharWrapping];
+        CGSize size = [content sizeWithFont:font constrainedToSize:CGSizeMake(contentWidth-16, MAXFLOAT) lineBreakMode:NSLineBreakByCharWrapping];
         return size.height+106;
     }else{
         if ([self.dataSource count] == indexPath.row) {
             return 55;
         }else{
             // 列寬
-            CGFloat contentWidth = self.mytableview.frame.size.width-51-24;
+            CGFloat contentWidth = [UIScreen mainScreen].bounds.size.width-59;
             // 用何種字體進行顯示
             UIFont *font = [UIFont systemFontOfSize:14];
             // 該行要顯示的內容
             NSString *content = [[self.dataSource objectAtIndex:row] objectForKey:@"commentContent"];
             // 計算出顯示完內容需要的最小尺寸
-            CGSize size = [content sizeWithFont:font constrainedToSize:CGSizeMake(contentWidth, 1000.0f) lineBreakMode:NSLineBreakByCharWrapping];
+            CGSize size = [content sizeWithFont:font constrainedToSize:CGSizeMake(contentWidth, MAXFLOAT) lineBreakMode:NSLineBreakByCharWrapping];
             return size.height+60;
         }
     }
