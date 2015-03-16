@@ -17,6 +17,7 @@
     MBProgressHUD *HUD;
     
     NSString *teacherId;
+    NSString *imageid;
 }
 
 @end
@@ -71,6 +72,7 @@
             if (data != nil) {
                 NSString *teacherName = [data objectForKey:@"teacherName"];
                 NSString *flieid = [data objectForKey:@"flieid"];
+                imageid = [data objectForKey:@"imageid"];
                 NSArray *classList = [data objectForKey:@"classList"];
                 NSDictionary *classDic = [classList objectAtIndex:0];
                 NSNumber *ishead = [classDic objectForKey:@"ishead"];
@@ -215,9 +217,9 @@
 - (void)updateImgData:(NSString *)fileid{
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:teacherId forKey:@"userid"];
-    [dic setValue:fileid forKey:@"fileid"];
-    
-    MKNetworkOperation *op = [engine operationWithPath:@"/Teacher/updateimage.do" params:dic httpMethod:@"POST"];
+    [dic setValue:fileid forKey:@"fileid"];//新图片的
+    [dic setValue:imageid forKey:@"imageid"];
+    MKNetworkOperation *op = [engine operationWithPath:@"/Teacher/updatereleimage.do" params:dic httpMethod:@"POST"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         
         NSString *result = [operation responseString];

@@ -30,14 +30,14 @@
                     <rect key="frame" x="74" y="361" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入账号" minimumFontSize="17" id="lhE-K4-9cB">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入账号" minimumFontSize="17" clearButtonMode="whileEditing" id="lhE-K4-9cB">
                     <rect key="frame" x="112" y="312" width="135" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" minimumFontSize="17" id="G9Q-Cl-70f">
+                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" minimumFontSize="17" clearButtonMode="whileEditing" id="G9Q-Cl-70f">
                     <rect key="frame" x="112" y="361" width="135" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>

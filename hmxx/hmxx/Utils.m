@@ -14,7 +14,7 @@
     //从资源文件获取请求路径
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"];
     NSMutableDictionary *infolist = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-    NSString *hostname = [infolist objectForKey:@"Httpurl3"];
+    NSString *hostname = [infolist objectForKey:@"Httpurl"];
     return hostname;
 }
 
@@ -22,7 +22,7 @@
     //从资源文件获取请求路径
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"];
     NSMutableDictionary *infolist = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-    NSString *hostname = [infolist objectForKey:@"HttpImageurl3"];
+    NSString *hostname = [infolist objectForKey:@"HttpImageurl"];
     return hostname;
 }
 
@@ -30,7 +30,7 @@
     //从资源文件获取请求路径
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"];
     NSMutableDictionary *infolist = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-    NSString *hostname = [infolist objectForKey:@"HttpVideourl3"];
+    NSString *hostname = [infolist objectForKey:@"HttpVideourl"];
     return hostname;
 }
 

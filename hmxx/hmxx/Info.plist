@@ -43,7 +43,7 @@
 	<key>Httpurl2</key>
 	<string>115.29.103.36/sma</string>
 	<key>Httpurl3</key>
-	<string>mobile.hmjxt.com/newsma</string>
+	<string>mobile.hmjxt.com/testsma</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

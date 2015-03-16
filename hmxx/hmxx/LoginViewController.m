@@ -47,9 +47,9 @@
     
     // Do any additional setup after loading the view from its nib.
     //添加手势，点击输入框其他区域隐藏键盘
-    UITapGestureRecognizer *tapGr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
-    tapGr.cancelsTouchesInView =NO;
-    [self.view addGestureRecognizer:tapGr];
+//    UITapGestureRecognizer *tapGr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
+//    tapGr.cancelsTouchesInView =NO;
+//    [self.view addGestureRecognizer:tapGr];
     
     [self.loginBtn setBackgroundImage:[[UIImage imageNamed:@"loginBtnBg.png"]stretchableImageWithLeftCapWidth:5.0 topCapHeight:5.0] forState:UIControlStateNormal];
     [self.loginBtn setBackgroundImage:[[UIImage imageNamed:@"loginBtnBg2.png"]stretchableImageWithLeftCapWidth:5.0 topCapHeight:5.0] forState:UIControlStateHighlighted];
