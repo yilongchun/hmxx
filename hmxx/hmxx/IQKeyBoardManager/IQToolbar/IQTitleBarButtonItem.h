@@ -1,5 +1,5 @@
 //
-//  UIWindow+Hierarchy.h
+//  IQTitleBarButtonItem.h
 // https://github.com/hackiftekhar/IQKeyboardManager
 // Copyright (c) 2013-14 Iftekhar Qurashi.
 //
@@ -21,25 +21,22 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIWindow.h>
-
-@class UIViewController;
-
-@interface UIWindow (Hierarchy)
-
+#import <Foundation/NSObjCRuntime.h>
+#import "IQKeyboardManagerConstants.h"
+#import "IQBarButtonItem.h"
 /*!
-    @method topMostController
+    @author Iftekhar Qurashi
  
-    @return Returns the current Top Most ViewController in hierarchy.
- */
-- (UIViewController*) topMostController;
-
-/*!
-    @method currentViewController
+	@related hack.iftekhar@gmail.com
  
-    @return Returns the topViewController in stack of topMostController.
+    @class IQTitleBarButtonItem
+ 
+	@abstract BarButtonItem with title text.
  */
-- (UIViewController*)currentViewController;
+@interface IQTitleBarButtonItem : IQBarButtonItem
 
+@property(nonatomic, strong) UIFont *font;  //Default is (system font 12.0 bold)
+
+-(instancetype)initWithFrame:(CGRect)frame title:(NSString *)title NS_DESIGNATED_INITIALIZER;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  UIView+Hierarchy.h
+//  IQBarButtonItem.h
 // https://github.com/hackiftekhar/IQKeyboardManager
 // Copyright (c) 2013-14 Iftekhar Qurashi.
 //
@@ -21,41 +21,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIView.h>
 
-@class UIScrollView, UITableView, NSArray;
-
-@interface UIView (Hierarchy)
+#import <UIKit/UIBarButtonItem.h>
 
 /*!
-    @method superScrollView:
+    @class IQBarButtonItem
  
-    @return Returns the UIScrollView object if any found in view's upper hierarchy.
+	@abstract IQBarButtonItem used for IQToolbar.
  */
-- (UIScrollView*)superScrollView;
+@interface IQBarButtonItem : UIBarButtonItem
 
-/*!
-    @method superTableView:
- 
-    @return Returns the UITableView object if any found in view's upper hierarchy.
- */
-- (UITableView*)superTableView;
-
-/*!
-    @method responderSiblings:
- 
-    @return returns all siblings of the receiver which canBecomeFirstResponder.
- */
-- (NSArray*)responderSiblings;
-
-/*!
-    @method deepResponderViews:
- 
-    @return returns all deep subViews of the receiver which canBecomeFirstResponder.
- */
-- (NSArray*)deepResponderViews;
-
--(BOOL)isInsideSearchBar;
-//-(BOOL)isInsideAlertView;
 
 @end

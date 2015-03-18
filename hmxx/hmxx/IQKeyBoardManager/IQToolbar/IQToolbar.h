@@ -1,5 +1,5 @@
 //
-//  IQTitleBarButtonItem.h
+//  IQToolbar.h
 // https://github.com/hackiftekhar/IQKeyboardManager
 // Copyright (c) 2013-14 Iftekhar Qurashi.
 //
@@ -21,10 +21,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIBarButtonItem.h>
+#import <UIKit/UIToolbar.h>
 
-@interface IQTitleBarButtonItem : UIBarButtonItem
+/*!
+    @class      IQToolbar
+ 
+	@abstract   IQToolbar for IQKeyboardManager.
+ */
+@interface IQToolbar : UIToolbar <UIInputViewAudioFeedback>
 
--(id)initWithFrame:(CGRect)frame Title:(NSString *)title;
+@property(nonatomic, strong) UIFont     *titleFont;
+@property(nonatomic, strong) NSString   *title;
 
 @end
+

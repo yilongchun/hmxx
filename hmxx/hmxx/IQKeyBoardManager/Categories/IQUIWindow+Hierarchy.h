@@ -1,5 +1,5 @@
 //
-//  NSArray+Sort.m
+//  UIWindow+Hierarchy.h
 // https://github.com/hackiftekhar/IQKeyboardManager
 // Copyright (c) 2013-14 Iftekhar Qurashi.
 //
@@ -21,32 +21,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "NSArray+Sort.h"
+#import <UIKit/UIWindow.h>
 
-#import <UIKit/UIView.h>
+@class UIViewController;
 
-#import "IQKeyboardManagerConstantsInternal.h"
+/*!
+    @category UIWindow (IQ_UIWindow_Hierarchy)
+ 
+    @abstract UIWindow hierarchy category.
+ */
+@interface UIWindow (IQ_UIWindow_Hierarchy)
 
-IQ_LoadCategory(IQNSArraySort)
+/*!
+    @method topMostController
+ 
+    @return Returns the current Top Most ViewController in hierarchy.
+ */
+@property (nonatomic, readonly, strong) UIViewController *topMostController;
 
+/*!
+    @method currentViewController
+ 
+    @return Returns the topViewController in stack of topMostController.
+ */
+@property (nonatomic, readonly, strong) UIViewController *currentViewController;
 
-@implementation NSArray (Sort)
-
-- (NSArray*)sortedArrayByTag
-{
-    return [self sortedArrayUsingComparator:^NSComparisonResult(UIView *obj1, UIView *obj2) {
-        
-        if ([obj1 respondsToSelector:@selector(tag)] && [obj2 respondsToSelector:@selector(tag)])
-        {
-            if ([obj1 tag] < [obj2 tag])	return NSOrderedAscending;
-            
-            else if ([obj1 tag] > [obj2 tag])	return NSOrderedDescending;
-            
-            else	return NSOrderedSame;
-        }
-        else
-            return NSOrderedSame;
-    }];
-}
 
 @end

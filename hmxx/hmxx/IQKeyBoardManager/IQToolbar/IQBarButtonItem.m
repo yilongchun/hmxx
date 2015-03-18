@@ -1,5 +1,5 @@
 //
-//  IQKeyboardManagerConstantsInternal.h
+//  IQBarButtonItem.m
 // https://github.com/hackiftekhar/IQKeyboardManager
 // Copyright (c) 2013-14 Iftekhar Qurashi.
 //
@@ -21,16 +21,22 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#ifndef IQKeyboardManagerConstantsInternal_h
-#define IQKeyboardManagerConstantsInternal_h
+#import "IQBarButtonItem.h"
+#import "IQToolbar.h"
 
-#define IQ_IS_IOS7_OR_GREATER (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1)
+@implementation IQBarButtonItem
 
-/*!
-    @discussion To load categories in the current file loadable without using "-load-all" flag. When we try to create framework or library the compilers skips linking files that contain only categories. So user this macro to add a dummy class, which causes the linker to add the file. You will also need to add "-ObjC" to the "Other Linker Flags" build setting in any project that uses the framework.
- 
-    @param UNIQUE_NAME A globally unique name.
- */
-#define IQ_LoadCategory(UNIQUE_NAME) @interface FORCELOAD_##UNIQUE_NAME :NSObject @end @implementation FORCELOAD_##UNIQUE_NAME @end
++(void)initialize
+{
+    [super initialize];
+    
+    [[self appearance] setTintColor:nil];
+    [[self appearance] setTitleTextAttributes:nil forState:UIControlStateNormal];
+    [[self appearance] setTitleTextAttributes:nil forState:UIControlStateHighlighted];
+    [[self appearance] setTitleTextAttributes:nil forState:UIControlStateDisabled];
+    [[self appearance] setTitleTextAttributes:nil forState:UIControlStateSelected];
+    [[self appearance] setTitleTextAttributes:nil forState:UIControlStateApplication];
+    [[self appearance] setTitleTextAttributes:nil forState:UIControlStateReserved];
+}
 
-#endif
+@end

@@ -21,13 +21,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UISegmentedControl.h>
 #import "IQKeyboardManagerConstants.h"
+
+#import <Foundation/NSObjCRuntime.h>
+
+#import <UIKit/UISegmentedControl.h>
 
 /*!
     @class IQSegmentedNextPrevious
  
-    @since iOS (5.0 and iOS 6.0)
+    @deprecated Deprecated in iOS 7
  
     @abstract Custom SegmentedControl for Previous/Next button.
  */
@@ -46,21 +49,21 @@ NS_CLASS_DEPRECATED_IOS(2_0, 7_0, "Deprecated for iOS 7")
  
     @param nextAction: Next button action name. Usually 'nextAction:(IQSegmentedNextPrevious*)segmentedControl'.
  */
-- (id)initWithTarget:(id)target previousAction:(SEL)previousAction nextAction:(SEL)nextAction;
+- (instancetype)initWithTarget:(id)target previousAction:(SEL)previousAction nextAction:(SEL)nextAction NS_DESIGNATED_INITIALIZER;
 
 /*!
     @method init
  
     @abstract initWithTarget:previousAction:nextAction should be used.
  */
-- (id)init	__attribute__((unavailable("init is not available, should use initWithTarget:previousAction:nextAction instead")));
+- (instancetype)init	__attribute__((unavailable("init is not available, should use initWithTarget:previousAction:nextAction instead")));
 
 /*!
     @method init
  
     @abstract initWithTarget:previousAction:nextAction should be used.
  */
-+ (id)new	__attribute__((unavailable("new is not available, should use initWithTarget:previousAction:nextAction instead")));
++ (instancetype)new	__attribute__((unavailable("new is not available, should use initWithTarget:previousAction:nextAction instead")));
 
 @end
 

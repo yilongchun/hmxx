@@ -1,5 +1,5 @@
 //
-//  UIWindow+Hierarchy.m
+//  IQTextView.h
 // https://github.com/hackiftekhar/IQKeyboardManager
 // Copyright (c) 2013-14 Iftekhar Qurashi.
 //
@@ -21,37 +21,26 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "UIWindow+Hierarchy.h"
+#import "IQKeyboardManagerConstants.h"
 
-#import <UIKit/UINavigationController.h>
+#import <UIKit/UITextView.h>
 
-#import "IQKeyboardManagerConstantsInternal.h"
-IQ_LoadCategory(IQUIWindowHierarchy)
+/*!
+    @class IQTextView
+ 
+    @abstract UITextView with placeholder support
+ */
+@interface IQTextView : UITextView
 
-
-@implementation UIWindow (Hierarchy)
-
-//  Function to get topMost ViewController object.
-- (UIViewController*) topMostController
-{
-    UIViewController *topController = [self rootViewController];
-    
-    //  Getting topMost ViewController
-    while ([topController presentedViewController])	topController = [topController presentedViewController];
-	
-    //  Returning topMost ViewController
-    return topController;
-}
-
-- (UIViewController*)currentViewController;
-{
-    UIViewController *currentViewController = [self topMostController];
-    
-    while ([currentViewController isKindOfClass:[UINavigationController class]] && [(UINavigationController*)currentViewController topViewController])
-        currentViewController = [(UINavigationController*)currentViewController topViewController];
-    
-    return currentViewController;
-}
-
+/*!
+    @property placeholder
+ 
+    @abstract To set textView's placeholder text. Default is ni.
+ */
+@property(nonatomic,copy)   NSString    *placeholder;
 
 @end
+
+
+
+

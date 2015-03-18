@@ -1,5 +1,5 @@
 //
-//  NSArray+Sort.h
+//  IQTitleBarButtonItem.m
 // https://github.com/hackiftekhar/IQKeyboardManager
 // Copyright (c) 2013-14 Iftekhar Qurashi.
 //
@@ -21,15 +21,46 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/NSArray.h>
+#import "IQTitleBarButtonItem.h"
+#import "IQKeyboardManagerConstants.h"
 
-@interface NSArray (Sort)
+#import <UIKit/UILabel.h>
 
-/*!
-    @method sortedArrayByTag
- 
-    @return Returns the array by sorting the UIView's by their tag property.
- */
-- (NSArray*)sortedArrayByTag;
+@implementation IQTitleBarButtonItem
+{
+    UILabel *_titleLabel;
+}
+@synthesize font = _font;
+
+-(instancetype)initWithFrame:(CGRect)frame title:(NSString *)title
+{
+    self = [super initWithTitle:nil style:UIBarButtonItemStylePlain target:nil action:nil];
+    if (self)
+    {
+        _titleLabel = [[UILabel alloc] initWithFrame:frame];
+        [_titleLabel setBackgroundColor:[UIColor clearColor]];
+        [_titleLabel setTextAlignment:NSTextAlignmentCenter];
+        [_titleLabel setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
+        [self setTitle:title];
+        [self setFont:[UIFont boldSystemFontOfSize:12.0]];
+        self.title = title;
+        
+        self.customView = _titleLabel;
+        self.enabled = NO;
+    }
+    return self;
+}
+
+-(void)setFont:(UIFont *)font
+{
+    _font = font;
+    [_titleLabel setFont:font];
+}
+
+-(void)setTitle:(NSString *)title
+{
+    [super setTitle:title];
+    _titleLabel.text = title;
+}
 
 @end

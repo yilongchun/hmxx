@@ -27,13 +27,51 @@
 @class UIBarButtonItem;
 
 /*!
-    @category UIView (Toolbar)
- 
-    @since iOS (5.0 and later), ARC Required
+    @category UIView (IQToolbarAddition)
  
     @abstract UIView category methods to add IQToolbar on UIKeyboard.
  */
-@interface UIView (Toolbar)
+@interface UIView (IQToolbarAddition)
+
+/*!
+    @property shouldHideTitle
+ 
+    @abstract if shouldHideTitle is YES, then title will not be added to the toolbar. Default to NO.
+ */
+@property (assign, nonatomic) BOOL shouldHideTitle;
+
+/*!
+    @method setCustomPreviousTarget:action:
+    @method setCustomNextTarget:action:
+    @method setCustomDoneTarget:action:
+ 
+    @abstract Invoke action on target when the toolbar is created using IQKeyboardManager, you may add additional target & action to do get callback action. Note that setting custom previous/next/done selector doesn't affect native next/previous/done functionality, this is just used to notifiy user to do additional work according to your need.
+ */
+-(void)setCustomPreviousTarget:(id)target action:(SEL)action;
+-(void)setCustomNextTarget:(id)target action:(SEL)action;
+-(void)setCustomDoneTarget:(id)target action:(SEL)action;
+
+/*!
+    @property previousInvocation
+ 
+    @abstract customized Invocation to be called on previous arrow action. previousInvocation is internally created using setCustomPreviousTarget: method.
+ */
+@property (strong, nonatomic) NSInvocation *previousInvocation;
+
+/*!
+    @property nextInvocation
+ 
+    @abstract customized Invocation to be called on next arrow action. nextInvocation is internally created using setCustomNextTarget: method.
+ */
+@property (strong, nonatomic) NSInvocation *nextInvocation;
+
+/*!
+    @property nextInvocation
+ 
+    @abstract customized Invocation to be called on done action. doneInvocation is internally created using setCustomDoneTarget: method.
+ */
+@property (strong, nonatomic) NSInvocation *doneInvocation;
+
 
 /*!
     @method addDoneOnKeyboardWithTarget:action:
@@ -42,7 +80,7 @@
  
     @param target: Target object for selector. Usually 'self'.
  
-    @param action: Done button action name. Usually 'doneAction:(UIBarButtonItem*)item'.
+    @param action: Done button action name. Usually 'doneAction:(IQBarButtonItem*)item'.
  
     @param shouldShowPlaceholder: A boolean to indicate whether to show textField placeholder on IQToolbar'.
  
@@ -63,9 +101,9 @@
  
     @param target: Target object for selector. Usually 'self'.
  
-    @param cancelAction: Crevious button action name. Usually 'cancelAction:(UIBarButtonItem*)item'.
+    @param cancelAction: Crevious button action name. Usually 'cancelAction:(IQBarButtonItem*)item'.
  
-    @param doneAction: Done button action name. Usually 'doneAction:(UIBarButtonItem*)item'.
+    @param doneAction: Done button action name. Usually 'doneAction:(IQBarButtonItem*)item'.
  
     @param shouldShowPlaceholder: A boolean to indicate whether to show textField placeholder on IQToolbar'.
  
@@ -89,7 +127,7 @@
  
     @param nextAction: Next button action name. Usually 'nextAction:(IQSegmentedNextPrevious*)segmentedControl'.
  
-    @param doneAction: Done button action name. Usually 'doneAction:(UIBarButtonItem*)item'.
+    @param doneAction: Done button action name. Usually 'doneAction:(IQBarButtonItem*)item'.
  
     @param shouldShowPlaceholder: A boolean to indicate whether to show textField placeholder on IQToolbar'.
  

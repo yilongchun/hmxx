@@ -24,11 +24,9 @@
 #ifndef IQKeyboardManagerConstants_h
 #define IQKeyboardManagerConstants_h
 
+#import <Foundation/NSObjCRuntime.h>
+
 /* Set IQKEYBOARDMANAGER_DEBUG=1 in preprocessor macros under build settings to enable debugging.*/
-#if !IQKEYBOARDMANAGER_DEBUG
-
-#endif
-
 
 /*!
     @enum IQAutoToolbarManageBehaviour
@@ -38,16 +36,32 @@
     @const IQAutoToolbarBySubviews Creates Toolbar according to subview's hirarchy of Textfield's in view.
  
     @const IQAutoToolbarByTag Creates Toolbar according to tag property of TextField's.
+ 
+    @const IQAutoToolbarByPosition Creates Toolbar according to the y,x position of textField in it's superview coordinate.
  */
-typedef enum IQAutoToolbarManageBehaviour
-{
-	IQAutoToolbarBySubviews,
-	IQAutoToolbarByTag,
-	
-}IQAutoToolbarManageBehaviour;
+
+#ifndef NS_ENUM
+    #define NS_ENUM(_type, _name) enum _name : _type _name; enum _name : _type
+#endif
+
+typedef NS_ENUM(NSInteger, IQAutoToolbarManageBehaviour) {
+    IQAutoToolbarBySubviews,
+    IQAutoToolbarByTag,
+    IQAutoToolbarByPosition,
+};
+
+#define IQLocalizedString(key, comment) [[NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"IQKeyboardManager" ofType:@"bundle"]] localizedStringForKey:(key) value:@"" table:@"IQKeyboardManager"]
 
 #endif
 
+/* XCode 5.0 Compatibility for NS_DESIGNATED_INITIALIZER*/
+#ifndef NS_DESIGNATED_INITIALIZER
+#if __has_attribute(objc_designated_initializer)
+#define NS_DESIGNATED_INITIALIZER __attribute__((objc_designated_initializer))
+#else
+#define NS_DESIGNATED_INITIALIZER
+#endif
+#endif
 
 /*
  
@@ -64,6 +78,8 @@ typedef enum IQAutoToolbarManageBehaviour
  
  
  ----------------------------------------------------------------------------------------------------------------------------------------------
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ ----------------------------------------------------------------------------------------------------------------------------------------------
  =============
  UITextField
  =============
@@ -79,7 +95,7 @@ typedef enum IQAutoToolbarManageBehaviour
  |                                               |
  |                                               |
  |                                               |
- --------------------------------------------           ----------------------------------           ---------------------------------
+ --------------------------------------------    |      ----------------------------------           ---------------------------------
  | UITextFieldTextDidEndEditingNotification | <-------- | UIKeyboardWillHideNotification | --------> | UIKeyboardDidHideNotification |
  --------------------------------------------           ----------------------------------           ---------------------------------
  |                    End Editing                                                             ^
@@ -87,6 +103,8 @@ typedef enum IQAutoToolbarManageBehaviour
  |--------------------End Editing-------------------------------------------------------------|
  
  
+ ----------------------------------------------------------------------------------------------------------------------------------------------
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  ----------------------------------------------------------------------------------------------------------------------------------------------
  =============
  UITextView
@@ -105,7 +123,7 @@ typedef enum IQAutoToolbarManageBehaviour
  |                                               |
  |                                               |
  |                                               |
- --------------------------------------------           ----------------------------------           ---------------------------------
+ --------------------------------------------    |      ----------------------------------           ---------------------------------
  | UITextViewTextDidEndEditingNotification  | <-------- | UIKeyboardWillHideNotification |           | UIKeyboardDidHideNotification |
  --------------------------------------------           ----------------------------------           ---------------------------------
  |                    End Editing                                                             ^
@@ -114,7 +132,6 @@ typedef enum IQAutoToolbarManageBehaviour
  
  
  ----------------------------------------------------------------------------------------------------------------------------------------------
- 
- /---------------------------------------------------------------------------------------------------\
- \---------------------------------------------------------------------------------------------------/
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ ----------------------------------------------------------------------------------------------------------------------------------------------
  */
