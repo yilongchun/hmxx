@@ -26,6 +26,7 @@
 #import "MyTabbarController4.h"
 #import "MyTabbarController5.h"
 #import "CwjTabBarController.h"
+#import "ChildrenStoryViewController.h"
 
 @interface MainViewController ()<MBProgressHUDDelegate,UIAlertViewDelegate>{
     MKNetworkEngine *engine;
@@ -289,6 +290,13 @@
                     btnr = CGRectMake(width-100, 260, 90, 90);
                 }
                 break;
+            case 9:
+                if (height <= 480) {
+                    btnr = CGRectMake(width + 10, 135, 90, 90);
+                }else{
+                    btnr = CGRectMake(width + 10, 10, 90, 90);
+                }
+                break;
             default:
                 btnr = CGRectMake(0, 0, 0, 0);
                 break;
@@ -439,7 +447,28 @@
                 [mainScrollView addSubview:btn6];
                 [mainScrollView addSubview:label6];
             }
-        }else{
+        }else if([menuStr isEqualToString:@"schooleggs"]){//儿歌故事会
+            UIButton *btn2 = [[UIButton alloc] init];
+            [btn2 setFrame:btnr];
+            [btn2 setBackgroundImage:[UIImage imageNamed:@"ic_index_002_1_.png"] forState:UIControlStateNormal];
+            //                        [btn2 setBackgroundImage:[UIImage imageNamed:@"ic_index_003_high.png"] forState:UIControlStateHighlighted];
+            [btn2 addTarget:self action:@selector(childrenStory) forControlEvents:UIControlEventTouchUpInside];
+            UILabel *label2 = [[UILabel alloc] init];
+            if (btn2.frame.origin.x != 0) {
+                [label2 setFrame:CGRectMake(btn2.frame.origin.x, btn2.frame.origin.y+95, 90, 20)];
+                label2.text = @"儿歌故事";
+                label2.textAlignment = NSTextAlignmentCenter;
+                [label2 setFont:[UIFont systemFontOfSize:16]];
+                [label2 setBackgroundColor:[UIColor clearColor]];
+                [mainScrollView addSubview:btn2];
+                [mainScrollView addSubview:label2];
+            }
+            //                        [self.view addSubview:btn2];
+            //                        [self.view addSubview:label2];
+        }
+        
+        
+        else{
             continue;
         }
         
@@ -458,7 +487,21 @@
             spacePageControl.userInteractionEnabled = NO;
             [self.view addSubview:spacePageControl];
         }else{
-            [mainScrollView setContentSize:CGSizeMake(width, height-170)];
+            if (i >= 9) {
+                if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+                    spacePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, height-20, width, 10)];
+                }else{
+                    spacePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, height-50, width, 10)];
+                }
+                spacePageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
+                spacePageControl.pageIndicatorTintColor = [UIColor grayColor];
+                spacePageControl.numberOfPages = 2;
+                spacePageControl.userInteractionEnabled = NO;
+                [self.view addSubview:spacePageControl];
+                [mainScrollView setContentSize:CGSizeMake(width * 2, height-170)];
+            }else{
+                [mainScrollView setContentSize:CGSizeMake(width, height-170)];
+            }
         }
     }else{
         [mainScrollView setContentSize:CGSizeMake(width, height-170)];
@@ -699,6 +742,12 @@
     }
     [self.navigationController pushViewController:cwj animated:YES];
     [self.navigationController setNavigationBarHidden:NO];
+}
+
+-(void)childrenStory{
+    ChildrenStoryViewController *vc = [[ChildrenStoryViewController alloc] init];
+    [self.navigationController setNavigationBarHidden:NO];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 //返回到该页面调用
