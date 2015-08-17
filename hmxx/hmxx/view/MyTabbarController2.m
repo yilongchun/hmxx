@@ -42,6 +42,7 @@
     UIImage *img3 = [UIImage imageNamed:@"yuanwurizhi2.png"];
     UIImage *img3_h = [UIImage imageNamed:@"yuanwurizhi1.png"];
     
+    
     GgtzViewController *vc1 = [[GgtzViewController alloc] init];
     BwhdViewController *vc2 = [[BwhdViewController alloc] init];
     BwrzViewController *vc3 = [[BwrzViewController alloc] init];

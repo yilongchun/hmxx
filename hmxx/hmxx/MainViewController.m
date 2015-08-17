@@ -448,6 +448,7 @@
                 [mainScrollView addSubview:label6];
             }
         }else if([menuStr isEqualToString:@"schooleggs"]){//儿歌故事会
+            i++;
             UIButton *btn2 = [[UIButton alloc] init];
             [btn2 setFrame:btnr];
             [btn2 setBackgroundImage:[UIImage imageNamed:@"ic_index_002_1_.png"] forState:UIControlStateNormal];
@@ -487,7 +488,7 @@
             spacePageControl.userInteractionEnabled = NO;
             [self.view addSubview:spacePageControl];
         }else{
-            if (i >= 9) {
+            if (i > 9) {
                 if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
                     spacePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, height-20, width, 10)];
                 }else{

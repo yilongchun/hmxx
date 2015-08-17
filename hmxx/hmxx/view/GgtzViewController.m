@@ -15,6 +15,7 @@
 #import "SRRefreshView.h"
 #import "UIImageView+AFNetworking.h"
 #import "MoreTableViewCell.h"
+#import "GgxqWebViewController.h"
 
 
 @interface GgtzViewController ()<MBProgressHUDDelegate,SRRefreshDelegate>{
@@ -306,12 +307,22 @@
         }
     }else{
         if (indexPath.row < [self.dataSource count]) {
+            
+            
+            
+            
+            
+            
             NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
             NSString *tnid = [info objectForKey:@"tnid"];
-            GgxqViewController *ggxq = [[GgxqViewController alloc]init];
-            ggxq.title = @"公告详情";
-            ggxq.tnid = tnid;
-            [self.navigationController pushViewController:ggxq animated:YES];
+            NSNumber *tntype = [info objectForKey:@"tntype"];
+            GgxqWebViewController *vc = [[GgxqWebViewController alloc] init];
+            
+//            GgxqViewController *ggxq = [[GgxqViewController alloc]init];
+            vc.title = @"公告详情";
+            vc.tnid = tnid;
+            vc.type = [tntype intValue];
+            [self.navigationController pushViewController:vc animated:YES];
         }
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
