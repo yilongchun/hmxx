@@ -38,7 +38,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self.myseg removeAllSegments];
-    self.title = @"儿歌故事";
+    self.title = @"益智乐园";
     
     self.show = NO;
     
