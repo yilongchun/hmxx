@@ -55,8 +55,8 @@
 /// 改变背景颜色
 - (void)setBackgroundColor:(UIColor *)color
 {
-    NSString * jsString = [NSString stringWithFormat:@"document.body.style.backgroundColor = '%@'",[color webColorString]];
-    [self stringByEvaluatingJavaScriptFromString:jsString];
+//    NSString * jsString = [NSString stringWithFormat:@"document.body.style.backgroundColor = '%@'",[color webColorString]];
+//    [self stringByEvaluatingJavaScriptFromString:jsString];
 }
 /// 为所有图片添加点击事件(网页中有些图片添加无效,需要协议方法配合截取)
 - (void)addClickEventOnImg
