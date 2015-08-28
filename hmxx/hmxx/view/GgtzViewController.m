@@ -316,9 +316,9 @@
             NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
             NSString *tnid = [info objectForKey:@"tnid"];
             NSNumber *tntype = [info objectForKey:@"tntype"];
-            GgxqWebViewController *vc = [[GgxqWebViewController alloc] init];
+//            GgxqWebViewController *vc = [[GgxqWebViewController alloc] init];
             
-//            GgxqViewController *ggxq = [[GgxqViewController alloc]init];
+            GgxqViewController *vc = [[GgxqViewController alloc]init];
             vc.title = @"公告详情";
             vc.tnid = tnid;
             vc.type = [tntype intValue];

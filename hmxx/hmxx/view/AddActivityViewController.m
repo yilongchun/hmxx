@@ -12,6 +12,7 @@
 #import "MBProgressHUD.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <MediaPlayer/MPMoviePlayerController.h>
+#import "UITextView+PlaceHolder.h"
 
 @interface AddActivityViewController ()<MBProgressHUDDelegate>{
     MKNetworkEngine *engine;
@@ -30,6 +31,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.contentTextview addPlaceHolder:@"请填写内容"];
     // Do any additional setup after loading the view from its nib.
     CGRect rect = self.titleLabel.frame;
     rect.size.height = 40;
@@ -70,8 +73,8 @@
     tapGr.cancelsTouchesInView =NO;
     [self.view addGestureRecognizer:tapGr];
     
-    [self.imagePickBtn setBackgroundImage:[UIImage imageNamed:@"smiley_add_btn_nor.png"] forState:UIControlStateNormal];
-    [self.imagePickBtn setImage:[UIImage imageNamed:@"smiley_add_btn_pressed.png"] forState:UIControlStateHighlighted];
+//    [self.imagePickBtn setBackgroundImage:[UIImage imageNamed:@"smiley_add_btn_nor.png"] forState:UIControlStateNormal];
+//    [self.imagePickBtn setImage:[UIImage imageNamed:@"smiley_add_btn_pressed.png"] forState:UIControlStateHighlighted];
     
     //添加按钮
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]
