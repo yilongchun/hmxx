@@ -9,11 +9,10 @@
 #import "AddPuchaseViewController.h"
 #import "MKNetworkKit.h"
 #import "Utils.h"
-#import "MBProgressHUD.h"
 
 
-@interface AddPuchaseViewController ()<MBProgressHUDDelegate>{
-    MBProgressHUD *HUD;
+
+@interface AddPuchaseViewController (){
     MKNetworkEngine *engine;
     UIPickerView *currencyPicker;
     UIDatePicker *datePicker;
@@ -66,17 +65,6 @@
 
     }
     
-    
-    
-    
-    self.view.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
-    //添加加载等待条
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    HUD.labelText = @"加载中...";
-    [self.view addSubview:HUD];
-    HUD.delegate = self;
-    [HUD show:YES];
-    
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]
                                  initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(save)];
     self.navigationItem.rightBarButtonItem = rightBtn;
@@ -125,16 +113,16 @@
                 dataSource = [NSMutableArray arrayWithArray:arr];
                 [currencyPicker reloadAllComponents];
             }
-            [HUD hide:YES];
+            [self hideHud];
         }else{
-            [HUD hide:YES];
-            [self alertMsg:msg];
+            [self hideHud];
+            [self showHint:msg];
             
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        [HUD hide:YES];
-        [self alertMsg:@"连接服务器失败"];
+        [self hideHud];
+        [self showHint:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
 }
@@ -276,24 +264,24 @@
 -(void)save{
     
     if ([self.typeBtn.titleLabel.text isEqualToString:@"请选择采购类型"]) {
-        [self alertMsg:@"请选择采购类型"];
+        [self showHint:@"请选择采购类型"];
         return;
     }
     if ([self.dateBtn.titleLabel.text isEqualToString:@"请选择日期"]) {
-        [self alertMsg:@"请选择日期"];
+        [self showHint:@"请选择日期"];
         return;
     }
     if ([self.priceText.text isEqualToString:@""]) {
-        [self alertMsg:@"请填写单价"];
+        [self showHint:@"请填写单价"];
         return;
     }
     if ([self.numText.text isEqualToString:@""]) {
-        [self alertMsg:@"请填写数量"];
+        [self showHint:@"请填写数量"];
         return;
     }
     
     
-    [HUD show:YES];
+    [self showHudInView:self.view hint:@""];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *userid = [userDefaults objectForKey:@"userid"];
     NSDictionary *info = [self.dataSource objectAtIndex:selectedIndex];
@@ -331,42 +319,21 @@
         NSNumber *success = [resultDict objectForKey:@"success"];
         NSString *msg = [resultDict objectForKey:@"msg"];
         if ([success boolValue]) {
-            [HUD hide:YES];
-            [self okMsk:msg];
+            [self hideHud];
+            UIImageView *imageview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+            [self showHint:msg customView:imageview];
             [self performSelector:@selector(backAndReload) withObject:nil afterDelay:1.0f];
         }else{
-            [HUD hide:YES];
-            [self alertMsg:msg];
+            [self hideHud];
+            [self showHint:msg];
             
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        [HUD hide:YES];
-        [self alertMsg:@"连接服务器失败"];
+        [self hideHud];
+        [self showHint:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
-}
-
-//成功
-- (void)okMsk:(NSString *)msg{
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    [self.navigationController.view addSubview:hud];
-    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-    hud.mode = MBProgressHUDModeCustomView;
-    hud.delegate = self;
-    hud.labelText = msg;
-    [hud show:YES];
-    [hud hide:YES afterDelay:1.0];
-}
-
-//提示
-- (void)alertMsg:(NSString *)msg{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.labelText = msg;
-    hud.margin = 10.f;
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:1.0];
 }
 
 -(void)backAndReload{

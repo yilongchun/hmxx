@@ -9,11 +9,11 @@
 #import "AddBwrzViewController.h"
 #import "MKNetworkKit.h"
 #import "Utils.h"
-#import "MBProgressHUD.h"
 
-@interface AddBwrzViewController ()<MBProgressHUDDelegate>{
+
+@interface AddBwrzViewController (){
     MKNetworkEngine *engine;
-    MBProgressHUD *HUD;
+
     
     int studentnum;
     UIDatePicker *datePicker;
@@ -47,12 +47,6 @@
     self.cdrs.frame = rect;
     //初始化引擎
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
-    
-    //添加加载等待条
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    HUD.labelText = @"加载中...";
-    [self.view addSubview:HUD];
-    HUD.delegate = self;
     
 //    self.bjsj.layer.borderColor = [UIColor colorWithRed:219/255.0 green:219/255.0 blue:219/255.0 alpha:1].CGColor;
 //    self.bjsj.layer.borderWidth = 1.0;
@@ -160,14 +154,14 @@
     int num4 = [self.cdrs.text intValue];
     
     if ([self.dateBtn.titleLabel.text isEqualToString:@"请选择日期"]) {
-        [self alertMsg:@"请选择日期"];
+        [self showHint:@"请选择日期"];
         return;
     }
     
     if (studentnum != (num1 + num2 + num3 + num4)) {
-        [self alertMsg:@"总人数不等于教职人数"];
+        [self showHint:@"总人数不等于教职人数"];
     }else{
-        [HUD show:YES];
+        [self showHudInView:self.view hint:@""];
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSString *schoolid = [userDefaults objectForKey:@"schoolid"];
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
@@ -193,27 +187,28 @@
             NSString *msg = [resultDict objectForKey:@"msg"];
             //        NSString *code = [resultDict objectForKey:@"code"];
             if ([success boolValue]) {
-                [HUD hide:YES];
+                [self hideHud];
                 self.bjsj.text = @"";
                 self.cqrs.text = @"";
                 self.bjrs2.text = @"";
                 self.sjrs.text = @"";
                 self.cdrs.text = @"";
-                [self okMsk:msg];
+                UIImageView *imageview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+                [self showHint:msg customView:imageview];
                 [self performSelector:@selector(backAndReload) withObject:nil afterDelay:1.0f];
             }else{
-                [HUD hide:YES];
+                [self hideHud];
 //                self.bjsj.text = @"";
 //                self.cqrs.text = @"";
 //                self.bjrs2.text = @"";
 //                self.sjrs.text = @"";
 //                self.cdrs.text = @"";
-                [self alertMsg:msg];
+                [self showHint:msg];
             }
         }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
             NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-            [HUD hide:YES];
-            [self alertMsg:@"连接服务器失败"];
+            [self hideHud];
+            [self showHint:@"连接服务器失败"];
         }];
         [engine enqueueOperation:op];
     }
@@ -269,29 +264,6 @@
             [self.dateBtn setTitle:destDateString forState:UIControlStateNormal];
         }
     }
-}
-
-//成功
-- (void)okMsk:(NSString *)msg{
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:hud];
-    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-    hud.mode = MBProgressHUDModeCustomView;
-    hud.delegate = self;
-    hud.labelText = msg;
-    [hud show:YES];
-    [hud hide:YES afterDelay:1.0];
-}
-
-
-//提示
-- (void)alertMsg:(NSString *)msg{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.labelText = msg;
-    hud.margin = 10.f;
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:1.0];
 }
 
 

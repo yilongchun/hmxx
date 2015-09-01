@@ -7,12 +7,10 @@
 //
 
 #import "LoginViewController.h"
-#import "MBProgressHUD.h"
 #import "MKNetworkKit.h"
 #import "Utils.h"
 
-@interface LoginViewController ()<MBProgressHUDDelegate>{
-    MBProgressHUD *HUD;
+@interface LoginViewController (){
     MKNetworkEngine *engine;
     
 }
@@ -55,9 +53,6 @@
     [self.loginBtn setBackgroundImage:[[UIImage imageNamed:@"loginBtnBg2.png"]stretchableImageWithLeftCapWidth:5.0 topCapHeight:5.0] forState:UIControlStateHighlighted];
     
     //添加加载等待条
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:HUD];
-    HUD.delegate = self;
     
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     
@@ -150,29 +145,20 @@
     [UIView commitAnimations];//设置调整界面的动画效果
 }
 
-//提示
-- (void)alertMsg:(NSString *)msg{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.labelText = msg;
-    hud.margin = 10.f;
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:1.0];
-}
 
 - (IBAction)login:(id)sender{
     if (self.username.text.length == 0) {
-        [self alertMsg:@"请输入账号"];
+        [self showHint:@"请输入账号"];
         return;
     }else if (self.password.text.length == 0){
-        [self alertMsg:@"请输入密码"];
+        [self showHint:@"请输入密码"];
         return;
     }
     
     
     [self viewTapped:nil];
-    HUD.labelText = @"请稍后...";
-    [HUD show:YES];
+    
+    [self showHudInView:self.view hint:@""];
     
     NSString *app_Version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     
@@ -197,7 +183,7 @@
         NSString *msg = [resultDict objectForKey:@"msg"];
         
         if ([success boolValue]) {
-            [HUD hide:YES];
+            [self hideHud];
             
             NSDictionary *data = [resultDict objectForKey:@"data"];
             NSString *userid = [data objectForKey:@"userid"];
@@ -213,23 +199,13 @@
             [self.navigationController pushViewController:_mainController animated:YES];
             
         }else{
-            [HUD hide:YES];
-            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.mode = MBProgressHUDModeText;
-            hud.labelText = msg;
-            hud.margin = 10.f;
-            hud.removeFromSuperViewOnHide = YES;
-            [hud hide:YES afterDelay:1.0];
+            [self hideHud];
+            [self showHint:msg];
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        [HUD hide:YES];
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.mode = MBProgressHUDModeText;
-        hud.labelText = @"连接服务器失败";
-        hud.margin = 10.f;
-        hud.removeFromSuperViewOnHide = YES;
-        [hud hide:YES afterDelay:1.0];
+        [self hideHud];
+        [self showHint:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
 }

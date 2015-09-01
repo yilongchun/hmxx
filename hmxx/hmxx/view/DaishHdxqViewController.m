@@ -10,16 +10,14 @@
 #import "Utils.h"
 #import "UIImageView+AFNetworking.h"
 #import "MKNetworkKit.h"
-#import "MBProgressHUD.h"
 #import "ContentCell.h"
 #import "CustomMoviePlayerViewController.h"
 #import "TapImageView.h"
 #import "ImgScrollView.h"
 #import "SRRefreshView.h"
 
-@interface DaishHdxqViewController ()<MBProgressHUDDelegate,TapImageViewDelegate,ImgScrollViewDelegate,UIScrollViewDelegate,SRRefreshDelegate>{
+@interface DaishHdxqViewController ()<TapImageViewDelegate,ImgScrollViewDelegate,UIScrollViewDelegate,SRRefreshDelegate>{
     MKNetworkEngine *engine;
-    MBProgressHUD *HUD;
     NSNumber *activityType;
     
     UIScrollView *myScrollView;
@@ -60,12 +58,6 @@
     }
     
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
-    
-    //添加加载等待条
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    HUD.labelText = @"加载中...";
-    [self.view addSubview:HUD];
-    HUD.delegate = self;
     
     UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
     [mytableview setTableFooterView:v];
@@ -126,7 +118,7 @@
 - (void)loadData{
     
     
-    [HUD show:YES];
+    [self showHudInView:self.view hint:@""];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:self.detailid forKey:@"activityId"];
@@ -161,16 +153,16 @@
                 activityType = [data objectForKey:@"activityType"];
                 
                 [self.mytableview reloadData];
-                [HUD hide:YES];
+                [self hideHud];
             }
         }else{
-            [HUD hide:YES];
-            [self alertMsg:msg];
+            [self hideHud];
+            [self showHint:msg];
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        [HUD hide:YES];
-        [self alertMsg:@"连接服务器失败"];
+        [self hideHud];
+        [self showHint:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
 }
@@ -291,16 +283,6 @@
     }
 }
 
-//提示
-- (void)alertMsg:(NSString *)msg{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.labelText = msg;
-    hud.margin = 10.f;
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:1.0];
-}
-
 #pragma mark - video
 
 /**
@@ -313,7 +295,7 @@
         NSDictionary *video = [filelist objectAtIndex:0];
         NSString *fileId = [video objectForKey:@"fileId"];
         if ([Utils isBlankString:fileId]) {
-            [self alertMsg:@"视频地址错误，播放失败"];
+            [self showHint:@"视频地址错误，播放失败"];
             return;
         }
         CustomMoviePlayerViewController *moviePlayer = [[CustomMoviePlayerViewController alloc] init];
@@ -468,20 +450,9 @@
  }
  */
 
-//成功
-- (void)okMsk:(NSString *)msg{
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    [self.navigationController.view addSubview:hud];
-    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-    hud.mode = MBProgressHUDModeCustomView;
-    hud.delegate = self;
-    hud.labelText = msg;
-    [hud show:YES];
-    [hud hide:YES afterDelay:1.0];
-}
 
 - (IBAction)pass:(id)sender {
-    [HUD show:YES];
+    [self showHudInView:self.view hint:@""];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:self.detailid forKey:@"activityId"];
     
@@ -501,17 +472,18 @@
         NSString *msg = [resultDict objectForKey:@"msg"];
         //        NSString *code = [resultDict objectForKey:@"code"];
         if ([success boolValue]) {
-            [HUD hide:YES];
-            [self okMsk:msg];
+            [self hideHud];
+            UIImageView *imageview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+            [self showHint:msg customView:imageview];
             [self performSelector:@selector(backAndReload) withObject:nil afterDelay:1.0f];
             
         }else{
-            [HUD hide:YES];
-            [self alertMsg:msg];
+            [self hideHud];
+            [self showHint:msg];
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        [HUD hide:YES];
+        [self hideHud];
         
     }];
     [engine enqueueOperation:op];

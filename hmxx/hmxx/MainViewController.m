@@ -10,7 +10,6 @@
 #import "MKNetworkKit.h"
 #import "Utils.h"
 #import "UIImageView+AFNetworking.h"
-#import "MBProgressHUD.h"
 #import "ShezhiViewController.h"
 #import "BbspViewController.h"
 #import "JYSlideSegmentController.h"
@@ -28,11 +27,11 @@
 #import "CwjTabBarController.h"
 #import "ChildrenStoryViewController.h"
 
-@interface MainViewController ()<MBProgressHUDDelegate,UIAlertViewDelegate>{
+@interface MainViewController ()<UIAlertViewDelegate>{
     MKNetworkEngine *engine;
     NSArray *kcbarr;//课程表
     NSArray *sparr;//食谱
-    MBProgressHUD *HUD;
+    
     
     UIPageControl *spacePageControl;
     UIScrollView *mainScrollView;
@@ -102,12 +101,6 @@
     mainScrollView.showsHorizontalScrollIndicator = NO;
     [self.view addSubview:mainScrollView];
     
-    //添加加载等待条
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    HUD.labelText = @"加载中...";
-    [self.view addSubview:HUD];
-    HUD.delegate = self;
-    
     [self loadData];//加载信息
 }
 
@@ -123,7 +116,7 @@
 //加载信息
 - (void)loadData{
     
-    [HUD show:YES];
+    [self showHudInView:self.view hint:@""];
     //根据用户id获取学校
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -133,6 +126,7 @@
     MKNetworkOperation *op = [engine operationWithPath:@"/schoolUser/findschoolbyid.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         NSString *result = [operation responseString];
+        
         NSLog(@"%@",result);
         NSError *error;
         NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
@@ -155,15 +149,16 @@
                 [self loadsp:schoolid];//食谱
                 [self loadZxsjb:schoolid];//作息时间表
             }else{
-                [HUD hide:YES];
+                [self hideHud];
             }
         }else{
-            [HUD hide:YES];
-            [self alertMsg:msg];
+            [self hideHud];
+            [self showHint:msg];
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        [HUD hide:YES];
+        [self hideHud];
+        [self showHint:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
 }
@@ -224,20 +219,20 @@
                         }
                     }
                 }
-                
                 [self setButtons];
                 
-                [HUD hide:YES];
+                [self hideHud];
             }else{
-                [HUD hide:YES];
+                [self hideHud];
             }
         }else{
-            [HUD hide:YES];
-            [self alertMsg:msg];
+            [self hideHud];
+            [self showHint:msg];
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        [HUD hide:YES];
+        [self hideHud];
+        [self showHint:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
 }
@@ -531,7 +526,7 @@
                 sparr = data;
             }
         }else{
-            [self alertMsg:msg];
+            [self showHint:msg];
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
@@ -659,7 +654,7 @@
         [self.navigationController pushViewController:slideSegmentController animated:YES];
     }else{
         //提示没有信息
-        [self alertMsg:@"未获取到食谱信息，请稍后查看"];
+        [self showHint:@"未获取到食谱信息，请稍后查看"];
     }
 }
 
@@ -773,17 +768,6 @@
     }
     [super viewDidAppear:animated];
 }
-
-//提示
-- (void)alertMsg:(NSString *)msg{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.labelText = msg;
-    hud.margin = 10.f;
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:1.0];
-}
-
 
 - (void)dealloc{
     

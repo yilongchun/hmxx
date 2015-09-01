@@ -8,15 +8,13 @@
 
 #import "XsydViewController.h"
 #import "MKNetworkKit.h"
-#import "MBProgressHUD.h"
 #import "Utils.h"
 #import "SRRefreshView.h"
 #import "MoreTableViewCell.h"
 #import "XsydDetailViewController.h"
 #import "XsydTableViewCell.h"
 
-@interface XsydViewController ()<MBProgressHUDDelegate,SRRefreshDelegate>{
-    MBProgressHUD *HUD;
+@interface XsydViewController ()<SRRefreshDelegate>{
     MKNetworkEngine *engine;
     NSNumber *totalpage;
     NSNumber *page;
@@ -70,11 +68,6 @@
     rect.size.width = [UIScreen mainScreen].bounds.size.width;
     [self.slimeView setFrame:rect];
     
-    //添加加载等待条
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    HUD.labelText = @"加载中...";
-    [self.view addSubview:HUD];
-    HUD.delegate = self;
     
     //初始化数据
     [self loadData];
@@ -102,7 +95,7 @@
 
 //加载数据
 - (void)loadData{
-    [HUD show:YES];
+    [self showHudInView:self.view hint:@""];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:page forKey:@"page"];
     [dic setValue:rows forKey:@"rows"];
@@ -130,16 +123,16 @@
                     totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue] + 1];
                 }
             }
-            [HUD hide:YES];
+            [self hideHud];
             [mytableview reloadData];
         }else{
-            [HUD hide:YES];
-            [self alertMsg:msg];
+            [self hideHud];
+            [self showHint:msg];
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        [HUD hide:YES];
-        [self alertMsg:@"连接服务器失败"];
+        [self hideHud];
+        [self showHint:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
 }
@@ -179,36 +172,13 @@
             }
             [mytableview reloadData];
         }else{
-            [self alertMsg:msg];
+            [self showHint:msg];
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        [self alertMsg:@"连接服务器失败"];
+        [self showHint:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
-}
-
-//成功
-- (void)okMsk:(NSString *)msg{
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    [self.navigationController.view addSubview:hud];
-    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-    hud.mode = MBProgressHUDModeCustomView;
-    hud.delegate = self;
-    hud.labelText = msg;
-    [hud show:YES];
-    [hud hide:YES afterDelay:1.0];
-}
-
-
-//提示
-- (void)alertMsg:(NSString *)msg{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.labelText = msg;
-    hud.margin = 10.f;
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:1.0];
 }
 
 #pragma mark - Table view data source

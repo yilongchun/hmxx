@@ -9,10 +9,8 @@
 #import "YqjsViewController.h"
 #import"MKNetworkKit.h"
 #import "Utils.h"
-#import "MBProgressHUD.h"
 
-@interface YqjsViewController ()<MBProgressHUDDelegate>{
-    MBProgressHUD *HUD;
+@interface YqjsViewController (){
     MKNetworkEngine *engine;
 }
 
@@ -35,11 +33,7 @@
     //初始化网络引擎
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     
-    //添加加载等待条
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:HUD];
-    HUD.delegate = self;
-    HUD.labelText = @"加载中...";
+    
     
     [self getInfo];
 }
@@ -76,33 +70,23 @@
             [htmlStr appendString:introduce];
             [self.mywebview loadHTMLString:htmlStr baseURL:[NSURL URLWithString:[Utils getHostname]]];
         }else{
-            [HUD hide:YES];
-            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.mode = MBProgressHUDModeText;
-            hud.labelText = msg;
-            hud.margin = 10.f;
-            hud.removeFromSuperViewOnHide = YES;
-            [hud hide:YES afterDelay:1.0];
+            [self hideHud];
+            [self showHint:msg];
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        [HUD hide:YES];
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.mode = MBProgressHUDModeText;
-        hud.labelText = @"连接服务器失败";
-        hud.margin = 10.f;
-        hud.removeFromSuperViewOnHide = YES;
-        [hud hide:YES afterDelay:1.0];
+        [self hideHud];
+        [self showHint:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)web{
-    [HUD show:YES];
+    [self showHudInView:self.view hint:@""];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)web{
-    [HUD hide:YES];
+    [self hideHud];
 }
 
 - (void)didReceiveMemoryWarning {

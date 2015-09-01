@@ -9,11 +9,10 @@
 #import "YjfkViewController.h"
 #import "MKNetworkKit.h"
 #import "Utils.h"
-#import "MBProgressHUD.h"
 
-@interface YjfkViewController ()<MBProgressHUDDelegate>{
+
+@interface YjfkViewController (){
     MKNetworkEngine *engine;
-    MBProgressHUD *HUD;
 }
 
 @end
@@ -72,11 +71,6 @@
     tapGr.cancelsTouchesInView =NO;
     [self.view addGestureRecognizer:tapGr];
     
-    //添加加载等待条
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    HUD.labelText = @"提交中";
-    [self.view addSubview:HUD];
-    HUD.delegate = self;
     
     NSString* phoneVersion = [[UIDevice currentDevice] systemVersion];
     NSString* phoneModel = [[UIDevice currentDevice] model];
@@ -105,9 +99,9 @@
 - (void)feecback{
     [self.mytextview resignFirstResponder];
     if (self.mytextview.text.length == 0) {
-        [self alertMsg:@"请填写内容"];
+        [self showHint:@"请填写内容"];
     }else{
-        [HUD show:YES];
+        [self showHudInView:self.view hint:@""];
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSString *userid = [userDefaults objectForKey:@"userid"];
@@ -126,42 +120,21 @@
             }
             NSNumber *success = [resultDict objectForKey:@"success"];
             if ([success boolValue]) {
-                [HUD hide:YES];
-                [self okMsk:@"提交成功"];
+                [self hideHud];
+                UIImageView *imageview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+                [self showHint:@"提交成功" customView:imageview];
                 self.mytextview.text = @"";
             }else{
-                [HUD hide:YES];
-                [self alertMsg:@"提交失败"];
+                [self hideHud];
+                [self showHint:@"提交失败"];
             }
         }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
             NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-            [HUD hide:YES];
+            [self hideHud];
             
         }];
         [engine enqueueOperation:op];
     }
-}
-
-//成功
-- (void)okMsk:(NSString *)msg{
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    [self.navigationController.view addSubview:hud];
-    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-    hud.mode = MBProgressHUDModeCustomView;
-    hud.delegate = self;
-    hud.labelText = msg;
-    [hud show:YES];
-    [hud hide:YES afterDelay:1.0];
-}
-
-//提示
-- (void)alertMsg:(NSString *)msg{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.labelText = msg;
-    hud.margin = 10.f;
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:1.0];
 }
 
 //隐藏键盘

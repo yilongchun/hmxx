@@ -824,7 +824,7 @@
 		E4C74EF31A84D8A5007241C3 /* CustomCellBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomCellBackground.h; path = view/CustomCellBackground.h; sourceTree = "<group>"; };
 		E4C74EF41A84D8A5007241C3 /* CustomCellBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomCellBackground.m; path = view/CustomCellBackground.m; sourceTree = "<group>"; };
 		E4C74EF51A84D8A5007241C3 /* CwjDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CwjDetailViewController.h; path = view/CwjDetailViewController.h; sourceTree = "<group>"; };
-		E4C74EF61A84D8A5007241C3 /* CwjDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CwjDetailViewController.m; path = view/CwjDetailViewController.m; sourceTree = "<group>"; };
+		E4C74EF61A84D8A5007241C3 /* CwjDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = CwjDetailViewController.m; path = view/CwjDetailViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E4C74EF71A84D8A5007241C3 /* CwjDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CwjDetailViewController.xib; path = view/CwjDetailViewController.xib; sourceTree = "<group>"; };
 		E4C74EF81A84D8A5007241C3 /* CwjTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CwjTabBarController.h; path = view/CwjTabBarController.h; sourceTree = "<group>"; };
 		E4C74EF91A84D8A5007241C3 /* CwjTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CwjTabBarController.m; path = view/CwjTabBarController.m; sourceTree = "<group>"; };
@@ -832,7 +832,7 @@
 		E4C74EFB1A84D8A5007241C3 /* CwjTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CwjTableViewCell.m; path = view/CwjTableViewCell.m; sourceTree = "<group>"; };
 		E4C74EFC1A84D8A5007241C3 /* CwjTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CwjTableViewCell.xib; path = view/CwjTableViewCell.xib; sourceTree = "<group>"; };
 		E4C74EFD1A84D8A5007241C3 /* CwjViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CwjViewController.h; path = view/CwjViewController.h; sourceTree = "<group>"; };
-		E4C74EFE1A84D8A5007241C3 /* CwjViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CwjViewController.m; path = view/CwjViewController.m; sourceTree = "<group>"; };
+		E4C74EFE1A84D8A5007241C3 /* CwjViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = CwjViewController.m; path = view/CwjViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E4C74EFF1A84D8A5007241C3 /* CwjViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CwjViewController.xib; path = view/CwjViewController.xib; sourceTree = "<group>"; };
 		E4C74F091A84D905007241C3 /* checkbox1_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox1_checked.png; sourceTree = "<group>"; };
 		E4C74F0A1A84D905007241C3 /* checkbox1_checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox1_checked@2x.png"; sourceTree = "<group>"; };
@@ -848,7 +848,7 @@
 		E4C74F1C1A84D98B007241C3 /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
 		E4C74F1D1A84D98B007241C3 /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
 		E4C74F201A84FBB0007241C3 /* CwjClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CwjClassViewController.h; path = view/CwjClassViewController.h; sourceTree = "<group>"; };
-		E4C74F211A84FBB0007241C3 /* CwjClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CwjClassViewController.m; path = view/CwjClassViewController.m; sourceTree = "<group>"; };
+		E4C74F211A84FBB0007241C3 /* CwjClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = CwjClassViewController.m; path = view/CwjClassViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E4C74F221A84FBB0007241C3 /* CwjClassViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CwjClassViewController.xib; path = view/CwjClassViewController.xib; sourceTree = "<group>"; };
 		E4CB95541A76547200CCC498 /* ReportFirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReportFirstTableViewCell.h; path = view/ReportFirstTableViewCell.h; sourceTree = "<group>"; };
 		E4CB95551A76547200CCC498 /* ReportFirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReportFirstTableViewCell.m; path = view/ReportFirstTableViewCell.m; sourceTree = "<group>"; };
@@ -3453,7 +3453,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "16d1eb80-cec9-4174-ab2e-39a8ac81fcee";
+				PROVISIONING_PROFILE = "a1edb384-3349-436a-a185-dc6f6c2c1a8b";
 			};
 			name = Debug;
 		};
@@ -3468,7 +3468,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "16d1eb80-cec9-4174-ab2e-39a8ac81fcee";
+				PROVISIONING_PROFILE = "a1edb384-3349-436a-a185-dc6f6c2c1a8b";
 			};
 			name = Release;
 		};

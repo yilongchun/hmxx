@@ -9,11 +9,10 @@
 #import "ScheduleDetailViewController.h"
 #import "Utils.h"
 #import "MKNetworkKit.h"
-#import "MBProgressHUD.h"
 
-@interface ScheduleDetailViewController ()<MBProgressHUDDelegate>{
+
+@interface ScheduleDetailViewController (){
     MKNetworkEngine *engine;
-    MBProgressHUD *HUD;
 }
 
 @end
@@ -52,11 +51,6 @@
     
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     
-    //添加加载等待条
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    HUD.labelText = @"加载中...";
-    [self.view addSubview:HUD];
-    HUD.delegate = self;
     
     if ([type intValue] == 2) {
         self.scheduleTypeSegmented.selectedSegmentIndex = 0;
@@ -92,7 +86,7 @@
 }
 
 -(void)loadData{
-    [HUD show:YES];
+    [self showHudInView:self.view hint:@""];
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:detailId forKey:@"id"];
@@ -121,16 +115,16 @@
                 }
                 self.titleLabel.text = title;
                 self.mytextview.text = content;
-                [HUD hide:YES];
+                [self hideHud];
             }
         }else{
-            [HUD hide:YES];
-            [self alertMsg:msg];
+            [self hideHud];
+            [self showHint:msg];
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        [HUD hide:YES];
-        [self alertMsg:@"连接服务器失败"];
+        [self hideHud];
+        [self showHint:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
 }
@@ -139,15 +133,15 @@
     [self.titleLabel resignFirstResponder];
     [self.mytextview resignFirstResponder];
     if (self.titleLabel.text.length == 0) {
-        [self alertMsg:@"请填写日期标题"];
+        [self showHint:@"请填写日期标题"];
         return;
     }
     if (self.mytextview.text.length == 0) {
-        [self alertMsg:@"请填写日志内容"];
+        [self showHint:@"请填写日志内容"];
         return;
     }
     
-    [HUD show:YES];
+    [self showHudInView:self.view hint:@""];
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *userid = [userDefaults objectForKey:@"userid"];
@@ -176,41 +170,21 @@
         NSString *msg = [resultDict objectForKey:@"msg"];
         //        NSString *code = [resultDict objectForKey:@"code"];
         if ([success boolValue]) {
-            [self okMsk:msg];
-            [HUD hide:YES];
+            
+            [self hideHud];
+            UIImageView *imageview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+            [self showHint:msg customView:imageview];
             [self performSelector:@selector(backAndReload) withObject:nil afterDelay:1.0f];
         }else{
-            [HUD hide:YES];
-            [self alertMsg:msg];
+            [self hideHud];
+            [self showHint:msg];
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        [HUD hide:YES];
-        [self alertMsg:@"连接服务器失败"];
+        [self hideHud];
+        [self showHint:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
-}
-
-//成功
-- (void)okMsk:(NSString *)msg{
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    [self.navigationController.view addSubview:hud];
-    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-    hud.mode = MBProgressHUDModeCustomView;
-    hud.delegate = self;
-    hud.labelText = msg;
-    [hud show:YES];
-    [hud hide:YES afterDelay:1.0];
-}
-
-//提示
-- (void)alertMsg:(NSString *)msg{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.labelText = msg;
-    hud.margin = 10.f;
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:1.0];
 }
 
 -(void)backAndReload{

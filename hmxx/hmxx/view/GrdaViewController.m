@@ -10,11 +10,9 @@
 #import "Utils.h"
 #import "UIImageView+AFNetworking.h"
 #import "MKNetworkKit.h"
-#import "MBProgressHUD.h"
 
-@interface GrdaViewController ()<MBProgressHUDDelegate>{
+@interface GrdaViewController (){
     MKNetworkEngine *engine;
-    MBProgressHUD *HUD;
     NSString *name;
     NSNumber *age;
     NSString *sex;
@@ -47,11 +45,6 @@
     [self.mytableview setSeparatorColor:[UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1]];
     [self loadData];
     
-    //添加加载等待条
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    HUD.labelText = @"上传中...";
-    [self.view addSubview:HUD];
-    HUD.delegate = self;
 }
 
 - (void)loadData{
@@ -216,7 +209,7 @@
 //        self.fileData = [NSData dataWithContentsOfFile:videoPath];
 //    }
     [picker dismissViewControllerAnimated:YES completion:^{
-        [HUD show:YES];
+        [self showHudInView:self.view hint:@""];
         
     }];
 }
@@ -244,7 +237,7 @@
             //上传成功 删除文件  还有返回的问题
             [self updateImgData:[resultDict objectForKey:@"data"]];
         }else{
-            [self alertMsg:@"上传失败"];
+            [self showHint:@"上传失败"];
         }
         if (saveFlag) {
             NSFileManager *fileMgr = [NSFileManager defaultManager];
@@ -258,8 +251,8 @@
             NSError *err;
             [fileMgr removeItemAtPath:savedImagePath error:&err];
         }
-        [HUD hide:YES];
-        [self alertMsg:@"连接服务器失败"];
+        [self hideHud];
+        [self showHint:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
     
@@ -291,22 +284,23 @@
         //        NSString *code = [resultDict objectForKey:@"code"];
         if ([success boolValue]) {
             [self.myimageview setImageWithURL:[NSURL URLWithString:fileid]];
-            [HUD hide:YES];
+            [self hideHud];
             
 //            NSMutableDictionary *updatestudent = [[NSMutableDictionary alloc] initWithDictionary:[userDefaults objectForKey:@"student"]];
 //            [updatestudent setValue:fileid forKey:@"flieid"];
 //            [userDefaults removeObjectForKey:@"student"];
 //            [userDefaults setObject:updatestudent forKey:@"student"];
             [userDefaults setObject:@"1" forKey:@"updateImgFlag"];
-            [self okMsk:msg];
+            UIImageView *imageview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+            [self showHint:msg customView:imageview];
         }else{
-            [HUD hide:YES];
-            [self alertMsg:msg];
+            [self hideHud];
+            [self showHint:msg];
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        [HUD hide:YES];
-        [self alertMsg:@"连接服务器失败"];
+        [self hideHud];
+        [self showHint:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
 }
@@ -318,28 +312,6 @@
         
     }];
 
-}
-
-//成功
-- (void)okMsk:(NSString *)msg{
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    [self.navigationController.view addSubview:hud];
-    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-    hud.mode = MBProgressHUDModeCustomView;
-    hud.delegate = self;
-    hud.labelText = msg;
-    [hud show:YES];
-    [hud hide:YES afterDelay:1.0];
-}
-
-//提示
-- (void)alertMsg:(NSString *)msg{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.labelText = msg;
-    hud.margin = 10.f;
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:1.0];
 }
 
 

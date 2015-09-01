@@ -10,14 +10,12 @@
 #import "CollectionCell.h"
 #import "MKNetworkKit.h"
 #import "Utils.h"
-#import "MBProgressHUD.h"
 #import "SRRefreshView.h"
 #import "UIImageView+AFNetworking.h"
 #import "CwjDetailViewController.h"
 #import "SVPullToRefresh.h"
 
-@interface CollectionViewController ()<MBProgressHUDDelegate,SRRefreshDelegate>{
-    MBProgressHUD *HUD;
+@interface CollectionViewController ()<SRRefreshDelegate>{
     MKNetworkEngine *engine;
     NSNumber *totalpage;
     
@@ -54,11 +52,6 @@
     
     [mycollectionview registerClass:[CollectionCell class] forCellWithReuseIdentifier:@"CollectionCell"];
     mycollectionview.alwaysBounceVertical = YES;
-    //添加加载等待条
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    HUD.labelText = @"加载中...";
-    [self.view addSubview:HUD];
-    HUD.delegate = self;
     
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     
@@ -157,18 +150,18 @@
             [mycollectionview.pullToRefreshView stopAnimating];
             [mycollectionview reloadData];
             if (flag) {
-                //[self alertMsg:@"刷新成功,长按头像拖动排序"];
+                //[self showHint:@"刷新成功,长按头像拖动排序"];
             }else{
                 //[mycollectionview scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
             }
         }else{
             [mycollectionview.pullToRefreshView stopAnimating];
-            [self alertMsg:msg];
+            [self showHint:msg];
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
         [mycollectionview.pullToRefreshView stopAnimating];
-        [self alertMsg:@"连接服务器失败"];
+        [self showHint:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
 }
@@ -315,27 +308,6 @@
 }
 
 #pragma mark - private
-//成功
-- (void)okMsk:(NSString *)msg{
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    [self.navigationController.view addSubview:hud];
-    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-    hud.mode = MBProgressHUDModeCustomView;
-    hud.delegate = self;
-    hud.labelText = msg;
-    [hud show:YES];
-    [hud hide:YES afterDelay:1.0];
-}
-
-//提示
-- (void)alertMsg:(NSString *)msg{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.labelText = msg;
-    hud.margin = 10.f;
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:1.5];
-}
 
 -(void)saveToLocal:(NSMutableDictionary *)dic{
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,  NSUserDomainMask,YES);

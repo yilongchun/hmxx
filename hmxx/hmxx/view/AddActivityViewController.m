@@ -9,14 +9,13 @@
 #import "AddActivityViewController.h"
 #import "MKNetworkKit.h"
 #import "Utils.h"
-#import "MBProgressHUD.h"
+
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <MediaPlayer/MPMoviePlayerController.h>
 #import "UITextView+PlaceHolder.h"
 
-@interface AddActivityViewController ()<MBProgressHUDDelegate>{
+@interface AddActivityViewController (){
     MKNetworkEngine *engine;
-    MBProgressHUD *HUD;
     int type;
     NSMutableArray *fileArr;
     NSURL *videoUrl;
@@ -39,12 +38,6 @@
     self.titleLabel.frame = rect;
     //初始化引擎
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
-    
-    //添加加载等待条
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    HUD.labelText = @"加载中...";
-    [self.view addSubview:HUD];
-    HUD.delegate = self;
     
     self.contentTextview.layer.borderColor = [UIColor colorWithRed:219/255.0 green:219/255.0 blue:219/255.0 alpha:1].CGColor;
     self.contentTextview.layer.borderWidth = 1.0;
@@ -115,11 +108,11 @@
 - (void)save{
     [self viewTapped:nil];
     if (self.titleLabel.text.length == 0) {
-        [self alertMsg:@"请填写标题"];
+        [self showHint:@"请填写标题"];
     }else if(self.contentTextview.text.length == 0){
-        [self alertMsg:@"请填写内容"];
+        [self showHint:@"请填写内容"];
     }else{
-        [HUD show:YES];
+        [self showHudInView:self.view hint:@""];
         if (self.chosenImages.count == 0) {
             flag = true;
             [self insertData];
@@ -184,8 +177,8 @@
             //        NSString *code = [resultDict objectForKey:@"code"];
             if ([success boolValue]) {
                 //            NSDictionary *data = [resultDict objectForKey:@"data"];
-                [HUD hide:YES];
-                [self alertMsg:msg];
+                [self hideHud];
+                [self showHint:msg];
                 self.titleLabel.text = @"";
                 self.contentTextview.text = @"";
                 [self.chosenImages removeAllObjects];
@@ -194,13 +187,13 @@
                 
                 
             }else{
-                [HUD hide:YES];
-                [self alertMsg:msg];
+                [self hideHud];
+                [self showHint:msg];
             }
         }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
             NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-            [HUD hide:YES];
-            [self alertMsg:@"连接服务器失败"];
+            [self hideHud];
+            [self showHint:@"连接服务器失败"];
         }];
         [engine enqueueOperation:op];
     }else{
@@ -256,9 +249,9 @@
             }
         }else{
             flag = false;
-            [HUD hide:YES];
+            [self hideHud];
 //            NSLog(@"上传失败 %@ %d",msg,num);
-            [self alertMsg:@"上传失败"];
+            [self showHint:@"上传失败"];
         }
         if (saveFlag) {
             NSFileManager *fileMgr = [NSFileManager defaultManager];
@@ -273,8 +266,8 @@
             NSError *err;
             [fileMgr removeItemAtPath:savedImagePath error:&err];
         }
-        [HUD hide:YES];
-        [self alertMsg:@"连接服务器失败"];
+        [self hideHud];
+        [self showHint:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
 }
@@ -305,8 +298,8 @@
             [self insertData];
         }else{
             flag = false;
-            [HUD hide:YES];
-            [self alertMsg:@"上传失败"];
+            [self hideHud];
+            [self showHint:@"上传失败"];
         }
         if (flag) {
             NSFileManager *fileMgr = [NSFileManager defaultManager];
@@ -320,8 +313,8 @@
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        [HUD hide:YES];
-        [self alertMsg:@"连接服务器失败"];
+        [self hideHud];
+        [self showHint:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
     
@@ -339,29 +332,6 @@
         [actionsheet showInView:self.view];
     }
     
-}
-
-//成功
-- (void)okMsk:(NSString *)msg{
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    [self.navigationController.view addSubview:hud];
-    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-    hud.mode = MBProgressHUDModeCustomView;
-    hud.delegate = self;
-    hud.labelText = msg;
-    [hud show:YES];
-    [hud hide:YES afterDelay:1.0];
-}
-
-
-//提示
-- (void)alertMsg:(NSString *)msg{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.labelText = msg;
-    hud.margin = 10.f;
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:1.0];
 }
 
 - (void)reloadImageToView{

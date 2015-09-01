@@ -7,7 +7,6 @@
 //
 
 #import "ChildrenStoryViewController.h"
-#import "MBProgressHUD.h"
 #import "MKNetworkKit.h"
 #import "ChildrenStoryTableViewCell.h"
 #import "PlayTableViewCell.h"
@@ -16,8 +15,7 @@
 #import "CustomMoviePlayerViewController.h"
 #import "KrVideoPlayerController.h"
 
-@interface ChildrenStoryViewController ()<MBProgressHUDDelegate>{
-    MBProgressHUD *HUD;
+@interface ChildrenStoryViewController (){
     MKNetworkEngine *engine;
     NSNumber *totalpage;
     NSNumber *page;
@@ -84,8 +82,6 @@
         NSString *msg = [resultDict objectForKey:@"msg"];
         //        NSString *code = [resultDict objectForKey:@"code"];
         if ([success boolValue]) {
-//            [HUD hide:YES];
-            //            [self okMsk:@"加载成功"];
             NSDictionary *data = [resultDict objectForKey:@"data"];
             if (data != nil) {
                 NSArray *arr = [data objectForKey:@"rows"];
@@ -102,12 +98,12 @@
                 [self.mytableview.header beginRefreshing];
             }
         }else{
-            [self alertMsg:msg];
+            [self showHint:msg];
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
         [self.mytableview.header endRefreshing];
-        [self alertMsg:[err localizedDescription]];
+        [self showHint:[err localizedDescription]];
     }];
     [engine enqueueOperation:op];
 }
@@ -143,7 +139,6 @@
         //        NSString *code = [resultDict objectForKey:@"code"];
         if ([success boolValue]) {
             [self.mytableview.header endRefreshing];
-            //            [self okMsk:@"加载成功"];
             NSDictionary *data = [resultDict objectForKey:@"data"];
             if (data != nil) {
                 NSArray *arr = [data objectForKey:@"rows"];
@@ -163,13 +158,13 @@
             }
         }else{
             [self.mytableview.header endRefreshing];
-            [self alertMsg:msg];
+            [self showHint:msg];
             
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
         [self.mytableview.header endRefreshing];
-        [self alertMsg:[err localizedDescription]];
+        [self showHint:[err localizedDescription]];
     }];
     [engine enqueueOperation:op];
 }
@@ -198,7 +193,6 @@
             //        NSString *code = [resultDict objectForKey:@"code"];
             if ([success boolValue]) {
                 [self.mytableview.footer endRefreshing];
-                //            [self okMsk:@"加载成功"];
                 NSDictionary *data = [resultDict objectForKey:@"data"];
                 if (data != nil) {
                     NSArray *arr = [data objectForKey:@"rows"];
@@ -213,40 +207,17 @@
                 }
             }else{
                 [self.mytableview.footer endRefreshing];
-                [self alertMsg:msg];
+                [self showHint:msg];
                 
             }
         }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
             NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
             [self.mytableview.footer endRefreshing];
-            [self alertMsg:[err localizedDescription]];
+            [self showHint:[err localizedDescription]];
         }];
         [engine enqueueOperation:op];
     }
     
-}
-
-//成功
-- (void)okMsk:(NSString *)msg{
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    [self.navigationController.view addSubview:hud];
-    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-    hud.mode = MBProgressHUDModeCustomView;
-    hud.delegate = self;
-    hud.labelText = msg;
-    [hud show:YES];
-    [hud hide:YES afterDelay:1];
-}
-
-
-//提示
-- (void)alertMsg:(NSString *)msg{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.labelText = msg;
-    hud.margin = 10.f;
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:1];
 }
 
 #pragma mark - Table view data source

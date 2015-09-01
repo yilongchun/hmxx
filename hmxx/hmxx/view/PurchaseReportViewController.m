@@ -9,7 +9,6 @@
 #import "PurchaseReportViewController.h"
 #import "MKNetworkKit.h"
 #import "Utils.h"
-#import "MBProgressHUD.h"
 #import "SRRefreshView.h"
 #import "XscqtjxqViewController.h"
 #import "MoreTableViewCell.h"
@@ -18,8 +17,7 @@
 #import "ReportThirdTableViewCell.h"
 #import "PurchaseTypeViewController.h"
 
-@interface PurchaseReportViewController ()<MBProgressHUDDelegate,SRRefreshDelegate>{
-    MBProgressHUD *HUD;
+@interface PurchaseReportViewController ()<SRRefreshDelegate>{
     MKNetworkEngine *engine;
     NSNumber *totalpage;
     NSNumber *page;
@@ -68,12 +66,8 @@
 //    }
     [mytableview addSubview:self.slimeView];
     [self.view addSubview:mytableview];
-    //添加加载等待条
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    HUD.labelText = @"加载中...";
-    [self.view addSubview:HUD];
-    HUD.delegate = self;
-    [HUD show:YES];
+    
+    [self showHudInView:self.view hint:@""];
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     
     NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
@@ -133,16 +127,16 @@
                 }
                 self.dataSource = [NSMutableArray arrayWithArray:arr];
             }
-            [HUD hide:YES];
+            [self hideHud];
             [mytableview reloadData];
         }else{
-            [HUD hide:YES];
-            [self alertMsg:msg];
+            [self hideHud];
+            [self showHint:msg];
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        [HUD hide:YES];
-        [self alertMsg:@"连接服务器失败"];
+        [self hideHud];
+        [self showHint:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
 }
@@ -223,15 +217,15 @@
                     [mytableview insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationFade];
                     [mytableview endUpdates];
                 }
-                [HUD hide:YES];
+                [self hideHud];
             }else{
-                [HUD hide:YES];
-                [self alertMsg:msg];
+                [self hideHud];
+                [self showHint:msg];
             }
         }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
             NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-            [HUD hide:YES];
-            [self alertMsg:@"连接服务器失败"];
+            [self hideHud];
+            [self showHint:@"连接服务器失败"];
             NSString *isExtend = [firstDic objectForKey:@"isExtend"];
             if ([isExtend isEqualToString:@"YES"]) {
                 [firstDic setValue:@"NO" forKey:@"isExtend"];
@@ -447,32 +441,9 @@
 //刷新消息列表
 - (void)slimeRefreshStartRefresh:(SRRefreshView *)refreshView
 {
-    [HUD show:YES];
+    [self showHudInView:self.view hint:@""];
     [self loadData];
     [_slimeView endRefresh];
-}
-
-//成功
-- (void)okMsk:(NSString *)msg{
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    [self.navigationController.view addSubview:hud];
-    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-    hud.mode = MBProgressHUDModeCustomView;
-    hud.delegate = self;
-    hud.labelText = msg;
-    [hud show:YES];
-    [hud hide:YES afterDelay:1.0];
-}
-
-
-//提示
-- (void)alertMsg:(NSString *)msg{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.labelText = msg;
-    hud.margin = 10.f;
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:1.0];
 }
 
 - (void)didReceiveMemoryWarning {

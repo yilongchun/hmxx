@@ -10,13 +10,11 @@
 #import "Utils.h"
 #import "UIImageView+AFNetworking.h"
 #import "MKNetworkKit.h"
-#import "MBProgressHUD.h"
 #import "ContentCell.h"
 #import "SRRefreshView.h"
 
-@interface DaishGgtzViewController ()<MBProgressHUDDelegate,SRRefreshDelegate>{
+@interface DaishGgtzViewController ()<SRRefreshDelegate>{
     MKNetworkEngine *engine;
-    MBProgressHUD *HUD;
     NSNumber *totalpage;
     NSNumber *page;
     NSNumber *rows;
@@ -51,12 +49,6 @@
     }
     
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
-    
-    //添加加载等待条
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    HUD.labelText = @"加载中...";
-    [self.view addSubview:HUD];
-    HUD.delegate = self;
     
     self.passBtn.layer.cornerRadius = 5.0f;
     
@@ -94,7 +86,7 @@
 }
 
 - (void)loadData{
-    [HUD show:YES];
+    [self showHudInView:self.view hint:@""];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *userid = [userDefaults objectForKey:@"userid"];
@@ -121,16 +113,16 @@
                 NSNumber *type = [data objectForKey:@"tntype"];
                 tntype = [type intValue];
                 [self.mytableview reloadData];
-                [HUD hide:YES];
+                [self hideHud];
             }else{
-                [HUD hide:YES];
+                [self hideHud];
             }
         }else{
-            [HUD hide:YES];
+            [self hideHud];
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        [HUD hide:YES];
+        [self hideHud];
         
     }];
     [engine enqueueOperation:op];
@@ -210,18 +202,6 @@
     }
 }
 
-
-
-//提示
-- (void)alertMsg:(NSString *)msg{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.labelText = msg;
-    hud.margin = 10.f;
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:1.0];
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -255,20 +235,9 @@
  }
  */
 
-//成功
-- (void)okMsk:(NSString *)msg{
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    [self.navigationController.view addSubview:hud];
-    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-    hud.mode = MBProgressHUDModeCustomView;
-    hud.delegate = self;
-    hud.labelText = msg;
-    [hud show:YES];
-    [hud hide:YES afterDelay:1.0];
-}
 
 - (IBAction)pass:(id)sender {
-    [HUD show:YES];
+    [self showHudInView:self.view hint:@""];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:self.tnid forKey:@"noticeId"];
     
@@ -285,16 +254,17 @@
         NSString *msg = [resultDict objectForKey:@"msg"];
         //        NSString *code = [resultDict objectForKey:@"code"];
         if ([success boolValue]) {
-            [HUD hide:YES];
-            [self okMsk:msg];
+            [self hideHud];
+            UIImageView *imageview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+            [self showHint:msg customView:imageview];
             [self performSelector:@selector(backAndReload) withObject:nil afterDelay:1.0f];
         }else{
-            [HUD hide:YES];
-            [self alertMsg:msg];
+            [self hideHud];
+            [self showHint:msg];
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        [HUD hide:YES];
+        [self hideHud];
         
     }];
     [engine enqueueOperation:op];

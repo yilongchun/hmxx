@@ -9,11 +9,9 @@
 #import "UpdatePasswordViewController.h"
 #import "MKNetworkKit.h"
 #import "Utils.h"
-#import "MBProgressHUD.h"
 
-@interface UpdatePasswordViewController ()<MBProgressHUDDelegate>{
+@interface UpdatePasswordViewController (){
     MKNetworkEngine *engine;
-    MBProgressHUD *HUD;
 }
 
 
@@ -54,11 +52,7 @@
         [self.password2 setFrame:CGRectMake(self.password2.frame.origin.x, self.password2.frame.origin.y-64, self.password2.frame.size.width, self.password2.frame.size.height)];
     }
     
-    //添加加载等待条
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    HUD.labelText = @"加载中...";
-    [self.view addSubview:HUD];
-    HUD.delegate = self;
+    
     
     //添加手势，点击输入框其他区域隐藏键盘
     UITapGestureRecognizer *tapGr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
@@ -69,19 +63,19 @@
 - (void)updatePassword{
     [self viewTapped:nil];
     if(self.oldPassword.text.length == 0){
-        [self alertMsg:@"请输入旧密码"];
+        [self showHint:@"请输入旧密码"];
         return;
     }
     if(self.password1.text.length == 0){
-        [self alertMsg:@"请输入新密码"];
+        [self showHint:@"请输入新密码"];
         return;
     }
     if(self.password2.text.length == 0){
-        [self alertMsg:@"请再次输入新密码"];
+        [self showHint:@"请再次输入新密码"];
         return;
     }
     if([self.password1.text isEqualToString:self.password2.text]){
-        [HUD show:YES];
+        [self showHudInView:self.view hint:@""];
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSString *userid = [userDefaults objectForKey:@"userid"];
@@ -101,51 +95,29 @@
             NSNumber *success = [resultDict objectForKey:@"success"];
             NSString *msg = [resultDict objectForKey:@"msg"];
             if ([success boolValue]) {
-                [HUD hide:YES];
-                [self okMsk:msg];
+                [self hideHud];
+                UIImageView *imageview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+                [self showHint:msg customView:imageview];
                 self.oldPassword.text = @"";
                 self.password1.text = @"";
                 self.password2.text = @"";
                 
             }else{
-                [HUD hide:YES];
-                [self alertMsg:msg];
+                [self hideHud];
+                [self showHint:msg];
             }
             
         }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
             NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-            [HUD hide:YES];
-            [self alertMsg:@"连接服务器失败"];
+            [self hideHud];
+            [self showHint:@"连接服务器失败"];
             
         }];
         [engine enqueueOperation:op];
     }else{
-        [self alertMsg:@"两次的密码不一致"];
+        [self showHint:@"两次的密码不一致"];
     }
     
-}
-
-//成功
-- (void)okMsk:(NSString *)msg{
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    [self.navigationController.view addSubview:hud];
-    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-    hud.mode = MBProgressHUDModeCustomView;
-    hud.delegate = self;
-    hud.labelText = msg;
-    [hud show:YES];
-    [hud hide:YES afterDelay:1.0];
-}
-
-
-//提示
-- (void)alertMsg:(NSString *)msg{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.labelText = msg;
-    hud.margin = 10.f;
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:1.0];
 }
 
 #pragma mark - 键盘回车

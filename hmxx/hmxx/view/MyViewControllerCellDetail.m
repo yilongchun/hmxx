@@ -10,7 +10,6 @@
 #import "Utils.h"
 #import "UIImageView+AFNetworking.h"
 #import "MKNetworkKit.h"
-#import "MBProgressHUD.h"
 #import "ContentCell.h"
 #import "PinglunTableViewCell.h"
 #import "CustomMoviePlayerViewController.h"
@@ -19,9 +18,8 @@
 #import "SRRefreshView.h"
 #import "MoreTableViewCell.h"
 
-@interface MyViewControllerCellDetail ()<MBProgressHUDDelegate,TapImageViewDelegate,ImgScrollViewDelegate,UIScrollViewDelegate,SRRefreshDelegate>{
+@interface MyViewControllerCellDetail ()<TapImageViewDelegate,ImgScrollViewDelegate,UIScrollViewDelegate,SRRefreshDelegate>{
     MKNetworkEngine *engine;
-    MBProgressHUD *HUD;
     NSNumber *totalpage;
     NSNumber *page;
     NSNumber *rows;
@@ -65,11 +63,6 @@
     
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     
-    //添加加载等待条
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    HUD.labelText = @"加载中...";
-    [self.view addSubview:HUD];
-    HUD.delegate = self;
     
     UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
     [mytableview setTableFooterView:v];
@@ -126,7 +119,7 @@
 - (void)loadData{
     
     
-    [HUD show:YES];
+    [self showHudInView:self.view hint:@""];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:self.detailid forKey:@"activityId"];
@@ -163,13 +156,13 @@
                 [self.mytableview reloadData];
             }
         }else{
-            [HUD hide:YES];
-            [self alertMsg:msg];
+            [self hideHud];
+            [self showHint:msg];
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        [HUD hide:YES];
-        [self alertMsg:@"连接服务器失败"];
+        [self hideHud];
+        [self showHint:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
 }
@@ -209,15 +202,15 @@
                 }
                 [self.mytableview reloadData];
             }
-            [HUD hide:YES];
+            [self hideHud];
         }else{
-            [HUD hide:YES];
-            [self alertMsg:msg];
+            [self hideHud];
+            [self showHint:msg];
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        [HUD hide:YES];
-        [self alertMsg:@"连接服务器失败"];
+        [self hideHud];
+        [self showHint:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
 }
@@ -260,11 +253,11 @@
             }
             [self.mytableview reloadData];
         }else{
-            [self alertMsg:msg];
+            [self showHint:msg];
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        [self alertMsg:@"连接服务器失败"];
+        [self showHint:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
 }
@@ -469,16 +462,6 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-//提示
-- (void)alertMsg:(NSString *)msg{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.labelText = msg;
-    hud.margin = 10.f;
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:1.0];
-}
-
 #pragma mark - video
 
 /**
@@ -491,7 +474,7 @@
         NSDictionary *video = [filelist objectAtIndex:0];
         NSString *fileId = [video objectForKey:@"fileId"];
         if ([Utils isBlankString:fileId]) {
-            [self alertMsg:@"视频地址错误，播放失败"];
+            [self showHint:@"视频地址错误，播放失败"];
             return;
         }
         CustomMoviePlayerViewController *moviePlayer = [[CustomMoviePlayerViewController alloc] init];
