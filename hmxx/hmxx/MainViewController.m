@@ -115,7 +115,7 @@
 
 //加载信息
 - (void)loadData{
-    
+   
     [self showHudInView:self.view hint:@""];
     //根据用户id获取学校
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
@@ -287,9 +287,12 @@
                 break;
             case 9:
                 if (height <= 480) {
-                    btnr = CGRectMake(width + 10, 135, 90, 90);
-                }else{
-                    btnr = CGRectMake(width + 10, 10, 90, 90);
+                    btnr = CGRectMake(width+10, 135, 90, 90);
+                }else if(height <= 1334/2){
+                    btnr = CGRectMake(width+10, 10, 90, 90);
+                }
+                else{
+                    btnr = CGRectMake(10, 385, 90, 90);
                 }
                 break;
             default:
@@ -470,7 +473,7 @@
         
     }
     if (i > 6) {
-        if (height <= 480) {
+        if (height <= 480) {//iphone4s
             [mainScrollView setContentSize:CGSizeMake(width*2, height-170)];
             if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
                 spacePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, height-30, width, 10)];
@@ -482,7 +485,8 @@
             spacePageControl.numberOfPages = 2;
             spacePageControl.userInteractionEnabled = NO;
             [self.view addSubview:spacePageControl];
-        }else{
+        }else if(height <= 1334/2){//iphone5 iphone6
+            
             if (i > 9) {
                 if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
                     spacePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, height-20, width, 10)];
@@ -498,6 +502,8 @@
             }else{
                 [mainScrollView setContentSize:CGSizeMake(width, height-170)];
             }
+        }else{//iphone6p
+            [mainScrollView setContentSize:CGSizeMake(width, height-170)];
         }
     }else{
         [mainScrollView setContentSize:CGSizeMake(width, height-170)];
