@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,22 +13,26 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="90" height="110"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="THE-lG-9Vi">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="THE-lG-9Vi">
                         <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正常" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YLy-fh-yaV">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正常" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLy-fh-yaV">
                         <rect key="frame" x="60" y="74" width="30" height="16"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="0.4549019608" green="0.69019607839999997" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="WNe-y8-LXD"/>
+                            <constraint firstAttribute="height" constant="16" id="sPQ-yp-P6D"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="张三" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e3C-bZ-NXH">
-                        <rect key="frame" x="5" y="92" width="80" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="张三" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3C-bZ-NXH">
+                        <rect key="frame" x="0.0" y="90" width="90" height="20"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="iQg-It-yVs"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -37,6 +41,17 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="e3C-bZ-NXH" secondAttribute="trailing" id="63z-5b-S5L"/>
+                <constraint firstItem="THE-lG-9Vi" firstAttribute="trailing" secondItem="YLy-fh-yaV" secondAttribute="trailing" id="HVu-gy-kOm"/>
+                <constraint firstAttribute="trailing" secondItem="THE-lG-9Vi" secondAttribute="trailing" id="QO8-PS-MG4"/>
+                <constraint firstItem="THE-lG-9Vi" firstAttribute="bottom" secondItem="YLy-fh-yaV" secondAttribute="bottom" id="S0h-X3-fnG"/>
+                <constraint firstItem="e3C-bZ-NXH" firstAttribute="top" secondItem="THE-lG-9Vi" secondAttribute="bottom" id="Uec-Xv-eYj"/>
+                <constraint firstItem="e3C-bZ-NXH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Vu2-yp-lH4"/>
+                <constraint firstItem="THE-lG-9Vi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="WYU-fg-rbJ"/>
+                <constraint firstAttribute="bottom" secondItem="e3C-bZ-NXH" secondAttribute="bottom" id="hdQ-Od-dPL"/>
+                <constraint firstItem="THE-lG-9Vi" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="p8T-Ao-xHT"/>
+            </constraints>
             <size key="customSize" width="90" height="100"/>
             <connections>
                 <outlet property="label1" destination="YLy-fh-yaV" id="7CR-xX-V2Y"/>
